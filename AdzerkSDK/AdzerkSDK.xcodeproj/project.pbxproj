@@ -10,6 +10,8 @@
 		B5C89DCC1B78EBB3003CA162 /* AdzerkSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B5C89DCB1B78EBB3003CA162 /* AdzerkSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5C89DD21B78EBB3003CA162 /* AdzerkSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C89DC61B78EBB3003CA162 /* AdzerkSDK.framework */; };
 		B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */; };
+		B5C89E111B78ED75003CA162 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */; };
+		B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		B5C89DD11B78EBB3003CA162 /* AdzerkSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdzerkSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C89DD71B78EBB3003CA162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkSDKTests.swift; sourceTree = "<group>"; };
+		B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdzerkSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C89DCB1B78EBB3003CA162 /* AdzerkSDK.h */,
+				B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */,
 				B5C89DC91B78EBB3003CA162 /* Supporting Files */,
 			);
 			path = AdzerkSDK;
@@ -209,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C89E111B78ED75003CA162 /* AdzerkSDK.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */,
+				B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +329,7 @@
 		B5C89DDD1B78EBB3003CA162 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -332,12 +339,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B5C89DDE1B78EBB3003CA162 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -399,6 +408,7 @@
 				B5C89DDE1B78EBB3003CA162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B5C89DDF1B78EBB3003CA162 /* Build configuration list for PBXNativeTarget "AdzerkSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +417,7 @@
 				B5C89DE11B78EBB3003CA162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,31 +6,44 @@
 //  Copyright (c) 2015 Adzerk. All rights reserved.
 //
 
-import UIKit
+import AdzerkSDK
 import XCTest
 
 class AdzerkSDKTests: XCTestCase {
+
+    let networkId = 9792
+    let siteId = 306998
+    var sdk: AdzerkSDK!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sdk = AdzerkSDK(networkId: networkId, siteId: siteId)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    func testCanRequestPlacement() {
+        let placementDiv = "div1"
+        
+        let expectation = expectationWithDescription("API response received")
+        sdk.requestPlacementInDiv("div1") { (response) -> () in
+            switch response {
+            case .Success(let data):
+                if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String: AnyObject] {
+                    println("Received: \(json)")
+                } else {
+                    println("Couldn't parse as JSON")
+                }
+            case .BadRequest(let statusCode, let body):
+                println("Bad request (HTTP \(statusCode)):  \(body)")
+            case .Error(let error):
+                println("Error: \(error)")
+            }
+            expectation.fulfill()
         }
+        
+        waitForExpectationsWithTimeout(3.0, handler: nil) 
     }
-    
 }
