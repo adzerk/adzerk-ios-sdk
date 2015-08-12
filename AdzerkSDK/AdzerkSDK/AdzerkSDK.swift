@@ -117,11 +117,11 @@ public class AdzerkSDK {
 //                },
 //                "isMobile": true
 //        }
-        println("Posting \(body)")
+        
         var error: NSError?
         if let data = NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted, error: &error) {
             request.HTTPBody = data
-            println("JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+            // println("JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
             return request
         } else {
             println("Error building placement request: \(error)")
