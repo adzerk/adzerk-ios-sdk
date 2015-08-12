@@ -87,7 +87,14 @@ class AdzerkSDKTests: XCTestCase {
         ]
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacement(placement, completion: assertResponse(expectation, validationHandler: { obj in
-            XCTFail(msg)
+            
+            if let json   = obj as? [String: AnyObject],
+                decisions = json["decisions"] as? [String: AnyObject],
+                div1      = decisions["div1"] as? [String: AnyObject] {
+                        
+            } else {
+                XCTFail("Did not find div1 in response")
+            }
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
