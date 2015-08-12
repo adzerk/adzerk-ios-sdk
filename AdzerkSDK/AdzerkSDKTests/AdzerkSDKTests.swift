@@ -73,7 +73,7 @@ class AdzerkSDKTests: XCTestCase {
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
     
-    func testCanREquestPlacementwithAllParameters() {
+    func testCanRequestPlacementwithAllParameters() {
         var placement = ADZPlacement(divName: "div1", adTypes: [5])!
         placement.zoneIds.append(136961)
         placement.properties = [
@@ -91,11 +91,30 @@ class AdzerkSDKTests: XCTestCase {
             if let json   = obj as? [String: AnyObject],
                 decisions = json["decisions"] as? [String: AnyObject],
                 div1      = decisions["div1"] as? [String: AnyObject] {
-                        
+                // found div1
             } else {
                 XCTFail("Did not find div1 in response")
             }
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
+    
+    func testCanRequestMultiplePlacements() {
+        let placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
+        let placement2 = ADZPlacement(divName: "div2", adTypes: [5])!
+        let expectation = expectationWithDescription("API response received")
+        sdk.requestPlacement([placement1, placement2], completion: assertResponse(expectation, validationHandler: { obj in
+            if let json   = obj as? [String: AnyObject],
+                decisions = json["decisions"] as? [String: AnyObject],
+                div1      = decisions["div1"] as? [String: AnyObject],
+                div2      = decisions["div2"] as? [String: AnyObject] {
+                    // found div1 and div2
+            } else {
+                XCTFail("Did not find div1 and div2 in response")
+            }
+        }))
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
+    
+    
 }

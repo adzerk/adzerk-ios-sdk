@@ -22,7 +22,11 @@ public class AdzerkSDK {
     }
     
     public func requestPlacement(placement: ADZPlacement, completion: (ADZPlacementResponse) -> ()) {
-        if let request = buildPlacementRequest(placement) {
+       requestPlacement([placement], completion: completion)
+    }
+    
+    public func requestPlacement(placements: [ADZPlacement], completion: (ADZPlacementResponse) -> ()) {
+        if let request = buildPlacementRequest(placements) {
             let task = session.dataTaskWithRequest(request) {
                 data, response, error in
                 
@@ -42,6 +46,8 @@ public class AdzerkSDK {
             task.resume()
         }
     }
+    
+
     
     // MARK - private
     
@@ -64,22 +70,24 @@ public class AdzerkSDK {
     
     private let requestTimeout: NSTimeInterval = 15
     
-    private func buildPlacementRequest(placement: ADZPlacement) -> NSURLRequest? {
+    private func serializePlacement(placement: ADZPlacement) -> [String: AnyObject] {
+        return [
+            "divName"  : placement.divName,
+            "networkId": placement.networkId,
+            "siteId"   : placement.siteId,
+            "adTypes"  : placement.adTypes,
+            "eventIds" : placement.eventIds,
+            "zoneIds"  : placement.zoneIds,
+        ]
+    }
+    
+    private func buildPlacementRequest(placements: [ADZPlacement]) -> NSURLRequest? {
         let url = baseURL
         var request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.HTTPMethod = "POST"
         
         let body = [
-            "placements": [
-                [
-                    "divName"  : placement.divName,
-                    "networkId": placement.networkId,
-                    "siteId"   : placement.siteId,
-                    "adTypes"  : placement.adTypes,
-                    "eventIds" : placement.eventIds,
-                    "zoneIds"  : placement.zoneIds,
-                ]
-            ],
+            "placements": placements.map { self.serializePlacement($0) },
             "isMobile": true
         ]
         
@@ -121,7 +129,7 @@ public class AdzerkSDK {
         var error: NSError?
         if let data = NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted, error: &error) {
             request.HTTPBody = data
-            // println("JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+            println("Posting JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
             return request
         } else {
             println("Error building placement request: \(error)")
