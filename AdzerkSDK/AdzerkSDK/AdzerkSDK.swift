@@ -30,8 +30,6 @@ public class AdzerkSDK {
                         let bodyString = (NSString(data: data, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
                         completion(.BadRequest(http.statusCode, bodyString))
                     }
-                    
-                    completion(.Success(data))
                 }
                 
             }
