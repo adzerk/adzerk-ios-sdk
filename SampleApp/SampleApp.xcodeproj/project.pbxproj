@@ -156,6 +156,7 @@
 		B5C89DE31B78ECF0003CA162 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Adzerk;
 				TargetAttributes = {
@@ -409,6 +410,7 @@
 				B5C89E0C1B78ECF0003CA162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B5C89E0D1B78ECF0003CA162 /* Build configuration list for PBXNativeTarget "SampleAppTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +419,7 @@
 				B5C89E0F1B78ECF0003CA162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
