@@ -17,7 +17,9 @@ class AdzerkSDKTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sdk = AdzerkSDK(networkId: networkId, siteId: siteId)
+        AdzerkSDK.defaultNetworkId = networkId
+        AdzerkSDK.defaultSiteId = siteId
+        sdk = AdzerkSDK()
     }
     
     override func tearDown() {
@@ -29,6 +31,10 @@ class AdzerkSDKTests: XCTestCase {
         
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacementInDiv("div1") { (response) -> () in
+    func testDefaultNetworkIdAndSiteId() {
+        XCTAssertEqual(AdzerkSDK.defaultNetworkId!, networkId, "network id was not set")
+        XCTAssertEqual(AdzerkSDK.defaultSiteId!, siteId, "site id was not set")
+    }
             switch response {
             case .Success(let data):
                 if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String: AnyObject] {

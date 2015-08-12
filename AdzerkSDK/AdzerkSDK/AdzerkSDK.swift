@@ -9,12 +9,10 @@
 import Foundation
 
 public class AdzerkSDK {
-    public let networkId: Int
-    public let siteId: Int
+    public static var defaultNetworkId: Int?
+    public static var defaultSiteId: Int?
     
-    public init(networkId: Int, siteId: Int) {
-        self.networkId = networkId
-        self.siteId = siteId
+    public init() {
     }
     
     public func requestPlacementInDiv(div: String, completion: (ADZPlacementResponse) -> ()) {
