@@ -15,8 +15,14 @@ public class AdzerkSDK {
     public init() {
     }
     
-    public func requestPlacementInDiv(div: String, completion: (ADZPlacementResponse) -> ()) {
-        if let request = buildPlacementRequest(div) {
+    public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZPlacementResponse) -> ()) {
+        if let placement = ADZPlacement(divName: div, adTypes: adTypes) {
+            requestPlacement(placement, completion: completion)
+        }
+    }
+    
+    public func requestPlacement(placement: ADZPlacement, completion: (ADZPlacementResponse) -> ()) {
+        if let request = buildPlacementRequest(placement) {
             let task = session.dataTaskWithRequest(request) {
                 data, response, error in
                 
@@ -58,7 +64,7 @@ public class AdzerkSDK {
     
     private let requestTimeout: NSTimeInterval = 15
     
-    private func buildPlacementRequest(div: String) -> NSURLRequest? {
+    private func buildPlacementRequest(placement: ADZPlacement) -> NSURLRequest? {
         let url = baseURL
         var request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.HTTPMethod = "POST"
@@ -66,10 +72,12 @@ public class AdzerkSDK {
         let body = [
             "placements": [
                 [
-                    "divName": div,
-                    "networkId": networkId,
-                    "siteId": siteId,
-                    "adTypes": [5]
+                    "divName"  : placement.divName,
+                    "networkId": placement.networkId,
+                    "siteId"   : placement.siteId,
+                    "adTypes"  : placement.adTypes,
+                    "eventIds" : placement.eventIds,
+                    "zoneIds"  : placement.zoneIds,
                 ]
             ],
             "isMobile": true
