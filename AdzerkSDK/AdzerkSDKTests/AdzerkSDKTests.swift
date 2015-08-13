@@ -49,6 +49,7 @@ class AdzerkSDKTests: XCTestCase {
             switch response {
             case .Success(let data):
                 let obj: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)!
+                println(obj)
                 validationHandler?(obj)
             case .BadRequest(let statusCode, let body):
                 XCTFail("Bad request (HTTP \(statusCode)):  \(body)")
@@ -75,7 +76,7 @@ class AdzerkSDKTests: XCTestCase {
     
     func testCanRequestPlacementwithAllParameters() {
         var placement = ADZPlacement(divName: "div1", adTypes: [5])!
-        placement.zoneIds.append(136961)
+        placement.zoneIds = [136961]
         placement.properties = [
             "custom_key": "custom_value",
             "foos": ["bar", "baz", "quux"],
@@ -114,6 +115,35 @@ class AdzerkSDKTests: XCTestCase {
             }
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
+    
+    func testCanRequestPlacementsWithOptions() {
+        var placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
+        placement1.adId = 1
+        placement1.campaignId = 1
+        placement1.flightId = 1
+        placement1.eventIds = [123]
+        placement1.properties = ["key":"val"]
+        
+        let expectation = expectationWithDescription("API response received")
+        var options = ADZPlacementRequestOptions()
+        options.flightViewTimes = [
+            "1234": [151243, 5124312]
+        ]
+        
+        options.blockedCreatives = [1,2,3]
+        options.referrer = "test referrer"
+        options.keywords = ["cheese", "apples", "wine"]
+        sdk.requestPlacement([placement1], options: options,completion: assertResponse(expectation, validationHandler: { obj in
+            if let json   = obj as? [String: AnyObject],
+                decisions = json["decisions"] as? [String: AnyObject] {
+                    XCTAssertTrue(decisions.keys.first == "div1", "div1 was not found in response")
+            } else {
+                XCTFail("Did not find decisions container in response")
+            }
+        }))
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+        
     }
     
     

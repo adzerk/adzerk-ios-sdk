@@ -8,6 +8,8 @@
 
 import Foundation
 
+let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
+
 public class AdzerkSDK {
     public static var defaultNetworkId: Int?
     public static var defaultSiteId: Int?
@@ -26,7 +28,11 @@ public class AdzerkSDK {
     }
     
     public func requestPlacement(placements: [ADZPlacement], completion: (ADZPlacementResponse) -> ()) {
-        if let request = buildPlacementRequest(placements) {
+        requestPlacement(placements, options: nil, completion: completion)
+    }
+ 
+    public func requestPlacement(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZPlacementResponse) -> ()) {
+        if let request = buildPlacementRequest(placements, options: options) {
             let task = session.dataTaskWithRequest(request) {
                 data, response, error in
                 
@@ -46,7 +52,6 @@ public class AdzerkSDK {
             task.resume()
         }
     }
-    
 
     
     // MARK - private
@@ -65,67 +70,46 @@ public class AdzerkSDK {
     }()
     
     private var baseURL: NSURL {
-        return NSURL(string: "https://engine.adzerk.net/api/v2")!
+        return NSURL(string: AdzerkBaseUrl)!
     }
     
     private let requestTimeout: NSTimeInterval = 15
     
-    private func serializePlacement(placement: ADZPlacement) -> [String: AnyObject] {
-        return [
-            "divName"  : placement.divName,
-            "networkId": placement.networkId,
-            "siteId"   : placement.siteId,
-            "adTypes"  : placement.adTypes,
-            "eventIds" : placement.eventIds,
-            "zoneIds"  : placement.zoneIds,
-        ]
-    }
-    
-    private func buildPlacementRequest(placements: [ADZPlacement]) -> NSURLRequest? {
+    private func buildPlacementRequest(placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> NSURLRequest? {
         let url = baseURL
         var request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.HTTPMethod = "POST"
         
-        let body = [
-            "placements": placements.map { self.serializePlacement($0) },
+        var body: [String: AnyObject] = [
+            "placements": placements.map { $0.serialize() },
+            "time": Int(NSDate().timeIntervalSince1970),
             "isMobile": true
         ]
         
-//            {
-//                "placements": [
-//                {
-//                "divName": "div1",
-//                "networkId": 123,
-//                "siteId": 456,
-//                "adTypes": [5],
-//                "eventIds": [12,13,14],
-//                "properties": {
-//                "foo": 42,
-//                "bar": "example",
-//                "baz": ["one", "two"]
-//                }
-//                },
-//                {
-//                "divName": "div2",
-//                "networkId": 123,
-//                "siteId": 456,
-//                "adTypes": [4,5,6]
-//                }
-//                ],
-//                "user" : {
-//                    "key": "ad39231daeb043f2a9610414f08394b5"
-//                },
-//                "keywords": ["foo", "bar", "baz"],
-//                "referrer": "...",
-//                "time": 1234567890,
-//                "ip": "10.123.123.123",
-//                "blockedCreatives": [123, 456],
-//                "flightViewTimes": {
-//                    "1234": [1234567890, 1234567891]
-//                },
-//                "isMobile": true
-//        }
+        if let userKey = options?.userKey {
+            body["user"] = ["key": userKey]
+        }
         
+        if let blockedCreatives = options?.blockedCreatives {
+            body["blockedCreatives"] = blockedCreatives
+        }
+        
+        if let flighViewTimes = options?.flightViewTimes {
+            body["flightViewTimes"] = flighViewTimes
+        }
+        
+        if let keywords = options?.keywords {
+            body["keywords"] = keywords
+        }
+        
+        if let referrer = options?.referrer {
+            body["referrer"] = referrer
+        }
+        
+        if let url = options?.url {
+            body["url"] = url
+        }
+                
         var error: NSError?
         if let data = NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted, error: &error) {
             request.HTTPBody = data
