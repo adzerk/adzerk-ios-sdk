@@ -38,19 +38,19 @@ class AdzerkSDKTests: XCTestCase {
     
     // Assert that the API response is called and returns .Success
     // response data is ignored
-    func assertSuccessfulResponse(expectation: XCTestExpectation) -> (ADZPlacementResponse) -> () {
+    func assertSuccessfulResponse(expectation: XCTestExpectation) -> (ADZResponse) -> () {
         return assertResponse(expectation)
     }
     
     // Assert that the API response is called. Calls the validationHandler in the case of .Success for callers to 
     // validate the response structure.
-    func assertResponse(expectation: XCTestExpectation, validationHandler: (AnyObject -> ())? = nil) -> (ADZPlacementResponse -> ()) {
+    func assertResponse(expectation: XCTestExpectation, validationHandler: (ADZPlacementResponse -> ())? = nil) -> (ADZResponse -> ()) {
         return { (response) in
             switch response {
-            case .Success(let data):
-                let obj: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)!
-                println(obj)
-                validationHandler?(obj)
+            case .Success(let resp):
+                validationHandler?(resp)
+            case .BadResponse(let body):
+                XCTFail("Unrecognizable response: \(body)")
             case .BadRequest(let statusCode, let body):
                 XCTFail("Bad request (HTTP \(statusCode)):  \(body)")
             case .Error(let error):
@@ -87,15 +87,8 @@ class AdzerkSDKTests: XCTestCase {
             ]
         ]
         let expectation = expectationWithDescription("API response received")
-        sdk.requestPlacement(placement, completion: assertResponse(expectation, validationHandler: { obj in
-            
-            if let json   = obj as? [String: AnyObject],
-                decisions = json["decisions"] as? [String: AnyObject],
-                div1      = decisions["div1"] as? [String: AnyObject] {
-                // found div1
-            } else {
-                XCTFail("Did not find div1 in response")
-            }
+        sdk.requestPlacement(placement, completion: assertResponse(expectation, validationHandler: { response in
+            XCTAssertTrue(response.decisions["div1"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
@@ -104,15 +97,9 @@ class AdzerkSDKTests: XCTestCase {
         let placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
         let placement2 = ADZPlacement(divName: "div2", adTypes: [5])!
         let expectation = expectationWithDescription("API response received")
-        sdk.requestPlacement([placement1, placement2], completion: assertResponse(expectation, validationHandler: { obj in
-            if let json   = obj as? [String: AnyObject],
-                decisions = json["decisions"] as? [String: AnyObject],
-                div1      = decisions["div1"] as? [String: AnyObject],
-                div2      = decisions["div2"] as? [String: AnyObject] {
-                    // found div1 and div2
-            } else {
-                XCTFail("Did not find div1 and div2 in response")
-            }
+        sdk.requestPlacement([placement1, placement2], completion: assertResponse(expectation, validationHandler: { response in
+            XCTAssertTrue(response.decisions["div1"] != nil)
+            XCTAssertTrue(response.decisions["div2"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
@@ -134,17 +121,10 @@ class AdzerkSDKTests: XCTestCase {
         options.blockedCreatives = [1,2,3]
         options.referrer = "test referrer"
         options.keywords = ["cheese", "apples", "wine"]
-        sdk.requestPlacement([placement1], options: options,completion: assertResponse(expectation, validationHandler: { obj in
-            if let json   = obj as? [String: AnyObject],
-                decisions = json["decisions"] as? [String: AnyObject] {
-                    XCTAssertTrue(decisions.keys.first == "div1", "div1 was not found in response")
-            } else {
-                XCTFail("Did not find decisions container in response")
-            }
+        sdk.requestPlacement([placement1], options: options,completion: assertResponse(expectation, validationHandler: { response in
+            XCTAssertTrue(response.decisions["div1"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
         
     }
-    
-    
 }

@@ -17,21 +17,21 @@ public class AdzerkSDK {
     public init() {
     }
     
-    public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZPlacementResponse) -> ()) {
+    public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZResponse) -> ()) {
         if let placement = ADZPlacement(divName: div, adTypes: adTypes) {
             requestPlacement(placement, completion: completion)
         }
     }
     
-    public func requestPlacement(placement: ADZPlacement, completion: (ADZPlacementResponse) -> ()) {
+    public func requestPlacement(placement: ADZPlacement, completion: (ADZResponse) -> ()) {
        requestPlacement([placement], completion: completion)
     }
     
-    public func requestPlacement(placements: [ADZPlacement], completion: (ADZPlacementResponse) -> ()) {
+    public func requestPlacement(placements: [ADZPlacement], completion: (ADZResponse) -> ()) {
         requestPlacement(placements, options: nil, completion: completion)
     }
  
-    public func requestPlacement(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZPlacementResponse) -> ()) {
+    public func requestPlacement(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZResponse) -> ()) {
         if let request = buildPlacementRequest(placements, options: options) {
             let task = session.dataTaskWithRequest(request) {
                 data, response, error in
@@ -41,7 +41,12 @@ public class AdzerkSDK {
                 } else {
                     let http = response as! NSHTTPURLResponse
                     if http.statusCode == 200 {
-                        completion(.Success(data))
+                        if let resp = self.buildResponse(data) {
+                            completion(ADZResponse.Success(resp))
+                        } else {
+                            let bodyString = (NSString(data: data, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
+                            completion(ADZResponse.BadResponse(bodyString))
+                        }
                     } else {
                         let bodyString = (NSString(data: data, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
                         completion(.BadRequest(http.statusCode, bodyString))
@@ -120,10 +125,21 @@ public class AdzerkSDK {
             return nil
         }
     }
+    
+    private func buildResponse(data: NSData) -> ADZPlacementResponse? {
+        var error: NSError?
+        if let responseDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject] {
+            return ADZPlacementResponse(dictionary: responseDictionary)
+        } else {
+            println("Couldn't parse response as JSON: \(error)")
+            return nil
+        }
+    }
 }
 
-public enum ADZPlacementResponse {
-    case Success(NSData)
+public enum ADZResponse {
+    case Success(ADZPlacementResponse)
     case BadRequest(Int, String)
+    case BadResponse(String)
     case Error(NSError)
 }

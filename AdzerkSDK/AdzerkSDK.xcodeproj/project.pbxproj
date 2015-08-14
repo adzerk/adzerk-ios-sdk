@@ -16,6 +16,12 @@
 		B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */; };
 		B5C89E111B78ED75003CA162 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */; };
 		B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */; };
+		B5DB643A1B7E350E00A243AC /* ADZPlacementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64391B7E350E00A243AC /* ADZPlacementResponse.swift */; };
+		B5DB643D1B7E3E5F00A243AC /* ADZFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */; };
+		B5DB643E1B7E434300A243AC /* ADZPlacementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64391B7E350E00A243AC /* ADZPlacementResponse.swift */; };
+		B5DB643F1B7E434F00A243AC /* ADZFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */; };
+		B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
+		B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,9 @@
 		B5C89DD71B78EBB3003CA162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkSDKTests.swift; sourceTree = "<group>"; };
 		B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdzerkSDK.swift; sourceTree = "<group>"; };
+		B5DB64391B7E350E00A243AC /* ADZPlacementResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementResponse.swift; sourceTree = "<group>"; };
+		B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZFunctions.swift; sourceTree = "<group>"; };
+		B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementDecision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,9 @@
 				B58E8AF71B7A45830029BAAD /* ADZPlacement.swift */,
 				B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */,
 				B5C89DC91B78EBB3003CA162 /* Supporting Files */,
+				B5DB64391B7E350E00A243AC /* ADZPlacementResponse.swift */,
+				B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */,
+				B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */,
 			);
 			path = AdzerkSDK;
 			sourceTree = "<group>";
@@ -221,8 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DB643A1B7E350E00A243AC /* ADZPlacementResponse.swift in Sources */,
 				B5C89E111B78ED75003CA162 /* AdzerkSDK.swift in Sources */,
 				B503D1891B7CF967008C0C8A /* ADZPlacementRequestOptions.swift in Sources */,
+				B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */,
+				B5DB643D1B7E3E5F00A243AC /* ADZFunctions.swift in Sources */,
 				B58E8AF81B7A45830029BAAD /* ADZPlacement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,10 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DB643E1B7E434300A243AC /* ADZPlacementResponse.swift in Sources */,
 				B503D18A1B7CF9F8008C0C8A /* ADZPlacementRequestOptions.swift in Sources */,
+				B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */,
 				B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */,
 				B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */,
 				B58E8AF91B7A4FD60029BAAD /* ADZPlacement.swift in Sources */,
+				B5DB643F1B7E434F00A243AC /* ADZFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
