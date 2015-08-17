@@ -88,7 +88,28 @@ class AdzerkSDKTests: XCTestCase {
         ]
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacement(placement, completion: assertResponse(expectation, validationHandler: { response in
-            XCTAssertTrue(response.decisions["div1"] != nil)
+            if let dec = response.decisions["div1"] {
+                XCTAssertTrue(dec.adId != nil, "Ad id was not set")
+                XCTAssertTrue(dec.creativeId != nil, "Creative id was not set")
+                XCTAssertTrue(dec.flightId != nil, "Flight id was not set")
+                XCTAssertTrue(dec.campaignId != nil, "Campaign id was not set")
+                XCTAssertTrue(dec.clickUrl != nil, "Click URL was not set")
+                
+                if let contents = dec.contents {
+                    XCTAssertEqual(contents.count, 1, "Should have had 1 item in contents")
+                    if let content = contents.first {
+                        XCTAssertEqual(content.type!, "html", "content type should be html")
+                        XCTAssertEqual(content.template!, "image", "content template should be image")
+                        XCTAssertTrue(content.data != nil, "content data should have been set")
+                        XCTAssertTrue(content.body != nil, "content body should have been set")
+                    }
+                    
+                }
+                XCTAssertEqual((dec.events?.count)!, 0, "events should have been an empty array")
+                
+            } else {
+                XCTFail("couldn't find div1 in response")
+            }
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
@@ -125,6 +146,5 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertTrue(response.decisions["div1"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
-        
     }
 }

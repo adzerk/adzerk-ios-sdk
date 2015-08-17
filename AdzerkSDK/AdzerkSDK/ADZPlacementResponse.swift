@@ -15,9 +15,12 @@ public struct ADZPlacementResponse {
         if let decisionsDict = dictionary["decisions"] as? [String: AnyObject] {
             
             let keys = decisionsDict.keys.array
-            let decs = compact(keys.map { key in
-                return ADZPlacementDecision(name: key, dictionary: [:])
+            
+            let decs = compact(keys.map { (key: String) -> ADZPlacementDecision? in
+                let decisionAttributes = decisionsDict[key] as? [String: AnyObject]
+                return ADZPlacementDecision(name: key, dictionary: decisionAttributes)
             })
+            
             decisions = groupBy(decs) { $0.divName }
         } else {
             println("no decisions found in response")
