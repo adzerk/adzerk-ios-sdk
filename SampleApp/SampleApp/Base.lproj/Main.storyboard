@@ -1,25 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2qF-rw-N70">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Vikings-->
+        <scene sceneID="Hvh-pJ-1p7">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                <tableViewController id="hao-BZ-K2F" customClass="VikingsTableViewController" customModule="SampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ph8-6l-l77">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VikingCell" rowHeight="76" id="CHX-QX-61Y" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CHX-QX-61Y" id="4om-hU-c4G">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-AJ-Szz" customClass="RemoteImageView" customModule="SampleApp" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="59.5" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="vaC-AJ-Szz" secondAttribute="height" multiplier="1:1" id="ZPX-mI-INR"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-lv-9wH">
+                                            <rect key="frame" x="75" y="14" width="99" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.46619192479999999" green="0.154234538" blue="0.086787006619999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyb-cU-R8F">
+                                            <rect key="frame" x="75" y="38" width="39.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hyb-cU-R8F" secondAttribute="trailing" constant="4" id="07d-rg-K9I"/>
+                                        <constraint firstItem="vaC-AJ-Szz" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" id="5hY-kI-yUy"/>
+                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" constant="6" id="Iif-jF-uTo"/>
+                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="vaC-AJ-Szz" secondAttribute="trailing" constant="8" id="N6l-f3-YTl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vaC-AJ-Szz" secondAttribute="bottom" id="Nrc-PK-Gy1"/>
+                                        <constraint firstItem="vaC-AJ-Szz" firstAttribute="leading" secondItem="4om-hU-c4G" secondAttribute="leadingMargin" id="Qpt-Tg-Weg"/>
+                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="hyb-cU-R8F" secondAttribute="leading" id="bgH-KQ-QHF"/>
+                                        <constraint firstItem="hyb-cU-R8F" firstAttribute="top" secondItem="Ba4-lv-9wH" secondAttribute="bottom" constant="4" id="fYS-kr-WIB"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ba4-lv-9wH" secondAttribute="trailing" constant="10" id="iIA-RI-Mog"/>
+                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="vaC-AJ-Szz" secondAttribute="top" constant="6" id="iMp-Ot-4AK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hyb-cU-R8F" secondAttribute="bottom" constant="12.5" id="puc-Uj-mca"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="iMp-Ot-4AK"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Ba4-lv-9wH" id="k4S-WN-AaW"/>
+                                    <outlet property="quoteLabel" destination="hyb-cU-R8F" id="oLH-ZG-lxn"/>
+                                    <outlet property="vikingImageView" destination="vaC-AJ-Szz" id="Uau-bB-xFi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hao-BZ-K2F" id="0rS-Fz-9CF"/>
+                            <outlet property="delegate" destination="hao-BZ-K2F" id="BoM-LL-8sz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Vikings" id="e2O-QS-nMb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqV-1I-0RG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="863" y="678"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UYc-Bo-uvr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2qF-rw-N70" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZN-AS-aKu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hao-BZ-K2F" kind="relationship" relationship="rootViewController" id="dpv-ts-hjX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vCf-vt-lOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="678"/>
         </scene>
     </scenes>
 </document>
