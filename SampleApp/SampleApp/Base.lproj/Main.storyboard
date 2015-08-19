@@ -23,6 +23,8 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-AJ-Szz" customClass="RemoteImageView" customModule="SampleApp" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="59.5" height="59.5"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="2QU-ac-pVu"/>
+                                                <constraint firstAttribute="width" constant="60" id="RKE-CL-7wu"/>
                                                 <constraint firstAttribute="width" secondItem="vaC-AJ-Szz" secondAttribute="height" multiplier="1:1" id="ZPX-mI-INR"/>
                                             </constraints>
                                         </imageView>
@@ -44,19 +46,12 @@
                                         <constraint firstItem="vaC-AJ-Szz" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" id="5hY-kI-yUy"/>
                                         <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" constant="6" id="Iif-jF-uTo"/>
                                         <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="vaC-AJ-Szz" secondAttribute="trailing" constant="8" id="N6l-f3-YTl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="vaC-AJ-Szz" secondAttribute="bottom" id="Nrc-PK-Gy1"/>
                                         <constraint firstItem="vaC-AJ-Szz" firstAttribute="leading" secondItem="4om-hU-c4G" secondAttribute="leadingMargin" id="Qpt-Tg-Weg"/>
                                         <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="hyb-cU-R8F" secondAttribute="leading" id="bgH-KQ-QHF"/>
                                         <constraint firstItem="hyb-cU-R8F" firstAttribute="top" secondItem="Ba4-lv-9wH" secondAttribute="bottom" constant="4" id="fYS-kr-WIB"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ba4-lv-9wH" secondAttribute="trailing" constant="10" id="iIA-RI-Mog"/>
-                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="vaC-AJ-Szz" secondAttribute="top" constant="6" id="iMp-Ot-4AK"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="hyb-cU-R8F" secondAttribute="bottom" constant="12.5" id="puc-Uj-mca"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="iMp-Ot-4AK"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="Ba4-lv-9wH" id="k4S-WN-AaW"/>
