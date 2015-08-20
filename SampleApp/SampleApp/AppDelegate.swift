@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import AdzerkSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let networkId = 9792
+    let siteId = 306998
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        AdzerkSDK.defaultNetworkId = networkId
+        AdzerkSDK.defaultSiteId = siteId
         return true
     }
 

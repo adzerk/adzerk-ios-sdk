@@ -12,6 +12,7 @@
 		B5C89DF81B78ECF0003CA162 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C89DF71B78ECF0003CA162 /* Images.xcassets */; };
 		B5C89DFB1B78ECF0003CA162 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C89DF91B78ECF0003CA162 /* LaunchScreen.xib */; };
 		B5C89E071B78ECF0003CA162 /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89E061B78ECF0003CA162 /* SampleAppTests.swift */; };
+		B5CF0B351B86242700672BF7 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0B341B86242700672BF7 /* Functions.swift */; };
 		B5F75DA21B837FBE00752244 /* VikingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA11B837FBE00752244 /* VikingCell.swift */; };
 		B5F75DA41B83806A00752244 /* VikingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */; };
 		B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA51B83815000752244 /* VikingGenerator.swift */; };
@@ -38,6 +39,7 @@
 		B5C89E001B78ECF0003CA162 /* SampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C89E051B78ECF0003CA162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C89E061B78ECF0003CA162 /* SampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppTests.swift; sourceTree = "<group>"; };
+		B5CF0B341B86242700672BF7 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		B5F75DA11B837FBE00752244 /* VikingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingCell.swift; sourceTree = "<group>"; };
 		B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingsTableViewController.swift; sourceTree = "<group>"; };
 		B5F75DA51B83815000752244 /* VikingGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingGenerator.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */,
 				B5F75DA51B83815000752244 /* VikingGenerator.swift */,
 				B5F75DA91B838D5500752244 /* ImageViewExtension.swift */,
+				B5CF0B341B86242700672BF7 /* Functions.swift */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B5F75DA21B837FBE00752244 /* VikingCell.swift in Sources */,
 				B5F75DAA1B838D5500752244 /* ImageViewExtension.swift in Sources */,
 				B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */,
+				B5CF0B351B86242700672BF7 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

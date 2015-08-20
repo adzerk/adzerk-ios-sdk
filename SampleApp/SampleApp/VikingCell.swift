@@ -17,9 +17,9 @@ class VikingCell : UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        nameLabel.text = ""
-        quoteLabel.text = ""
-        vikingImageView.image = nil
-        vikingImageView.task?.cancel()
+        nameLabel?.text = ""
+        quoteLabel?.text = ""
+        vikingImageView?.image = nil
+        vikingImageView?.task?.cancel()
     }
 }
