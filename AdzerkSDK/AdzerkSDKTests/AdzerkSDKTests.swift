@@ -61,7 +61,6 @@ class AdzerkSDKTests: XCTestCase {
     }
     
     func testCanRequestSimplePlacement() {
-        let placementDiv = "div1"
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation))
         waitForExpectationsWithTimeout(3.0, handler: nil)
@@ -146,5 +145,27 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertTrue(response.decisions["div1"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
+    
+    func testSavesUserKey() {
+        var fakeKeyStore = FakeKeyStore()
+        var sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
+        let expectation = expectationWithDescription("API response received")
+        sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation))
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+        
+        XCTAssertTrue(fakeKeyStore.key != nil, "User key was not set")
+    }
+    
+    func testSendsSavedUserKey() {
+        var fakeKeyStore = FakeKeyStore()
+        fakeKeyStore.key = "testkey12345"
+        
+        var sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
+        let expectation = expectationWithDescription("API response received")
+        sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation))
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+        
+        XCTAssertEqual(fakeKeyStore.currentUserKey()!, "testkey12345")
     }
 }

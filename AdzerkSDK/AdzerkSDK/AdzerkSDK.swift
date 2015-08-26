@@ -14,7 +14,10 @@ public class AdzerkSDK {
     public static var defaultNetworkId: Int?
     public static var defaultSiteId: Int?
     
-    public init() {
+    let keyStore: ADZUserKeyStore
+    
+    public init(userKeyStore: ADZUserKeyStore = ADZKeychainUserKeyStore()) {
+        self.keyStore = userKeyStore
     }
     
     public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZResponse) -> ()) {
@@ -93,6 +96,8 @@ public class AdzerkSDK {
         
         if let userKey = options?.userKey {
             body["user"] = ["key": userKey]
+        } else if let savedUserKey = keyStore.currentUserKey() {
+            body["user"] = ["key": savedUserKey]
         }
         
         if let blockedCreatives = options?.blockedCreatives {
@@ -129,10 +134,21 @@ public class AdzerkSDK {
     private func buildResponse(data: NSData) -> ADZPlacementResponse? {
         var error: NSError?
         if let responseDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject] {
+            
+            saveUserKey(responseDictionary)
+            
             return ADZPlacementResponse(dictionary: responseDictionary)
         } else {
             println("Couldn't parse response as JSON: \(error)")
             return nil
+        }
+    }
+    
+    private func saveUserKey(response: [String: AnyObject]) {
+        if let userSection = response["user"] as? [String: AnyObject] {
+            if let userKey = userSection["key"] as? String {
+                keyStore.saveUserKey(userKey)
+            }
         }
     }
 }
