@@ -18,10 +18,12 @@ public struct ADZPlacementDecision {
     let impressionUrl: String?
     let contents: [ADZPlacementContent]?
     let events: [ADZPlacementEvent]?
+    let allAttributes: [String: AnyObject]?
     
     public init?(name: String, dictionary: [String: AnyObject]?) {
         println(dictionary)
         divName = name
+        allAttributes = dictionary
         adId = dictionary?["adId"] as? Int
         creativeId = dictionary?["creativeId"] as? Int
         flightId = dictionary?["flightId"] as? Int
@@ -32,24 +34,3 @@ public struct ADZPlacementDecision {
         events = (dictionary?["events"] as? [[String: AnyObject]])?.map { ADZPlacementEvent(dictionary: $0) }
     }
 }
-
-//"adId": 111,
-//"creativeId": 222,
-//"flightId": 333,
-//"campaignId": 444,
-//"clickUrl": "http://engine.adzerk.net/r?...",
-//"contents": [
-//{
-//"type": "html",
-//"template": "image",
-//"data": {
-//"imageUrl": "http://static.adzerk.net/cat-eating-spaghetti.jpg",
-//"title": "ZOMG LOOK AT THIS FRICKING CAT",
-//"width": 350,
-//"height": 350
-//},
-//"body": "<a href='...'><img src='http://static.adzerk.net/cat-eating-spaghetti.jpg' title='ZOMG LOOK AT THIS FRICKING CAT' width="350" height="350"></a>"
-//}
-//],
-//"impressionUrl": "http://engine.adzerk.net/i.gif?..."
-//},

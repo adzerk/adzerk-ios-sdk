@@ -11,13 +11,8 @@ import Foundation
 public struct ADZPlacementRequestOptions {
     public var keywords: [String]?
     public var blockedCreatives: [Int]?
-    
-    // format:
-    // [
-    //    "flightId": [time1, time2]
-    // ]
     public var flightViewTimes: [String: [Int]]?
-    public var referrer: String?
     public var url: String?
     public var userKey: String?
+    public var additionalOptions: [String: AnyObject]?
 }

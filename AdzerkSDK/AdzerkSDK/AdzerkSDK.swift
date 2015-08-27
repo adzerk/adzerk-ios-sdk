@@ -112,12 +112,14 @@ public class AdzerkSDK {
             body["keywords"] = keywords
         }
         
-        if let referrer = options?.referrer {
-            body["referrer"] = referrer
-        }
-        
         if let url = options?.url {
             body["url"] = url
+        }
+        
+        if let additionalOptions = options?.additionalOptions {
+            for (key, val) in additionalOptions {
+                body[key] = val
+            }
         }
                 
         var error: NSError?

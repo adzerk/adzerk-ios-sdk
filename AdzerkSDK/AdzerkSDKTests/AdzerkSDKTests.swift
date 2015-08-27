@@ -139,7 +139,6 @@ class AdzerkSDKTests: XCTestCase {
         ]
         
         options.blockedCreatives = [1,2,3]
-        options.referrer = "test referrer"
         options.keywords = ["cheese", "apples", "wine"]
         sdk.requestPlacement([placement1], options: options,completion: assertResponse(expectation, validationHandler: { response in
             XCTAssertTrue(response.decisions["div1"] != nil)

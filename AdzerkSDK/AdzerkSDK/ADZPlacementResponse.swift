@@ -10,6 +10,7 @@ import Foundation
 
 public struct ADZPlacementResponse {
     public let decisions: [String: ADZPlacementDecision]
+    public let extraAttributes: [String: AnyObject]
     
     init?(dictionary: [String: AnyObject]) {
         if let decisionsDict = dictionary["decisions"] as? [String: AnyObject] {
@@ -23,9 +24,17 @@ public struct ADZPlacementResponse {
             
             decisions = groupBy(decs) { $0.divName }
         } else {
-            println("no decisions found in response")
             decisions = [String: ADZPlacementDecision]()
         }
+        
+        var otherAttribs = [String: AnyObject]()
+        for (key, val) in dictionary {
+            if key == "decisions" {
+                continue
+            }
+            otherAttribs[key] = val
+        }
+        extraAttributes = otherAttribs
     }
 }
 
