@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+    Top level response object for placement requests.
+    Documentation can be found at: http://help.adzerk.com/hc/en-us/articles/203193935-Response
+*/
 public struct ADZPlacementResponse {
     public let decisions: [String: ADZPlacementDecision]
     public let extraAttributes: [String: AnyObject]
