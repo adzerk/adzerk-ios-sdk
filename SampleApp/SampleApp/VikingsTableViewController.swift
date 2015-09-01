@@ -14,14 +14,14 @@ class VikingsTableViewController : UITableViewController {
         didSet { _rowData = nil }
     }
     
-    var placements: [ADZPlacementDecision] = [] {
+    var decisions: [ADZPlacementDecision] = [] {
         didSet { _rowData = nil }
     }
     
     private var _rowData: [Any]?
     var rowData: [Any]! {
         if _rowData == nil {
-            _rowData = interleave(vikings, placements, every: 10)
+            _rowData = interleave(vikings, decisions, every: 10)
         }
         return _rowData
     }
@@ -64,7 +64,7 @@ class VikingsTableViewController : UITableViewController {
             response in
             switch response {
             case .Success(let placementResponse):
-                self.placements = Array(placementResponse.decisions.values)
+                self.decisions = Array(placementResponse.decisions.values)
                 break
                 
             case .BadRequest(let status, let body):
