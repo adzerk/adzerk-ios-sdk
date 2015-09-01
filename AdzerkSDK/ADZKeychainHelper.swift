@@ -8,7 +8,15 @@
 
 import Foundation
 
+/** Provides easy get/set access for simple values in the iOS Keychain. */
 class ADZKeychainHelper {
+    
+    /** 
+        Saves data to the keychain.
+        @param key an identifier under which the data will be stored
+        @param data the data to save
+        @returns true if the value was set successfully
+    */
     class func save(key: String, data: NSData) -> Bool {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),
@@ -25,6 +33,11 @@ class ADZKeychainHelper {
         return status == noErr
     }
     
+    /**
+        Retrieves a values from the keychain.
+        @param key the identifier the data was originally saved with
+        @returns the saved data, or nil if nothing was saved for this key
+    */
     class func fetch(key: String) -> NSData? {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),

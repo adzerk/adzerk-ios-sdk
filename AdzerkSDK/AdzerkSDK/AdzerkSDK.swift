@@ -8,32 +8,63 @@
 
 import Foundation
 
+/** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
 
+/** The primary class used to make requests against the API. */
 public class AdzerkSDK {
+    /** Provides storage for the default network ID to be used with all placement requests. If a value is present here, 
+        each placement request does not need to provide it.  Any value in the placement request will override this value.
+        Useful for the common case where the network ID is contstant for your application. */
     public static var defaultNetworkId: Int?
+    
+    /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
+    each placement request does not need to provide it.  Any value in the placement request will override this value.
+    Useful for the common case where the network ID is contstant for your application. */
     public static var defaultSiteId: Int?
     
+    /** The class used to save & retrieve the user DB key. */
     let keyStore: ADZUserKeyStore
     
+    /** Initializes a new instance of `AdzerkSDK`.
+        @param userKeyStore provide a value for this if you want to customize the way user keys are stored & retrieved. The default is `ADZKeychainUserKeyStore`.
+    */
     public init(userKeyStore: ADZUserKeyStore = ADZKeychainUserKeyStore()) {
         self.keyStore = userKeyStore
     }
     
+    /** Requests a single placement using only required parameters. This method is a convenience over the other placement request methods.
+        @param div the div name to request
+        @param adTypes an array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types .
+        @completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
+    */
     public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZResponse) -> ()) {
         if let placement = ADZPlacement(divName: div, adTypes: adTypes) {
             requestPlacement(placement, completion: completion)
         }
     }
-    
+
+    /** Requests a single placement.
+        @param placement the placement details to request
+        @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
+    */
     public func requestPlacement(placement: ADZPlacement, completion: (ADZResponse) -> ()) {
        requestPlacement([placement], completion: completion)
     }
-    
+
+    /** Requests multiple placements.
+        @param placements an array of placement details to request
+        @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
+    */
     public func requestPlacement(placements: [ADZPlacement], completion: (ADZResponse) -> ()) {
         requestPlacement(placements, options: nil, completion: completion)
     }
  
+    /** Requests multiple placements with additional options. The options can provide well-known or arbitrary parameters to th eoverall request.
+        @param placements an array of placement details to request
+        @param options an optional instance of `ADZPlacementRequestOptions` that provide top-level attributes to the request
+        @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
+    */
     public func requestPlacement(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZResponse) -> ()) {
         if let request = buildPlacementRequest(placements, options: options) {
             let task = session.dataTaskWithRequest(request) {
@@ -155,9 +186,3 @@ public class AdzerkSDK {
     }
 }
 
-public enum ADZResponse {
-    case Success(ADZPlacementResponse)
-    case BadRequest(Int, String)
-    case BadResponse(String)
-    case Error(NSError)
-}

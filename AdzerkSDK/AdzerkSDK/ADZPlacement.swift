@@ -8,19 +8,28 @@
 
 import Foundation
 
+/** Specifies a placement's details to request. */
 public struct ADZPlacement {
     
+    /** The name of the div */
     public let divName: String
+    
+    /** The network ID. If none is specified it retrieves the value from `AdzerkSDK.defaultNetworkId` */
     public let networkId: Int
+    
+    /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
     public let siteId: Int
+    
+    /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
     public let adTypes: [Int]
+    
     public var zoneIds: [Int]?
     public var eventIds: [Int]?
+    
     public var properties: [String: AnyObject]?
     public var campaignId: Int?
     public var flightId: Int?
     public var adId: Int?
-    
     
     public init(divName: String, networkId: Int, siteId: Int, adTypes: [Int]) {
         self.divName = divName
