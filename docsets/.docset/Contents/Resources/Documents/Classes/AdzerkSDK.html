@@ -42,7 +42,7 @@
           <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums.html#/s:O9AdzerkSDK11ADZResponse">ADZResponse</a>
+                <a href="../Enums/ADZResponse.html">ADZResponse</a>
               </li>
             </ul>
           </li>
@@ -83,7 +83,13 @@
         <section>
           <section class="section">
             <h1>AdzerkSDK</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="Swift">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span></code></pre>
+
+                </div>
+              </div>
+            <p>The primary class used to make requests against the API.</p>
 
           </section>
           <section class="section task-group-section">
@@ -102,8 +108,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides storage for the default network ID to be used with all placement requests. If a value is present here, 
+    each placement request does not need to provide it.  Any value in the placement request will override this value.
+    Useful for the common case where the network ID is contstant for your application.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">defaultNetworkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -121,8 +137,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides storage for the default site ID to be used with all placement requests. If a value is present here,
+each placement request does not need to provide it.  Any value in the placement request will override this value.
+Useful for the common case where the network ID is contstant for your application.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">defaultSiteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -140,8 +166,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializes a new instance of <code>AdzerkSDK</code>.
+    @param userKeyStore provide a value for this if you want to customize the way user keys are stored &amp; retrieved. The default is <code>ADZKeychainUserKeyStore</code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">userKeyStore</span><span class="p">:</span> <span class="kt">ADZUserKeyStore</span> <span class="o">=</span> <span class="kt">ADZKeychainUserKeyStore</span><span class="p">())</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -159,8 +194,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Requests a single placement using only required parameters. This method is a convenience over the other placement request methods.
+    @param div the div name to request
+    @param adTypes an array of integers representing the ad types to request. The full list can be found at <a href="https://github.com/adzerk/adzerk-api/wiki/Ad-Types">https://github.com/adzerk/adzerk-api/wiki/Ad-Types</a> .
+    @completion a callback block that you provide to handle the response. The block will be given an <code>ADZResponse</code> object.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacementInDiv</span><span class="p">(</span><span class="nv">div</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -178,8 +224,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Requests a single placement.
+    @param placement the placement details to request
+    @param completion a callback block that you provide to handle the response. The block will be given an <code>ADZResponse</code> object.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacement</span><span class="p">(</span><span class="nv">placement</span><span class="p">:</span> <span class="kt">ADZPlacement</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -187,9 +243,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_"></a>
-                    <a name="//apple_ref/swift/Method/requestPlacement(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_">requestPlacement(_:completion:)</a>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="//apple_ref/swift/Method/requestPlacements(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_">requestPlacements(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -197,8 +253,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Requests multiple placements.
+    @param placements an array of placement details to request
+    @param completion a callback block that you provide to handle the response. The block will be given an <code>ADZResponse</code> object.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt">ADZPlacement</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -216,8 +282,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Requests multiple placements with additional options. The options can provide well-known or arbitrary parameters to th eoverall request.
+    @param placements an array of placement details to request
+    @param options an optional instance of <code>ADZPlacementRequestOptions</code> that provide top-level attributes to the request
+    @param completion a callback block that you provide to handle the response. The block will be given an <code>ADZResponse</code> object.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacement</span><span class="p">(</span><span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt">ADZPlacement</span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">ADZPlacementRequestOptions</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -227,7 +304,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2015-08-31)</p>
+          <p>&copy; 2015 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2015-09-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
