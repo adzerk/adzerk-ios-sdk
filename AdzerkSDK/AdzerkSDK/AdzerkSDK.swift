@@ -49,15 +49,15 @@ public class AdzerkSDK {
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
     public func requestPlacement(placement: ADZPlacement, completion: (ADZResponse) -> ()) {
-       requestPlacement([placement], completion: completion)
+       requestPlacements([placement], completion: completion)
     }
 
     /** Requests multiple placements.
         @param placements an array of placement details to request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacement(placements: [ADZPlacement], completion: (ADZResponse) -> ()) {
-        requestPlacement(placements, options: nil, completion: completion)
+    public func requestPlacements(placements: [ADZPlacement], completion: (ADZResponse) -> ()) {
+        requestPlacements(placements, options: nil, completion: completion)
     }
  
     /** Requests multiple placements with additional options. The options can provide well-known or arbitrary parameters to th eoverall request.
