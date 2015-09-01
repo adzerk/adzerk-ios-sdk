@@ -16,3 +16,5 @@ xcuserdata
 DerivedData
 *.xcuserstate
 
+_source
+docsets
