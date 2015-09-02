@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B502CB051B95E76E0091277C /* ADZResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502CB041B95E76E0091277C /* ADZResponse.swift */; };
-		B503D1891B7CF967008C0C8A /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
-		B503D18A1B7CF9F8008C0C8A /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
 		B52BA8271B8E1133002235CA /* ADZUserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA8261B8E1133002235CA /* ADZUserKeyStore.swift */; };
 		B52BA8291B8E1147002235CA /* ADZKeychainUserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA8281B8E1147002235CA /* ADZKeychainUserKeyStore.swift */; };
 		B52BA82C1B8E11A5002235CA /* ADZKeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA82B1B8E11A5002235CA /* ADZKeychainHelper.swift */; };
@@ -35,6 +33,8 @@
 		B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
 		B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
 		B5FBCAC91B961FEE007F2E64 /* ADZResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502CB041B95E76E0091277C /* ADZResponse.swift */; };
+		B5FBCACA1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
+		B5FBCACB1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,8 +271,8 @@
 				B5DB643A1B7E350E00A243AC /* ADZPlacementResponse.swift in Sources */,
 				B5C89E111B78ED75003CA162 /* AdzerkSDK.swift in Sources */,
 				B56232DA1B8232CD004C416E /* ADZPlacementContent.swift in Sources */,
-				B503D1891B7CF967008C0C8A /* ADZPlacementRequestOptions.swift in Sources */,
 				B52BA8291B8E1147002235CA /* ADZKeychainUserKeyStore.swift in Sources */,
+				B5FBCACA1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */,
 				B52BA8271B8E1133002235CA /* ADZUserKeyStore.swift in Sources */,
 				B502CB051B95E76E0091277C /* ADZResponse.swift in Sources */,
 				B56232DD1B82389A004C416E /* ADZPlacementEvent.swift in Sources */,
@@ -289,7 +289,6 @@
 			files = (
 				B5DB643E1B7E434300A243AC /* ADZPlacementResponse.swift in Sources */,
 				B52BA8311B8E190C002235CA /* FakeKeyStore.swift in Sources */,
-				B503D18A1B7CF9F8008C0C8A /* ADZPlacementRequestOptions.swift in Sources */,
 				B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */,
 				B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */,
 				B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */,
@@ -298,6 +297,7 @@
 				B58E8AF91B7A4FD60029BAAD /* ADZPlacement.swift in Sources */,
 				B5DB643F1B7E434F00A243AC /* ADZFunctions.swift in Sources */,
 				B5FBCAC91B961FEE007F2E64 /* ADZResponse.swift in Sources */,
+				B5FBCACB1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */,
 				B52BA82D1B8E1886002235CA /* ADZUserKeyStore.swift in Sources */,
 				B52BA82E1B8E1890002235CA /* ADZKeychainUserKeyStore.swift in Sources */,
 				B56232DB1B82352A004C416E /* ADZPlacementContent.swift in Sources */,

@@ -15,4 +15,8 @@ public struct ADZPlacementRequestOptions {
     public var url: String?
     public var userKey: String?
     public var additionalOptions: [String: AnyObject]?
+    
+    public init() {
+        
+    }
 }
