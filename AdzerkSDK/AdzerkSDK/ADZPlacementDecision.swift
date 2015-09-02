@@ -14,29 +14,29 @@ import Foundation
 */
 public struct ADZPlacementDecision {
     /** The name of the div requested */
-    let divName: String
+    public let divName: String
     
-    let adId: Int?
-    let creativeId: Int?
-    let flightId: Int?
-    let campaignId: Int?
-    let clickUrl: String?
-    let impressionUrl: String?
+    public let adId: Int?
+    public let creativeId: Int?
+    public let flightId: Int?
+    public let campaignId: Int?
+    public let clickUrl: String?
+    public let impressionUrl: String?
     
     /** An array of `ADZPlacementContent`, representing the actual contents
         to display for this decision, if there are any.
     */
-    let contents: [ADZPlacementContent]?
+    public let contents: [ADZPlacementContent]?
     
     /** An array of `ADZPlacementEvent`, representing the events for this decision,
         if there are any. */
-    let events: [ADZPlacementEvent]?
+    public let events: [ADZPlacementEvent]?
     
     /** All of the attributes will be present in this dictionary,
         in case there are additional attributes being sent that are not modeled
         as properties.
     */
-    let allAttributes: [String: AnyObject]?
+    public let allAttributes: [String: AnyObject]?
     
     /** Initializes the struct based on a JSON dictionary.
         @param name The name of the div for this decision
