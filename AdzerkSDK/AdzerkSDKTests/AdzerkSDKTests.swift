@@ -117,7 +117,7 @@ class AdzerkSDKTests: XCTestCase {
         let placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
         let placement2 = ADZPlacement(divName: "div2", adTypes: [5])!
         let expectation = expectationWithDescription("API response received")
-        sdk.requestPlacement([placement1, placement2], completion: assertResponse(expectation, validationHandler: { response in
+        sdk.requestPlacements([placement1, placement2], completion: assertResponse(expectation, validationHandler: { response in
             XCTAssertTrue(response.decisions["div1"] != nil)
             XCTAssertTrue(response.decisions["div2"] != nil)
         }))
@@ -140,7 +140,7 @@ class AdzerkSDKTests: XCTestCase {
         
         options.blockedCreatives = [1,2,3]
         options.keywords = ["cheese", "apples", "wine"]
-        sdk.requestPlacement([placement1], options: options,completion: assertResponse(expectation, validationHandler: { response in
+        sdk.requestPlacements([placement1], options: options,completion: assertResponse(expectation, validationHandler: { response in
             XCTAssertTrue(response.decisions["div1"] != nil)
         }))
         waitForExpectationsWithTimeout(3.0, handler: nil)

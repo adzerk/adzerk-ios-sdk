@@ -65,7 +65,7 @@ public class AdzerkSDK {
         @param options an optional instance of `ADZPlacementRequestOptions` that provide top-level attributes to the request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacement(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZResponse) -> ()) {
+    public func requestPlacements(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZResponse) -> ()) {
         if let request = buildPlacementRequest(placements, options: options) {
             let task = session.dataTaskWithRequest(request) {
                 data, response, error in
