@@ -46,13 +46,12 @@ class VikingsTableViewController : UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let obj = rowData[indexPath.row]
         if let viking = obj as? Viking {
-            let cell = tableView.dequeueReusableCellWithIdentifier(VikingCell.identifier) as! VikingCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("VikingCell") as! VikingCell
             configureVikingCell(cell, viking: viking)
             return cell
-        } else if let placement = obj as? ADZPlacementDecision {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PlacementCell") as! UITableViewCell
-            cell.textLabel?.text = "Placement"
-            cell.detailTextLabel?.text = "\(indexPath.row)"
+        } else if let decision = obj as? ADZPlacementDecision {
+            let cell = tableView.dequeueReusableCellWithIdentifier("DecisionCell") as! DecisionCell
+            configureDecisionCell(cell, decision: decision)
             return cell
         } else {
             fatalError("Unhandled row data type: \(obj)")
@@ -96,5 +95,22 @@ class VikingsTableViewController : UITableViewController {
         cell.nameLabel.text = viking.name
         cell.quoteLabel.text = viking.quote
         cell.vikingImageView.loadImageWithURL(viking.imageUrl)
+    }
+    
+    private func configureDecisionCell(cell: DecisionCell, decision: ADZPlacementDecision) {
+        if let contents = decision.contents?.first, data = contents.data {
+            if let title = data["title"] as? String {
+                cell.nameLabel.text = title
+            }
+            if let customData = data["customData"] as? [String: String], quote = customData["quote"] {
+                cell.quoteLabel.text = quote
+            }
+            if let imageUrl = data["imageUrl"] as? String {
+                let url = NSURL(string: imageUrl)!
+                cell.vikingImageView.loadImageWithURL(url)
+            }
+        } else {
+            // decision doesn't have any contents
+        }
     }
 }

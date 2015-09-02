@@ -17,6 +17,7 @@
 		B5F75DA41B83806A00752244 /* VikingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */; };
 		B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA51B83815000752244 /* VikingGenerator.swift */; };
 		B5F75DAA1B838D5500752244 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA91B838D5500752244 /* ImageViewExtension.swift */; };
+		B5FBCACD1B974DCE007F2E64 /* DecisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingsTableViewController.swift; sourceTree = "<group>"; };
 		B5F75DA51B83815000752244 /* VikingGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingGenerator.swift; sourceTree = "<group>"; };
 		B5F75DA91B838D5500752244 /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecisionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				B5C89DF91B78ECF0003CA162 /* LaunchScreen.xib */,
 				B5C89DEE1B78ECF0003CA162 /* Supporting Files */,
 				B5F75DA11B837FBE00752244 /* VikingCell.swift */,
+				B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */,
 				B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */,
 				B5F75DA51B83815000752244 /* VikingGenerator.swift */,
 				B5F75DA91B838D5500752244 /* ImageViewExtension.swift */,
@@ -229,6 +232,7 @@
 				B5F75DA41B83806A00752244 /* VikingsTableViewController.swift in Sources */,
 				B5F75DA21B837FBE00752244 /* VikingCell.swift in Sources */,
 				B5F75DAA1B838D5500752244 /* ImageViewExtension.swift in Sources */,
+				B5FBCACD1B974DCE007F2E64 /* DecisionCell.swift in Sources */,
 				B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */,
 				B5CF0B351B86242700672BF7 /* Functions.swift in Sources */,
 			);

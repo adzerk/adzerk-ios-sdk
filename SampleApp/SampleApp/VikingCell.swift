@@ -9,7 +9,6 @@
 import UIKit
 
 class VikingCell : UITableViewCell {
-    static let identifier : String = "VikingCell"
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var quoteLabel: UILabel!

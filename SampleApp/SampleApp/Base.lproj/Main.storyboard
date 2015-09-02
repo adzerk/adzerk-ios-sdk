@@ -59,26 +59,50 @@
                                     <outlet property="vikingImageView" destination="vaC-AJ-Szz" id="Uau-bB-xFi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlacementCell" textLabel="s1q-2N-n10" detailTextLabel="YB9-dQ-gA1" style="IBUITableViewCellStyleSubtitle" id="K8e-P8-jw4" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DecisionCell" id="tnf-Y0-ey8" customClass="DecisionCell" customModule="SampleApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K8e-P8-jw4" id="hvG-eY-7ra">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tnf-Y0-ey8" id="ELw-AH-oLw">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s1q-2N-n10">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9I-qQ-33d" customClass="RemoteImageView" customModule="SampleApp" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="59.5" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="Bjn-3D-W4g"/>
+                                                <constraint firstAttribute="width" secondItem="a9I-qQ-33d" secondAttribute="height" multiplier="1:1" id="Cid-VT-eCN"/>
+                                                <constraint firstAttribute="width" constant="60" id="eBS-KO-Qy7"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Decision Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2z-eS-S5f">
+                                            <rect key="frame" x="75" y="8" width="513" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.46619192479999999" green="0.154234538" blue="0.086787006619999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YB9-dQ-gA1">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decision Quote" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxr-tA-NEE">
+                                            <rect key="frame" x="75" y="32" width="513" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="1" green="0.84780201499999996" blue="0.49938409309999998" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mxr-tA-NEE" secondAttribute="bottom" constant="18" id="3uQ-YK-rES"/>
+                                        <constraint firstItem="a9I-qQ-33d" firstAttribute="top" secondItem="ELw-AH-oLw" secondAttribute="topMargin" id="Dfq-DV-N9D"/>
+                                        <constraint firstItem="K2z-eS-S5f" firstAttribute="leading" secondItem="a9I-qQ-33d" secondAttribute="trailing" constant="8" id="Fdy-im-qtG"/>
+                                        <constraint firstItem="mxr-tA-NEE" firstAttribute="top" secondItem="K2z-eS-S5f" secondAttribute="bottom" constant="4" id="SfF-lX-Oyj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mxr-tA-NEE" secondAttribute="trailing" constant="4" id="ZTz-ea-gsS"/>
+                                        <constraint firstItem="a9I-qQ-33d" firstAttribute="leading" secondItem="ELw-AH-oLw" secondAttribute="leadingMargin" id="b4D-td-pYL"/>
+                                        <constraint firstItem="K2z-eS-S5f" firstAttribute="top" secondItem="ELw-AH-oLw" secondAttribute="topMargin" id="p7x-tg-SDZ"/>
+                                        <constraint firstItem="K2z-eS-S5f" firstAttribute="leading" secondItem="mxr-tA-NEE" secondAttribute="leading" id="shB-Ku-XDV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="K2z-eS-S5f" secondAttribute="trailing" constant="4" id="yyk-qG-M5T"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.84780201499999996" blue="0.49938409309999998" alpha="0.31" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="K2z-eS-S5f" id="J0M-J7-UDl"/>
+                                    <outlet property="quoteLabel" destination="mxr-tA-NEE" id="nP6-FY-AMH"/>
+                                    <outlet property="vikingImageView" destination="a9I-qQ-33d" id="H5c-mR-0ee"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
