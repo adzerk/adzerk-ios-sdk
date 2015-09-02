@@ -60,8 +60,14 @@ class VikingsTableViewController : UITableViewController {
     }
     
     private func loadPlacements(completion: () -> ()) {
-        adzerkSDK.requestPlacementInDiv("div1", adTypes: [5]) {
-            response in
+        
+        var options = ADZPlacementRequestOptions()
+        options.keywords = ["karate", "kittens", "knives"]
+        
+        var placement = ADZPlacement(divName: "div1", adTypes: [5])!
+        placement.properties = ["foo": "bar"]
+        
+        adzerkSDK.requestPlacements([placement], options: options) { response in
             switch response {
             case .Success(let placementResponse):
                 self.decisions = Array(placementResponse.decisions.values)
