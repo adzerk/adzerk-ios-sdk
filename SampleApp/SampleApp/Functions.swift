@@ -29,7 +29,7 @@ func interleave<A, B>(a: [A], b: [B], every n: Int) -> [Any] {
     var chunkedAs = a.splitEvery(n)
     for group in chunkedAs {
         for item in group {
-            result.append(item as! Any)
+            result.append(item)
         }
         
         if let inter = bSequence.next() {
