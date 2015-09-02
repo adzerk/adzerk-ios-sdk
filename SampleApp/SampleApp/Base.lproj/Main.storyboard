@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VikingCell" rowHeight="76" id="CHX-QX-61Y" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VikingCell" id="CHX-QX-61Y" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CHX-QX-61Y" id="4om-hU-c4G">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -28,29 +28,29 @@
                                                 <constraint firstAttribute="width" secondItem="vaC-AJ-Szz" secondAttribute="height" multiplier="1:1" id="ZPX-mI-INR"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-lv-9wH">
-                                            <rect key="frame" x="75" y="14" width="99" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Viking Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-lv-9wH">
+                                            <rect key="frame" x="75" y="8" width="513" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.46619192479999999" green="0.154234538" blue="0.086787006619999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyb-cU-R8F">
-                                            <rect key="frame" x="75" y="38" width="39.5" height="17"/>
+                                            <rect key="frame" x="75" y="32" width="513" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hyb-cU-R8F" secondAttribute="trailing" constant="4" id="07d-rg-K9I"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hyb-cU-R8F" secondAttribute="trailing" constant="4" id="07d-rg-K9I"/>
                                         <constraint firstItem="vaC-AJ-Szz" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" id="5hY-kI-yUy"/>
-                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" constant="6" id="Iif-jF-uTo"/>
+                                        <constraint firstItem="Ba4-lv-9wH" firstAttribute="top" secondItem="4om-hU-c4G" secondAttribute="topMargin" id="Iif-jF-uTo"/>
                                         <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="vaC-AJ-Szz" secondAttribute="trailing" constant="8" id="N6l-f3-YTl"/>
                                         <constraint firstItem="vaC-AJ-Szz" firstAttribute="leading" secondItem="4om-hU-c4G" secondAttribute="leadingMargin" id="Qpt-Tg-Weg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hyb-cU-R8F" secondAttribute="bottom" constant="18" id="UE9-R2-j1s"/>
                                         <constraint firstItem="Ba4-lv-9wH" firstAttribute="leading" secondItem="hyb-cU-R8F" secondAttribute="leading" id="bgH-KQ-QHF"/>
                                         <constraint firstItem="hyb-cU-R8F" firstAttribute="top" secondItem="Ba4-lv-9wH" secondAttribute="bottom" constant="4" id="fYS-kr-WIB"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ba4-lv-9wH" secondAttribute="trailing" constant="10" id="iIA-RI-Mog"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hyb-cU-R8F" secondAttribute="bottom" constant="12.5" id="puc-Uj-mca"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ba4-lv-9wH" secondAttribute="trailing" constant="4" id="iIA-RI-Mog"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -59,7 +59,7 @@
                                     <outlet property="vikingImageView" destination="vaC-AJ-Szz" id="Uau-bB-xFi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlacementCell" textLabel="s1q-2N-n10" detailTextLabel="YB9-dQ-gA1" rowHeight="76" style="IBUITableViewCellStyleSubtitle" id="K8e-P8-jw4" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlacementCell" textLabel="s1q-2N-n10" detailTextLabel="YB9-dQ-gA1" style="IBUITableViewCellStyleSubtitle" id="K8e-P8-jw4" customClass="VikingCell" customModule="SampleApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K8e-P8-jw4" id="hvG-eY-7ra">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -67,13 +67,13 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s1q-2N-n10">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YB9-dQ-gA1">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

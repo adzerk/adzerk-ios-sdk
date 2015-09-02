@@ -30,7 +30,7 @@ class VikingsTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 76
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
         loadPlacements {
@@ -71,6 +71,7 @@ class VikingsTableViewController : UITableViewController {
             switch response {
             case .Success(let placementResponse):
                 self.decisions = Array(placementResponse.decisions.values)
+                println("Decisions: \(self.decisions)")
                 break
                 
             case .BadRequest(let status, let body):
