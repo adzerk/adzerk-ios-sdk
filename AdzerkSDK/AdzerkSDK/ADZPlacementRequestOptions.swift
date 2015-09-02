@@ -8,12 +8,19 @@
 
 import Foundation
 
+/** Provides a mechanism for adding top-level metadata to the placement request. */
 public struct ADZPlacementRequestOptions {
     public var keywords: [String]?
     public var blockedCreatives: [Int]?
     public var flightViewTimes: [String: [Int]]?
     public var url: String?
+    
+    /** The user key for this request. If nil, the current saved user key will be used from
+        the configured `ADZUserKeyStore` on `AdzerkSDK`.
+    */
     public var userKey: String?
+    
+    /** Any additional parameters can be provided here and will be added to the request */
     public var additionalOptions: [String: AnyObject]?
     
     public init() {
