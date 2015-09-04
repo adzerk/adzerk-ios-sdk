@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Adzerk. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for AdzerkSDK.
 FOUNDATION_EXPORT double AdzerkSDKVersionNumber;
@@ -16,4 +16,3 @@ FOUNDATION_EXPORT const unsigned char AdzerkSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AdzerkSDK/PublicHeader.h>
 #import <AdzerkSDK/AdzerkSDK.h>
-
