@@ -9,7 +9,7 @@
 import Foundation
 
 /** Specifies a placement's details to request. */
-public struct ADZPlacement {
+@objc public class ADZPlacement : NSObject {
     
     /** The name of the div */
     public let divName: String
@@ -36,21 +36,20 @@ public struct ADZPlacement {
         self.networkId = networkId
         self.siteId = siteId
         self.adTypes = adTypes
+        super.init()
     }
     
-    public init?(divName: String, adTypes: [Int]) {
-        self.divName = divName
-        self.adTypes = adTypes
+    public convenience init?(divName: String, adTypes: [Int]) {
         if let networkId = AdzerkSDK.defaultNetworkId, siteId = AdzerkSDK.defaultSiteId {
-            self.networkId = networkId
-            self.siteId = siteId
+            self.init(divName: divName, networkId: networkId, siteId: siteId, adTypes: adTypes)
         } else {
             println("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
+            self.init(divName: "", networkId: -1, siteId: -1, adTypes: [])
             return nil
         }
     }
     
-    public func serialize() -> [String : AnyObject] {
+    func serialize() -> [String : AnyObject] {
         var json: [String: AnyObject] = [
                 "divName"  : divName,
                 "networkId": networkId,

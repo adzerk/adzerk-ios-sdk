@@ -12,7 +12,7 @@ import Foundation
     Response structure for decisions, found in a placement response. Each decision
     will be represented as one of these.
 */
-public struct ADZPlacementDecision {
+@objc public class ADZPlacementDecision {
     /** The name of the div requested */
     public let divName: String
     

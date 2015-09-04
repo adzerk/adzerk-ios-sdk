@@ -11,7 +11,7 @@ import Foundation
 /**
     Provides secure storage for the User key via the iOS Keychain. This is the default implementation of `ADZUserKeyStore`.
 */
-public class ADZKeychainUserKeyStore : ADZUserKeyStore {
+@objc public class ADZKeychainUserKeyStore : ADZUserKeyStore {
     let adzUserKey = "ADZUserKey"
     
     /** 

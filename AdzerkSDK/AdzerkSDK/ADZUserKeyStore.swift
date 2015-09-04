@@ -18,7 +18,7 @@ import Foundation
     create a custom implementation of `ADZUserKeyStore` and save it wherever is
     appropriate for your application.
 */
-public protocol ADZUserKeyStore {
+@objc public protocol ADZUserKeyStore {
     /** Fetches the current user's key, if we have one saved. */
     func currentUserKey() -> String?
 

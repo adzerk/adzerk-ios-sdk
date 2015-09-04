@@ -12,7 +12,7 @@ import Foundation
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
 
 /** The primary class used to make requests against the API. */
-public class AdzerkSDK {
+@objc public class AdzerkSDK : NSObject {
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here, 
         each placement request does not need to provide it.  Any value in the placement request will override this value.
         Useful for the common case where the network ID is contstant for your application. */
@@ -25,6 +25,12 @@ public class AdzerkSDK {
     
     /** The class used to save & retrieve the user DB key. */
     let keyStore: ADZUserKeyStore
+    
+    /** Initializes a new instance of `AdzerkSDK` with a keychain-based userKeyStore.
+    */
+    public convenience override init() {
+        self.init(userKeyStore: ADZKeychainUserKeyStore())
+    }
     
     /** Initializes a new instance of `AdzerkSDK`.
         @param userKeyStore provide a value for this if you want to customize the way user keys are stored & retrieved. The default is `ADZKeychainUserKeyStore`.

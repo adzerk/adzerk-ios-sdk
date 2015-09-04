@@ -15,7 +15,7 @@ import Foundation
     This would be represented as two contents, one with the type `css` and one 
     with the type `html`.
 */
-public struct ADZPlacementContent {
+@objc public class ADZPlacementContent {
     /** 
         Indicates the type of content.
         Examples: `css`, `html`, `js`, `js-external`, or `raw`.

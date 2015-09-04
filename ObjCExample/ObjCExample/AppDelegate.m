@@ -17,6 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
     return YES;
 }
 

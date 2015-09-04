@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FakeKeyStore :ADZUserKeyStore {
+@objc class FakeKeyStore :ADZUserKeyStore {
     var key: String?
     
     func saveUserKey(key: String) {
