@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import AdzerkSDK;
 
 @interface ViewController ()
 
@@ -16,7 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    ADZPlacement *placement = [[ADZPlacement alloc] initWithDivName:@"div1" adTypes:@[@5]];
+    placement.zoneIds = @[@1];
+    
+    AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
+    [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
+        NSLog(@"Response: %@", response);
+    } failure: ^void(NSNumber *statusCode, NSString *body, NSError *error) {
+        NSLog(@"Failure:");
+        NSLog(@"  Status Code: %@", statusCode);
+        NSLog(@"  Response Body: %@", body);
+        NSLog(@"  Error: %@", error);
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

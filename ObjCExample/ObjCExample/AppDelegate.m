@@ -15,9 +15,13 @@
 
 @implementation AppDelegate
 
+#define SampleNetworkId 9792
+#define SampleSiteId 306998
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
+    [AdzerkSDK setDefaultNetworkId:SampleNetworkId];
+    [AdzerkSDK setDefaultSiteId:SampleSiteId];
+    
     return YES;
 }
 

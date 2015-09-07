@@ -11,17 +11,39 @@ import Foundation
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
 
+public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
+public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
+
 /** The primary class used to make requests against the API. */
 @objc public class AdzerkSDK : NSObject {
-    /** Provides storage for the default network ID to be used with all placement requests. If a value is present here, 
+    
+    private static var _defaultNetworkId: Int?
+    /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
         each placement request does not need to provide it.  Any value in the placement request will override this value.
         Useful for the common case where the network ID is contstant for your application. */
-    public static var defaultNetworkId: Int?
+    public class var defaultNetworkId: Int? {
+        get { return _defaultNetworkId }
+        set { _defaultNetworkId = newValue }
+    }
     
+    private static var _defaultSiteId: Int?
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is contstant for your application. */
-    public static var defaultSiteId: Int?
+    public class var defaultSiteId: Int? {
+        get { return _defaultSiteId }
+        set { _defaultSiteId = newValue }
+    }
+    
+    /** Setter for defaultNetworkId. Provided for Objective-C compatibility. */
+    public class func setDefaultNetworkId(networkId: Int) {
+        defaultNetworkId = networkId
+    }
+    
+    /** Setter for defaultSiteId. Provided for Objective-C compatibility. */
+    public class func setDefaultSiteId(siteId: Int) {
+        defaultSiteId = siteId
+    }
     
     /** The class used to save & retrieve the user DB key. */
     let keyStore: ADZUserKeyStore
@@ -35,8 +57,29 @@ let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
     /** Initializes a new instance of `AdzerkSDK`.
         @param userKeyStore provide a value for this if you want to customize the way user keys are stored & retrieved. The default is `ADZKeychainUserKeyStore`.
     */
-    public init(userKeyStore: ADZUserKeyStore = ADZKeychainUserKeyStore()) {
+    public init(userKeyStore: ADZUserKeyStore) {
         self.keyStore = userKeyStore
+    }
+    
+    /** Requests placements with explicit success and failure callbacks. Provided for Objective-C compatibility.
+        See `requestPlacements:options:completion` for complete documentation.
+    */
+    public func requestPlacements(placements: [ADZPlacement], options: ADZPlacementRequestOptions? = nil,
+        success: (ADZPlacementResponse) -> (),
+        failure: (NSNumber?, NSString?, NSError?) -> ()) {
+        
+        requestPlacements(placements, options: options) { response in
+            switch response {
+            case .Success(let placementResponse):
+                success(placementResponse)
+            case .BadRequest(let statusCode, let body):
+                failure(statusCode, body, nil)
+            case .BadResponse(let body):
+                failure(nil, body, nil)
+            case .Error(let error):
+                failure(nil, nil, error)
+            }
+        }
     }
     
     /** Requests a single placement using only required parameters. This method is a convenience over the other placement request methods.
