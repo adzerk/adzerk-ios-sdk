@@ -14,38 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5C89DC51B78EBB3003CA162"
-               BuildableName = "AdzerkSDK.framework"
-               BlueprintName = "AdzerkSDK"
-               ReferencedContainer = "container:../AdzerkSDK/AdzerkSDK.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5C89DEA1B78ECF0003CA162"
-               BuildableName = "SampleApp.app"
-               BlueprintName = "SampleApp"
-               ReferencedContainer = "container:SampleApp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5C89DFF1B78ECF0003CA162"
-               BuildableName = "SampleAppTests.xctest"
-               BlueprintName = "SampleAppTests"
-               ReferencedContainer = "container:SampleApp.xcodeproj">
+               BlueprintIdentifier = "B5FBCAEB1B98A3E5007F2E64"
+               BuildableName = "ObjCExample.app"
+               BlueprintName = "ObjCExample"
+               ReferencedContainer = "container:ObjCExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5C89DFF1B78ECF0003CA162"
-               BuildableName = "SampleAppTests.xctest"
-               BlueprintName = "SampleAppTests"
-               ReferencedContainer = "container:SampleApp.xcodeproj">
+               BlueprintIdentifier = "B5FBCB041B98A3E5007F2E64"
+               BuildableName = "ObjCExampleTests.xctest"
+               BlueprintName = "ObjCExampleTests"
+               ReferencedContainer = "container:ObjCExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5C89DEA1B78ECF0003CA162"
-            BuildableName = "SampleApp.app"
-            BlueprintName = "SampleApp"
-            ReferencedContainer = "container:SampleApp.xcodeproj">
+            BlueprintIdentifier = "B5FBCAEB1B98A3E5007F2E64"
+            BuildableName = "ObjCExample.app"
+            BlueprintName = "ObjCExample"
+            ReferencedContainer = "container:ObjCExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -93,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5C89DEA1B78ECF0003CA162"
-            BuildableName = "SampleApp.app"
-            BlueprintName = "SampleApp"
-            ReferencedContainer = "container:SampleApp.xcodeproj">
+            BlueprintIdentifier = "B5FBCAEB1B98A3E5007F2E64"
+            BuildableName = "ObjCExample.app"
+            BlueprintName = "ObjCExample"
+            ReferencedContainer = "container:ObjCExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -112,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5C89DEA1B78ECF0003CA162"
-            BuildableName = "SampleApp.app"
-            BlueprintName = "SampleApp"
-            ReferencedContainer = "container:SampleApp.xcodeproj">
+            BlueprintIdentifier = "B5FBCAEB1B98A3E5007F2E64"
+            BuildableName = "ObjCExample.app"
+            BlueprintName = "ObjCExample"
+            ReferencedContainer = "container:ObjCExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

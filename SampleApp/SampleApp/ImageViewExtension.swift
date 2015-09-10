@@ -24,7 +24,7 @@ class RemoteImageView: UIImageView {
                 }
                 let http = response as! NSHTTPURLResponse
                 if http.statusCode == 200 {
-                    let image = UIImage(data: data)
+                    let image = UIImage(data: data!)
                     dispatch_async(dispatch_get_main_queue()) {
                         if self.task?.state == NSURLSessionTaskState.Canceling {
                             return
@@ -33,7 +33,7 @@ class RemoteImageView: UIImageView {
                         self.image = image
                     }
                 } else {
-                    println("Received HTTP \(http.statusCode) from \(url)")
+                    print("Received HTTP \(http.statusCode) from \(url)")
                 }
             } else {
                 // ignore

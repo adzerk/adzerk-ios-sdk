@@ -18,7 +18,7 @@ class VikingGenerator {
     static func generateVikings(count: Int) -> [Viking] {
         var vikings: [Viking] = []
         
-        for i in 0..<count {
+        for _ in 0..<count {
             vikings.append(randomViking())
         }
         

@@ -168,6 +168,7 @@
 		B5FBCAE41B98A3E5007F2E64 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Adzerk;
 				TargetAttributes = {

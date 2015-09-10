@@ -60,27 +60,27 @@ class VikingsTableViewController : UITableViewController {
     
     private func loadPlacements(completion: () -> ()) {
         
-        var options = ADZPlacementRequestOptions()
+        let options = ADZPlacementRequestOptions()
         options.keywords = ["karate", "kittens", "knives"]
         
-        var placement = ADZPlacement(divName: "div1", adTypes: [5])!
+        let placement = ADZPlacement(divName: "div1", adTypes: [5])!
         placement.properties = ["foo": "bar"]
         
         adzerkSDK.requestPlacements([placement], options: options) { response in
             switch response {
             case .Success(let placementResponse):
                 self.decisions = Array(placementResponse.decisions.values)
-                println("Decisions: \(self.decisions)")
+                print("Decisions: \(self.decisions)")
                 break
                 
             case .BadRequest(let status, let body):
-                println("Bad request: HTTP \(status) -> \(body)")
+                print("Bad request: HTTP \(status) -> \(body)")
                 
             case .BadResponse(let body):
-                println("Bad response: \(body)")
+                print("Bad response: \(body)")
                 
             case .Error(let error):
-                println("error fetching placements: \(error)")
+                print("error fetching placements: \(error)")
             }
             
             dispatch_async(dispatch_get_main_queue(), completion)
