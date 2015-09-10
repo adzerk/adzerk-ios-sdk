@@ -12,14 +12,14 @@ import Foundation
     Top level response object for placement requests.
     Documentation can be found at: http://help.adzerk.com/hc/en-us/articles/203193935-Response
 */
-@objc public class ADZPlacementResponse {
+public class ADZPlacementResponse {
     public let decisions: [String: ADZPlacementDecision]
     public let extraAttributes: [String: AnyObject]
     
     init?(dictionary: [String: AnyObject]) {
         if let decisionsDict = dictionary["decisions"] as? [String: AnyObject] {
             
-            let keys = decisionsDict.keys.array
+            let keys = Array(decisionsDict.keys)
             
             let decs = compact(keys.map { (key: String) -> ADZPlacementDecision? in
                 let decisionAttributes = decisionsDict[key] as? [String: AnyObject]

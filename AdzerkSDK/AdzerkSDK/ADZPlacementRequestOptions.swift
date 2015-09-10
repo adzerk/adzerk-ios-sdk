@@ -9,7 +9,7 @@
 import Foundation
 
 /** Provides a mechanism for adding top-level metadata to the placement request. */
-@objc public class ADZPlacementRequestOptions {
+public class ADZPlacementRequestOptions {
     public var keywords: [String]?
     public var blockedCreatives: [Int]?
     public var flightViewTimes: [String: [Int]]?

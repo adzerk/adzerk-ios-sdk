@@ -25,7 +25,7 @@ func groupBy<T, K: Hashable>(source: [T], keyMethod: T -> K) -> [K: T] {
     for item in source {
         let key = keyMethod(item)
         if dict[key] != nil {
-            println("Warning: duplicate value for key \(key)")
+            print("Warning: duplicate value for key \(key)")
         }
         dict[key] = item
     }

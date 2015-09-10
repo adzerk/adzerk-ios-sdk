@@ -124,14 +124,14 @@ public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
                 } else {
                     let http = response as! NSHTTPURLResponse
                     if http.statusCode == 200 {
-                        if let resp = self.buildResponse(data) {
+                        if let resp = self.buildResponse(data!) {
                             completion(ADZResponse.Success(resp))
                         } else {
-                            let bodyString = (NSString(data: data, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
+                            let bodyString = (NSString(data: data!, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
                             completion(ADZResponse.BadResponse(bodyString))
                         }
                     } else {
-                        let bodyString = (NSString(data: data, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
+                        let bodyString = (NSString(data: data!, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
                         completion(.BadRequest(http.statusCode, bodyString))
                     }
                 }
@@ -165,7 +165,7 @@ public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
     
     private func buildPlacementRequest(placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> NSURLRequest? {
         let url = baseURL
-        var request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
+        let request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.HTTPMethod = "POST"
         
         var body: [String: AnyObject] = [
@@ -203,25 +203,25 @@ public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
         }
                 
         var error: NSError?
-        if let data = NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted, error: &error) {
+        do {
+            let data = try NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted)
             request.HTTPBody = data
-            println("Posting JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+            print("Posting JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
             return request
-        } else {
-            println("Error building placement request: \(error)")
+        } catch let error1 as NSError {
+            error = error1
+            print("Error building placement request: \(error)")
             return nil
         }
     }
     
     private func buildResponse(data: NSData) -> ADZPlacementResponse? {
-        var error: NSError?
-        if let responseDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject] {
-            
+        do {
+            let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String: AnyObject]
             saveUserKey(responseDictionary)
-            
             return ADZPlacementResponse(dictionary: responseDictionary)
-        } else {
-            println("Couldn't parse response as JSON: \(error)")
+        } catch {
+            print("couldn't parse response as JSON")
             return nil
         }
     }

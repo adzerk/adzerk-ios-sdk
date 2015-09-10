@@ -74,7 +74,7 @@ class AdzerkSDKTests: XCTestCase {
     }
     
     func testCanRequestPlacementwithAllParameters() {
-        var placement = ADZPlacement(divName: "div1", adTypes: [5])!
+        let placement = ADZPlacement(divName: "div1", adTypes: [5])!
         placement.zoneIds = [136961]
         placement.properties = [
             "custom_key": "custom_value",
@@ -125,7 +125,7 @@ class AdzerkSDKTests: XCTestCase {
     }
     
     func testCanRequestPlacementsWithOptions() {
-        var placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
+        let placement1 = ADZPlacement(divName: "div1", adTypes: [5])!
         placement1.adId = 1
         placement1.campaignId = 1
         placement1.flightId = 1
@@ -133,7 +133,7 @@ class AdzerkSDKTests: XCTestCase {
         placement1.properties = ["key":"val"]
         
         let expectation = expectationWithDescription("API response received")
-        var options = ADZPlacementRequestOptions()
+        let options = ADZPlacementRequestOptions()
         options.flightViewTimes = [
             "1234": [151243, 5124312]
         ]
@@ -147,8 +147,8 @@ class AdzerkSDKTests: XCTestCase {
     }
     
     func testSavesUserKey() {
-        var fakeKeyStore = FakeKeyStore()
-        var sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
+        let fakeKeyStore = FakeKeyStore()
+        let sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation))
         waitForExpectationsWithTimeout(3.0, handler: nil)
@@ -157,10 +157,10 @@ class AdzerkSDKTests: XCTestCase {
     }
     
     func testSendsSavedUserKey() {
-        var fakeKeyStore = FakeKeyStore()
+        let fakeKeyStore = FakeKeyStore()
         fakeKeyStore.key = "testkey12345"
         
-        var sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
+        let sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
         let expectation = expectationWithDescription("API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation))
         waitForExpectationsWithTimeout(3.0, handler: nil)

@@ -46,10 +46,10 @@ class ADZKeychainHelper {
             (kSecMatchLimit as String) : kSecMatchLimitOne
         ] as CFDictionaryRef
         
-        var keychainData: Unmanaged<AnyObject>?
+        var keychainData: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query, &keychainData)
         if status == noErr {
-            return keychainData?.takeRetainedValue() as? NSData
+            return keychainData as? NSData
         } else {
             return nil
         }

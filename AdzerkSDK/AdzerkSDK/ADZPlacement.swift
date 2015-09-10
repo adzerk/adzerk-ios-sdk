@@ -43,7 +43,7 @@ import Foundation
         if let networkId = AdzerkSDK.defaultNetworkId, siteId = AdzerkSDK.defaultSiteId {
             self.init(divName: divName, networkId: networkId, siteId: siteId, adTypes: adTypes)
         } else {
-            println("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
+            print("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
             self.init(divName: "", networkId: -1, siteId: -1, adTypes: [])
             return nil
         }
