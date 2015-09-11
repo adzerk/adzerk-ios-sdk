@@ -144,15 +144,32 @@ public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
     
     // MARK - UserDB endpoints
     
-    public func postUserProperties(userKey: String, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
+    /** Posts custom properties for a user.
+        @param userKey a string identifying the user. If nil, the value will be fetched from the configured UserKeyStore.
+        @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
+        @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
+    */
+    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
             return
         }
-        postUserProperties(networkId, userKey: userKey, properties: properties, callback: callback)
-    }
     
+        guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
+            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            callback(false, nil)
+            return
+        }
+        
+        postUserProperties(networkId, userKey: actualUserKey, properties: properties, callback: callback)
+    }
+
+    /** Posts custom properties for a user.
+    @param userKey a string identifying the user.
+    @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
+    @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
+    */
     public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
         guard let url = NSURL(string: "\(AdzerkBaseUrl)/udb/\(networkId)/custom?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
