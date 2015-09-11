@@ -185,4 +185,16 @@ class AdzerkSDKTests: XCTestCase {
         
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
+    
+    func testCanReadUser() {
+        let userKey = "userKey123"
+        let expectation = expectationWithDescription("API response received")
+        sdk.readUser(userKey) { user, error in
+            expectation.fulfill()
+            XCTAssertNotNil(user)
+            XCTAssertEqual(user?.userKey, "userKey123")
+        }
+        
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
 }

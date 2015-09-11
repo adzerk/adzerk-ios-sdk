@@ -10,10 +10,12 @@ import Foundation
 
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
+let AdzerkUDBBaseUrl = "https://engine.adzerk.net/udb"
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
-public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
+public typealias ADZUserDBPropertiesResponseCallback = (Bool, NSError?) -> ()
+public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
 
 /** The primary class used to make requests against the API. */
 @objc public class AdzerkSDK : NSObject {
@@ -149,7 +151,7 @@ public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
         @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
         @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
+    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZUserDBPropertiesResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -170,8 +172,8 @@ public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
     @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
-        guard let url = NSURL(string: "\(AdzerkBaseUrl)/udb/\(networkId)/custom?userKey=\(userKey)") else {
+    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZUserDBPropertiesResponseCallback) {
+        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
             return
@@ -191,7 +193,13 @@ public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
             let task = session.dataTaskWithRequest(request) {
                 (data, response, error) in
                 if error == nil {
-                    callback(true, nil)
+                    let http = response as! NSHTTPURLResponse
+                    if http.statusCode == 200 {
+                        callback(true, nil)
+                    } else {
+                        print("Received HTTP \(http.statusCode) from \(request.URL)")
+                        callback(false, nil)
+                    }
                 } else {
                     callback(false, error)
                 }
@@ -206,6 +214,73 @@ public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
         catch let error as NSError {
             callback(false, error)
         }
+    }
+    
+    public func readUser(userKey: String?, callback: ADZUserDBUserResponseCallback) {
+        guard let networkId = AdzerkSDK.defaultNetworkId else {
+            print("WARNING: No defaultNetworkId set.")
+            callback(nil, nil)
+            return
+        }
+        
+        guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
+            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            callback(nil, nil)
+            return
+        }
+        
+        readUser(networkId, userKey: actualUserKey, callback: callback)
+    }
+    
+    public func readUser(networkId: Int, userKey: String, callback: ADZUserDBUserResponseCallback) {
+        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
+            print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
+            callback(nil, nil)
+            return
+        }
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.allHTTPHeaderFields = [
+            "Content-Type" : "application/json",
+            "Accept" : "application/json"
+        ]
+        
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) in
+            if error == nil {
+                let http = response as! NSHTTPURLResponse
+                if http.statusCode == 200 {
+                    do {
+                        if let userDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: [.AllowFragments]) as? [String: AnyObject] {
+                            if let user = ADZUser(dictionary: userDictionary) {
+                                callback(user, nil)
+                            } else {
+                                print("WARNING: could not recognize json format: \(userDictionary)")
+                                callback(nil, nil)
+                            }
+                        } else {
+                            print("WARNING: response did not contain valid json.")
+                            callback(nil, error)
+                        }
+                    } catch let exc as NSException {
+                        print("WARNING: error parsing JSON: \(exc.name) -> \(exc.reason)")
+                        callback(nil, nil)
+                    } catch let e as NSError {
+                        let body = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                        print("response: \(body)")
+                        callback(nil, e)
+                    }
+                } else {
+                    print("Received HTTP \(http.statusCode) from \(request.URL)")
+                    let body = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("response: \(body)")
+                    callback(nil, nil)
+                }
+            } else {
+                callback(nil, error)
+            }
+        }
+        task.resume()
     }
 
     // MARK - private
