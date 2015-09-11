@@ -167,4 +167,22 @@ class AdzerkSDKTests: XCTestCase {
         
         XCTAssertEqual(fakeKeyStore.currentUserKey()!, "testkey12345")
     }
+    
+    func testCanPostUserProperties() {
+        let properties = [
+            "foo" : "bar",
+            "isCustom": true,
+            "numberOfGems": 25
+        ]
+        
+        let userKey = "userKey123"
+        let expectation = expectationWithDescription("API response received")
+        sdk.postUserProperties(userKey, properties: properties) { success, error in
+            XCTAssertNil(error)
+            XCTAssertTrue(success)
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
 }

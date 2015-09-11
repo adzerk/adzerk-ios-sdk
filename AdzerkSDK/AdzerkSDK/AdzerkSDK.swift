@@ -13,6 +13,7 @@ let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
+public typealias ADZUserDBResponseCallback = (Bool, NSError?) -> ()
 
 /** The primary class used to make requests against the API. */
 @objc public class AdzerkSDK : NSObject {
@@ -140,8 +141,56 @@ public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
             task.resume()
         }
     }
-
     
+    // MARK - UserDB endpoints
+    
+    public func postUserProperties(userKey: String, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
+        guard let networkId = AdzerkSDK.defaultNetworkId else {
+            print("WARNING: No defaultNetworkId set.")
+            callback(false, nil)
+            return
+        }
+        postUserProperties(networkId, userKey: userKey, properties: properties, callback: callback)
+    }
+    
+    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZUserDBResponseCallback) {
+        guard let url = NSURL(string: "\(AdzerkBaseUrl)/udb/\(networkId)/custom?userKey=\(userKey)") else {
+            print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
+            callback(false, nil)
+            return
+        }
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.allHTTPHeaderFields = [
+            "Content-Type" : "application/json",
+            "Accept" : "applicadtion/json"
+        ]
+        
+        request.HTTPMethod = "POST"
+        
+        do {
+            let data = try NSJSONSerialization.dataWithJSONObject(properties, options: NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = data
+            let task = session.dataTaskWithRequest(request) {
+                (data, response, error) in
+                if error == nil {
+                    callback(true, nil)
+                } else {
+                    callback(false, error)
+                }
+            }
+            task.resume()
+        }
+        catch let exc as NSException {
+            print("WARNING: Could not serialize the submitted properties into JSON: \(properties).")
+            print("\(exc.name) -> \(exc.reason)")
+            callback(false, nil)
+        }
+        catch let error as NSError {
+            callback(false, error)
+        }
+    }
+
     // MARK - private
     
     lazy var sessionConfiguration: NSURLSessionConfiguration = {
