@@ -10,11 +10,11 @@ import Foundation
 
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
-let AdzerkUDBBaseUrl = "https://engine.adzerk.net/udb"
+let AdzerkUDBBaseUrl = "http://engine.adzerk.net/udb"
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
-public typealias ADZUserDBPropertiesResponseCallback = (Bool, NSError?) -> ()
+public typealias ADZResponseCallback = (Bool, NSError?) -> ()
 public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
 
 /** The primary class used to make requests against the API. */
@@ -151,7 +151,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
         @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZUserDBPropertiesResponseCallback) {
+    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -172,7 +172,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZUserDBPropertiesResponseCallback) {
+    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZResponseCallback) {
         guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
@@ -182,7 +182,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         let request = NSMutableURLRequest(URL: url)
         request.allHTTPHeaderFields = [
             "Content-Type" : "application/json",
-            "Accept" : "applicadtion/json"
+            "Accept" : "application/json"
         ]
         
         request.HTTPMethod = "POST"
@@ -240,9 +240,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
         
         let request = NSMutableURLRequest(URL: url)
+
+        // Fails with HTTP 500 if the default application/json is specified.
         request.allHTTPHeaderFields = [
-            "Content-Type" : "application/json",
-            "Accept" : "application/json"
+            "Content-Type" : ""
         ]
         
         let task = session.dataTaskWithRequest(request) {
@@ -252,6 +253,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
                 if http.statusCode == 200 {
                     do {
                         if let userDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: [.AllowFragments]) as? [String: AnyObject] {
+                            print(userDictionary)
                             if let user = ADZUser(dictionary: userDictionary) {
                                 callback(user, nil)
                             } else {
@@ -278,6 +280,55 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
                 }
             } else {
                 callback(nil, error)
+            }
+        }
+        task.resume()
+    }
+    
+    public func addUserInterest(interest: String, userKey: String?, callback: ADZResponseCallback) {
+        guard let networkId = AdzerkSDK.defaultNetworkId else {
+            print("WARNING: No defaultNetworkId set.")
+            callback(false, nil)
+            return
+        }
+        
+        guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
+            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            callback(false, nil)
+            return
+        }
+        
+        addUserInterest(interest, networkId: networkId, userKey: actualUserKey, callback: callback)
+    }
+
+    
+    public func addUserInterest(interest: String, networkId: Int, userKey: String, callback: ADZResponseCallback) {
+        let queryChars = NSCharacterSet.URLQueryAllowedCharacterSet()
+        guard let encodedInterest = interest.stringByAddingPercentEncodingWithAllowedCharacters(queryChars) else {
+            print("WARNING: Could not URL-encode interest: \(interest)")
+            callback(false, nil)
+            return
+        }
+
+        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/interest/i.gif?userKey=\(userKey)&interest=\(encodedInterest)") else {
+            print("WARNING: Could not construct proper URL for encoded interest: \(encodedInterest)")
+            callback(false, nil)
+            return
+        }
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.allHTTPHeaderFields = [ "Content-Type": "" ] // image request, not json
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if let error = error {
+                callback(false, error)
+            } else {
+                let http = response as! NSHTTPURLResponse
+                if http.statusCode == 200 {
+                    callback(true, nil)
+                } else {
+                    print("Received HTTP \(http.statusCode) from \(request.URL!)")
+                    callback(false, nil)
+                }
             }
         }
         task.resume()
