@@ -66,6 +66,7 @@
 		B5C89DD71B78EBB3003CA162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkSDKTests.swift; sourceTree = "<group>"; };
 		B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdzerkSDK.swift; sourceTree = "<group>"; };
+		B5D8BCCF1BA877C50084C09F /* Scratch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Scratch.playground; sourceTree = "<group>"; };
 		B5DB64391B7E350E00A243AC /* ADZPlacementResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementResponse.swift; sourceTree = "<group>"; };
 		B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZFunctions.swift; sourceTree = "<group>"; };
 		B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementDecision.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 				B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */,
 				B5C89DD61B78EBB3003CA162 /* Supporting Files */,
 				B52BA8301B8E190C002235CA /* FakeKeyStore.swift */,
+				B5D8BCCF1BA877C50084C09F /* Scratch.playground */,
 			);
 			path = AdzerkSDKTests;
 			sourceTree = "<group>";

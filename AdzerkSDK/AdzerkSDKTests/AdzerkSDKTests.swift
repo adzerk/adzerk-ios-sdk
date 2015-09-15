@@ -210,4 +210,26 @@ class AdzerkSDKTests: XCTestCase {
         
         waitForExpectationsWithTimeout(3.0, handler: nil)
     }
+    
+    func testCanOptOut() {
+        let userKey = "userKey123"
+        let expectation = expectationWithDescription("API response received")
+        sdk.optOut(userKey) { success, error in
+            XCTAssertTrue(success)
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
+    
+    func testCanRetargetUser() {
+        let userKey = "userKey123"
+        let expectation = expectationWithDescription("API Response received")
+        sdk.retargetUser(userKey, brandId: 4, segment: "Spiderman") { success, error in
+            XCTAssertTrue(success)
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(3.0, handler: nil)
+    }
 }
