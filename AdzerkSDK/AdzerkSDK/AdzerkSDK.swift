@@ -357,7 +357,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         pixelRequest(networkId, action: "optout", params: params, callback: callback)
     }
     
-    public func retargetUser(userKey: String?, brandId: Int, segment: String, callback: ADZResponseCallback) {
+    public func retargetUser(userKey: String?, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -370,14 +370,14 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
             return
         }
 
-        retargetUser(networkId, userKey: actualUserKey, brandId: brandId, segment: segment, callback: callback)
+        retargetUser(networkId, userKey: actualUserKey, brandId: brandId, segmentId: segmentId, callback: callback)
     }
     
-    public func retargetUser(networkId: Int, userKey: String, brandId: Int, segment: String, callback: ADZResponseCallback) {
+    public func retargetUser(networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
         let params = [
             "userKey": userKey
         ]
-        let action = "rt/\(brandId)/\(segment)"
+        let action = "rt/\(brandId)/\(segmentId)"
         pixelRequest(networkId, action: action, params: params, callback: callback)
     }
 

@@ -192,7 +192,12 @@ class AdzerkSDKTests: XCTestCase {
         sdk.readUser(userKey) { user, error in
             XCTAssertNil(error)
             XCTAssertNotNil(user)
-            XCTAssertEqual(user?.userKey, "userKey123")
+            XCTAssertEqual(user!.userKey, "userKey123")
+            XCTAssertEqual(user!.interests, ["fishing"])
+            XCTAssertNotNil(user!.blockedItems)
+            XCTAssertTrue(user!.optOut)
+            XCTAssertEqual(Array(user!.customProperties.keys).sort(), ["foo", "isCustom", "numberOfGems"].sort())
+
             expectation.fulfill()
         }
         
@@ -224,8 +229,10 @@ class AdzerkSDKTests: XCTestCase {
     
     func testCanRetargetUser() {
         let userKey = "userKey123"
+        let brandId = 88205
+        let segmentId = 1
         let expectation = expectationWithDescription("API Response received")
-        sdk.retargetUser(userKey, brandId: 4, segment: "Spiderman") { success, error in
+        sdk.retargetUser(userKey, brandId: brandId, segmentId: segmentId) { success, error in
             XCTAssertTrue(success)
             XCTAssertNil(error)
             expectation.fulfill()
