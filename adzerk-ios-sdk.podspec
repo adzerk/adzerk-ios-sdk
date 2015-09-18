@@ -8,6 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "adzerk-ios-sdk"
+  s.module_name      = "AdzerkSDK"
   s.version          = "0.1"
   s.summary          = "iOS SDK for the Adzerk API"
 
