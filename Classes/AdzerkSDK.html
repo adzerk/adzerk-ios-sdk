@@ -34,6 +34,27 @@
                 <a href="../Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/ADZPlacement.html">ADZPlacement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ADZPlacementContent.html">ADZPlacementContent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ADZPlacementDecision.html">ADZPlacementDecision</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C9AdzerkSDK17ADZPlacementEvent">ADZPlacementEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ADZPlacementResponse.html">ADZPlacementResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ADZUser.html">ADZUser</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/AdzerkSDK.html">AdzerkSDK</a>
               </li>
             </ul>
@@ -54,29 +75,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-          <a href="../Structs.html">Structs</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/ADZPlacement.html">ADZPlacement</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ADZPlacementContent.html">ADZPlacementContent</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ADZPlacementDecision.html">ADZPlacementDecision</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs.html#/s:V9AdzerkSDK17ADZPlacementEvent">ADZPlacementEvent</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ADZPlacementResponse.html">ADZPlacementResponse</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -85,7 +83,7 @@
             <h1>AdzerkSDK</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span></code></pre>
+                  <pre class="highlight"><code><span class="k">@objc</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -108,7 +106,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Provides storage for the default network ID to be used with all placement requests. If a value is present here, 
+                        <p>Provides storage for the default network ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is contstant for your application.</p>
 
@@ -117,7 +115,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">defaultNetworkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultNetworkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -146,7 +144,88 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">defaultSiteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultSiteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC9AdzerkSDK9AdzerkSDK19setDefaultNetworkIdFMS0_FSiT_"></a>
+                    <a name="//apple_ref/swift/Method/setDefaultNetworkId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC9AdzerkSDK9AdzerkSDK19setDefaultNetworkIdFMS0_FSiT_">setDefaultNetworkId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Setter for defaultNetworkId. Provided for Objective-C compatibility.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultNetworkId</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC9AdzerkSDK9AdzerkSDK16setDefaultSiteIdFMS0_FSiT_"></a>
+                    <a name="//apple_ref/swift/Method/setDefaultSiteId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC9AdzerkSDK9AdzerkSDK16setDefaultSiteIdFMS0_FSiT_">setDefaultSiteId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Setter for defaultSiteId. Provided for Objective-C compatibility.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultSiteId</span><span class="p">(</span><span class="nv">siteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDKcFMS0_FT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDKcFMS0_FT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new instance of <code>AdzerkSDK</code> with a keychain-based userKeyStore.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -174,7 +253,37 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">userKeyStore</span><span class="p">:</span> <span class="kt">ADZUserKeyStore</span> <span class="o">=</span> <span class="kt">ADZKeychainUserKeyStore</span><span class="p">())</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">userKeyStore</span><span class="p">:</span> <span class="kt">ADZUserKeyStore</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_7successFCS_20ADZPlacementResponseT_7failureFTGSqCSo8NSNumber_GSqCSo8NSString_GSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/requestPlacements(_:options:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_7successFCS_20ADZPlacementResponseT_7failureFTGSqCSo8NSNumber_GSqCSo8NSString_GSqCSo7NSError__T__T_">requestPlacements(_:options:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests placements with explicit success and failure callbacks. Provided for Objective-C compatibility.
+    See <code>requestPlacements:options:completion</code> for complete documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt">ADZPlacement</span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">ADZPlacementRequestOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+        <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZPlacementResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span>
+        <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="kt">NSNumber</span><span class="p">?,</span> <span class="kt">NSString</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -214,9 +323,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTVS_12ADZPlacement10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTCS_12ADZPlacement10completionFOS_11ADZResponseT__T_"></a>
                     <a name="//apple_ref/swift/Method/requestPlacement(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTVS_12ADZPlacement10completionFOS_11ADZResponseT__T_">requestPlacement(_:completion:)</a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTCS_12ADZPlacement10completionFOS_11ADZResponseT__T_">requestPlacement(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -243,9 +352,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_10completionFOS_11ADZResponseT__T_"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaVS_12ADZPlacement_10completionFOS_11ADZResponseT__T_">requestPlacements(_:completion:)</a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_10completionFOS_11ADZResponseT__T_">requestPlacements(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -272,9 +381,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTGSaVS_12ADZPlacement_7optionsGSqVS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_"></a>
-                    <a name="//apple_ref/swift/Method/requestPlacement(_:options:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFS0_FTGSaVS_12ADZPlacement_7optionsGSqVS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_">requestPlacement(_:options:completion:)</a>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="//apple_ref/swift/Method/requestPlacements(_:options:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFS0_FTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_">requestPlacements(_:options:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -292,7 +401,309 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacement</span><span class="p">(</span><span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt">ADZPlacement</span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">ADZPlacementRequestOptions</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt">ADZPlacement</span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">ADZPlacementRequestOptions</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(</span><span class="kt">ADZResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFS0_FTGSqSS_10propertiesGVSs10DictionarySSPSs9AnyObject__8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/postUserProperties(_:properties:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFS0_FTGSqSS_10propertiesGVSs10DictionarySSPSs9AnyObject__8callbackFTSbGSqCSo7NSError__T__T_">postUserProperties(_:properties:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Posts custom properties for a user.
+    @param userKey a string identifying the user. If nil, the value will be fetched from the configured UserKeyStore.
+    @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
+    @param callback a simple callback block indicating success or failure, along with an optional <code>NSError</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFS0_FTSi7userKeySS10propertiesGVSs10DictionarySSPSs9AnyObject__8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/postUserProperties(_:userKey:properties:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFS0_FTSi7userKeySS10propertiesGVSs10DictionarySSPSs9AnyObject__8callbackFTSbGSqCSo7NSError__T__T_">postUserProperties(_:userKey:properties:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Posts custom properties for a user.
+@param networkId the networkId for this request
+@param userKey a string identifying the user
+@param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
+@param callback a simple callback block indicating success or failure, along with an optional <code>NSError</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK8readUserFS0_FTGSqSS_8callbackFTGSqCS_7ADZUser_GSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/readUser(_:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK8readUserFS0_FTGSqSS_8callbackFTGSqCS_7ADZUser_GSqCSo7NSError__T__T_">readUser(_:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the UserDB data for a given user.
+@param userKey a string identifying the user
+@param callback a simple callback block indicating success or failure, along with an optional <code>NSError</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZUserDBUserResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK8readUserFS0_FTSi7userKeySS8callbackFTGSqCS_7ADZUser_GSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/readUser(_:userKey:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK8readUserFS0_FTSi7userKeySS8callbackFTGSqCS_7ADZUser_GSqCSo7NSError__T__T_">readUser(_:userKey:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the UserDB data for a given user.
+@param networkId the networkId to use for this request
+@param userKey a string identifying the user
+@param callback a simple callback block indicating success or failure, along with an optional <code>NSError</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZUserDBUserResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFS0_FTSS7userKeyGSqSS_8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/addUserInterest(_:userKey:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFS0_FTSS7userKeyGSqSS_8callbackFTSbGSqCSo7NSError__T__T_">addUserInterest(_:userKey:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds an interest for a user to UserDB.
+@param userKey the current user key. If nil, the saved userKey from the configured userKeyStore is used.
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFS0_FTSS9networkIdSi7userKeySS8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/addUserInterest(_:networkId:userKey:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFS0_FTSS9networkIdSi7userKeySS8callbackFTSbGSqCSo7NSError__T__T_">addUserInterest(_:networkId:userKey:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds an interest for a user to UserDB.
+@param interest an interest keyword to add for this user
+@param networkId the network ID for this action
+@param userKey the user to add the interest for
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK6optOutFS0_FTGSqSS_8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/optOut(_:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK6optOutFS0_FTGSqSS_8callbackFTSbGSqCSo7NSError__T__T_">optOut(_:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opt a user out of tracking. Uses the <code>defaultNetworkId</code> set on <code>AdzerkSDK</code>.
+@param userKey the user to opt out. If nil, the saved userKey from the configured userKeyStore is used.
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK6optOutFS0_FTSi7userKeySS8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/optOut(_:userKey:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK6optOutFS0_FTSi7userKeySS8callbackFTSbGSqCSo7NSError__T__T_">optOut(_:userKey:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opt a user out of tracking.
+@param networkId the network ID for this action
+@param userKey the user to opt out
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFS0_FTGSqSS_7brandIdSi9segmentIdSi8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/retargetUser(_:brandId:segmentId:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFS0_FTGSqSS_7brandIdSi9segmentIdSi8callbackFTSbGSqCSo7NSError__T__T_">retargetUser(_:brandId:segmentId:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retargets a user to a new segment.
+@param userKey the user to opt out
+@param brandId the brand this retargeting is for
+@param segmentId the segment the user is targeted to
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFS0_FTSi7userKeySS7brandIdSi9segmentIdSi8callbackFTSbGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/retargetUser(_:userKey:brandId:segmentId:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFS0_FTSi7userKeySS7brandIdSi9segmentIdSi8callbackFTSbGSqCSo7NSError__T__T_">retargetUser(_:userKey:brandId:segmentId:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retargets a user to a new segment.
+@param networkId the network ID for this request
+@param userKey the user to opt out
+@param brandId the brand this retargeting is for
+@param segmentId the segment the user is targeted to
+@param callback a simple success/error callback to use when the response comes back</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -304,8 +715,8 @@ Useful for the common case where the network ID is contstant for your applicatio
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2015-09-01)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2015 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2015-09-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

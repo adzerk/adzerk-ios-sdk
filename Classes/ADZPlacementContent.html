@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ADZResponse Enum Reference</title>
+    <title>ADZPlacementContent Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/ADZResponse" class="dashAnchor"></a>
-    <a title="ADZResponse Enum Reference"></a>
+    <a name="//apple_ref/swift/Class/ADZPlacementContent" class="dashAnchor"></a>
+    <a title="ADZPlacementContent Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        ADZResponse Enum Reference
+        ADZPlacementContent Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -80,14 +80,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ADZResponse</h1>
+            <h1>ADZPlacementContent</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ADZResponse</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span></code></pre>
 
                 </div>
               </div>
-            <p>Models the various types of responses you can receive from the API.</p>
+            <p>Each <code>ADZPlacementDecision</code> one or more <code>ADZPlacementContent</code> instances. 
+Combined, the these represent the creative that should be displayed. 
+A creative may contain a CSS stylesheet and a block of HTML. 
+This would be represented as two contents, one with the type <code>css</code> and one 
+with the type <code>html</code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -96,9 +100,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9AdzerkSDK11ADZResponse7SuccessFMS0_FCS_20ADZPlacementResponseS0_"></a>
-                    <a name="//apple_ref/swift/Element/Success" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9AdzerkSDK11ADZResponse7SuccessFMS0_FCS_20ADZPlacementResponseS0_">Success</a>
+                    <a name="/s:vC9AdzerkSDK19ADZPlacementContent4typeGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9AdzerkSDK19ADZPlacementContent4typeGSqSS_">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -106,30 +110,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Indicates a successful response. Includes the placements requested.</p>
+                        <p>Indicates the type of content.
+Examples: <code>css</code>, <code>html</code>, <code>js</code>, <code>js-external</code>, or <code>raw</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Success</span><span class="p">(</span><span class="kt">ADZPlacementResponse</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9AdzerkSDK11ADZResponse10BadRequestFMS0_FTSiSS_S0_"></a>
-                    <a name="//apple_ref/swift/Element/BadRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9AdzerkSDK11ADZResponse10BadRequestFMS0_FTSiSS_S0_">BadRequest</a>
+                    <a name="/s:vC9AdzerkSDK19ADZPlacementContent8templateGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/template" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9AdzerkSDK19ADZPlacementContent8templateGSqSS_">template</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,30 +138,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Indicates something was wrong with the request. Includes the HTTP status code and the response body.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">BadRequest</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9AdzerkSDK11ADZResponse11BadResponseFMS0_FSSS0_"></a>
-                    <a name="//apple_ref/swift/Element/BadResponse" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9AdzerkSDK11ADZResponse11BadResponseFMS0_FSSS0_">BadResponse</a>
+                    <a name="/s:vC9AdzerkSDK19ADZPlacementContent4dataGSqGVSs10DictionarySSPSs9AnyObject___"></a>
+                    <a name="//apple_ref/swift/Property/data" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9AdzerkSDK19ADZPlacementContent4dataGSqGVSs10DictionarySSPSs9AnyObject___">data</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -168,30 +165,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Indicates the response was not recognized (valid JSON). Includes the response body.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">BadResponse</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9AdzerkSDK11ADZResponse5ErrorFMS0_FCSo7NSErrorS0_"></a>
-                    <a name="//apple_ref/swift/Element/Error" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9AdzerkSDK11ADZResponse5ErrorFMS0_FCSo7NSErrorS0_">Error</a>
+                    <a name="/s:vC9AdzerkSDK19ADZPlacementContent4bodyGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9AdzerkSDK19ADZPlacementContent4bodyGSqSS_">body</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,14 +192,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Indicates that the request was not completed. This can happen due to lack of network connectivity, redirect loops, timeouts, and other factors.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Error</span><span class="p">(</span><span class="kt">NSError</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9AdzerkSDK19ADZPlacementContentcFMS0_FT10dictionaryGVSs10DictionarySSPSs9AnyObject___S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(dictionary:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9AdzerkSDK19ADZPlacementContentcFMS0_FT10dictionaryGVSs10DictionarySSPSs9AnyObject___S0_">init(dictionary:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the struct from a JSON dictionary (expects keys: <code>type</code>, <code>template</code>, <code>data</code>, <code>body</code>, and <code>customData</code>)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
