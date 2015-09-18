@@ -167,8 +167,11 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         postUserProperties(networkId, userKey: actualUserKey, properties: properties, callback: callback)
     }
 
+    // MARK - UserDB endpoints
+    
     /** Posts custom properties for a user.
-    @param userKey a string identifying the user.
+    @param networkId the networkId for this request
+    @param userKey a string identifying the user
     @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
@@ -216,6 +219,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
     }
     
+    /** Returns the UserDB data for a given user.
+    @param userKey a string identifying the user
+    @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
+    */
     public func readUser(userKey: String?, callback: ADZUserDBUserResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
@@ -232,6 +239,11 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         readUser(networkId, userKey: actualUserKey, callback: callback)
     }
     
+    /** Returns the UserDB data for a given user.
+    @param networkId the networkId to use for this request
+    @param userKey a string identifying the user
+    @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
+    */
     public func readUser(networkId: Int, userKey: String, callback: ADZUserDBUserResponseCallback) {
         guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
@@ -357,6 +369,12 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         pixelRequest(networkId, action: "optout", params: params, callback: callback)
     }
     
+    /** Retargets a user to a new segment.
+    @param userKey the user to opt out
+    @param brandId the brand this retargeting is for
+    @param segmentId the segment the user is targeted to
+    @param callback a simple success/error callback to use when the response comes back
+    */
     public func retargetUser(userKey: String?, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
@@ -372,7 +390,14 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
 
         retargetUser(networkId, userKey: actualUserKey, brandId: brandId, segmentId: segmentId, callback: callback)
     }
-    
+
+    /** Retargets a user to a new segment.
+    @param networkId the network ID for this request
+    @param userKey the user to opt out
+    @param brandId the brand this retargeting is for
+    @param segmentId the segment the user is targeted to
+    @param callback a simple success/error callback to use when the response comes back
+    */
     public func retargetUser(networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
         let params = [
             "userKey": userKey
