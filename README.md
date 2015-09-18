@@ -103,13 +103,30 @@ You can build and run tests with the provided build script:
 
 Docs are generated with [jazzy](https://github.com/Realm/jazzy) and are hosted on github pages. To install jazzy:
 
-> `gem install jazzy` 
+```
+$ gem install jazzy
+```
 
 _If you're using system ruby, you'll probably need to prefix the above with `sudo`_.
 
-All doc generation happens on a different detached branch.  Make sure your working copy is clean and switch to the other branch:
+All doc generation happens on a different detached branch. Make sure your working copy is clean, close Xcode, and switch to the `gh-pages` branch:
 
 ```
 $ git checkout gh-pages
 ```
 
+Once there the content of the working directory becomes the static HTML site. Run the `generate_docs.sh` script to copy the latest version of the project from the `master` branch and run jazzy on it to generate the doc HTML:
+
+```
+$ ./generate_docs.sh
+```
+
+Once done, commit changes and push to github:
+
+```
+$ git add .
+$ git commit -m "Update docs"
+$ git push
+```
+
+After a few seconds, your changes will be live on [https://adzerk.github.io/adzerk-ios-sdk](https://adzerk.github.io/adzerk-ios-sdk).
