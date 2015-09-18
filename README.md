@@ -6,7 +6,45 @@ Use of the Adzerk iOS SDK requires iOS 8.0 or later.
 
 ## Installation
 
-TODO
+Installation of the framework can be done manually by building and copying the framework into your project, or with
+automatically with Carthage or CocoaPods.
+
+Note that for manual and Carthage framework imports you may have to specify "Embedded Content Contains Swift Code" to avoid getting a linker error during build. Another way to force Xcode to load the Swift libraries is to add a single Swift source file to your project.
+
+### Carthage
+
+If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
+
+```ruby
+github "adzerk/adzerk-ios-sdk" ~> 1.0
+```
+
+If you want to be on the bleeding edge, you can specify the `master` branch:
+
+```ruby
+github "adzerk/adzerk-ios-sdk" "master"
+```
+
+Then run `carthage update` to fetch and build the framework. You can find the framework in the `Carthage` folder, and you can add 
+this to your project manually.
+
+### CocoaPods
+
+If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
+
+```ruby
+pod 'adzerk-ios-sdk', '~> 1.0'
+```
+
+Again, if you want to be on the latest master branch:
+
+```ruby
+use_frameworks!
+
+pod 'adzerk-ios-sdk', github: 'adzerk/adzer-ios-sdk', branch: 'master'
+```
+
+Then run `pod install` to download the code and integrate it into your project.
 
 ## Usage
 
