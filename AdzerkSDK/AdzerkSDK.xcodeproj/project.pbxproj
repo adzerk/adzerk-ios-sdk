@@ -92,18 +92,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B52BA82A1B8E119A002235CA /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				B52BA82B1B8E11A5002235CA /* ADZKeychainHelper.swift */,
-			);
-			name = Lib;
-			sourceTree = "<group>";
-		};
 		B5C89DBC1B78EBB3003CA162 = {
 			isa = PBXGroup;
 			children = (
-				B52BA82A1B8E119A002235CA /* Lib */,
 				B5C89DC81B78EBB3003CA162 /* AdzerkSDK */,
 				B5C89DD51B78EBB3003CA162 /* AdzerkSDKTests */,
 				B5C89DC71B78EBB3003CA162 /* Products */,
@@ -122,6 +113,7 @@
 		B5C89DC81B78EBB3003CA162 /* AdzerkSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B52BA82B1B8E11A5002235CA /* ADZKeychainHelper.swift */,
 				B5C89DCB1B78EBB3003CA162 /* AdzerkSDK.h */,
 				B5C89E101B78ED75003CA162 /* AdzerkSDK.swift */,
 				B58E8AF71B7A45830029BAAD /* ADZPlacement.swift */,
