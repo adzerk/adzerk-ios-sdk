@@ -44,7 +44,7 @@ use_frameworks!
 pod 'adzerk-ios-sdk', github: 'adzerk/adzer-ios-sdk', branch: 'master'
 ```
 
-Then run `pod install` to download the code and integrate it into your project.
+Then run `pod install` to download the code and integrate it into your project. You'll then open the pod-created workspace instead of your project to build.
 
 ## Usage
 
@@ -116,6 +116,16 @@ AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
     NSLog(@"  Error: %@", error);
 }];
 ```
+
+## iOS 9 App Transport Security
+
+If you're building for iOS 9, you'll notice that requests fail unless you configure your `Info.plist` properly. Our team is currently working to upgrade our servers to avoid this configuration in the future. In the meantime, you'll need
+to add the following exceptions for `engine.adzerk.net`:
+
+- `NSExceptionMinimumTLSVersion` to `TLSv1.0`
+- `NSExceptionRequiresForwardSecrecy` to `NO`
+
+For more information on App Transport Security, see [Apple's Tech Note](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/). For a live example, see the sample project's [Info.plist](https://raw.githubusercontent.com/adzerk/adzerk-ios-sdk/master/SampleApp/SampleApp/Info.plist?token=AADnBOuU-Qoxzb2WLO3_YdG2NIEw9HOGks5WCqgGwA%3D%3D).
 
 ## Building / Running Tests
 
