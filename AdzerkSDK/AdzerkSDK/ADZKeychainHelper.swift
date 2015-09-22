@@ -55,4 +55,12 @@ class ADZKeychainHelper {
         }
     }
     
+    class func delete(key: String) {
+        let query = [
+            (kSecClass as String) : (kSecClassGenericPassword as String),
+            (kSecAttrAccount as String) : key,
+            (kSecMatchLimit as String) : kSecMatchLimitOne
+        ]
+        SecItemDelete(query)
+    }
 }

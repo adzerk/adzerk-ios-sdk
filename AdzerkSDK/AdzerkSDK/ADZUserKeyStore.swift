@@ -24,4 +24,7 @@ import Foundation
 
     /** Saves a key for the current user. */
     func saveUserKey(key: String)
+    
+    /** Removes a saved user key. */
+    func removeUserKey()
 }

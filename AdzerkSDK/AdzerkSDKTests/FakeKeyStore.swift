@@ -18,4 +18,8 @@ import Foundation
     func currentUserKey() -> String? {
         return key
     }
+    
+    func removeUserKey() {
+        key = nil
+    }
 }

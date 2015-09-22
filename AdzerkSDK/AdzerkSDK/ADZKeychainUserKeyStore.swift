@@ -37,5 +37,11 @@ import Foundation
         ADZKeychainHelper.save(key, data: data)
     }
     
+    /** 
+        Removes the userKey from the keychain.
+    */
+    public func removeUserKey() {
+        ADZKeychainHelper.delete(adzUserKey)
+    }
     
 }
