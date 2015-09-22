@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "http://adzerk.com"
-  s.license          = 'MIT'
+  s.license          = 'Apache 2.0'
   s.author           = { "Ben Scheirman" => "ben@scheirman.com" }
   s.source           = { :git => "https://github.com/adzerk/adzerk-ios-sdk.git", :tag => s.version.to_s }
 
