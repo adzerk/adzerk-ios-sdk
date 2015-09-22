@@ -20,6 +20,7 @@ class AdzerkSDKTests: XCTestCase {
         AdzerkSDK.defaultNetworkId = networkId
         AdzerkSDK.defaultSiteId = siteId
         sdk = AdzerkSDK()
+        
     }
     
     override func tearDown() {

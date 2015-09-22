@@ -18,6 +18,9 @@ class VikingsTableViewController : UITableViewController {
         didSet { _rowData = nil }
     }
     
+    // record of impressions sent
+    var impressions: [String: Bool] = [:]
+    
     private var _rowData: [Any]?
     var rowData: [Any]! {
         if _rowData == nil {
@@ -29,6 +32,7 @@ class VikingsTableViewController : UITableViewController {
     let adzerkSDK = AdzerkSDK()
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -58,6 +62,26 @@ class VikingsTableViewController : UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let _ = cell as? DecisionCell {
+            if let decision = rowData[indexPath.row] as? ADZPlacementDecision, impressionUrl = decision.impressionUrl {
+                if impressions[impressionUrl] == nil {
+                    impressions[impressionUrl] = true
+                    recordImpression(impressionUrl)
+                }
+            }
+        }
+    }
+    
+    private func recordImpression(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            print("Recording impression for \(url)")
+            adzerkSDK.recordImpression(url)
+        } else {
+            print("Not a valid url: \(urlString)")
+        }
+    }
+    
     private func loadPlacements(completion: () -> ()) {
         
         let options = ADZPlacementRequestOptions()
@@ -65,6 +89,7 @@ class VikingsTableViewController : UITableViewController {
         
         let placement = ADZPlacement(divName: "div1", adTypes: [5])!
         placement.properties = ["foo": "bar"]
+        placement.eventIds = [1, 2, 3]
         
         adzerkSDK.requestPlacements([placement], options: options) { response in
             switch response {
@@ -111,6 +136,8 @@ class VikingsTableViewController : UITableViewController {
             }
         } else {
             // decision doesn't have any contents
+            cell.nameLabel.text = ""
+            cell.quoteLabel.text = ""
         }
     }
 }

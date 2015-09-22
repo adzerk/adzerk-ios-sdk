@@ -8,6 +8,10 @@
 
 import Foundation
 
+/** 
+    Contains the information known about a user in UserDB. Returned
+    by calling `readUser` on `AdzerSDK`.
+*/
 @objc public class ADZUser : NSObject {
     public let userKey: String!
     public let blockedItems: [String: AnyObject]!

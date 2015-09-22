@@ -14,6 +14,7 @@ struct Viking {
     let imageUrl: NSURL
 }
 
+// Taken from the Android sample app.
 class VikingGenerator {
     static func generateVikings(count: Int) -> [Viking] {
         var vikings: [Viking] = []

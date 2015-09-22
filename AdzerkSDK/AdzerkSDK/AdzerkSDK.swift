@@ -10,7 +10,7 @@ import Foundation
 
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
-let AdzerkUDBBaseUrl = "http://engine.adzerk.net/udb"
+let AdzerkUDBBaseUrl = "https://engine.adzerk.net/udb"
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
@@ -128,6 +128,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
                     let http = response as! NSHTTPURLResponse
                     if http.statusCode == 200 {
                         if let resp = self.buildPlacementResponse(data!) {
+                            print("Response: \(NSString(data: data!, encoding: NSUTF8StringEncoding))")
                             completion(ADZResponse.Success(resp))
                         } else {
                             let bodyString = (NSString(data: data!, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
@@ -405,6 +406,22 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         let action = "rt/\(brandId)/\(segmentId)"
         pixelRequest(networkId, action: action, params: params, callback: callback)
     }
+    
+    /**
+        Sends a request to record an impression. This is a fire-and-forget request, the response is ignored.
+        @param url a valid URL retrieved from an ADZPlacementDecision
+    */
+    public func recordImpression(url: NSURL) {
+        let request = NSMutableURLRequest(URL: url)
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if let error = error {
+                print("Error recording impression: \(error)")
+            } else {
+                // impression recorded
+            }
+        }
+        task.resume()
+    }
 
     // MARK - private
     
@@ -489,8 +506,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         
         var body: [String: AnyObject] = [
             "placements": placements.map { $0.serialize() },
-            "time": Int(NSDate().timeIntervalSince1970),
-            "isMobile": true
+            "time": Int(NSDate().timeIntervalSince1970)
         ]
         
         if let userKey = options?.userKey {
@@ -551,4 +567,3 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
     }
 }
-
