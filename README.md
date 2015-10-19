@@ -58,7 +58,7 @@ you can configure it once in the `AppDelegate`:
 
 func applicationDidFinishLaunching(...) {
   AdzerkSDK.defaultNetworkId = YOUR_NETWORK_ID
-  AdzerkSDK.deffaultSiteId = YOUR_SITE_ID
+  AdzerkSDK.defaultSiteId = YOUR_SITE_ID
 }
 ```
 
