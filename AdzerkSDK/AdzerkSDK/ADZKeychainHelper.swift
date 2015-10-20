@@ -10,7 +10,7 @@ import Foundation
 
 /** Provides easy get/set access for simple values in the iOS Keychain. */
 class ADZKeychainHelper {
-    
+
     /** 
         Saves data to the keychain.
         @param key an identifier under which the data will be stored
@@ -23,16 +23,16 @@ class ADZKeychainHelper {
             (kSecAttrAccount as String) : key,
             (kSecValueData as String) : data
         ] as CFDictionaryRef
-        
+
         // remove item if it exists already
         SecItemDelete(query)
-        
+
         // save item
         let status: OSStatus = SecItemAdd(query, nil)
-        
+
         return status == noErr
     }
-    
+
     /**
         Retrieves a values from the keychain.
         @param key the identifier the data was originally saved with
@@ -45,7 +45,7 @@ class ADZKeychainHelper {
             (kSecReturnData as String) : kCFBooleanTrue,
             (kSecMatchLimit as String) : kSecMatchLimitOne
         ] as CFDictionaryRef
-        
+
         var keychainData: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query, &keychainData)
         if status == noErr {
@@ -54,13 +54,13 @@ class ADZKeychainHelper {
             return nil
         }
     }
-    
+
     class func delete(key: String) {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),
-            (kSecAttrAccount as String) : key,
-            (kSecMatchLimit as String) : kSecMatchLimitOne
+            (kSecAttrAccount as String) : key
         ]
         SecItemDelete(query)
     }
 }
+
