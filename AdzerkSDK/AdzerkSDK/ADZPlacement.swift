@@ -77,6 +77,10 @@ import Foundation
             json["adId"] = adId
         }
 
+        if let properties = properties {
+            json["properties"] = properties
+        }
+        
         return json
     }
 }
