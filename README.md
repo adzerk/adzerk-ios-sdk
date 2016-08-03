@@ -25,7 +25,7 @@ If you want to be on the bleeding edge, you can specify the `master` branch:
 github "adzerk/adzerk-ios-sdk" "master"
 ```
 
-Then run `carthage update` to fetch and build the framework. You can find the framework in the `Carthage` folder, and you can add 
+Then run `carthage update` to fetch and build the framework. You can find the framework in the `Carthage` folder, and you can add
 this to your project manually.
 
 ### CocoaPods
@@ -41,7 +41,7 @@ Again, if you want to be on the latest master branch:
 ```ruby
 use_frameworks!
 
-pod 'adzerk-ios-sdk', github: 'adzerk/adzer-ios-sdk', branch: 'master'
+pod 'adzerk-ios-sdk', github: 'adzerk/adzerk-ios-sdk', branch: 'master'
 ```
 
 Then run `pod install` to download the code and integrate it into your project. You'll then open the pod-created workspace instead of your project to build.
@@ -70,7 +70,7 @@ To request a placement, you can build an instance of `ADZPlacement` and specify 
 
 ```swift
 // Assumes that the default network ID and site ID are already set on AdzerkSDK
-var placement = ADZPlacement(divName: "div1", adTypes: [1])! 
+var placement = ADZPlacement(divName: "div1", adTypes: [1])!
 placement.zoneIds = [3, 4, 5]
 
 sdk.requestPlacements([placement]) { response in
@@ -80,7 +80,7 @@ sdk.requestPlacements([placement]) { response in
 
 ### Handling the Response
 
-A placement request will accept a completion block that is handed an instance of `ADZResponse`. This is 
+A placement request will accept a completion block that is handed an instance of `ADZResponse`. This is
 a Swift enum that will indicate success or failure.
 
 ```swift
@@ -105,7 +105,7 @@ and Objective-C project, you can request placements like this:
 ```objc
 ADZPlacement *placement = [[ADZPlacement alloc] initWithDivName:@"div1" adTypes:@[@5]];
 placement.zoneIds = @[@1];
-    
+
 AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
 [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
     NSLog(@"Response: %@", response);
