@@ -57,13 +57,9 @@ class AdzerkSDKTests: XCTestCase {
             ]
         ]
 
-        let json = placement!.serialize()
-
         XCTAssertTrue(placement != nil, "placement was nil")
-//        if json != nil {
-//            XCTFail("json was nil")
-//        }
-        //XCTAssertTrue(json != nil, "json was nil")
+
+        let json = placement!.serialize()
 
         if let divName = json["divName"] as? String {
           XCTAssertEqual(divName, "aoeu", "expected divName to be \"aoeu\", got \"\(divName)\"")
@@ -77,7 +73,7 @@ class AdzerkSDKTests: XCTestCase {
         } else {
           XCTFail("Unable to read json.networkId as an int.")
         }
-        
+
         // set by default value on setup
         if let pSiteId = json["siteId"] as? Int {
           XCTAssertEqual(pSiteId, siteId, "expected siteId to be \(siteId), got \(pSiteId)")
@@ -88,7 +84,7 @@ class AdzerkSDKTests: XCTestCase {
         if let adTypes = json["adTypes"] as? [Int] {
           let adType = adTypes[0]
           XCTAssertEqual(adType, 5, "expected adType to be 5, got \(adType)")
-          
+
         } else {
           XCTFail("Unable to read json.adTypes as an array.")
         }
@@ -111,18 +107,18 @@ class AdzerkSDKTests: XCTestCase {
             let steve = pets[0]
             let species = steve["species"]!
             XCTAssertEqual(species, "cat", "expected Steve's species to be \"cat\", got \"\(species)\"")
-            
+
             let age = steve["age"]!
             XCTAssertEqual(age, 12, "expected Steve's age to be 12, got \(age)")
 
-            
+
             let barbara = pets[1]
             let bspecies = barbara["species"]!
             XCTAssertEqual(bspecies, "dog", "expected barbara's species to be \"dog\", got \"\(bspecies)\"")
-            
+
             let bage = barbara["age"]!
             XCTAssertEqual(bage, 7, "expected barbara's age to be 7, got \(bage)")
-          
+
         } else {
           XCTFail("Unable to read json.properties as an object.")
         }
