@@ -34,7 +34,7 @@ import Foundation
     */
     public func saveUserKey(key: String) {
         let data = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-        ADZKeychainHelper.save(key, data: data)
+        ADZKeychainHelper.save(adzUserKey, data: data)
     }
     
     /** 
