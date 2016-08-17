@@ -9,14 +9,14 @@
 Pod::Spec.new do |s|
   s.name             = "adzerk-ios-sdk"
   s.module_name      = "AdzerkSDK"
-  s.version          = "0.3"
+  s.version          = "0.4"
   s.summary          = "iOS SDK for the Adzerk API"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+#   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description      = <<-DESC
                           iOS SDK for the Adzerk API. For more information see the Adzerk API docs at http://adzerk.com/api.
                        DESC
