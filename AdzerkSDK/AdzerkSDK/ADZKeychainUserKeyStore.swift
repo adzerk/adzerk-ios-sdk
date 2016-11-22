@@ -11,7 +11,7 @@ import Foundation
 /**
     Provides secure storage for the User key via the iOS Keychain. This is the default implementation of `ADZUserKeyStore`.
 */
-@objc public class ADZKeychainUserKeyStore : NSObject, ADZUserKeyStore {
+@objc open class ADZKeychainUserKeyStore : NSObject, ADZUserKeyStore {
     let adzUserKey = "ADZUserKey"
     
     /** 
@@ -19,9 +19,9 @@ import Foundation
     
         - returns: the user key, or nil if none exists
     */
-    public func currentUserKey() -> String? {
+    open func currentUserKey() -> String? {
         if let data = ADZKeychainHelper.fetch(adzUserKey) {
-            return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+            return String(data: data as Data, encoding: String.Encoding.utf8)
         }
         
         return nil
@@ -32,15 +32,15 @@ import Foundation
     
         - parameter key: the user key to save
     */
-    public func saveUserKey(key: String) {
-        let data = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-        ADZKeychainHelper.save(adzUserKey, data: data)
+    open func saveUserKey(_ key: String) {
+        let data = key.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        let _ = ADZKeychainHelper.save(adzUserKey, data: data)
     }
     
     /** 
         Removes the userKey from the keychain.
     */
-    public func removeUserKey() {
+    open func removeUserKey() {
         ADZKeychainHelper.delete(adzUserKey)
     }
     

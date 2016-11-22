@@ -11,17 +11,21 @@ import Foundation
 
 extension Array {
     // borrowed from haskell, group array into subgroups of n elements
-    func splitEvery(n: Int) -> [[Element]] {
+    func splitEvery(_ n: Int) -> [[Element]] {
         var result = [[Element]]()
         
         var group = [Element]()
         var counter = 0
         for item in self {
             group.append(item)
-            if counter++ > n {
+            
+            if counter > n {
                 counter = 0
                 result.append(group)
                 group = []
+            }
+            else {
+                counter += 1
             }
         }
 
@@ -30,9 +34,9 @@ extension Array {
 }
 
 // Interleave B into A every N elements
-func interleave<A, B>(a: [A], _ b: [B], every n: Int) -> [Any] {
+func interleave<A, B>(_ a: [A], _ b: [B], every n: Int) -> [Any] {
     var result = [Any]()
-    var bSequence = b.generate()
+    var bSequence = b.makeIterator()
     let chunkedAs = a.splitEvery(n)
     for group in chunkedAs {
         for item in group {

@@ -11,12 +11,12 @@ import Foundation
 struct Viking {
     let name: String
     let quote: String
-    let imageUrl: NSURL
+    let imageUrl: URL
 }
 
 // Taken from the Android sample app.
 class VikingGenerator {
-    static func generateVikings(count: Int) -> [Viking] {
+    static func generateVikings(_ count: Int) -> [Viking] {
         var vikings: [Viking] = []
         
         for _ in 0..<count {
@@ -85,13 +85,13 @@ class VikingGenerator {
         return quotes[randomInt(quotes.count)]
     }
     
-    static func randomHeadshot() -> NSURL {
+    static func randomHeadshot() -> URL {
         let max = 88;
         let urlString = "http://api.randomuser.me/portraits/med/women/\(randomInt(max)).jpg"
-        return NSURL(string: urlString)!
+        return URL(string: urlString)!
     }
     
-    static func randomInt(max: Int) -> Int {
+    static func randomInt(_ max: Int) -> Int {
         return Int(arc4random_uniform(UInt32(max)))
     }
 }

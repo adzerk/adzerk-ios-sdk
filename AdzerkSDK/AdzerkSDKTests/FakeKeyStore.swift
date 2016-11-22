@@ -11,7 +11,7 @@ import Foundation
 @objc class FakeKeyStore : NSObject, ADZUserKeyStore {
     var key: String?
     
-    func saveUserKey(key: String) {
+    func saveUserKey(_ key: String) {
         self.key = key
     }
     

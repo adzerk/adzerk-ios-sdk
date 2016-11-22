@@ -12,20 +12,20 @@ import Foundation
     Contains the information known about a user in UserDB. Returned
     by calling `readUser` on `AdzerSDK`.
 */
-@objc public class ADZUser : NSObject {
-    public let userKey: String!
-    public let blockedItems: [String: AnyObject]!
-    public let interests: [String]!
-    public let customProperties: [String: AnyObject]!
-    public let optOut: Bool
+@objc open class ADZUser : NSObject {
+    open let userKey: String!
+    open let blockedItems: [String: AnyObject]!
+    open let interests: [String]!
+    open let customProperties: [String: AnyObject]!
+    open let optOut: Bool
     
     init?(dictionary: [String: AnyObject]) {
         guard let
             key = dictionary["key"] as? String,
-            blockedItems = dictionary["blockedItems"] as? [String: AnyObject],
-            interests = dictionary["interests"] as? [String],
-            customProperties = dictionary["custom"] as? [String: AnyObject],
-            optOut = dictionary["optOut"] as? NSNumber
+            let blockedItems = dictionary["blockedItems"] as? [String: AnyObject],
+            let interests = dictionary["interests"] as? [String],
+            let customProperties = dictionary["custom"] as? [String: AnyObject],
+            let optOut = dictionary["optOut"] as? NSNumber
         
             else {
                 self.userKey = ""

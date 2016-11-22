@@ -9,27 +9,27 @@
 import Foundation
 
 /** Specifies a placement's details to request. */
-@objc public class ADZPlacement : NSObject {
+@objc open class ADZPlacement : NSObject {
     
     /** The name of the div */
-    public let divName: String
+    open let divName: String
     
     /** The network ID. If none is specified it retrieves the value from `AdzerkSDK.defaultNetworkId` */
-    public let networkId: Int
+    open let networkId: Int
     
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
-    public let siteId: Int
+    open let siteId: Int
     
     /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
-    public let adTypes: [Int]
+    open let adTypes: [Int]
     
-    public var zoneIds: [Int]?
-    public var eventIds: [Int]?
+    open var zoneIds: [Int]?
+    open var eventIds: [Int]?
     
-    public var properties: [String: AnyObject]?
-    public var campaignId: Int?
-    public var flightId: Int?
-    public var adId: Int?
+    open var properties: [String: Any]?
+    open var campaignId: Int?
+    open var flightId: Int?
+    open var adId: Int?
     
     public init(divName: String, networkId: Int, siteId: Int, adTypes: [Int]) {
         self.divName = divName
@@ -40,7 +40,7 @@ import Foundation
     }
     
     public convenience init?(divName: String, adTypes: [Int]) {
-        if let networkId = AdzerkSDK.defaultNetworkId, siteId = AdzerkSDK.defaultSiteId {
+        if let networkId = AdzerkSDK.defaultNetworkId, let siteId = AdzerkSDK.defaultSiteId {
             self.init(divName: divName, networkId: networkId, siteId: siteId, adTypes: adTypes)
         } else {
             print("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
@@ -49,8 +49,8 @@ import Foundation
         }
     }
     
-    func serialize() -> [String : AnyObject] {
-        var json: [String: AnyObject] = [
+    func serialize() -> [String : Any] {
+        var json: [String: Any] = [
                 "divName"  : divName,
                 "networkId": networkId,
                 "siteId"   : siteId,
