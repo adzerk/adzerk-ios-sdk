@@ -19,14 +19,14 @@ class RemoteImageView: UIImageView {
         image = nil
         task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if error == nil {
-                if self.task?.state == URLSessionTask.State.canceling {
+                if self.task?.state == .canceling {
                     return
                 }
                 let http = response as! HTTPURLResponse
                 if http.statusCode == 200 {
                     let image = UIImage(data: data!)
                     DispatchQueue.main.async {
-                        if self.task?.state == URLSessionTask.State.canceling {
+                        if self.task?.state == .canceling {
                             return
                         }
                         
