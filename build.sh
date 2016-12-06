@@ -2,16 +2,22 @@
 
 set -e
 
+output_command=xcpretty
+
+# Make sure xcpretty is installed
+command -v xcpretty >/dev/null 2>&1 || {
+  echo "Please install xcpretty to get prettier test/build output."
+  echo
+  echo "$ gem install xcpretty"
+  echo
+  output_command=cat
+}
+
 WORKSPACE=AdzerkSDK.xcworkspace
 SCHEME=AdzerkSDK
 
 echo "[Building]"
-xctool -workspace $WORKSPACE -scheme $SCHEME -sdk iphoneos
+xcodebuild -workspace $WORKSPACE -scheme $SCHEME -sdk iphonesimulator
 
 echo "[Testing]"
-# xctool currently shows an error when running tests, possibly due to this being a framework
-# we'll use xcodebuild instead and deal with less-than-readable output.
-# Xcode 7 support for testing w/ xctool is coming: https://github.com/facebook/xctool/issues/528
-xcodebuild -workspace $WORKSPACE -scheme $SCHEME -sdk iphonesimulator test
-
-
+xcodebuild -workspace $WORKSPACE -scheme $SCHEME -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7,OS=10.1" test | $output_command
