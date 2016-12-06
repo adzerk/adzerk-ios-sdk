@@ -9,24 +9,24 @@
 import UIKit
 
 class RemoteImageView: UIImageView {
-    var task: NSURLSessionDataTask? = nil
+    var task: URLSessionDataTask? = nil
     
-    func loadImageWithURL(url: NSURL) {
+    func loadImageWithURL(_ url: URL) {
         if let task = task {
             task.cancel()
         }
         
         image = nil
-        task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+        task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if error == nil {
-                if self.task?.state == NSURLSessionTaskState.Canceling {
+                if self.task?.state == URLSessionTask.State.canceling {
                     return
                 }
-                let http = response as! NSHTTPURLResponse
+                let http = response as! HTTPURLResponse
                 if http.statusCode == 200 {
                     let image = UIImage(data: data!)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if self.task?.state == NSURLSessionTaskState.Canceling {
+                    DispatchQueue.main.async {
+                        if self.task?.state == URLSessionTask.State.canceling {
                             return
                         }
                         
@@ -38,7 +38,7 @@ class RemoteImageView: UIImageView {
             } else {
                 // ignore
             }
-        }
+        }) 
         task?.resume()
     }
 }

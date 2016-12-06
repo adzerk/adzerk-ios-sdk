@@ -17,12 +17,12 @@ class ADZKeychainHelper {
         @param data the data to save
         @returns true if the value was set successfully
     */
-    class func save(key: String, data: NSData) -> Bool {
+    class func save(_ key: String, data: Data) -> Bool {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),
             (kSecAttrAccount as String) : key,
             (kSecValueData as String) : data
-        ] as CFDictionaryRef
+        ] as CFDictionary
 
         // remove item if it exists already
         SecItemDelete(query)
@@ -38,29 +38,29 @@ class ADZKeychainHelper {
         @param key the identifier the data was originally saved with
         @returns the saved data, or nil if nothing was saved for this key
     */
-    class func fetch(key: String) -> NSData? {
+    class func fetch(_ key: String) -> Data? {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),
             (kSecAttrAccount as String) : key,
             (kSecReturnData as String) : kCFBooleanTrue,
             (kSecMatchLimit as String) : kSecMatchLimitOne
-        ] as CFDictionaryRef
+        ] as CFDictionary
 
         var keychainData: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query, &keychainData)
         if status == noErr {
-            return keychainData as? NSData
+            return keychainData as? Data
         } else {
             return nil
         }
     }
 
-    class func delete(key: String) {
+    class func delete(_ key: String) {
         let query = [
             (kSecClass as String) : (kSecClassGenericPassword as String),
             (kSecAttrAccount as String) : key
         ]
-        SecItemDelete(query)
+        SecItemDelete(query as CFDictionary)
     }
 }
 

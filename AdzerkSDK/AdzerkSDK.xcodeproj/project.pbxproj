@@ -32,8 +32,8 @@
 		B5DB643F1B7E434F00A243AC /* ADZFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB643C1B7E3E5F00A243AC /* ADZFunctions.swift */; };
 		B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
 		B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB64401B7E457400A243AC /* ADZPlacementDecision.swift */; };
-		B5F8548F1BA32DEA000F1F02 /* ADZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8548E1BA32DEA000F1F02 /* ADZUser.swift */; settings = {ASSET_TAGS = (); }; };
-		B5F854901BA3328F000F1F02 /* ADZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8548E1BA32DEA000F1F02 /* ADZUser.swift */; settings = {ASSET_TAGS = (); }; };
+		B5F8548F1BA32DEA000F1F02 /* ADZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8548E1BA32DEA000F1F02 /* ADZUser.swift */; };
+		B5F854901BA3328F000F1F02 /* ADZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8548E1BA32DEA000F1F02 /* ADZUser.swift */; };
 		B5FBCAC91B961FEE007F2E64 /* ADZResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502CB041B95E76E0091277C /* ADZResponse.swift */; };
 		B5FBCACA1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
 		B5FBCACB1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */; };
@@ -222,9 +222,12 @@
 				TargetAttributes = {
 					B5C89DC51B78EBB3003CA162 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
 					};
 					B5C89DD01B78EBB3003CA162 = {
 						CreatedOnToolsVersion = 6.4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -360,6 +363,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -400,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -411,7 +416,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -422,6 +429,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -429,7 +437,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -439,12 +449,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adzerk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		B5C89DE01B78EBB3003CA162 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -453,16 +466,20 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adzerk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		B5C89DE11B78EBB3003CA162 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AdzerkSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adzerk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};

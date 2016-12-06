@@ -21,7 +21,7 @@ class VikingsTableViewController : UITableViewController {
     // record of impressions sent
     var impressions: [String: Bool] = [:]
     
-    private var _rowData: [Any]?
+    fileprivate var _rowData: [Any]?
     var rowData: [Any]! {
         if _rowData == nil {
             _rowData = interleave(vikings, decisions, every: 10)
@@ -43,18 +43,18 @@ class VikingsTableViewController : UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowData.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let obj = rowData[indexPath.row]
         if let viking = obj as? Viking {
-            let cell = tableView.dequeueReusableCellWithIdentifier("VikingCell") as! VikingCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VikingCell") as! VikingCell
             configureVikingCell(cell, viking: viking)
             return cell
         } else if let decision = obj as? ADZPlacementDecision {
-            let cell = tableView.dequeueReusableCellWithIdentifier("DecisionCell") as! DecisionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DecisionCell") as! DecisionCell
             configureDecisionCell(cell, decision: decision)
             return cell
         } else {
@@ -62,9 +62,9 @@ class VikingsTableViewController : UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let _ = cell as? DecisionCell {
-            if let decision = rowData[indexPath.row] as? ADZPlacementDecision, impressionUrl = decision.impressionUrl {
+            if let decision = rowData[indexPath.row] as? ADZPlacementDecision, let impressionUrl = decision.impressionUrl {
                 if impressions[impressionUrl] == nil {
                     impressions[impressionUrl] = true
                     recordImpression(impressionUrl)
@@ -73,8 +73,8 @@ class VikingsTableViewController : UITableViewController {
         }
     }
     
-    private func recordImpression(urlString: String) {
-        if let url = NSURL(string: urlString) {
+    fileprivate func recordImpression(_ urlString: String) {
+        if let url = URL(string: urlString) {
             print("Recording impression for \(url)")
             adzerkSDK.recordImpression(url)
         } else {
@@ -82,7 +82,7 @@ class VikingsTableViewController : UITableViewController {
         }
     }
     
-    private func loadPlacements(completion: () -> ()) {
+    fileprivate func loadPlacements(_ completion: @escaping () -> ()) {
         
         let options = ADZPlacementRequestOptions()
         options.keywords = ["karate", "kittens", "knives"]
@@ -93,45 +93,45 @@ class VikingsTableViewController : UITableViewController {
         
         adzerkSDK.requestPlacements([placement], options: options) { response in
             switch response {
-            case .Success(let placementResponse):
+            case .success(let placementResponse):
                 self.decisions = Array(placementResponse.decisions.values)
                 print("Decisions: \(self.decisions)")
                 break
                 
-            case .BadRequest(let status, let body):
+            case .badRequest(let status, let body):
                 print("Bad request: HTTP \(status) -> \(body)")
                 
-            case .BadResponse(let body):
+            case .badResponse(let body):
                 print("Bad response: \(body)")
                 
-            case .Error(let error):
+            case .error(let error):
                 print("error fetching placements: \(error)")
             }
             
-            dispatch_async(dispatch_get_main_queue(), completion)
+            DispatchQueue.main.async(execute: completion)
         }
     }
     
-    private func loadVikings() {
+    fileprivate func loadVikings() {
         vikings = VikingGenerator.generateVikings(40)
     }
     
-    private func configureVikingCell(cell: VikingCell, viking: Viking) {
+    fileprivate func configureVikingCell(_ cell: VikingCell, viking: Viking) {
         cell.nameLabel.text = viking.name
         cell.quoteLabel.text = viking.quote
         cell.vikingImageView.loadImageWithURL(viking.imageUrl)
     }
     
-    private func configureDecisionCell(cell: DecisionCell, decision: ADZPlacementDecision) {
-        if let contents = decision.contents?.first, data = contents.data {
+    fileprivate func configureDecisionCell(_ cell: DecisionCell, decision: ADZPlacementDecision) {
+        if let contents = decision.contents?.first, let data = contents.data {
             if let title = data["title"] as? String {
                 cell.nameLabel.text = title
             }
-            if let customData = data["customData"] as? [String: String], quote = customData["quote"] {
+            if let customData = data["customData"] as? [String: String], let quote = customData["quote"] {
                 cell.quoteLabel.text = quote
             }
             if let imageUrl = data["imageUrl"] as? String {
-                let url = NSURL(string: imageUrl)!
+                let url = URL(string: imageUrl)!
                 cell.vikingImageView.loadImageWithURL(url)
             }
         } else {

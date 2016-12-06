@@ -11,7 +11,7 @@ import Foundation
 /** 
     Returns tracking URLs for any requested custom events.
 */
-public class ADZPlacementEvent {
+open class ADZPlacementEvent {
     let id: Int
     let url: String
     

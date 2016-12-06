@@ -13,38 +13,38 @@ let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
 let AdzerkUDBBaseUrl = "https://engine.adzerk.net/udb"
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
-public typealias ADZResponseFailureCallback = (Int?, String?, NSError?) -> ()
-public typealias ADZResponseCallback = (Bool, NSError?) -> ()
-public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
+public typealias ADZResponseFailureCallback = (Int?, String?, Error?) -> ()
+public typealias ADZResponseCallback = (Bool, Error?) -> ()
+public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 
 /** The primary class used to make requests against the API. */
-@objc public class AdzerkSDK : NSObject {
+@objc open class AdzerkSDK : NSObject {
     
-    private static var _defaultNetworkId: Int?
+    fileprivate static var _defaultNetworkId: Int?
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
         each placement request does not need to provide it.  Any value in the placement request will override this value.
         Useful for the common case where the network ID is contstant for your application. */
-    public class var defaultNetworkId: Int? {
+    open class var defaultNetworkId: Int? {
         get { return _defaultNetworkId }
         set { _defaultNetworkId = newValue }
     }
     
-    private static var _defaultSiteId: Int?
+    fileprivate static var _defaultSiteId: Int?
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is contstant for your application. */
-    public class var defaultSiteId: Int? {
+    open class var defaultSiteId: Int? {
         get { return _defaultSiteId }
         set { _defaultSiteId = newValue }
     }
     
     /** Setter for defaultNetworkId. Provided for Objective-C compatibility. */
-    public class func setDefaultNetworkId(networkId: Int) {
+    open class func setDefaultNetworkId(_ networkId: Int) {
         defaultNetworkId = networkId
     }
     
     /** Setter for defaultSiteId. Provided for Objective-C compatibility. */
-    public class func setDefaultSiteId(siteId: Int) {
+    open class func setDefaultSiteId(_ siteId: Int) {
         defaultSiteId = siteId
     }
     
@@ -67,19 +67,19 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     /** Requests placements with explicit success and failure callbacks. Provided for Objective-C compatibility.
         See `requestPlacements:options:completion` for complete documentation.
     */
-    public func requestPlacements(placements: [ADZPlacement], options: ADZPlacementRequestOptions? = nil,
-        success: (ADZPlacementResponse) -> (),
-        failure: (NSNumber?, NSString?, NSError?) -> ()) {
+    open func requestPlacements(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions? = nil,
+        success: @escaping (ADZPlacementResponse) -> (),
+        failure: @escaping (Int?, String?, Error?) -> ()) {
         
         requestPlacements(placements, options: options) { response in
             switch response {
-            case .Success(let placementResponse):
+            case .success(let placementResponse):
                 success(placementResponse)
-            case .BadRequest(let statusCode, let body):
+            case .badRequest(let statusCode, let body):
                 failure(statusCode, body, nil)
-            case .BadResponse(let body):
+            case .badResponse(let body):
                 failure(nil, body, nil)
-            case .Error(let error):
+            case .error(let error):
                 failure(nil, nil, error)
             }
         }
@@ -90,7 +90,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param adTypes an array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types .
         @completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacementInDiv(div: String, adTypes: [Int], completion: (ADZResponse) -> ()) {
+    open func requestPlacementInDiv(_ div: String, adTypes: [Int], completion: @escaping (ADZResponse) -> ()) {
         if let placement = ADZPlacement(divName: div, adTypes: adTypes) {
             requestPlacement(placement, completion: completion)
         }
@@ -100,7 +100,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param placement the placement details to request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacement(placement: ADZPlacement, completion: (ADZResponse) -> ()) {
+    open func requestPlacement(_ placement: ADZPlacement, completion: @escaping (ADZResponse) -> ()) {
        requestPlacements([placement], completion: completion)
     }
 
@@ -108,7 +108,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param placements an array of placement details to request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacements(placements: [ADZPlacement], completion: (ADZResponse) -> ()) {
+    open func requestPlacements(_ placements: [ADZPlacement], completion: @escaping (ADZResponse) -> ()) {
         requestPlacements(placements, options: nil, completion: completion)
     }
  
@@ -117,26 +117,26 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param options an optional instance of `ADZPlacementRequestOptions` that provide top-level attributes to the request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    public func requestPlacements(placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: (ADZResponse) -> ()) {
+    open func requestPlacements(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: @escaping (ADZResponse) -> ()) {
         if let request = buildPlacementRequest(placements, options: options) {
-            let task = session.dataTaskWithRequest(request) {
+            let task = session.dataTask(with: request) {
                 data, response, error in
                 
                 if let error = error {
-                    completion(.Error(error))
+                    completion(.error(error))
                 } else {
-                    let http = response as! NSHTTPURLResponse
+                    let http = response as! HTTPURLResponse
                     if http.statusCode == 200 {
                         if let resp = self.buildPlacementResponse(data!) {
-                            print("Response: \(NSString(data: data!, encoding: NSUTF8StringEncoding))")
-                            completion(ADZResponse.Success(resp))
+                            print("Response: \(String(data: data!, encoding: String.Encoding.utf8)))")
+                            completion(ADZResponse.success(resp))
                         } else {
-                            let bodyString = (NSString(data: data!, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
-                            completion(ADZResponse.BadResponse(bodyString))
+                            let bodyString = (String(data: data!, encoding: String.Encoding.utf8)) ?? "<no body>"
+                            completion(ADZResponse.badResponse(bodyString))
                         }
                     } else {
-                        let bodyString = (NSString(data: data!, encoding: NSUTF8StringEncoding) as? String) ?? "<no body>"
-                        completion(.BadRequest(http.statusCode, bodyString))
+                        let bodyString = (String(data: data!, encoding: String.Encoding.utf8)) ?? "<no body>"
+                        completion(.badRequest(http.statusCode, bodyString))
                     }
                 }
                 
@@ -152,7 +152,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
         @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(userKey: String?, properties: [String : AnyObject], callback: ADZResponseCallback) {
+    open func postUserProperties(_ userKey: String?, properties: [String : Any], callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -176,32 +176,32 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func postUserProperties(networkId: Int, userKey: String, properties: [String : AnyObject], callback: ADZResponseCallback) {
-        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
+    open func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
+        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
             return
         }
         
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = [
             "Content-Type" : "application/json",
             "Accept" : "application/json"
         ]
         
-        request.HTTPMethod = "POST"
+        request.httpMethod = "POST"
         
         do {
-            let data = try NSJSONSerialization.dataWithJSONObject(properties, options: NSJSONWritingOptions.PrettyPrinted)
-            request.HTTPBody = data
-            let task = session.dataTaskWithRequest(request) {
+            let data = try JSONSerialization.data(withJSONObject: properties, options: JSONSerialization.WritingOptions.prettyPrinted)
+            request.httpBody = data
+            let task = session.dataTask(with: request) {
                 (data, response, error) in
                 if error == nil {
-                    let http = response as! NSHTTPURLResponse
+                    let http = response as! HTTPURLResponse
                     if http.statusCode == 200 {
                         callback(true, nil)
                     } else {
-                        print("Received HTTP \(http.statusCode) from \(request.URL)")
+                        print("Received HTTP \(http.statusCode) from \(request.url)")
                         callback(false, nil)
                     }
                 } else {
@@ -224,7 +224,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param userKey a string identifying the user
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func readUser(userKey: String?, callback: ADZUserDBUserResponseCallback) {
+    open func readUser(_ userKey: String?, callback: @escaping ADZUserDBUserResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(nil, nil)
@@ -245,27 +245,27 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param userKey a string identifying the user
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    public func readUser(networkId: Int, userKey: String, callback: ADZUserDBUserResponseCallback) {
-        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
+    open func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
+        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
             print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(nil, nil)
             return
         }
         
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
 
         // Fails with HTTP 500 if the default application/json is specified.
         request.allHTTPHeaderFields = [
             "Content-Type" : ""
         ]
         
-        let task = session.dataTaskWithRequest(request) {
+        let task = session.dataTask(with: request) {
             (data, response, error) in
             if error == nil {
-                let http = response as! NSHTTPURLResponse
+                let http = response as! HTTPURLResponse
                 if http.statusCode == 200 {
                     do {
-                        if let userDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: [.AllowFragments]) as? [String: AnyObject] {
+                        if let userDictionary = try JSONSerialization.jsonObject(with: data!, options: [.allowFragments]) as? [String: AnyObject] {
                             print(userDictionary)
                             if let user = ADZUser(dictionary: userDictionary) {
                                 callback(user, nil)
@@ -281,13 +281,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
                         print("WARNING: error parsing JSON: \(exc.name) -> \(exc.reason)")
                         callback(nil, nil)
                     } catch let e as NSError {
-                        let body = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                        let body = String(data: data!, encoding: String.Encoding.utf8)
                         print("response: \(body)")
                         callback(nil, e)
                     }
                 } else {
-                    print("Received HTTP \(http.statusCode) from \(request.URL)")
-                    let body = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("Received HTTP \(http.statusCode) from \(request.url)")
+                    let body = String(data: data!, encoding: String.Encoding.utf8)
                     print("response: \(body)")
                     callback(nil, nil)
                 }
@@ -304,7 +304,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param userKey the current user key. If nil, the saved userKey from the configured userKeyStore is used.
     @param callback a simple success/error callback to use when the response comes back
     */
-    public func addUserInterest(interest: String, userKey: String?, callback: ADZResponseCallback) {
+    open func addUserInterest(_ interest: String, userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -328,7 +328,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param callback a simple success/error callback to use when the response comes back
     */
 
-    public func addUserInterest(interest: String, networkId: Int, userKey: String, callback: ADZResponseCallback) {
+    open func addUserInterest(_ interest: String, networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey,
             "interest": interest
@@ -341,7 +341,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param userKey the user to opt out. If nil, the saved userKey from the configured userKeyStore is used.
     @param callback a simple success/error callback to use when the response comes back
     */
-    public func optOut(userKey: String?, callback: ADZResponseCallback) {
+    open func optOut(_ userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -363,7 +363,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param userKey the user to opt out
     @param callback a simple success/error callback to use when the response comes back
     */
-    public func optOut(networkId: Int, userKey: String, callback: ADZResponseCallback) {
+    open func optOut(_ networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey
         ]
@@ -376,7 +376,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param segmentId the segment the user is targeted to
     @param callback a simple success/error callback to use when the response comes back
     */
-    public func retargetUser(userKey: String?, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
+    open func retargetUser(_ userKey: String?, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             print("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -399,7 +399,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
     @param segmentId the segment the user is targeted to
     @param callback a simple success/error callback to use when the response comes back
     */
-    public func retargetUser(networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: ADZResponseCallback) {
+    open func retargetUser(_ networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey
         ]
@@ -411,9 +411,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         Sends a request to record an impression. This is a fire-and-forget request, the response is ignored.
         @param url a valid URL retrieved from an ADZPlacementDecision
     */
-    public func recordImpression(url: NSURL) {
-        let request = NSMutableURLRequest(URL: url)
-        let task = session.dataTaskWithRequest(request) { data, response, error in
+    open func recordImpression(_ url: URL) {
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error recording impression: \(error)")
             } else {
@@ -432,26 +432,26 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param params the params for the action. Most of these require `userKey` at a minimum
         @param callback a simple success/error callback to use when the response comes back
     */
-    func pixelRequest(networkId: Int, action: String, params: [String: String]?, callback: ADZResponseCallback) {
+    func pixelRequest(_ networkId: Int, action: String, params: [String: String]?, callback: @escaping ADZResponseCallback) {
         let query = queryStringWithParams(params)
-        guard let url = NSURL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/\(action)/i.gif\(query)") else {
+        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/\(action)/i.gif\(query)") else {
             print("WARNING: Could not construct proper URL for params: \(params)")
             callback(false, nil)
             return
         }
         
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = [ "Content-Type": "" ] // image request, not json
-        let task = session.dataTaskWithRequest(request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 callback(false, error)
             } else {
-                let http = response as! NSHTTPURLResponse
+                let http = response as! HTTPURLResponse
                 if http.statusCode == 200 {
                     callback(true, nil)
                 } else {
-                    print("Received HTTP \(http.statusCode) from \(request.URL!)")
-                    if let data = data, body = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    print("Received HTTP \(http.statusCode) from \(request.url!)")
+                    if let data = data, let body = String(data: data, encoding: String.Encoding.utf8) {
                         print("Response: \(body)")
                     }
                     callback(false, nil)
@@ -467,46 +467,46 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         @param params a string to string dictionary of parameters to convert to a URL query string
         @returns String
     */
-    func queryStringWithParams(params: [String: String]?) -> String {
+    func queryStringWithParams(_ params: [String: String]?) -> String {
         guard let params = params else {
             return ""
         }
         
         return "?" + params.map { (k, v) -> String in
-            let queryChars = NSCharacterSet.URLQueryAllowedCharacterSet()
-            let encodedKey = k.stringByAddingPercentEncodingWithAllowedCharacters(queryChars)!
-            let encodedVal = v.stringByAddingPercentEncodingWithAllowedCharacters(queryChars)!
+            let queryChars = NSCharacterSet.urlQueryAllowed
+            let encodedKey = k.addingPercentEncoding(withAllowedCharacters: queryChars)!
+            let encodedVal = v.addingPercentEncoding(withAllowedCharacters: queryChars)!
             return "\(encodedKey)=\(encodedVal)"
-        }.joinWithSeparator("&")
+        }.joined(separator: "&")
     }
     
-    lazy var sessionConfiguration: NSURLSessionConfiguration = {
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.HTTPAdditionalHeaders = [
+    lazy var sessionConfiguration: URLSessionConfiguration = {
+        let config = URLSessionConfiguration.ephemeral
+        config.httpAdditionalHeaders = [
             "Content-Type" : "application/json",
             "Accept" : "application/json"
         ]
         return config
     }()
     
-    lazy var session: NSURLSession = {
-        return NSURLSession(configuration: self.sessionConfiguration)
+    lazy var session: URLSession = {
+        return URLSession(configuration: self.sessionConfiguration)
     }()
     
-    private var baseURL: NSURL {
-        return NSURL(string: AdzerkBaseUrl)!
+    fileprivate var baseURL: URL {
+        return URL(string: AdzerkBaseUrl)!
     }
     
-    private let requestTimeout: NSTimeInterval = 15
+    fileprivate let requestTimeout: TimeInterval = 15
     
-    private func buildPlacementRequest(placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> NSURLRequest? {
+    fileprivate func buildPlacementRequest(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> URLRequest? {
         let url = baseURL
-        let request = NSMutableURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: requestTimeout)
-        request.HTTPMethod = "POST"
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
+        request.httpMethod = "POST"
         
-        var body: [String: AnyObject] = [
+        var body: [String: Any] = [
             "placements": placements.map { $0.serialize() },
-            "time": Int(NSDate().timeIntervalSince1970)
+            "time": Int(Date().timeIntervalSince1970)
         ]
         
         if let userKey = options?.userKey {
@@ -538,9 +538,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
         
         do {
-            let data = try NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted)
-            request.HTTPBody = data
-            print("Posting JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+            let data = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+            request.httpBody = data
+            print("Posting JSON: \(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)")
             return request
         } catch let error as NSError {
             print("Error building placement request: \(error)")
@@ -548,9 +548,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
     }
     
-    private func buildPlacementResponse(data: NSData) -> ADZPlacementResponse? {
+    fileprivate func buildPlacementResponse(_ data: Data) -> ADZPlacementResponse? {
         do {
-            let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String: AnyObject]
+            let responseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
             saveUserKey(responseDictionary)
             return ADZPlacementResponse(dictionary: responseDictionary)
         } catch {
@@ -559,7 +559,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, NSError?) -> ()
         }
     }
     
-    private func saveUserKey(response: [String: AnyObject]) {
+    fileprivate func saveUserKey(_ response: [String: AnyObject]) {
         if let userSection = response["user"] as? [String: AnyObject] {
             if let userKey = userSection["key"] as? String {
                 keyStore.saveUserKey(userKey)

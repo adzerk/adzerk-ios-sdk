@@ -23,7 +23,7 @@ import Foundation
     func currentUserKey() -> String?
 
     /** Saves a key for the current user. */
-    func saveUserKey(key: String)
+    func saveUserKey(_ key: String)
     
     /** Removes a saved user key. */
     func removeUserKey()
