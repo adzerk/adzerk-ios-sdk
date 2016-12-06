@@ -21,7 +21,7 @@ import Foundation
     */
     open func currentUserKey() -> String? {
         if let data = ADZKeychainHelper.fetch(adzUserKey) {
-            return String(data: data as Data, encoding: String.Encoding.utf8)
+            return String(data: data, encoding: String.Encoding.utf8)
         }
         
         return nil
@@ -33,7 +33,7 @@ import Foundation
         - parameter key: the user key to save
     */
     open func saveUserKey(_ key: String) {
-        let data = key.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        let data = key.data(using: .utf8, allowLossyConversion: false)!
         let _ = ADZKeychainHelper.save(adzUserKey, data: data)
     }
     
@@ -43,5 +43,4 @@ import Foundation
     open func removeUserKey() {
         ADZKeychainHelper.delete(adzUserKey)
     }
-    
 }

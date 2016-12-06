@@ -8,16 +8,9 @@
 
 import Foundation
 
-
 // return a new array with optionals removed, change type to !
 func compact<T>(_ source: [T?]) -> [T] {
     return source.filter { $0 != nil }.map { $0! }
-}
-
-// Swift 1.2's flatMap doesn't work with optionals. Can remove when on Swift 2 and replace with plain flatMap :)
-// filterMap removes optionals, then applies the transform
-func filterMap<T, U>(_ source: [T?], transform: (T) -> U ) -> [U] {
-    return compact(source).map(transform)
 }
 
 func groupBy<T, K: Hashable>(_ source: [T], keyMethod: (T) -> K) -> [K: T] {
