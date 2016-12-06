@@ -40,13 +40,14 @@ import Foundation
     }
     
     public convenience init?(divName: String, adTypes: [Int]) {
-        if let networkId = AdzerkSDK.defaultNetworkId, let siteId = AdzerkSDK.defaultSiteId {
-            self.init(divName: divName, networkId: networkId, siteId: siteId, adTypes: adTypes)
-        } else {
+        guard let networkId = AdzerkSDK.defaultNetworkId,
+            let siteId = AdzerkSDK.defaultSiteId
+        else {
             print("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
-            self.init(divName: "", networkId: -1, siteId: -1, adTypes: [])
             return nil
         }
+        
+        self.init(divName: divName, networkId: networkId, siteId: siteId, adTypes: adTypes)
     }
     
     func serialize() -> [String : Any] {
