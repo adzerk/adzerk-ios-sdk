@@ -188,14 +188,14 @@ class AdzerkSDKTests: XCTestCase {
                         XCTAssertEqual(content.type!, "html", "content type should be html")
                         
                         // THIS ROW FAILS - THE RAW RESPONSE JSON DOES NOT CONTAIN "template" PARAMETER!
-                        // XCTAssertEqual(content.template!, "image", "content template should be image")
+                        XCTAssertEqual(content.template!, "image", "content template should be image")
                         
                         XCTAssertTrue(content.data != nil, "content data should have been set")
                         XCTAssertTrue(content.body != nil, "content body should have been set")
                     }
 
                 }
-                //XCTAssertEqual((dec.events?.count)!, 0, "events should have been an empty array")
+                XCTAssertEqual((dec.events?.count)!, 0, "events should have been an empty array")
 
             } else {
                 XCTFail("couldn't find div1 in response")
