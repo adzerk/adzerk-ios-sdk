@@ -22,12 +22,11 @@
     placement.zoneIds = @[@1];
     
     AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
-
     [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
         NSLog(@"Response: %@", response);
-    } failure: ^void(NSNumber *statusCode, NSString *body, NSError *error) {
+    } failure: ^void(NSInteger statusCode, NSString *body, NSError *error) {
         NSLog(@"Failure:");
-        NSLog(@"  Status Code: %@", statusCode);
+        NSLog(@"  Status Code: %d", (int)statusCode);
         NSLog(@"  Response Body: %@", body);
         NSLog(@"  Error: %@", error);
     }];
