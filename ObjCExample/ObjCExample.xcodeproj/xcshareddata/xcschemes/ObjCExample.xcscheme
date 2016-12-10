@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B5C89DC51B78EBB3003CA162"
+               BuildableName = "AdzerkSDK.framework"
+               BlueprintName = "AdzerkSDK"
+               ReferencedContainer = "container:../AdzerkSDK/AdzerkSDK.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B5FBCAEB1B98A3E5007F2E64"
                BuildableName = "ObjCExample.app"
                BlueprintName = "ObjCExample"
