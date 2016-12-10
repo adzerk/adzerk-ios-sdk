@@ -163,6 +163,7 @@ class AdzerkSDKTests: XCTestCase {
 
     func testCanRequestPlacementwithAllParameters() {
         let placement = ADZPlacement(divName: "div1", adTypes: [5])!
+        placement.flightId = 699801
         placement.zoneIds = [136961]
         placement.properties = [
             "custom_key": "custom_value",
