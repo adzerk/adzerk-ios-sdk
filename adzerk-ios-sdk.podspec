@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "adzerk-ios-sdk"
   s.module_name      = "AdzerkSDK"
-  s.version          = "0.4"
+  s.version          = "2.0"
   s.summary          = "iOS SDK for the Adzerk API"
 
 # This description is used to generate tags and improve search results.
@@ -30,10 +30,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'AdzerkSDK/AdzerkSDK/**/*.swift'
-  s.resource_bundles = {
-    'adzerk-ios-sdk' => []
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation'
 end
