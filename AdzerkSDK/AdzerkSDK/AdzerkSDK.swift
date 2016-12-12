@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // Update this when making changes. Will ben sent in the UserAgent to identify the version of the SDK used in host applications.
-let AdzerkSDKVersion = 1.1
+let AdzerkSDKVersion = 1.0
 
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
