@@ -16,7 +16,7 @@ Note that for manual and Carthage framework imports you may have to specify "Emb
 If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
 
 ```ruby
-github "adzerk/adzerk-ios-sdk" ~> 0.4
+github "adzerk/adzerk-ios-sdk" ~> 1.0
 ```
 
 If you want to be on the bleeding edge, you can specify the `master` branch:
@@ -33,7 +33,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 0.4'
+pod 'adzerk-ios-sdk', '~> 1.0'
 ```
 
 Again, if you want to be on the latest master branch:
@@ -109,9 +109,9 @@ placement.zoneIds = @[@1];
 AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
 [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
     NSLog(@"Response: %@", response);
-} failure: ^void(NSNumber *statusCode, NSString *body, NSError *error) {
+} failure: ^void(NSInteger statusCode, NSString *body, NSError *error) {
     NSLog(@"Failure:");
-    NSLog(@"  Status Code: %@", statusCode);
+    NSLog(@"  Status Code: %d", statusCode);
     NSLog(@"  Response Body: %@", body);
     NSLog(@"  Error: %@", error);
 }];
@@ -182,3 +182,14 @@ After a few seconds, your changes will be live on [https://adzerk.github.io/adze
 # License
 
 This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE) for more information.
+
+# Changelog
+
+- 1.0: Swift 3 support
+
+_Breaking change: The Objective-C status code was changed from `NSNumber *` to `NSInteger`, as Swift 3 no longer automatically maps `Int?` to `NSNumber *`._
+
+- 0.4: Initial release
+
+
+ 
