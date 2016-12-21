@@ -12,8 +12,8 @@ import Foundation
     Returns tracking URLs for any requested custom events.
 */
 open class ADZPlacementEvent {
-    let id: Int
-    let url: String
+    open let id: Int
+    open let url: String
     
     /** Initialize a new struct given a JSON dictionary. Expects the keys `id` and `url` 
         to be present in the dictionary.
