@@ -495,7 +495,8 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             return ""
         }
         
-        return "?" + params.map { (k, v) -> String in
+        return "?" + params.map { (entry: (String, String)) in
+            let (k, v) = entry
             let queryChars = NSCharacterSet.urlQueryAllowed
             let encodedKey = k.addingPercentEncoding(withAllowedCharacters: queryChars)!
             let encodedVal = v.addingPercentEncoding(withAllowedCharacters: queryChars)!

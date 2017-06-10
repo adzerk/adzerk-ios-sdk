@@ -154,7 +154,7 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssert(Thread.isMainThread, "Called back on background thread")
             expectationResult.fulfill()
         }
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
     
     func testCallsBackOnProvidedQueue() {
@@ -165,20 +165,20 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertFalse(Thread.isMainThread, "Was not called on provided queue")
             exp.fulfill()
         }
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testCanRequestSimplePlacement() {
         let expectationResult = expectation(description: "API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation: expectationResult))
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanRequestPlacementWithAdditionalParameters() {
         let placement = ADZPlacement(divName: "div1", adTypes: [])!
         let expectationResult = expectation(description: "Successful API Response received")
         sdk.requestPlacement(placement, completion: assertSuccessfulResponse(expectation: expectationResult))
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanRequestPlacementwithAllParameters() {
@@ -222,7 +222,7 @@ class AdzerkSDKTests: XCTestCase {
                 XCTFail("couldn't find div1 in response")
             }
         }))
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanRequestMultiplePlacements() {
@@ -233,7 +233,7 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertTrue(response.decisions["div1"] != nil)
             XCTAssertTrue(response.decisions["div2"] != nil)
         }))
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanRequestPlacementsWithOptions() {
@@ -255,7 +255,7 @@ class AdzerkSDKTests: XCTestCase {
         sdk.requestPlacements([placement1], options: options,completion: assertResponse(expectation: expectationResult, validationHandler: { response in
             XCTAssertTrue(response.decisions["div1"] != nil)
         }))
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testSavesUserKey() {
@@ -263,8 +263,8 @@ class AdzerkSDKTests: XCTestCase {
         let sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
         let expectationResult = expectation(description: "API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation: expectationResult))
-        waitForExpectations(timeout: 3.0, handler: nil)
-
+        wait(for: [expectationResult], timeout: 3.0)
+        
         XCTAssertTrue(fakeKeyStore.key != nil, "User key was not set")
     }
 
@@ -275,8 +275,8 @@ class AdzerkSDKTests: XCTestCase {
         let sdk = AdzerkSDK(userKeyStore: fakeKeyStore)
         let expectationResult = expectation(description: "API response received")
         sdk.requestPlacementInDiv("div1", adTypes: [5], completion: assertSuccessfulResponse(expectation: expectationResult))
-        waitForExpectations(timeout: 3.0, handler: nil)
-
+        wait(for: [expectationResult], timeout: 3.0)
+        
         XCTAssertEqual(fakeKeyStore.currentUserKey()!, "testkey12345")
     }
 
@@ -295,7 +295,7 @@ class AdzerkSDKTests: XCTestCase {
             expectationResult.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanReadUser() {
@@ -313,7 +313,7 @@ class AdzerkSDKTests: XCTestCase {
             expectationResult.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanAddInterest() {
@@ -325,7 +325,7 @@ class AdzerkSDKTests: XCTestCase {
             expectationResult.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanOptOut() {
@@ -336,7 +336,7 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertNil(error)
             expectationResult.fulfill()
         }
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 
     func testCanRetargetUser() {
@@ -349,6 +349,6 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertNil(error)
             expectationResult.fulfill()
         }
-        waitForExpectations(timeout: 3.0, handler: nil)
+        wait(for: [expectationResult], timeout: 3.0)
     }
 }

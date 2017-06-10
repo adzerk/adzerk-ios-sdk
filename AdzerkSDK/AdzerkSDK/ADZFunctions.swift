@@ -13,7 +13,7 @@ func compact<T>(_ source: [T?]) -> [T] {
     return source.filter { $0 != nil }.map { $0! }
 }
 
-func groupBy<T, K: Hashable>(_ source: [T], keyMethod: (T) -> K) -> [K: T] {
+func groupBy<T, K>(_ source: [T], keyMethod: (T) -> K) -> [K: T] {
     var dict = [K: T]()
     for item in source {
         let key = keyMethod(item)
