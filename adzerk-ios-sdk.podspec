@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                           iOS SDK for the Adzerk API. For more information see the Adzerk API docs at http://adzerk.com/api.
                        DESC
 
-  s.homepage         = "http://adzerk.com"
+  s.homepage         = "https://adzerk.com"
   s.license          = 'Apache 2.0'
   s.author           = { "Ben Scheirman" => "ben@scheirman.com" }
   s.source           = { :git => "https://github.com/adzerk/adzerk-ios-sdk.git", :tag => s.version.to_s }
