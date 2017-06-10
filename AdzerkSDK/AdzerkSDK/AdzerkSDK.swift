@@ -25,7 +25,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 /** The primary class used to make requests against the API. */
 @objc open class AdzerkSDK : NSObject {
     
-    fileprivate static var _defaultNetworkId: Int?
+    private static var _defaultNetworkId: Int?
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
         each placement request does not need to provide it.  Any value in the placement request will override this value.
         Useful for the common case where the network ID is contstant for your application. */
@@ -34,7 +34,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         set { _defaultNetworkId = newValue }
     }
     
-    fileprivate static var _defaultSiteId: Int?
+    private static var _defaultSiteId: Int?
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is contstant for your application. */
@@ -503,13 +503,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         return URLSession(configuration: self.sessionConfiguration)
     }()
     
-    fileprivate var baseURL: URL {
+    private var baseURL: URL {
         return URL(string: AdzerkBaseUrl)!
     }
     
-    fileprivate let requestTimeout: TimeInterval = 15
+    private let requestTimeout: TimeInterval = 15
     
-    fileprivate func buildPlacementRequest(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> URLRequest? {
+    private func buildPlacementRequest(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> URLRequest? {
         let url = baseURL
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.httpMethod = "POST"
@@ -558,7 +558,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
     }
     
-    fileprivate func buildPlacementResponse(_ data: Data) -> ADZPlacementResponse? {
+    private func buildPlacementResponse(_ data: Data) -> ADZPlacementResponse? {
         do {
             let responseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
             saveUserKey(responseDictionary)
@@ -569,7 +569,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
     }
     
-    fileprivate func saveUserKey(_ response: [String: AnyObject]) {
+    private func saveUserKey(_ response: [String: AnyObject]) {
         if let userSection = response["user"] as? [String: AnyObject] {
             if let userKey = userSection["key"] as? String {
                 keyStore.saveUserKey(userKey)
