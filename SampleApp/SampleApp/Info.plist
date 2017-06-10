@@ -39,15 +39,6 @@
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-			<key>engine.adzerk.net</key>
-			<dict>
-				<key>NSAllowArbitraryLoads</key>
-				<false/>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-			</dict>
 		</dict>
 	</dict>
 	<key>UISupportedInterfaceOrientations</key>
