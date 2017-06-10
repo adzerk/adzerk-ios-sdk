@@ -147,6 +147,26 @@ class AdzerkSDKTests: XCTestCase {
             expectation.fulfill()
         }
     }
+    
+    func testCallsBackOnMainQueue() {
+        let expectationResult = expectation(description: "API response received")
+        sdk.requestPlacementInDiv("div1", adTypes: [5]) { response in
+            XCTAssert(Thread.isMainThread, "Called back on background thread")
+            expectationResult.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testCallsBackOnProvidedQueue() {
+        let myQueue = DispatchQueue.global(qos: .background)
+        let sdk = AdzerkSDK(userKeyStore: ADZKeychainUserKeyStore(), queue: myQueue)
+        let exp = expectation(description: "API Response Received")
+        sdk.requestPlacementInDiv("div1", adTypes: [5]) { response in
+            XCTAssertFalse(Thread.isMainThread, "Was not called on provided queue")
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
 
     func testCanRequestSimplePlacement() {
         let expectationResult = expectation(description: "API response received")

@@ -25,6 +25,8 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 /** The primary class used to make requests against the API. */
 @objc open class AdzerkSDK : NSObject {
     
+    private var queue: DispatchQueue
+    
     private static var _defaultNetworkId: Int?
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
         each placement request does not need to provide it.  Any value in the placement request will override this value.
@@ -59,14 +61,15 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     /** Initializes a new instance of `AdzerkSDK` with a keychain-based userKeyStore.
     */
     public convenience override init() {
-        self.init(userKeyStore: ADZKeychainUserKeyStore())
+        self.init(userKeyStore: ADZKeychainUserKeyStore(), queue: nil)
     }
     
     /** Initializes a new instance of `AdzerkSDK`.
         @param userKeyStore provide a value for this if you want to customize the way user keys are stored & retrieved. The default is `ADZKeychainUserKeyStore`.
     */
-    public init(userKeyStore: ADZUserKeyStore) {
+    public init(userKeyStore: ADZUserKeyStore, queue: DispatchQueue? = nil) {
         self.keyStore = userKeyStore
+        self.queue = queue ?? DispatchQueue.main
     }
     
     /** Requests placements with explicit success and failure callbacks. Provided for Objective-C compatibility.
@@ -128,24 +131,35 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                 data, response, error in
                 
                 if let error = error {
-                    completion(.error(error))
+                    self.queue.async {
+                        completion(.error(error))
+                    }
                 } else {
                     let http = response as! HTTPURLResponse
                     guard let data = data else {
+                        self.queue.async {
                             completion(.badResponse("<no response>"))
+                        }
                         return
                     }
+                    
                     if http.statusCode == 200 {
                         if let resp = self.buildPlacementResponse(data) {
                             print("Response: \(String(data: data, encoding: .utf8) ?? "<no response>"))")
+                            self.queue.async {
                                 completion(ADZResponse.success(resp))
+                            }
                         } else {
                             let bodyString = (String(data: data, encoding: .utf8)) ?? "<no body>"
+                            self.queue.async {
                                 completion(ADZResponse.badResponse(bodyString))
+                            }
                         }
                     } else {
                         let bodyString = (String(data: data, encoding: .utf8)) ?? "<no body>"
+                        self.queue.async {
                             completion(.badRequest(http.statusCode, bodyString))
+                        }
                     }
                 }
                 
