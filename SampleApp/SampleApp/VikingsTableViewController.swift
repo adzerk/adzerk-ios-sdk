@@ -108,7 +108,7 @@ class VikingsTableViewController : UITableViewController {
                 print("error fetching placements: \(error)")
             }
             
-            DispatchQueue.main.async(execute: completion)
+            completion()
         }
     }
     
