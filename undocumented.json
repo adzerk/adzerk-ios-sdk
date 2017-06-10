@@ -1,0 +1,222 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 26,
+      "symbol": "ADZPlacement.zoneIds",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 27,
+      "symbol": "ADZPlacement.eventIds",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 29,
+      "symbol": "ADZPlacement.properties",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 30,
+      "symbol": "ADZPlacement.campaignId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 31,
+      "symbol": "ADZPlacement.flightId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 32,
+      "symbol": "ADZPlacement.adId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 34,
+      "symbol": "ADZPlacement.init(divName:networkId:siteId:adTypes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacement.swift",
+      "line": 42,
+      "symbol": "ADZPlacement.init(divName:adTypes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementContent.swift",
+      "line": 26,
+      "symbol": "ADZPlacementContent.template",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementContent.swift",
+      "line": 29,
+      "symbol": "ADZPlacementContent.data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementContent.swift",
+      "line": 32,
+      "symbol": "ADZPlacementContent.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 19,
+      "symbol": "ADZPlacementDecision.adId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 20,
+      "symbol": "ADZPlacementDecision.creativeId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 21,
+      "symbol": "ADZPlacementDecision.flightId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 22,
+      "symbol": "ADZPlacementDecision.campaignId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 23,
+      "symbol": "ADZPlacementDecision.clickUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementDecision.swift",
+      "line": 24,
+      "symbol": "ADZPlacementDecision.impressionUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementEvent.swift",
+      "line": 15,
+      "symbol": "ADZPlacementEvent.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementEvent.swift",
+      "line": 16,
+      "symbol": "ADZPlacementEvent.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementRequestOptions.swift",
+      "line": 13,
+      "symbol": "ADZPlacementRequestOptions.keywords",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementRequestOptions.swift",
+      "line": 14,
+      "symbol": "ADZPlacementRequestOptions.blockedCreatives",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementRequestOptions.swift",
+      "line": 15,
+      "symbol": "ADZPlacementRequestOptions.flightViewTimes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementRequestOptions.swift",
+      "line": 16,
+      "symbol": "ADZPlacementRequestOptions.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementRequestOptions.swift",
+      "line": 26,
+      "symbol": "ADZPlacementRequestOptions.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementResponse.swift",
+      "line": 16,
+      "symbol": "ADZPlacementResponse.decisions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZPlacementResponse.swift",
+      "line": 17,
+      "symbol": "ADZPlacementResponse.extraAttributes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZUser.swift",
+      "line": 16,
+      "symbol": "ADZUser.userKey",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZUser.swift",
+      "line": 17,
+      "symbol": "ADZUser.blockedItems",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZUser.swift",
+      "line": 18,
+      "symbol": "ADZUser.interests",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZUser.swift",
+      "line": 19,
+      "symbol": "ADZUser.customProperties",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK/AdzerkSDK/ADZUser.swift",
+      "line": 20,
+      "symbol": "ADZUser.optOut",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/ben/projects/adzerk-ios/_source/AdzerkSDK"
+}

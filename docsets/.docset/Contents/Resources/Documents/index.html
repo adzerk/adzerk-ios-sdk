@@ -7,12 +7,13 @@
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p><a href="index.html"> Docs</a> (64% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -27,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="Classes.html">Classes</a>
+            <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
@@ -42,7 +43,7 @@
                 <a href="Classes/ADZPlacementDecision.html">ADZPlacementDecision</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C9AdzerkSDK17ADZPlacementEvent">ADZPlacementEvent</a>
+                <a href="Classes/ADZPlacementEvent.html">ADZPlacementEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a>
@@ -59,7 +60,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/ADZResponse.html">ADZResponse</a>
@@ -67,7 +68,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="Protocols.html">Protocols</a>
+            <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a>
@@ -80,42 +81,72 @@
         <section>
           <section class="section">
             
-            <a href='#adzerk_ios_sdk' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='adzerk_ios_sdk'>adzerk-ios-sdk</h1>
-<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+            <h1 id='adzerk-ios-sdk' class='heading'>adzerk-ios-sdk</h1>
+<h2 id='requirements' class='heading'>Requirements</h2>
 
 <p>Use of the Adzerk iOS SDK requires iOS 8.0 or later.</p>
-<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<h2 id='installation' class='heading'>Installation</h2>
 
-<p>TODO</p>
-<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+<p>Installation of the framework can be done manually by building and copying the framework into your project, or with
+automatically with Carthage or CocoaPods.</p>
+
+<p>Note that for manual and Carthage framework imports you may have to specify <q>Embedded Content Contains Swift Code</q> to avoid getting a linker error during build. Another way to force Xcode to load the Swift libraries is to add a single Swift source file to your project.</p>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>If you&rsquo;re using <a href="https://github.com/Carthage/Carthage">Carthage</a>, add this to your <code>Cartfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"adzerk/adzerk-ios-sdk"</span> <span class="o">~&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</code></pre>
+
+<p>If you want to be on the bleeding edge, you can specify the <code>master</code> branch:</p>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"adzerk/adzerk-ios-sdk"</span> <span class="s2">"master"</span>
+</code></pre>
+
+<p>Then run <code>carthage update</code> to fetch and build the framework. You can find the framework in the <code>Carthage</code> folder, and you can add
+this to your project manually.</p>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>If you&rsquo;re using <a href="https://cocoapods.org">CocoaPods</a>, add this to your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'adzerk-ios-sdk'</span><span class="p">,</span> <span class="s1">'~&gt; 1.0'</span>
+</code></pre>
+
+<p>Again, if you want to be on the latest master branch:</p>
+<pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
+
+<span class="n">pod</span> <span class="s1">'adzerk-ios-sdk'</span><span class="p">,</span> <span class="ss">github: </span><span class="s1">'adzerk/adzerk-ios-sdk'</span><span class="p">,</span> <span class="ss">branch: </span><span class="s1">'master'</span>
+</code></pre>
+
+<p>Then run <code>pod install</code> to download the code and integrate it into your project. You&rsquo;ll then open the pod-created workspace instead of your project to build.</p>
+<h2 id='usage' class='heading'>Usage</h2>
 
 <p>All API operations are done with an instance of <a href="http://adzerk.github.io/adzerk-ios-sdk/Classes/AdzerkSDK.html"><code>AdzerkSDK</code></a>.</p>
 
 <p>For most uses, a single Network ID and Site ID will be used for the entire application. If this is the case
 you can configure it once in the <code>AppDelegate</code>:</p>
-<pre class="highlight swift"><code><span class="err">@import</span> <span class="kt">AdzerkSDK</span>
+<pre class="highlight swift"><code><span class="kd">@import</span> <span class="kt">AdzerkSDK</span>
 
 <span class="kd">func</span> <span class="nf">applicationDidFinishLaunching</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
   <span class="kt">AdzerkSDK</span><span class="o">.</span><span class="n">defaultNetworkId</span> <span class="o">=</span> <span class="kt">YOUR_NETWORK_ID</span>
-  <span class="kt">AdzerkSDK</span><span class="o">.</span><span class="n">deffaultSiteId</span> <span class="o">=</span> <span class="kt">YOUR_SITE_ID</span>
+  <span class="kt">AdzerkSDK</span><span class="o">.</span><span class="n">defaultSiteId</span> <span class="o">=</span> <span class="kt">YOUR_SITE_ID</span>
 <span class="p">}</span>
 </code></pre>
 
 <p>For requests that need a different Network ID or Site ID, you can specify this on the individual placement request.</p>
-<a href='#requesting_placements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='requesting_placements'>Requesting Placements</h3>
+<h3 id='requesting-placements' class='heading'>Requesting Placements</h3>
 
 <p>To request a placement, you can build an instance of <code>ADZPlacement</code> and specify the attributes you want to send:</p>
 <pre class="highlight swift"><code><span class="c1">// Assumes that the default network ID and site ID are already set on AdzerkSDK</span>
-<span class="k">var</span> <span class="nv">placement</span> <span class="o">=</span> <span class="kt">ADZPlacement</span><span class="p">(</span><span class="nv">divName</span><span class="p">:</span> <span class="s">"div1"</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">!</span> 
+<span class="k">var</span> <span class="nv">placement</span> <span class="o">=</span> <span class="kt">ADZPlacement</span><span class="p">(</span><span class="nv">divName</span><span class="p">:</span> <span class="s">"div1"</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">!</span>
 <span class="n">placement</span><span class="o">.</span><span class="n">zoneIds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
 <span class="n">sdk</span><span class="o">.</span><span class="nf">requestPlacements</span><span class="p">([</span><span class="n">placement</span><span class="p">])</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
   <span class="c1">// handle response</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#handling_the_response' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='handling_the_response'>Handling the Response</h3>
 
-<p>A placement request will accept a completion block that is handed an instance of <code>ADZResponse</code>. This is 
+<p><em>Note: completion blocks are called on the main queue. If you want to be called back on a different queue, you can pass this queue to the AdzerkSDK initializer.</em></p>
+<h3 id='handling-the-response' class='heading'>Handling the Response</h3>
+
+<p>A placement request will accept a completion block that is handed an instance of <code>ADZResponse</code>. This is
 a Swift enum that will indicate success or failure.</p>
 <pre class="highlight swift"><code><span class="n">sdk</span><span class="o">.</span><span class="nf">requestPlacements</span><span class="p">([</span><span class="n">placement</span><span class="p">])</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
   <span class="k">switch</span> <span class="n">response</span> <span class="p">{</span>
@@ -129,7 +160,7 @@ a Swift enum that will indicate success or failure.</p>
 
 <p>Handle each case as appropriate for your application. In the case of <code>.Success</code> you are given an <code>ADZPlacementResponse</code>
 that contains the decisions for each placement requested.</p>
-<a href='#a_note_about_objective_c' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='a_note_about_objective_c'>A Note About Objective-C</h3>
+<h3 id='a-note-about-objective-c' class='heading'>A Note About Objective-C</h3>
 
 <p>Objective-C does not support Swift Enums, so an alternative callback-based method is provided. If you&rsquo;re using this SDK from
 and Objective-C project, you can request placements like this:</p>
@@ -137,16 +168,27 @@ and Objective-C project, you can request placements like this:</p>
 <span class="n">placement</span><span class="p">.</span><span class="n">zoneIds</span> <span class="o">=</span> <span class="p">@[</span><span class="mi">@1</span><span class="p">];</span>
 
 <span class="n">AdzerkSDK</span> <span class="o">*</span><span class="n">sdk</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AdzerkSDK</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
-<span class="p">[</span><span class="n">sdk</span> <span class="nf">requestPlacements</span><span class="p">:@[</span><span class="n">placement</span><span class="p">]</span> <span class="nf">options</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">success</span><span class="p">:</span> <span class="o">^</span><span class="kt">void</span><span class="p">(</span><span class="n">ADZPlacementResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Response: %@"</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span><span class="err">;</span>
-<span class="p">}</span> <span class="nf">failure</span><span class="p">:</span> <span class="o">^</span><span class="kt">void</span><span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">body</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Failure:"</span><span class="p">)</span><span class="err">;</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Status Code: %@"</span><span class="p">,</span> <span class="n">statusCode</span><span class="p">)</span><span class="err">;</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Response Body: %@"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span><span class="err">;</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>
+<span class="p">[</span><span class="n">sdk</span> <span class="nf">requestPlacements</span><span class="p">:@[</span><span class="n">placement</span><span class="p">]</span> <span class="nf">options</span><span class="p">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:</span> <span class="o">^</span><span class="kt">void</span><span class="p">(</span><span class="n">ADZPlacementResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Response: %@"</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">failure</span><span class="o">:</span> <span class="o">^</span><span class="kt">void</span><span class="p">(</span><span class="n">NSInteger</span> <span class="n">statusCode</span><span class="p">,</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">body</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Failure:"</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Status Code: %d"</span><span class="p">,</span> <span class="n">statusCode</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Response Body: %@"</span><span class="p">,</span> <span class="n">body</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
 <span class="p">}];</span>
 </code></pre>
-<a href='#building_running_tests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='building_running_tests'>Building / Running Tests</h2>
+<h2 id='ios-9-app-transport-security' class='heading'>iOS 9 App Transport Security</h2>
+
+<p>If you&rsquo;re building for iOS 9, you&rsquo;ll notice that requests fail unless you configure your <code>Info.plist</code> properly. Our team is currently working to upgrade our servers to avoid this configuration in the future. In the meantime, you&rsquo;ll need
+to add the following exceptions for <code>engine.adzerk.net</code>:</p>
+
+<ul>
+<li><code>NSExceptionMinimumTLSVersion</code> to <code>TLSv1.0</code></li>
+<li><code>NSExceptionRequiresForwardSecrecy</code> to <code>NO</code></li>
+</ul>
+
+<p>For more information on App Transport Security, see <a href="https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/">Apple&rsquo;s Tech Note</a>. For a live example, see the sample project&rsquo;s <a href="https://raw.githubusercontent.com/adzerk/adzerk-ios-sdk/master/SampleApp/SampleApp/Info.plist?token=AADnBOuU-Qoxzb2WLO3_YdG2NIEw9HOGks5WCqgGwA%3D%3D">Info.plist</a>.</p>
+<h2 id='building-running-tests' class='heading'>Building / Running Tests</h2>
 
 <p>Use Xcode 7.0 or later. Ensure that command line tools are installed:</p>
 <pre class="highlight plaintext"><code>xcode-select --install
@@ -159,7 +201,7 @@ and Objective-C project, you can request placements like this:</p>
 <p>You can build and run tests with the provided build script:</p>
 <pre class="highlight plaintext"><code>./build.sh
 </code></pre>
-<a href='#generating_docs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='generating_docs'>Generating Docs</h2>
+<h2 id='generating-docs' class='heading'>Generating Docs</h2>
 
 <p>Docs are generated with <a href="https://github.com/Realm/jazzy">jazzy</a> and are hosted on github pages. To install jazzy:</p>
 <pre class="highlight plaintext"><code>$ gem install jazzy
@@ -182,12 +224,27 @@ $ git push
 </code></pre>
 
 <p>After a few seconds, your changes will be live on <a href="https://adzerk.github.io/adzerk-ios-sdk">https://adzerk.github.io/adzerk-ios-sdk</a>.</p>
+<h1 id='license' class='heading'>License</h1>
+
+<p>This SDK is released under the Apache 2.0 license. See <a href="https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE">LICENSE</a> for more information.</p>
+<h1 id='changelog' class='heading'>Changelog</h1>
+
+<ul>
+<li><p>1.0.2: Can specify which queue the sdk calls you back on. Defaults to <code>DispatchQueue.main</code></p></li>
+<li><p>1.0: Swift 3 support</p></li>
+</ul>
+
+<p><em>Breaking change: The Objective-C status code was changed from <code>NSNumber *</code> to <code>NSInteger</code>, as Swift 3 no longer automatically maps <code>Int?</code> to <code>NSNumber *</code>.</em></p>
+
+<ul>
+<li>0.4: Initial release</li>
+</ul>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2015-09-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
