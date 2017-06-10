@@ -131,17 +131,21 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                     completion(.error(error))
                 } else {
                     let http = response as! HTTPURLResponse
+                    guard let data = data else {
+                            completion(.badResponse("<no response>"))
+                        return
+                    }
                     if http.statusCode == 200 {
-                        if let resp = self.buildPlacementResponse(data!) {
-                            print("Response: \(String(data: data!, encoding: String.Encoding.utf8)))")
-                            completion(ADZResponse.success(resp))
+                        if let resp = self.buildPlacementResponse(data) {
+                            print("Response: \(String(data: data, encoding: .utf8) ?? "<no response>"))")
+                                completion(ADZResponse.success(resp))
                         } else {
-                            let bodyString = (String(data: data!, encoding: String.Encoding.utf8)) ?? "<no body>"
-                            completion(ADZResponse.badResponse(bodyString))
+                            let bodyString = (String(data: data, encoding: .utf8)) ?? "<no body>"
+                                completion(ADZResponse.badResponse(bodyString))
                         }
                     } else {
-                        let bodyString = (String(data: data!, encoding: String.Encoding.utf8)) ?? "<no body>"
-                        completion(.badRequest(http.statusCode, bodyString))
+                        let bodyString = (String(data: data, encoding: .utf8)) ?? "<no body>"
+                            completion(.badRequest(http.statusCode, bodyString))
                     }
                 }
                 
@@ -206,7 +210,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                     if http.statusCode == 200 {
                         callback(true, nil)
                     } else {
-                        print("Received HTTP \(http.statusCode) from \(request.url)")
+                        print("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
                         callback(false, nil)
                     }
                 } else {
@@ -217,7 +221,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
         catch let exc as NSException {
             print("WARNING: Could not serialize the submitted properties into JSON: \(properties).")
-            print("\(exc.name) -> \(exc.reason)")
+            print("\(exc.name) -> \(exc.reason ?? "<no reason>")")
             callback(false, nil)
         }
         catch let error as NSError {
@@ -283,17 +287,17 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                             callback(nil, error)
                         }
                     } catch let exc as NSException {
-                        print("WARNING: error parsing JSON: \(exc.name) -> \(exc.reason)")
+                        print("WARNING: error parsing JSON: \(exc.name) -> \(String(describing: exc.reason))")
                         callback(nil, nil)
                     } catch let e as NSError {
                         let body = String(data: data!, encoding: String.Encoding.utf8)
-                        print("response: \(body)")
+                        print("response: \(String(describing: body))")
                         callback(nil, e)
                     }
                 } else {
-                    print("Received HTTP \(http.statusCode) from \(request.url)")
+                    print("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
                     let body = String(data: data!, encoding: String.Encoding.utf8)
-                    print("response: \(body)")
+                    print("response: \(String(describing: body))")
                     callback(nil, nil)
                 }
             } else {
@@ -440,7 +444,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     func pixelRequest(_ networkId: Int, action: String, params: [String: String]?, callback: @escaping ADZResponseCallback) {
         let query = queryStringWithParams(params)
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/\(action)/i.gif\(query)") else {
-            print("WARNING: Could not construct proper URL for params: \(params)")
+            print("WARNING: Could not construct proper URL for params: \(params ?? [:])")
             callback(false, nil)
             return
         }
