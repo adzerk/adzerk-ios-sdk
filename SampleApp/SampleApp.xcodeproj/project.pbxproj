@@ -15,7 +15,7 @@
 		B5F75DA21B837FBE00752244 /* VikingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA11B837FBE00752244 /* VikingCell.swift */; };
 		B5F75DA41B83806A00752244 /* VikingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */; };
 		B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA51B83815000752244 /* VikingGenerator.swift */; };
-		B5F75DAA1B838D5500752244 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA91B838D5500752244 /* ImageViewExtension.swift */; };
+		B5F75DAA1B838D5500752244 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75DA91B838D5500752244 /* RemoteImageView.swift */; };
 		B5FBCACD1B974DCE007F2E64 /* DecisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		B5F75DA11B837FBE00752244 /* VikingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingCell.swift; sourceTree = "<group>"; };
 		B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingsTableViewController.swift; sourceTree = "<group>"; };
 		B5F75DA51B83815000752244 /* VikingGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VikingGenerator.swift; sourceTree = "<group>"; };
-		B5F75DA91B838D5500752244 /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		B5F75DA91B838D5500752244 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecisionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +73,7 @@
 				B5FBCACC1B974DCE007F2E64 /* DecisionCell.swift */,
 				B5F75DA31B83806A00752244 /* VikingsTableViewController.swift */,
 				B5F75DA51B83815000752244 /* VikingGenerator.swift */,
-				B5F75DA91B838D5500752244 /* ImageViewExtension.swift */,
+				B5F75DA91B838D5500752244 /* RemoteImageView.swift */,
 				B5CF0B341B86242700672BF7 /* Functions.swift */,
 			);
 			path = SampleApp;
@@ -163,7 +163,7 @@
 				B5C89DF11B78ECF0003CA162 /* AppDelegate.swift in Sources */,
 				B5F75DA41B83806A00752244 /* VikingsTableViewController.swift in Sources */,
 				B5F75DA21B837FBE00752244 /* VikingCell.swift in Sources */,
-				B5F75DAA1B838D5500752244 /* ImageViewExtension.swift in Sources */,
+				B5F75DAA1B838D5500752244 /* RemoteImageView.swift in Sources */,
 				B5FBCACD1B974DCE007F2E64 /* DecisionCell.swift in Sources */,
 				B5F75DA61B83815000752244 /* VikingGenerator.swift in Sources */,
 				B5CF0B351B86242700672BF7 /* Functions.swift in Sources */,

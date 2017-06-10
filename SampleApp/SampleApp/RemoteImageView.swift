@@ -1,5 +1,5 @@
 //
-//  ImageViewExtension.swift
+//  RemoteImageView.swift
 //  SampleApp
 //
 //  Created by Ben Scheirman on 8/18/15.
