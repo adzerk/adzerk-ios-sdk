@@ -78,6 +78,8 @@ sdk.requestPlacements([placement]) { response in
 }
 ```
 
+_Note: completion blocks are called on the main queue. If you want to be called back on a different queue, you can pass this queue to the AdzerkSDK initializer._
+
 ### Handling the Response
 
 A placement request will accept a completion block that is handed an instance of `ADZResponse`. This is
@@ -184,6 +186,8 @@ After a few seconds, your changes will be live on [https://adzerk.github.io/adze
 This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE) for more information.
 
 # Changelog
+
+- 1.0.2: Can specify which queue the sdk calls you back on. Defaults to `DispatchQueue.main`
 
 - 1.0: Swift 3 support
 
