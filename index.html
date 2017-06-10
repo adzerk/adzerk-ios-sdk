@@ -179,15 +179,7 @@ and Objective-C project, you can request placements like this:</p>
 </code></pre>
 <h2 id='ios-9-app-transport-security' class='heading'>iOS 9 App Transport Security</h2>
 
-<p>If you&rsquo;re building for iOS 9, you&rsquo;ll notice that requests fail unless you configure your <code>Info.plist</code> properly. Our team is currently working to upgrade our servers to avoid this configuration in the future. In the meantime, you&rsquo;ll need
-to add the following exceptions for <code>engine.adzerk.net</code>:</p>
-
-<ul>
-<li><code>NSExceptionMinimumTLSVersion</code> to <code>TLSv1.0</code></li>
-<li><code>NSExceptionRequiresForwardSecrecy</code> to <code>NO</code></li>
-</ul>
-
-<p>For more information on App Transport Security, see <a href="https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/">Apple&rsquo;s Tech Note</a>. For a live example, see the sample project&rsquo;s <a href="https://raw.githubusercontent.com/adzerk/adzerk-ios-sdk/master/SampleApp/SampleApp/Info.plist?token=AADnBOuU-Qoxzb2WLO3_YdG2NIEw9HOGks5WCqgGwA%3D%3D">Info.plist</a>.</p>
+<p>Adzerk&rsquo;s API Server is compliant with App Transport Security.</p>
 <h2 id='building-running-tests' class='heading'>Building / Running Tests</h2>
 
 <p>Use Xcode 7.0 or later. Ensure that command line tools are installed:</p>
