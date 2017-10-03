@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B502CB051B95E76E0091277C /* ADZResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502CB041B95E76E0091277C /* ADZResponse.swift */; };
+		B528E7251F83264200D431CF /* ADZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528E7241F83264200D431CF /* ADZLogger.swift */; };
+		B528E7261F832A5500D431CF /* ADZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528E7241F83264200D431CF /* ADZLogger.swift */; };
 		B52BA8271B8E1133002235CA /* ADZUserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA8261B8E1133002235CA /* ADZUserKeyStore.swift */; };
 		B52BA8291B8E1147002235CA /* ADZKeychainUserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA8281B8E1147002235CA /* ADZKeychainUserKeyStore.swift */; };
 		B52BA82C1B8E11A5002235CA /* ADZKeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52BA82B1B8E11A5002235CA /* ADZKeychainHelper.swift */; };
@@ -52,6 +54,7 @@
 /* Begin PBXFileReference section */
 		B502CB041B95E76E0091277C /* ADZResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZResponse.swift; sourceTree = "<group>"; };
 		B503D1881B7CF967008C0C8A /* ADZPlacementRequestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementRequestOptions.swift; sourceTree = "<group>"; };
+		B528E7241F83264200D431CF /* ADZLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADZLogger.swift; sourceTree = "<group>"; };
 		B52BA8261B8E1133002235CA /* ADZUserKeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZUserKeyStore.swift; sourceTree = "<group>"; };
 		B52BA8281B8E1147002235CA /* ADZKeychainUserKeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZKeychainUserKeyStore.swift; sourceTree = "<group>"; };
 		B52BA82B1B8E11A5002235CA /* ADZKeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZKeychainHelper.swift; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 				B5F8548E1BA32DEA000F1F02 /* ADZUser.swift */,
 				B52BA8261B8E1133002235CA /* ADZUserKeyStore.swift */,
 				B52BA8281B8E1147002235CA /* ADZKeychainUserKeyStore.swift */,
+				B528E7241F83264200D431CF /* ADZLogger.swift */,
 				B5C89DC91B78EBB3003CA162 /* Supporting Files */,
 			);
 			path = AdzerkSDK;
@@ -278,6 +282,7 @@
 				B52BA8291B8E1147002235CA /* ADZKeychainUserKeyStore.swift in Sources */,
 				B5FBCACA1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */,
 				B52BA8271B8E1133002235CA /* ADZUserKeyStore.swift in Sources */,
+				B528E7251F83264200D431CF /* ADZLogger.swift in Sources */,
 				B502CB051B95E76E0091277C /* ADZResponse.swift in Sources */,
 				B56232DD1B82389A004C416E /* ADZPlacementEvent.swift in Sources */,
 				B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */,
@@ -300,6 +305,7 @@
 				B52BA82F1B8E189B002235CA /* ADZKeychainHelper.swift in Sources */,
 				B56232DE1B8238A6004C416E /* ADZPlacementEvent.swift in Sources */,
 				B58E8AF91B7A4FD60029BAAD /* ADZPlacement.swift in Sources */,
+				B528E7261F832A5500D431CF /* ADZLogger.swift in Sources */,
 				B5DB643F1B7E434F00A243AC /* ADZFunctions.swift in Sources */,
 				B5FBCAC91B961FEE007F2E64 /* ADZResponse.swift in Sources */,
 				B5FBCACB1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */,

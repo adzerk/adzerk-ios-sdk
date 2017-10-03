@@ -26,6 +26,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 @objc open class AdzerkSDK : NSObject {
     
     private var queue: DispatchQueue
+    private var logger = ADZLogger()
     
     private static var _defaultNetworkId: Int?
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
@@ -145,7 +146,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                     
                     if http.statusCode == 200 {
                         if let resp = self.buildPlacementResponse(data) {
-                            print("Response: \(String(data: data, encoding: .utf8) ?? "<no response>"))")
+                            self.logger.debug("Response: \(String(data: data, encoding: .utf8) ?? "<no response>"))")
                             self.queue.async {
                                 completion(ADZResponse.success(resp))
                             }
@@ -177,13 +178,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func postUserProperties(_ userKey: String?, properties: [String : Any], callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
-            print("WARNING: No defaultNetworkId set.")
+            logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
             return
         }
     
         guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            logger.warn("WARNING: No userKey specified, and none can be found in the configured key store.")
             callback(false, nil)
             return
         }
@@ -201,7 +202,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
-            print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
+            logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
             return
         }
@@ -224,7 +225,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                     if http.statusCode == 200 {
                         callback(true, nil)
                     } else {
-                        print("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
+                        self.logger.debug("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
                         callback(false, nil)
                     }
                 } else {
@@ -234,8 +235,8 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             task.resume()
         }
         catch let exc as NSException {
-            print("WARNING: Could not serialize the submitted properties into JSON: \(properties).")
-            print("\(exc.name) -> \(exc.reason ?? "<no reason>")")
+            logger.warn("WARNING: Could not serialize the submitted properties into JSON: \(properties).")
+            logger.warn("\(exc.name) -> \(exc.reason ?? "<no reason>")")
             callback(false, nil)
         }
         catch let error as NSError {
@@ -249,13 +250,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func readUser(_ userKey: String?, callback: @escaping ADZUserDBUserResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
-            print("WARNING: No defaultNetworkId set.")
+            logger.warn("WARNING: No defaultNetworkId set.")
             callback(nil, nil)
             return
         }
         
         guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            logger.warn("WARNING: No userKey specified, and none can be found in the configured key store.")
             callback(nil, nil)
             return
         }
@@ -270,7 +271,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
-            print("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
+            logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(nil, nil)
             return
         }
@@ -293,25 +294,25 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                             if let user = ADZUser(dictionary: userDictionary) {
                                 callback(user, nil)
                             } else {
-                                print("WARNING: could not recognize json format: \(userDictionary)")
+                                self.logger.warn("WARNING: could not recognize json format: \(userDictionary)")
                                 callback(nil, nil)
                             }
                         } else {
-                            print("WARNING: response did not contain valid json.")
+                            self.logger.warn("WARNING: response did not contain valid json.")
                             callback(nil, error)
                         }
                     } catch let exc as NSException {
-                        print("WARNING: error parsing JSON: \(exc.name) -> \(String(describing: exc.reason))")
+                        self.logger.error("WARNING: error parsing JSON: \(exc.name) -> \(String(describing: exc.reason))")
                         callback(nil, nil)
                     } catch let e as NSError {
                         let body = String(data: data!, encoding: String.Encoding.utf8)
-                        print("response: \(String(describing: body))")
+                        self.logger.error("response: \(String(describing: body))")
                         callback(nil, e)
                     }
                 } else {
-                    print("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
+                    self.logger.debug("Received HTTP \(http.statusCode) from \(String(describing: request.url))")
                     let body = String(data: data!, encoding: String.Encoding.utf8)
-                    print("response: \(String(describing: body))")
+                    self.logger.debug("response: \(String(describing: body))")
                     callback(nil, nil)
                 }
             } else {
@@ -329,13 +330,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func addUserInterest(_ interest: String, userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
-            print("WARNING: No defaultNetworkId set.")
+            logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
             return
         }
         
         guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            logger.warn("WARNING: No userKey specified, and none can be found in the configured key store.")
             callback(false, nil)
             return
         }
@@ -366,13 +367,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func optOut(_ userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
-            print("WARNING: No defaultNetworkId set.")
+            logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
             return
         }
         
         guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            logger.warn("WARNING: No userKey specified, and none can be found in the configured key store.")
             callback(false, nil)
             return
         }
@@ -401,13 +402,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     open func retargetUser(_ userKey: String?, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
-            print("WARNING: No defaultNetworkId set.")
+            logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
             return
         }
         
         guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            print("WARNING: No userKey specified, and none can be found in the configured key store.")
+            logger.warn("WARNING: No userKey specified, and none can be found in the configured key store.")
             callback(false, nil)
             return
         }
@@ -435,10 +436,15 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param url a valid URL retrieved from an ADZPlacementDecision
     */
     open func recordImpression(_ url: URL) {
+        
+        logger.debug("DEBUG: Test")
+        logger.warn("WARN: Test")
+        logger.error("ERROR: Test")
+        
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("Error recording impression: \(error)")
+                self.logger.error("Error recording impression: \(error)")
             } else {
                 // impression recorded
             }
@@ -458,7 +464,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     func pixelRequest(_ networkId: Int, action: String, params: [String: String]?, callback: @escaping ADZResponseCallback) {
         let query = queryStringWithParams(params)
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/\(action)/i.gif\(query)") else {
-            print("WARNING: Could not construct proper URL for params: \(params ?? [:])")
+            logger.warn("WARNING: Could not construct proper URL for params: \(params ?? [:])")
             callback(false, nil)
             return
         }
@@ -473,9 +479,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                 if http.statusCode == 200 {
                     callback(true, nil)
                 } else {
-                    print("Received HTTP \(http.statusCode) from \(request.url!)")
+                    self.logger.debug("Received HTTP \(http.statusCode) from \(request.url!)")
                     if let data = data, let body = String(data: data, encoding: String.Encoding.utf8) {
-                        print("Response: \(body)")
+                        self.logger.debug("Response: \(body)")
                     }
                     callback(false, nil)
                 }
@@ -564,10 +570,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         do {
             let data = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = data
-            print("Posting JSON: \(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)")
+            logger.debug("Posting JSON: \(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)")
             return request
         } catch let error as NSError {
-            print("Error building placement request: \(error)")
+            logger.error("Error building placement request: \(error)")
             return nil
         }
     }
@@ -578,7 +584,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             saveUserKey(responseDictionary)
             return ADZPlacementResponse(dictionary: responseDictionary)
         } catch {
-            print("couldn't parse response as JSON")
+            logger.error("couldn't parse response as JSON")
             return nil
         }
     }
@@ -638,17 +644,26 @@ fileprivate struct UserAgentProvider {
         case "iPhone9,1", "iPhone9,3":                  return "iPhone 7"
         case "iPhone9,2", "iPhone9,4":                  return "iPhone 7 Plus"
         case "iPhone8,4":                               return "iPhone SE"
+        case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
+        case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
+        case "iPhone10,3", "iPhone10,6":                return "iPhone X"
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
         case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
         case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
+        case "iPad6,11", "iPad6,12":                    return "iPad 5"
         case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
         case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
         case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
         case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
-        case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return "iPad Pro"
+        case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
+        case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
+        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
+        case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
         case "AppleTV5,3":                              return "Apple TV"
+        case "AppleTV6,2":                              return "Apple TV 4K"
+        case "AudioAccessory1,1":                       return "HomePod"
         case "i386", "x86_64":                          return "Simulator"
         default:                                        return identifier
         }
