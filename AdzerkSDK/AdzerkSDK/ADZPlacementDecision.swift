@@ -12,7 +12,7 @@ import Foundation
     Response structure for decisions, found in a placement response. Each decision
     will be represented as one of these.
 */
-open class ADZPlacementDecision {
+public class ADZPlacementDecision : CustomStringConvertible {
     /** The name of the div requested */
     open let divName: String
     
@@ -26,17 +26,17 @@ open class ADZPlacementDecision {
     /** An array of `ADZPlacementContent`, representing the actual contents
         to display for this decision, if there are any.
     */
-    open let contents: [ADZPlacementContent]?
+    public let contents: [ADZPlacementContent]?
     
     /** An array of `ADZPlacementEvent`, representing the events for this decision,
         if there are any. */
-    open let events: [ADZPlacementEvent]?
+    public let events: [ADZPlacementEvent]?
     
     /** All of the attributes will be present in this dictionary,
         in case there are additional attributes being sent that are not modeled
         as properties.
     */
-    open let allAttributes: [String: Any]?
+    public let allAttributes: [String: Any]?
     
     /** Initializes the struct based on a JSON dictionary.
         @param name The name of the div for this decision
@@ -54,5 +54,9 @@ open class ADZPlacementDecision {
         impressionUrl = dictionary?["impressionUrl"] as? String
         contents = (dictionary?["contents"] as? [[String:AnyObject]])?.map { ADZPlacementContent(dictionary: $0) }
         events = (dictionary?["events"] as? [[String: AnyObject]])?.map { ADZPlacementEvent(dictionary: $0) }
+    }
+    
+    public var description: String {
+        return "ADZPlacementDecision: divName=\(divName) adId=\(adId ?? 0) creativeId=\(creativeId ?? 0)"
     }
 }
