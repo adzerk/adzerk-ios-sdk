@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // Update this when making changes. Will ben sent in the UserAgent to identify the version of the SDK used in host applications.
-let AdzerkSDKVersion = "1.0.2"
+let AdzerkSDKVersion = "1.0.3"
 
 /** The base URL to use for API requests. */
 let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
@@ -436,10 +436,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param url a valid URL retrieved from an ADZPlacementDecision
     */
     open func recordImpression(_ url: URL) {
-        
-        logger.debug("DEBUG: Test")
-        logger.warn("WARN: Test")
-        logger.error("ERROR: Test")
         
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
