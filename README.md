@@ -119,6 +119,25 @@ AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
 }];
 ```
 
+## Logging
+
+By default, warnings and errors will be printed to the console. If you want to change this, you can edit your scheme and provide a launch argument:
+
+![](https://benpublic.s3.amazonaws.com/adzerksdk/launcharguments.png)
+
+```
+-com.adzerk.sdk.loglevel <your desired log level>
+```
+
+The supported log levels:
+
+| value      | level  | description     |
+| ---------- | ------ | ----------------|
+| 0          | off    | No logs will be printed to the console
+| 1          | error  | Only errors will be output
+| 2          | warn   | Errors and warnings will be output (This is the default value)
+| 3          | debug  | verbose information (including HTTP response codes, bodies, etc) will be printed to the console
+
 ## iOS 9 App Transport Security
 
 Adzerk's API Server is compliant with App Transport Security.
