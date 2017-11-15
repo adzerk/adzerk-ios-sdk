@@ -200,6 +200,10 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 
 # Changelog
 
+- 1.0.4: Objective-C compatibility fixes for placements and decisions.
+
+- 1.0.3: Turns off logging by default, adds control over how/when to log to the console.
+
 - 1.0.2: Can specify which queue the sdk calls you back on. Defaults to `DispatchQueue.main`
 
 - 1.0: Swift 3 support
