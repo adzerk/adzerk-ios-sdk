@@ -20,16 +20,16 @@ public class ADZPlacementContent : NSObject {
         Indicates the type of content.
         Examples: `css`, `html`, `js`, `js-external`, or `raw`.
     */
-    open let type: String?
+    public let type: String?
     
     /* If the content uses a predefined template, this will be set to the name of the template. */
-    open let template: String?
+    public let template: String?
     
     /* Contains the template data used to build the content. */
-    open let data: [String: Any]?
+    public let data: [String: Any]?
     
     /* The rendered body of the content. */
-    open let body: String?
+    public let body: String?
     
     /**
         Initializes the struct from a JSON dictionary (expects keys: `type`, `template`, `data`, `body`, and `customData`) 

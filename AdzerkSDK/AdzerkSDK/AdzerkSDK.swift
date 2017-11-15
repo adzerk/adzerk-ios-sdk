@@ -23,7 +23,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 
 
 /** The primary class used to make requests against the API. */
-@objc open class AdzerkSDK : NSObject {
+@objc public class AdzerkSDK : NSObject {
     
     private var queue: DispatchQueue
     private var logger = ADZLogger()
@@ -32,7 +32,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
         each placement request does not need to provide it.  Any value in the placement request will override this value.
         Useful for the common case where the network ID is contstant for your application. */
-    open class var defaultNetworkId: Int? {
+    public class var defaultNetworkId: Int? {
         get { return _defaultNetworkId }
         set { _defaultNetworkId = newValue }
     }
@@ -41,18 +41,18 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is contstant for your application. */
-    open class var defaultSiteId: Int? {
+    public class var defaultSiteId: Int? {
         get { return _defaultSiteId }
         set { _defaultSiteId = newValue }
     }
     
     /** Setter for defaultNetworkId. Provided for Objective-C compatibility. */
-    open class func setDefaultNetworkId(_ networkId: Int) {
+    public class func setDefaultNetworkId(_ networkId: Int) {
         defaultNetworkId = networkId
     }
     
     /** Setter for defaultSiteId. Provided for Objective-C compatibility. */
-    open class func setDefaultSiteId(_ siteId: Int) {
+    public class func setDefaultSiteId(_ siteId: Int) {
         defaultSiteId = siteId
     }
     
@@ -99,7 +99,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param adTypes an array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types .
         @completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    open func requestPlacementInDiv(_ div: String, adTypes: [Int], completion: @escaping (ADZResponse) -> ()) {
+    public func requestPlacementInDiv(_ div: String, adTypes: [Int], completion: @escaping (ADZResponse) -> ()) {
         if let placement = ADZPlacement(divName: div, adTypes: adTypes) {
             requestPlacement(placement, completion: completion)
         }
@@ -109,7 +109,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param placement the placement details to request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    open func requestPlacement(_ placement: ADZPlacement, completion: @escaping (ADZResponse) -> ()) {
+    public func requestPlacement(_ placement: ADZPlacement, completion: @escaping (ADZResponse) -> ()) {
        requestPlacements([placement], completion: completion)
     }
 
@@ -117,7 +117,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param placements an array of placement details to request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    open func requestPlacements(_ placements: [ADZPlacement], completion: @escaping (ADZResponse) -> ()) {
+    public func requestPlacements(_ placements: [ADZPlacement], completion: @escaping (ADZResponse) -> ()) {
         requestPlacements(placements, options: nil, completion: completion)
     }
  
@@ -126,7 +126,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param options an optional instance of `ADZPlacementRequestOptions` that provide top-level attributes to the request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.
     */
-    open func requestPlacements(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: @escaping (ADZResponse) -> ()) {
+    public func requestPlacements(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?, completion: @escaping (ADZResponse) -> ()) {
         if let request = buildPlacementRequest(placements, options: options) {
             let task = session.dataTask(with: request) {
                 data, response, error in
@@ -176,7 +176,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
         @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    open func postUserProperties(_ userKey: String?, properties: [String : Any], callback: @escaping ADZResponseCallback) {
+    public func postUserProperties(_ userKey: String?, properties: [String : Any], callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -200,7 +200,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param properties a JSON serializable dictionary of properties to send to the UserDB endpoint.
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    open func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
+    public func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
@@ -248,7 +248,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey a string identifying the user
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    open func readUser(_ userKey: String?, callback: @escaping ADZUserDBUserResponseCallback) {
+    public func readUser(_ userKey: String?, callback: @escaping ADZUserDBUserResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             logger.warn("WARNING: No defaultNetworkId set.")
             callback(nil, nil)
@@ -269,7 +269,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey a string identifying the user
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
-    open func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
+    public func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
         guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(nil, nil)
@@ -328,7 +328,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey the current user key. If nil, the saved userKey from the configured userKeyStore is used.
     @param callback a simple success/error callback to use when the response comes back
     */
-    open func addUserInterest(_ interest: String, userKey: String?, callback: @escaping ADZResponseCallback) {
+    public func addUserInterest(_ interest: String, userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -352,7 +352,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param callback a simple success/error callback to use when the response comes back
     */
 
-    open func addUserInterest(_ interest: String, networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
+    public func addUserInterest(_ interest: String, networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey,
             "interest": interest
@@ -365,7 +365,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey the user to opt out. If nil, the saved userKey from the configured userKeyStore is used.
     @param callback a simple success/error callback to use when the response comes back
     */
-    open func optOut(_ userKey: String?, callback: @escaping ADZResponseCallback) {
+    public func optOut(_ userKey: String?, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -387,7 +387,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey the user to opt out
     @param callback a simple success/error callback to use when the response comes back
     */
-    open func optOut(_ networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
+    public func optOut(_ networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey
         ]
@@ -400,7 +400,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param segmentId the segment the user is targeted to
     @param callback a simple success/error callback to use when the response comes back
     */
-    open func retargetUser(_ userKey: String?, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
+    public func retargetUser(_ userKey: String?, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
         guard let networkId = AdzerkSDK.defaultNetworkId else {
             logger.warn("WARNING: No defaultNetworkId set.")
             callback(false, nil)
@@ -423,7 +423,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param segmentId the segment the user is targeted to
     @param callback a simple success/error callback to use when the response comes back
     */
-    open func retargetUser(_ networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
+    public func retargetUser(_ networkId: Int, userKey: String, brandId: Int, segmentId: Int, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey
         ]
@@ -435,7 +435,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         Sends a request to record an impression. This is a fire-and-forget request, the response is ignored.
         @param url a valid URL retrieved from an ADZPlacementDecision
     */
-    open func recordImpression(_ url: URL) {
+    public func recordImpression(_ url: URL) {
         
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
