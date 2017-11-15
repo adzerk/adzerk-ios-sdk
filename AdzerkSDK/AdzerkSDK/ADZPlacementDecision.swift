@@ -12,7 +12,7 @@ import Foundation
     Response structure for decisions, found in a placement response. Each decision
     will be represented as one of these.
 */
-public class ADZPlacementDecision : CustomStringConvertible {
+public class ADZPlacementDecision : NSObject {
     /** The name of the div requested */
     open let divName: String
     
@@ -22,6 +22,19 @@ public class ADZPlacementDecision : CustomStringConvertible {
     open let campaignId: Int?
     open let clickUrl: String?
     open let impressionUrl: String?
+    
+    // These accessors are added for Objective-C compatibility
+    public var adIdNumber: NSNumber? {
+        return adId.flatMap(NSNumber.init)
+    }
+    
+    public var creativeIdNumber: NSNumber? {
+        return creativeId.flatMap(NSNumber.init)
+    }
+    
+    public var flightIdNumber: NSNumber? {
+        return flightId.flatMap(NSNumber.init)
+    }
     
     /** An array of `ADZPlacementContent`, representing the actual contents
         to display for this decision, if there are any.
@@ -56,7 +69,7 @@ public class ADZPlacementDecision : CustomStringConvertible {
         events = (dictionary?["events"] as? [[String: AnyObject]])?.map { ADZPlacementEvent(dictionary: $0) }
     }
     
-    public var description: String {
+    public override var description: String {
         return "ADZPlacementDecision: divName=\(divName) adId=\(adId ?? 0) creativeId=\(creativeId ?? 0)"
     }
 }

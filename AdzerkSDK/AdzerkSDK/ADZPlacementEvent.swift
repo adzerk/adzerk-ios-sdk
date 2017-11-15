@@ -14,6 +14,7 @@ import Foundation
 open class ADZPlacementEvent {
     open let id: Int
     open let url: String
+public class ADZPlacementEvent : NSObject {
     
     /** Initialize a new struct given a JSON dictionary. Expects the keys `id` and `url` 
         to be present in the dictionary.
