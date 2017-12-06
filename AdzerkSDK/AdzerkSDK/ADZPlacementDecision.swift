@@ -14,42 +14,44 @@ import Foundation
 */
 public class ADZPlacementDecision : NSObject {
     /** The name of the div requested */
-    open let divName: String
+    @objc
+    public let divName: String
     
-    open let adId: Int?
-    open let creativeId: Int?
-    open let flightId: Int?
-    open let campaignId: Int?
-    open let clickUrl: String?
-    open let impressionUrl: String?
+    public let adId: Int?
+    public let creativeId: Int?
+    public let flightId: Int?
+    public let campaignId: Int?
+    
+    @objc public let clickUrl: String?
+    @objc public let impressionUrl: String?
     
     // These accessors are added for Objective-C compatibility
-    public var adIdNumber: NSNumber? {
+    @objc public var adIdNumber: NSNumber? {
         return adId.flatMap(NSNumber.init)
     }
     
-    public var creativeIdNumber: NSNumber? {
+    @objc public var creativeIdNumber: NSNumber? {
         return creativeId.flatMap(NSNumber.init)
     }
     
-    public var flightIdNumber: NSNumber? {
+    @objc public var flightIdNumber: NSNumber? {
         return flightId.flatMap(NSNumber.init)
     }
     
     /** An array of `ADZPlacementContent`, representing the actual contents
         to display for this decision, if there are any.
     */
-    public let contents: [ADZPlacementContent]?
+    @objc public let contents: [ADZPlacementContent]?
     
     /** An array of `ADZPlacementEvent`, representing the events for this decision,
         if there are any. */
-    public let events: [ADZPlacementEvent]?
+    @objc public let events: [ADZPlacementEvent]?
     
     /** All of the attributes will be present in this dictionary,
         in case there are additional attributes being sent that are not modeled
         as properties.
     */
-    public let allAttributes: [String: Any]?
+    @objc public let allAttributes: [String: Any]?
     
     /** Initializes the struct based on a JSON dictionary.
         @param name The name of the div for this decision

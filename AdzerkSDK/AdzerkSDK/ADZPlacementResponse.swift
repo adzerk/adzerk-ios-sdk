@@ -12,9 +12,9 @@ import Foundation
     Top level response object for placement requests.
     Documentation can be found at: http://help.adzerk.com/hc/en-us/articles/203193935-Response
 */
-open class ADZPlacementResponse: NSObject {
-    open let decisions: [String: ADZPlacementDecision]
-    open let extraAttributes: [String: AnyObject]
+public class ADZPlacementResponse: NSObject {
+    @objc public let decisions: [String: ADZPlacementDecision]
+    @objc public let extraAttributes: [String: AnyObject]
     
     init?(dictionary: [String: AnyObject]) {
         if let decisionsDict = dictionary["decisions"] as? [String: AnyObject] {

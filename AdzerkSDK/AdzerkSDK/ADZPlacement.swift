@@ -9,22 +9,22 @@
 import Foundation
 
 /** Specifies a placement's details to request. */
-@objc open class ADZPlacement : NSObject {
+@objc public class ADZPlacement : NSObject {
     
     /** The name of the div */
-    open let divName: String
+    @objc public let divName: String
     
     /** The network ID. If none is specified it retrieves the value from `AdzerkSDK.defaultNetworkId` */
-    open let networkId: Int
+    @objc public let networkId: Int
     
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
-    open let siteId: Int
+    @objc public let siteId: Int
     
     /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
-    open let adTypes: [Int]
+    @objc public let adTypes: [Int]
     
-    open var zoneIds: [Int]?
-    open var eventIds: [Int]?
+    @objc public var zoneIds: [Int]?
+    @objc public var eventIds: [Int]?
     
     open var properties: [String: Any]?
     open var campaignId: Int?

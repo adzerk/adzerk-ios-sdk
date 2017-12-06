@@ -12,8 +12,8 @@ import Foundation
     Returns tracking URLs for any requested custom events.
 */
 public class ADZPlacementEvent : NSObject {
-    public let id: Int
-    public let url: String
+    @objc public let id: Int
+    @objc public let url: String
     
     /** Initialize a new struct given a JSON dictionary. Expects the keys `id` and `url` 
         to be present in the dictionary.

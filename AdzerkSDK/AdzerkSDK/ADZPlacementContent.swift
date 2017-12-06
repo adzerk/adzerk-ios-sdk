@@ -20,15 +20,19 @@ public class ADZPlacementContent : NSObject {
         Indicates the type of content.
         Examples: `css`, `html`, `js`, `js-external`, or `raw`.
     */
+    @objc
     public let type: String?
     
     /* If the content uses a predefined template, this will be set to the name of the template. */
+    @objc
     public let template: String?
     
     /* Contains the template data used to build the content. */
+    @objc
     public let data: [String: Any]?
     
     /* The rendered body of the content. */
+    @objc
     public let body: String?
     
     /**
