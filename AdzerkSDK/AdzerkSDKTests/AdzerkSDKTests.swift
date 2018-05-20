@@ -297,7 +297,7 @@ class AdzerkSDKTests: XCTestCase {
 
         waitForExpectations(timeout: 3.0, handler: nil)
     }
-
+    
     func testCanReadUser() {
         let userKey = "userKey123"
         let expectationResult = expectation(description: "API response received")
@@ -307,6 +307,8 @@ class AdzerkSDKTests: XCTestCase {
             XCTAssertEqual(user!.userKey, "userKey123")
             XCTAssertEqual(user!.interests, ["fishing"])
             XCTAssertNotNil(user!.blockedItems)
+            XCTAssertNotNil(user!.consent)
+            XCTAssertFalse(user!.consent!.gdpr)
             XCTAssertTrue(user!.optOut)
             XCTAssertEqual(Array(user!.customProperties.keys).sorted(), ["foo", "isCustom", "numberOfGems"].sorted())
 

@@ -18,6 +18,7 @@ public class ADZUser : NSObject {
     @objc public let interests: [String]!
     @objc public let customProperties: [String: AnyObject]!
     @objc public let optOut: Bool
+    @objc public let consent: ADZConsent?
     
     init?(dictionary: [String: AnyObject]) {
         guard let
@@ -25,13 +26,15 @@ public class ADZUser : NSObject {
             let blockedItems = dictionary["blockedItems"] as? [String: AnyObject],
             let interests = dictionary["interests"] as? [String],
             let customProperties = dictionary["custom"] as? [String: AnyObject],
-            let optOut = dictionary["optOut"] as? NSNumber
+            let optOut = dictionary["optOut"] as? NSNumber,
+            let consent = dictionary["consent"] as? [String:AnyObject]
             else {
                 self.userKey = ""
                 self.blockedItems = [:]
                 self.interests = []
                 self.customProperties = [:]
                 self.optOut = false
+                self.consent = nil
             super.init()
             return nil
         }
@@ -41,6 +44,7 @@ public class ADZUser : NSObject {
         self.interests = interests
         self.customProperties = customProperties
         self.optOut = optOut.boolValue
+        self.consent = ADZConsent(dictionary: consent)
         super.init()
     }
 }

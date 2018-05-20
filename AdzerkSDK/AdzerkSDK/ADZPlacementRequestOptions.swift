@@ -9,19 +9,21 @@
 import Foundation
 
 /** Provides a mechanism for adding top-level metadata to the placement request. */
-open class ADZPlacementRequestOptions: NSObject {
-    open var keywords: [String]?
-    open var blockedCreatives: [Int]?
-    open var flightViewTimes: [String: [Int]]?
-    open var url: String?
+public class ADZPlacementRequestOptions: NSObject {
+    public var keywords: [String]?
+    public var blockedCreatives: [Int]?
+    public var flightViewTimes: [String: [Int]]?
+    public var url: String?
     
     /** The user key for this request. If nil, the current saved user key will be used from
         the configured `ADZUserKeyStore` on `AdzerkSDK`.
     */
-    open var userKey: String?
+    public var userKey: String?
+    
+    public var consent: ADZConsent?
     
     /** Any additional parameters can be provided here and will be added to the request */
-    open var additionalOptions: [String: AnyObject]?
+    public var additionalOptions: [String: AnyObject]?
     
     public override init() {
     }
