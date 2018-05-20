@@ -20,4 +20,10 @@ public class ADZConsent : NSObject {
         gdpr = (dictionary["gdpr"] as? NSNumber)?.boolValue ?? false
         super.init()
     }
+    
+    public func toJSONDictionary() -> [String: Any] {
+        return [
+            "gdpr": gdpr
+        ]
+    }
 }

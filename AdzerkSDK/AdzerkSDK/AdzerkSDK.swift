@@ -556,9 +556,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
         
         if let consent = options?.consent {
-            body["consent"] = [
-                "gdpr": consent.gdpr
-            ]
+            body["consent"] = consent.toJSONDictionary()
         }
         
         if let additionalOptions = options?.additionalOptions {
