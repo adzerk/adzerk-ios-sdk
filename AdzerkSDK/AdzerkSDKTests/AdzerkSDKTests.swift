@@ -19,8 +19,8 @@ class AdzerkSDKTests: XCTestCase {
         super.setUp()
         AdzerkSDK.defaultNetworkId = networkId
         AdzerkSDK.defaultSiteId = siteId
+        ADZLogger.logLevel = ADZLogger.LevelDebug
         sdk = AdzerkSDK()
-
     }
 
     override func tearDown() {
@@ -249,6 +249,7 @@ class AdzerkSDKTests: XCTestCase {
         options.flightViewTimes = [
             "1234": [151243, 5124312]
         ]
+        options.consent = ADZConsent(gdpr: true)
 
         options.blockedCreatives = [1,2,3]
         options.keywords = ["cheese", "apples", "wine"]

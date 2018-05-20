@@ -15,4 +15,9 @@ public class ADZConsent : NSObject {
         self.gdpr = gdpr
         super.init()
     }
+    
+    public init?(dictionary: [String: AnyObject]) {
+        gdpr = (dictionary["gdpr"] as? NSNumber)?.boolValue ?? false
+        super.init()
+    }
 }
