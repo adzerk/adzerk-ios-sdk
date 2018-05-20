@@ -242,64 +242,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
     }
     
-    public func postGDPRConsent(_ userKey: String? = nil, networkId: Int? = nil, consent: Bool, callback: @escaping ADZResponseCallback) {
-        guard let actualUserKey = userKey ?? keyStore.currentUserKey() else {
-            logger.warn("WARNING: No userKey specified")
-            callback(false, nil)
-            return
-        }
-        guard let actualNetworkId = networkId ?? AdzerkSDK.defaultNetworkId else {
-            logger.warn("WARNING: No defaultNetworkId set")
-            callback(false, nil)
-            return
-        }
-        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(actualNetworkId)/consent") else {
-            logger.warn("WARNING: Could not build URL with provided params. Network ID: \(actualNetworkId), userKey: \(actualUserKey)")
-            callback(false, nil)
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = [
-            "Content-Type" : "application/json",
-            "Accept" : "application/json"
-        ]
-        request.httpMethod = "POST"
-        
-        let params: [String:Any] = [
-            "userKey": actualUserKey,
-            "consent": [
-                "gdpr": consent
-            ]
-        ]
-        
-        do {
-            let data = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
-            request.httpBody = data
-        } catch let e as NSError {
-            logger.error("Could not convert params into JSON. \(e)")
-            callback(false, e)
-            return
-        }
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                let http = response as! HTTPURLResponse
-                print("HTTP \(http.statusCode)")
-                if http.statusCode == 200 {
-                    callback(true, nil)
-                } else {
-                    self.logger.debug("Received HTTP \(http.statusCode) from \(request.url?.absoluteString ?? ""))")
-                    callback(false, nil)
-                }
-            } else {
-                print("ERROR: \(error!)")
-                callback(false, error)
-            }
-        }
-        task.resume()
-    }
-    
     /** Returns the UserDB data for a given user.
     @param userKey a string identifying the user
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
