@@ -20,6 +20,7 @@ public class ADZPlacementRequestOptions: NSObject {
     */
     public var userKey: String?
     
+    /** Indicates the user's consent status for GDPR compliance. */
     public var consent: ADZConsent?
     
     /** Any additional parameters can be provided here and will be added to the request */

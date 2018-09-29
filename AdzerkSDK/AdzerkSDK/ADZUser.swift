@@ -18,6 +18,8 @@ public class ADZUser : NSObject {
     @objc public let interests: [String]!
     @objc public let customProperties: [String: AnyObject]!
     @objc public let optOut: Bool
+    
+    /** Indicates the user's current value for GDPR consent. */
     @objc public let consent: ADZConsent?
     
     init?(dictionary: [String: AnyObject]) {
