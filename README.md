@@ -33,7 +33,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 1.1'
+pod 'adzerk-ios-sdk', '~> 1.1
 ```
 
 Again, if you want to be on the latest master branch:
@@ -199,6 +199,8 @@ After a few seconds, your changes will be live on [https://adzerk.github.io/adze
 This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE) for more information.
 
 # Changelog
+
+- 1.1: Read/update GDPR consent
 
 - 1.0.4: Objective-C compatibility fixes for placements and decisions.
 
