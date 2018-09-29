@@ -13,7 +13,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (64% documented)</p>
+        <p><a href="index.html"> Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -30,6 +30,9 @@
           <li class="nav-group-name">
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ADZConsent.html">ADZConsent</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
@@ -60,7 +63,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/ADZResponse.html">ADZResponse</a>
@@ -72,6 +75,23 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseFailureCallbacka">ADZResponseFailureCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseSuccessCallbacka">ADZResponseSuccessCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a>
               </li>
             </ul>
           </li>
@@ -94,7 +114,7 @@ automatically with Carthage or CocoaPods.</p>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
 <p>If you&rsquo;re using <a href="https://github.com/Carthage/Carthage">Carthage</a>, add this to your <code>Cartfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"adzerk/adzerk-ios-sdk"</span> <span class="o">~&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"adzerk/adzerk-ios-sdk"</span> <span class="o">~&gt;</span> <span class="mf">1.0</span>
 </code></pre>
 
 <p>If you want to be on the bleeding edge, you can specify the <code>master</code> branch:</p>
@@ -118,7 +138,7 @@ this to your project manually.</p>
 <p>Then run <code>pod install</code> to download the code and integrate it into your project. You&rsquo;ll then open the pod-created workspace instead of your project to build.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 
-<p>All API operations are done with an instance of <a href="http://adzerk.github.io/adzerk-ios-sdk/Classes/AdzerkSDK.html"><code>AdzerkSDK</code></a>.</p>
+<p>All API operations are done with an instance of <a href="http://adzerk.github.io/adzerk-ios-sdk/Classes/AdzerkSDK.html"><code><a href="Classes/AdzerkSDK.html">AdzerkSDK</a></code></a>.</p>
 
 <p>For most uses, a single Network ID and Site ID will be used for the entire application. If this is the case
 you can configure it once in the <code>AppDelegate</code>:</p>
@@ -133,7 +153,7 @@ you can configure it once in the <code>AppDelegate</code>:</p>
 <p>For requests that need a different Network ID or Site ID, you can specify this on the individual placement request.</p>
 <h3 id='requesting-placements' class='heading'>Requesting Placements</h3>
 
-<p>To request a placement, you can build an instance of <code>ADZPlacement</code> and specify the attributes you want to send:</p>
+<p>To request a placement, you can build an instance of <code><a href="Classes/ADZPlacement.html">ADZPlacement</a></code> and specify the attributes you want to send:</p>
 <pre class="highlight swift"><code><span class="c1">// Assumes that the default network ID and site ID are already set on AdzerkSDK</span>
 <span class="k">var</span> <span class="nv">placement</span> <span class="o">=</span> <span class="kt">ADZPlacement</span><span class="p">(</span><span class="nv">divName</span><span class="p">:</span> <span class="s">"div1"</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">!</span>
 <span class="n">placement</span><span class="o">.</span><span class="n">zoneIds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -146,7 +166,7 @@ you can configure it once in the <code>AppDelegate</code>:</p>
 <p><em>Note: completion blocks are called on the main queue. If you want to be called back on a different queue, you can pass this queue to the AdzerkSDK initializer.</em></p>
 <h3 id='handling-the-response' class='heading'>Handling the Response</h3>
 
-<p>A placement request will accept a completion block that is handed an instance of <code>ADZResponse</code>. This is
+<p>A placement request will accept a completion block that is handed an instance of <code><a href="Enums/ADZResponse.html">ADZResponse</a></code>. This is
 a Swift enum that will indicate success or failure.</p>
 <pre class="highlight swift"><code><span class="n">sdk</span><span class="o">.</span><span class="nf">requestPlacements</span><span class="p">([</span><span class="n">placement</span><span class="p">])</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
   <span class="k">switch</span> <span class="n">response</span> <span class="p">{</span>
@@ -158,7 +178,7 @@ a Swift enum that will indicate success or failure.</p>
 <span class="p">}</span>
 </code></pre>
 
-<p>Handle each case as appropriate for your application. In the case of <code>.Success</code> you are given an <code>ADZPlacementResponse</code>
+<p>Handle each case as appropriate for your application. In the case of <code>.Success</code> you are given an <code><a href="Classes/ADZPlacementResponse.html">ADZPlacementResponse</a></code>
 that contains the decisions for each placement requested.</p>
 <h3 id='a-note-about-objective-c' class='heading'>A Note About Objective-C</h3>
 
@@ -177,6 +197,44 @@ and Objective-C project, you can request placements like this:</p>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@"  Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
 <span class="p">}];</span>
 </code></pre>
+<h2 id='logging' class='heading'>Logging</h2>
+
+<p>By default, warnings and errors will be printed to the console. If you want to change this, you can edit your scheme and provide a launch argument:</p>
+
+<p><img src="https://benpublic.s3.amazonaws.com/adzerksdk/launcharguments.png" alt=""></p>
+<pre class="highlight plaintext"><code>-com.adzerk.sdk.loglevel &lt;your desired log level&gt;
+</code></pre>
+
+<p>The supported log levels:</p>
+
+<table><thead>
+<tr>
+<th>value</th>
+<th>level</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>off</td>
+<td>No logs will be printed to the console</td>
+</tr>
+<tr>
+<td>1</td>
+<td>error</td>
+<td>Only errors will be output</td>
+</tr>
+<tr>
+<td>2</td>
+<td>warn</td>
+<td>Errors and warnings will be output (This is the default value)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>debug</td>
+<td>verbose information (including HTTP response codes, bodies, etc) will be printed to the console</td>
+</tr>
+</tbody></table>
 <h2 id='ios-9-app-transport-security' class='heading'>iOS 9 App Transport Security</h2>
 
 <p>Adzerk&rsquo;s API Server is compliant with App Transport Security.</p>
@@ -222,6 +280,9 @@ $ git push
 <h1 id='changelog' class='heading'>Changelog</h1>
 
 <ul>
+<li><p>1.1: Read/update GDPR consent</p></li>
+<li><p>1.0.4: Objective-C compatibility fixes for placements and decisions.</p></li>
+<li><p>1.0.3: Turns off logging by default, adds control over how/when to log to the console.</p></li>
 <li><p>1.0.2: Can specify which queue the sdk calls you back on. Defaults to <code>DispatchQueue.main</code></p></li>
 <li><p>1.0: Swift 3 support</p></li>
 </ul>
@@ -235,8 +296,8 @@ $ git push
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

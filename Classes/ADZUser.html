@@ -14,7 +14,7 @@
     <a title="ADZUser Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (64% documented)</p>
+        <p><a href="../index.html"> Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,6 +31,9 @@
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ADZConsent.html">ADZConsent</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
@@ -61,7 +64,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/ADZResponse.html">ADZResponse</a>
@@ -76,6 +79,23 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK26ADZResponseFailureCallbacka">ADZResponseFailureCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK26ADZResponseSuccessCallbacka">ADZResponseSuccessCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -84,7 +104,7 @@
             <h1>ADZUser</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -98,9 +118,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC9AdzerkSDK7ADZUser7userKeyGSQSS_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)userKey"></a>
                     <a name="//apple_ref/swift/Property/userKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC9AdzerkSDK7ADZUser7userKeyGSQSS_">userKey</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)userKey">userKey</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -115,7 +135,8 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -125,9 +146,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC9AdzerkSDK7ADZUser12blockedItemsGSQGVs10DictionarySSPs9AnyObject___"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)blockedItems"></a>
                     <a name="//apple_ref/swift/Property/blockedItems" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC9AdzerkSDK7ADZUser12blockedItemsGSQGVs10DictionarySSPs9AnyObject___">blockedItems</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)blockedItems">blockedItems</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -142,7 +163,8 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">blockedItems</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -152,9 +174,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC9AdzerkSDK7ADZUser9interestsGSQGSaSS__"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)interests"></a>
                     <a name="//apple_ref/swift/Property/interests" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC9AdzerkSDK7ADZUser9interestsGSQGSaSS__">interests</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)interests">interests</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -169,7 +191,8 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">interests</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -179,9 +202,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC9AdzerkSDK7ADZUser16customPropertiesGSQGVs10DictionarySSPs9AnyObject___"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)customProperties"></a>
                     <a name="//apple_ref/swift/Property/customProperties" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC9AdzerkSDK7ADZUser16customPropertiesGSQGVs10DictionarySSPs9AnyObject___">customProperties</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)customProperties">customProperties</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -196,7 +219,8 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">customProperties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -206,9 +230,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC9AdzerkSDK7ADZUser6optOutSb"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)optOut"></a>
                     <a name="//apple_ref/swift/Property/optOut" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC9AdzerkSDK7ADZUser6optOutSb">optOut</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)optOut">optOut</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -223,7 +247,36 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">optOut</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser(py)consent"></a>
+                    <a name="//apple_ref/swift/Property/consent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser(py)consent">consent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">let</span> <span class="nv">consent</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZConsent.html">ADZConsent</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -235,8 +288,8 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

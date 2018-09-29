@@ -10,10 +10,11 @@
     
   </head>
   <body>
+    <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (64% documented)</p>
+        <p><a href="index.html"> Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -30,6 +31,9 @@
           <li class="nav-group-name">
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ADZConsent.html">ADZConsent</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
@@ -60,7 +64,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/ADZResponse.html">ADZResponse</a>
@@ -72,6 +76,23 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseFailureCallbacka">ADZResponseFailureCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseSuccessCallbacka">ADZResponseSuccessCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a>
               </li>
             </ul>
           </li>
@@ -90,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:P9AdzerkSDK15ADZUserKeyStore"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(pl)ADZUserKeyStore"></a>
                     <a name="//apple_ref/swift/Protocol/ADZUserKeyStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:P9AdzerkSDK15ADZUserKeyStore">ADZUserKeyStore</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(pl)ADZUserKeyStore">ADZUserKeyStore</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -104,10 +125,10 @@
     that the API uses to identify a user. If none is passed to an initial request,
     the server will generate a new one and return it.
     <code><a href="Classes/AdzerkSDK.html">AdzerkSDK</a></code> will use its configured <code>ADZUserKeyStore</code> to store this key.</p>
-<pre class="highlight plaintext"><code>The default behavior is to store this value in the keychain, securely. If
-you need to store this alongside your user record instead, then you can
-create a custom implementation of `ADZUserKeyStore` and save it wherever is
-appropriate for your application.
+<pre class="highlight swift"><code><span class="kt">The</span> <span class="k">default</span> <span class="n">behavior</span> <span class="k">is</span> <span class="n">to</span> <span class="n">store</span> <span class="n">this</span> <span class="n">value</span> <span class="k">in</span> <span class="n">the</span> <span class="n">keychain</span><span class="p">,</span> <span class="n">securely</span><span class="o">.</span> <span class="kt">If</span>
+<span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">store</span> <span class="n">this</span> <span class="n">alongside</span> <span class="n">your</span> <span class="n">user</span> <span class="n">record</span> <span class="n">instead</span><span class="p">,</span> <span class="n">then</span> <span class="n">you</span> <span class="n">can</span>
+<span class="n">create</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">implementation</span> <span class="n">of</span> <span class="p">`</span><span class="nv">ADZUserKeyStore</span><span class="p">`</span> <span class="n">and</span> <span class="n">save</span> <span class="n">it</span> <span class="n">wherever</span> <span class="k">is</span>
+<span class="n">appropriate</span> <span class="k">for</span> <span class="n">your</span> <span class="n">application</span><span class="o">.</span>
 </code></pre>
 
                         <a href="Protocols/ADZUserKeyStore.html" class="slightly-smaller">See more</a>
@@ -116,7 +137,8 @@ appropriate for your application.
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ADZUserKeyStore</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ADZUserKeyStore</span></code></pre>
 
                         </div>
                       </div>
@@ -128,8 +150,8 @@ appropriate for your application.
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

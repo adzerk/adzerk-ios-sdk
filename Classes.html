@@ -10,10 +10,11 @@
     
   </head>
   <body>
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (64% documented)</p>
+        <p><a href="index.html"> Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -30,6 +31,9 @@
           <li class="nav-group-name">
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ADZConsent.html">ADZConsent</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
@@ -60,7 +64,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/ADZResponse.html">ADZResponse</a>
@@ -72,6 +76,23 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseFailureCallbacka">ADZResponseFailureCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK26ADZResponseSuccessCallbacka">ADZResponseSuccessCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a>
               </li>
             </ul>
           </li>
@@ -90,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK20ADZPlacementResponse"></a>
-                    <a name="//apple_ref/swift/Class/ADZPlacementResponse" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK20ADZPlacementResponse">ADZPlacementResponse</a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZConsent"></a>
+                    <a name="//apple_ref/swift/Class/ADZConsent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZConsent">ADZConsent</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -100,16 +121,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Top level response object for placement requests.
-Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles/203193935-Response">http://help.adzerk.com/hc/en-us/articles/203193935-Response</a></p>
+                        <p>Undocumented</p>
 
-                        <a href="Classes/ADZPlacementResponse.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/ADZConsent.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacementResponse</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZConsent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -123,9 +143,9 @@ Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK9AdzerkSDK"></a>
-                    <a name="//apple_ref/swift/Class/AdzerkSDK" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK9AdzerkSDK">AdzerkSDK</a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZKeychainUserKeyStore"></a>
+                    <a name="//apple_ref/swift/Class/ADZKeychainUserKeyStore" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZKeychainUserKeyStore">ADZKeychainUserKeyStore</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -133,15 +153,16 @@ Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The primary class used to make requests against the API.</p>
+                        <p>Provides secure storage for the User key via the iOS Keychain. This is the default implementation of <code><a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></code>.</p>
 
-                        <a href="Classes/AdzerkSDK.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/ADZKeychainUserKeyStore.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZKeychainUserKeyStore</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></span></code></pre>
 
                         </div>
                       </div>
@@ -155,9 +176,9 @@ Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK7ADZUser"></a>
-                    <a name="//apple_ref/swift/Class/ADZUser" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK7ADZUser">ADZUser</a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacement"></a>
+                    <a name="//apple_ref/swift/Class/ADZPlacement" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacement">ADZPlacement</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -165,16 +186,16 @@ Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the information known about a user in UserDB. Returned
-by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
+                        <p>Specifies a placement&rsquo;s details to request.</p>
 
-                        <a href="Classes/ADZUser.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/ADZPlacement.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacement</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -188,9 +209,9 @@ by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK19ADZPlacementContent"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementContent"></a>
                     <a name="//apple_ref/swift/Class/ADZPlacementContent" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK19ADZPlacementContent">ADZPlacementContent</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementContent">ADZPlacementContent</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -210,7 +231,7 @@ with the type <code>html</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementContent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -224,105 +245,9 @@ with the type <code>html</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK23ADZKeychainUserKeyStore"></a>
-                    <a name="//apple_ref/swift/Class/ADZKeychainUserKeyStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK23ADZKeychainUserKeyStore">ADZKeychainUserKeyStore</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Provides secure storage for the User key via the iOS Keychain. This is the default implementation of <code><a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></code>.</p>
-
-                        <a href="Classes/ADZKeychainUserKeyStore.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZKeychainUserKeyStore</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C9AdzerkSDK26ADZPlacementRequestOptions"></a>
-                    <a name="//apple_ref/swift/Class/ADZPlacementRequestOptions" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK26ADZPlacementRequestOptions">ADZPlacementRequestOptions</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Provides a mechanism for adding top-level metadata to the placement request.</p>
-
-                        <a href="Classes/ADZPlacementRequestOptions.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacementRequestOptions</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C9AdzerkSDK17ADZPlacementEvent"></a>
-                    <a name="//apple_ref/swift/Class/ADZPlacementEvent" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK17ADZPlacementEvent">ADZPlacementEvent</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns tracking URLs for any requested custom events.</p>
-
-                        <a href="Classes/ADZPlacementEvent.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacementEvent</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C9AdzerkSDK20ADZPlacementDecision"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementDecision"></a>
                     <a name="//apple_ref/swift/Class/ADZPlacementDecision" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK20ADZPlacementDecision">ADZPlacementDecision</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementDecision">ADZPlacementDecision</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -339,7 +264,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacementDecision</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementDecision</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -353,9 +278,9 @@ will be represented as one of these.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C9AdzerkSDK12ADZPlacement"></a>
-                    <a name="//apple_ref/swift/Class/ADZPlacement" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C9AdzerkSDK12ADZPlacement">ADZPlacement</a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementEvent"></a>
+                    <a name="//apple_ref/swift/Class/ADZPlacementEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementEvent">ADZPlacementEvent</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -363,15 +288,146 @@ will be represented as one of these.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Specifies a placement&rsquo;s details to request.</p>
+                        <p>Returns tracking URLs for any requested custom events.</p>
 
-                        <a href="Classes/ADZPlacement.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/ADZPlacementEvent.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">ADZPlacement</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementEvent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementRequestOptions"></a>
+                    <a name="//apple_ref/swift/Class/ADZPlacementRequestOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementRequestOptions">ADZPlacementRequestOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides a mechanism for adding top-level metadata to the placement request.</p>
+
+                        <a href="Classes/ADZPlacementRequestOptions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementRequestOptions</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementResponse"></a>
+                    <a name="//apple_ref/swift/Class/ADZPlacementResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementResponse">ADZPlacementResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Top level response object for placement requests.
+Documentation can be found at: <a href="http://help.adzerk.com/hc/en-us/articles/203193935-Response">http://help.adzerk.com/hc/en-us/articles/203193935-Response</a></p>
+
+                        <a href="Classes/ADZPlacementResponse.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementResponse</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)ADZUser"></a>
+                    <a name="//apple_ref/swift/Class/ADZUser" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZUser">ADZUser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Contains the information known about a user in UserDB. Returned
+by calling <code>readUser</code> on <code>AdzerSDK</code>.</p>
+
+                        <a href="Classes/ADZUser.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZUser</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK"></a>
+                    <a name="//apple_ref/swift/Class/AdzerkSDK" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK">AdzerkSDK</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The primary class used to make requests against the API.</p>
+
+                        <a href="Classes/AdzerkSDK.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -383,8 +439,8 @@ will be represented as one of these.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

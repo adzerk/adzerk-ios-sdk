@@ -14,7 +14,7 @@
     <a title="AdzerkSDK Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (64% documented)</p>
+        <p><a href="../index.html"> Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,6 +31,9 @@
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ADZConsent.html">ADZConsent</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Classes/ADZKeychainUserKeyStore.html">ADZKeychainUserKeyStore</a>
               </li>
@@ -61,7 +64,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/ADZResponse.html">ADZResponse</a>
@@ -76,6 +79,23 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK26ADZResponseFailureCallbacka">ADZResponseFailureCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK26ADZResponseSuccessCallbacka">ADZResponseSuccessCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -84,7 +104,8 @@
             <h1>AdzerkSDK</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -97,9 +118,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC9AdzerkSDK9AdzerkSDK16defaultNetworkIdGSqSi_"></a>
+                    <a name="/s:9AdzerkSDKAAC16defaultNetworkIdSiSgvpZ"></a>
                     <a name="//apple_ref/swift/Variable/defaultNetworkId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC9AdzerkSDK9AdzerkSDK16defaultNetworkIdGSqSi_">defaultNetworkId</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC16defaultNetworkIdSiSgvpZ">defaultNetworkId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -116,7 +137,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultNetworkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultNetworkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -126,9 +147,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC9AdzerkSDK9AdzerkSDK13defaultSiteIdGSqSi_"></a>
+                    <a name="/s:9AdzerkSDKAAC13defaultSiteIdSiSgvpZ"></a>
                     <a name="//apple_ref/swift/Variable/defaultSiteId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC9AdzerkSDK9AdzerkSDK13defaultSiteIdGSqSi_">defaultSiteId</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC13defaultSiteIdSiSgvpZ">defaultSiteId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -145,7 +166,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultSiteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">defaultSiteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -155,9 +176,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC9AdzerkSDK9AdzerkSDK19setDefaultNetworkIdFSiT_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultNetworkId:"></a>
                     <a name="//apple_ref/swift/Method/setDefaultNetworkId(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC9AdzerkSDK9AdzerkSDK19setDefaultNetworkIdFSiT_">setDefaultNetworkId(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultNetworkId:">setDefaultNetworkId(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,7 +193,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultNetworkId</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultNetworkId</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +203,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC9AdzerkSDK9AdzerkSDK16setDefaultSiteIdFSiT_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultSiteId:"></a>
                     <a name="//apple_ref/swift/Method/setDefaultSiteId(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC9AdzerkSDK9AdzerkSDK16setDefaultSiteIdFSiT_">setDefaultSiteId(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultSiteId:">setDefaultSiteId(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,7 +220,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultSiteId</span><span class="p">(</span><span class="n">_</span> <span class="nv">siteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setDefaultSiteId</span><span class="p">(</span><span class="n">_</span> <span class="nv">siteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -209,9 +230,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDKcFT_S0_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)init"></a>
                     <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDKcFT_S0_">init()</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)init">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -226,7 +247,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -236,9 +257,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDKcFT12userKeyStorePS_15ADZUserKeyStore_5queueGSqCSo13DispatchQueue__S0_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)initWithUserKeyStore:queue:"></a>
                     <a name="//apple_ref/swift/Method/init(userKeyStore:queue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDKcFT12userKeyStorePS_15ADZUserKeyStore_5queueGSqCSo13DispatchQueue__S0_">init(userKeyStore:queue:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)initWithUserKeyStore:queue:">init(userKeyStore:queue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -254,7 +275,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">userKeyStore</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">userKeyStore</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ADZUserKeyStore.html">ADZUserKeyStore</a></span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -264,9 +285,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_7successFCS_20ADZPlacementResponseT_7failureFTSiGSqSS_GSqCSo7NSError__T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)requestPlacements:options:success:failure:"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:options:success:failure:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_7successFCS_20ADZPlacementResponseT_7failureFTSiGSqSS_GSqCSo7NSError__T__T_">requestPlacements(_:options:success:failure:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)requestPlacements:options:success:failure:">requestPlacements(_:options:success:failure:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -282,9 +303,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-        <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/ADZPlacementResponse.html">ADZPlacementResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span>
-        <span class="nv">failure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/ADZPlacementResponse.html">ADZPlacementResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span>
+    <span class="nv">failure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -294,9 +315,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK21requestPlacementInDivFTSS7adTypesGSaSi_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:9AdzerkSDKAAC21requestPlacementInDiv_7adTypes10completionySS_SaySiGyAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacementInDiv(_:adTypes:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK21requestPlacementInDivFTSS7adTypesGSaSi_10completionFOS_11ADZResponseT__T_">requestPlacementInDiv(_:adTypes:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC21requestPlacementInDiv_7adTypes10completionySS_SaySiGyAA11ADZResponseOctF">requestPlacementInDiv(_:adTypes:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -314,7 +335,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">requestPlacementInDiv</span><span class="p">(</span><span class="n">_</span> <span class="nv">div</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacementInDiv</span><span class="p">(</span><span class="n">_</span> <span class="nv">div</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -324,9 +345,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFTCS_12ADZPlacement10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:9AdzerkSDKAAC16requestPlacement_10completionyAA12ADZPlacementC_yAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacement(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16requestPlacementFTCS_12ADZPlacement10completionFOS_11ADZResponseT__T_">requestPlacement(_:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC16requestPlacement_10completionyAA12ADZPlacementC_yAA11ADZResponseOctF">requestPlacement(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -343,7 +364,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">requestPlacement</span><span class="p">(</span><span class="n">_</span> <span class="nv">placement</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacement</span><span class="p">(</span><span class="n">_</span> <span class="nv">placement</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -353,9 +374,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:9AdzerkSDKAAC17requestPlacements_10completionySayAA12ADZPlacementCG_yAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_10completionFOS_11ADZResponseT__T_">requestPlacements(_:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_10completionySayAA12ADZPlacementCG_yAA11ADZResponseOctF">requestPlacements(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -372,7 +393,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -382,9 +403,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_"></a>
+                    <a name="/s:9AdzerkSDKAAC17requestPlacements_7options10completionySayAA12ADZPlacementCG_AA0G14RequestOptionsCSgyAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:options:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK17requestPlacementsFTGSaCS_12ADZPlacement_7optionsGSqCS_26ADZPlacementRequestOptions_10completionFOS_11ADZResponseT__T_">requestPlacements(_:options:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_7options10completionySayAA12ADZPlacementCG_AA0G14RequestOptionsCSgyAA11ADZResponseOctF">requestPlacements(_:options:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -402,7 +423,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a></span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestPlacements</span><span class="p">(</span><span class="n">_</span> <span class="nv">placements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacement.html">ADZPlacement</a></span><span class="p">],</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Classes/ADZPlacementRequestOptions.html">ADZPlacementRequestOptions</a></span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/ADZResponse.html">ADZResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -412,9 +433,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFTGSqSS_10propertiesGVs10DictionarySSP__8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:properties:callback:"></a>
                     <a name="//apple_ref/swift/Method/postUserProperties(_:properties:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFTGSqSS_10propertiesGVs10DictionarySSP__8callbackFTSbGSqPs5Error___T__T_">postUserProperties(_:properties:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:properties:callback:">postUserProperties(_:properties:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -432,7 +453,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -442,9 +463,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFTSi7userKeySS10propertiesGVs10DictionarySSP__8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:userKey:properties:callback:"></a>
                     <a name="//apple_ref/swift/Method/postUserProperties(_:userKey:properties:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK18postUserPropertiesFTSi7userKeySS10propertiesGVs10DictionarySSP__8callbackFTSbGSqPs5Error___T__T_">postUserProperties(_:userKey:properties:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:userKey:properties:callback:">postUserProperties(_:userKey:properties:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -463,7 +484,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postUserProperties</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -473,9 +494,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK8readUserFTGSqSS_8callbackFTGSqCS_7ADZUser_GSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:callback:"></a>
                     <a name="//apple_ref/swift/Method/readUser(_:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK8readUserFTGSqSS_8callbackFTGSqCS_7ADZUser_GSqPs5Error___T__T_">readUser(_:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:callback:">readUser(_:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -492,7 +513,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZUserDBUserResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -502,9 +523,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK8readUserFTSi7userKeySS8callbackFTGSqCS_7ADZUser_GSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/readUser(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK8readUserFTSi7userKeySS8callbackFTGSqCS_7ADZUser_GSqPs5Error___T__T_">readUser(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:userKey:callback:">readUser(_:userKey:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -522,7 +543,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZUserDBUserResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">readUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK29ADZUserDBUserResponseCallbacka">ADZUserDBUserResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -532,9 +553,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFTSS7userKeyGSqSS_8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/addUserInterest(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFTSS7userKeyGSqSS_8callbackFTSbGSqPs5Error___T__T_">addUserInterest(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:userKey:callback:">addUserInterest(_:userKey:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -551,7 +572,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="n">_</span> <span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="n">_</span> <span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -561,9 +582,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFTSS9networkIdSi7userKeySS8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:networkId:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/addUserInterest(_:networkId:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK15addUserInterestFTSS9networkIdSi7userKeySS8callbackFTSbGSqPs5Error___T__T_">addUserInterest(_:networkId:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:networkId:userKey:callback:">addUserInterest(_:networkId:userKey:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -582,7 +603,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="n">_</span> <span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUserInterest</span><span class="p">(</span><span class="n">_</span> <span class="nv">interest</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -592,9 +613,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK6optOutFTGSqSS_8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:callback:"></a>
                     <a name="//apple_ref/swift/Method/optOut(_:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK6optOutFTGSqSS_8callbackFTSbGSqPs5Error___T__T_">optOut(_:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:callback:">optOut(_:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -602,7 +623,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Opt a user out of tracking. Uses the <code><a href="../Classes/AdzerkSDK.html#/s:ZvC9AdzerkSDK9AdzerkSDK16defaultNetworkIdGSqSi_">defaultNetworkId</a></code> set on <code>AdzerkSDK</code>.
+                        <p>Opt a user out of tracking. Uses the <code><a href="../Classes/AdzerkSDK.html#/s:9AdzerkSDKAAC16defaultNetworkIdSiSgvpZ">defaultNetworkId</a></code> set on <code>AdzerkSDK</code>.
 @param userKey the user to opt out. If nil, the saved userKey from the configured userKeyStore is used.
 @param callback a simple success/error callback to use when the response comes back</p>
 
@@ -611,7 +632,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -621,9 +642,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK6optOutFTSi7userKeySS8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/optOut(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK6optOutFTSi7userKeySS8callbackFTSbGSqPs5Error___T__T_">optOut(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:userKey:callback:">optOut(_:userKey:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -641,7 +662,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">optOut</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -651,9 +672,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFTGSqSS_7brandIdSi9segmentIdSi8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:brandId:segmentId:callback:"></a>
                     <a name="//apple_ref/swift/Method/retargetUser(_:brandId:segmentId:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFTGSqSS_7brandIdSi9segmentIdSi8callbackFTSbGSqPs5Error___T__T_">retargetUser(_:brandId:segmentId:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:brandId:segmentId:callback:">retargetUser(_:brandId:segmentId:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -672,7 +693,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -682,9 +703,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFTSi7userKeySS7brandIdSi9segmentIdSi8callbackFTSbGSqPs5Error___T__T_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:userKey:brandId:segmentId:callback:"></a>
                     <a name="//apple_ref/swift/Method/retargetUser(_:userKey:brandId:segmentId:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK12retargetUserFTSi7userKeySS7brandIdSi9segmentIdSi8callbackFTSbGSqPs5Error___T__T_">retargetUser(_:userKey:brandId:segmentId:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:userKey:brandId:segmentId:callback:">retargetUser(_:userKey:brandId:segmentId:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -704,7 +725,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">ADZResponseCallback</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">retargetUser</span><span class="p">(</span><span class="n">_</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">userKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">brandId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">segmentId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:9AdzerkSDK19ADZResponseCallbacka">ADZResponseCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -714,9 +735,9 @@ Useful for the common case where the network ID is contstant for your applicatio
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC9AdzerkSDK9AdzerkSDK16recordImpressionFV10Foundation3URLT_"></a>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)recordImpression:"></a>
                     <a name="//apple_ref/swift/Method/recordImpression(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC9AdzerkSDK9AdzerkSDK16recordImpressionFV10Foundation3URLT_">recordImpression(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)recordImpression:">recordImpression(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -732,7 +753,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">recordImpression</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recordImpression</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -744,8 +765,8 @@ Useful for the common case where the network ID is contstant for your applicatio
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2017-06-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
