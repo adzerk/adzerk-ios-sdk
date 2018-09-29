@@ -313,7 +313,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         task.resume()
     }
     
-    
     /**
     Adds an interest for a user to UserDB.
     @param userKey the current user key. If nil, the saved userKey from the configured userKeyStore is used.
@@ -342,7 +341,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param userKey the user to add the interest for
     @param callback a simple success/error callback to use when the response comes back
     */
-
     public func addUserInterest(_ interest: String, networkId: Int, userKey: String, callback: @escaping ADZResponseCallback) {
         let params = [
             "userKey": userKey,
@@ -638,6 +636,9 @@ fileprivate struct UserAgentProvider {
         case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
         case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
         case "iPhone10,3", "iPhone10,6":                return "iPhone X"
+        case "iPhone11,8":                              return "iPhone XR"
+        case "iPhone11,2":                              return "iPhone XS"
+        case "iPhone11,4":                              return "iPhone XS Max"
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
