@@ -191,8 +191,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         
         postUserProperties(networkId, userKey: actualUserKey, properties: properties, callback: callback)
     }
-
-    // MARK - UserDB endpoints
     
     /** Posts custom properties for a user.
     @param networkId the networkId for this request
@@ -277,12 +275,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
         
         var request = URLRequest(url: url)
-
-        // Fails with HTTP 500 if the default application/json is specified.
-        request.allHTTPHeaderFields = [
-            "Content-Type" : ""
-        ]
-        
         let task = session.dataTask(with: request) {
             (data, response, error) in
             if error == nil {
@@ -290,7 +282,6 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
                 if http.statusCode == 200 {
                     do {
                         if let userDictionary = try JSONSerialization.jsonObject(with: data!, options: [.allowFragments]) as? [String: AnyObject] {
-                            print(userDictionary)
                             if let user = ADZUser(dictionary: userDictionary) {
                                 callback(user, nil)
                             } else {
@@ -555,6 +546,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         
         if let url = options?.url {
             body["url"] = url
+        }
+        
+        if let consent = options?.consent {
+            body["consent"] = consent.toJSONDictionary()
         }
         
         if let additionalOptions = options?.additionalOptions {

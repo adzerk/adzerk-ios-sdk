@@ -26,7 +26,7 @@
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     AdzerkSDK *sdkBackground = [[AdzerkSDK alloc] initWithUserKeyStore:keyStore queue:backgroundQueue];
     [sdkBackground requestPlacements:@[placement] options:nil success:^(ADZPlacementResponse * _Nonnull response) {
-        NSLog(@"Background Response: %@", response);
+        NSLog(@"✅ Background Response: %@", response);
     } failure:^(NSInteger statusCode, NSString * _Nullable body, NSError * _Nullable error) {
         NSLog(@"Background Failure:");
         NSLog(@"  Status Code: %d", (int)statusCode);
@@ -35,8 +35,11 @@
     }];
     
     AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
+    ADZPlacementRequestOptions *options = [[ADZPlacementRequestOptions alloc] init];
+    options.consent = [[ADZConsent alloc] initWithGdpr:NO];
+    
     [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
-        NSLog(@"Response: %@", response);
+        NSLog(@"✅ Response: %@", response);
     } failure: ^void(NSInteger statusCode, NSString *body, NSError *error) {
         NSLog(@"Failure:");
         NSLog(@"  Status Code: %d", (int)statusCode);

@@ -23,6 +23,8 @@
 		B56232DE1B8238A6004C416E /* ADZPlacementEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56232DC1B82389A004C416E /* ADZPlacementEvent.swift */; };
 		B58E8AF81B7A45830029BAAD /* ADZPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E8AF71B7A45830029BAAD /* ADZPlacement.swift */; };
 		B58E8AF91B7A4FD60029BAAD /* ADZPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E8AF71B7A45830029BAAD /* ADZPlacement.swift */; };
+		B5920AF2209B89B1007702B3 /* ADZConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5920AF1209B89B1007702B3 /* ADZConsent.swift */; };
+		B5920AF3209B8AF2007702B3 /* ADZConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5920AF1209B89B1007702B3 /* ADZConsent.swift */; };
 		B5C89DCC1B78EBB3003CA162 /* AdzerkSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B5C89DCB1B78EBB3003CA162 /* AdzerkSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5C89DD21B78EBB3003CA162 /* AdzerkSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C89DC61B78EBB3003CA162 /* AdzerkSDK.framework */; };
 		B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C89DD81B78EBB3003CA162 /* AdzerkSDKTests.swift */; };
@@ -62,6 +64,7 @@
 		B56232D91B8232CD004C416E /* ADZPlacementContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementContent.swift; sourceTree = "<group>"; };
 		B56232DC1B82389A004C416E /* ADZPlacementEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacementEvent.swift; sourceTree = "<group>"; };
 		B58E8AF71B7A45830029BAAD /* ADZPlacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADZPlacement.swift; sourceTree = "<group>"; };
+		B5920AF1209B89B1007702B3 /* ADZConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADZConsent.swift; sourceTree = "<group>"; };
 		B5C89DC61B78EBB3003CA162 /* AdzerkSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdzerkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C89DCA1B78EBB3003CA162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C89DCB1B78EBB3003CA162 /* AdzerkSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdzerkSDK.h; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 				B52BA8261B8E1133002235CA /* ADZUserKeyStore.swift */,
 				B52BA8281B8E1147002235CA /* ADZKeychainUserKeyStore.swift */,
 				B528E7241F83264200D431CF /* ADZLogger.swift */,
+				B5920AF1209B89B1007702B3 /* ADZConsent.swift */,
 				B5C89DC91B78EBB3003CA162 /* Supporting Files */,
 			);
 			path = AdzerkSDK;
@@ -221,7 +225,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Adzerk;
 				TargetAttributes = {
 					B5C89DC51B78EBB3003CA162 = {
@@ -283,6 +287,7 @@
 				B5FBCACA1B974620007F2E64 /* ADZPlacementRequestOptions.swift in Sources */,
 				B52BA8271B8E1133002235CA /* ADZUserKeyStore.swift in Sources */,
 				B528E7251F83264200D431CF /* ADZLogger.swift in Sources */,
+				B5920AF2209B89B1007702B3 /* ADZConsent.swift in Sources */,
 				B502CB051B95E76E0091277C /* ADZResponse.swift in Sources */,
 				B56232DD1B82389A004C416E /* ADZPlacementEvent.swift in Sources */,
 				B5DB64411B7E457400A243AC /* ADZPlacementDecision.swift in Sources */,
@@ -298,6 +303,7 @@
 			files = (
 				B5DB643E1B7E434300A243AC /* ADZPlacementResponse.swift in Sources */,
 				B52BA8311B8E190C002235CA /* FakeKeyStore.swift in Sources */,
+				B5920AF3209B8AF2007702B3 /* ADZConsent.swift in Sources */,
 				B5DB64421B7E458200A243AC /* ADZPlacementDecision.swift in Sources */,
 				B5C89DD91B78EBB3003CA162 /* AdzerkSDKTests.swift in Sources */,
 				B5C89E121B78ED82003CA162 /* AdzerkSDK.swift in Sources */,
@@ -338,12 +344,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -396,12 +404,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
