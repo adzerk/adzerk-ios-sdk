@@ -119,6 +119,15 @@ AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
 }];
 ```
 
+## GDPR Consent
+
+Consent preferences can be specified when building a request. For example, to set GDPR consent for tracking in the European Union (this defaults to false):
+
+```swift
+let options = ADZPlacementRequestOptions()
+options.consent = ADZConsent(gdpr: false)
+```
+
 ## Logging
 
 By default, warnings and errors will be printed to the console. If you want to change this, you can edit your scheme and provide a launch argument:
