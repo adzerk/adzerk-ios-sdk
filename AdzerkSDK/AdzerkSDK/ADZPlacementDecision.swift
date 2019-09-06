@@ -12,9 +12,9 @@ import Foundation
     Response structure for decisions, found in a placement response. Each decision
     will be represented as one of these.
 */
+@objcMembers
 public class ADZPlacementDecision : NSObject {
     /** The name of the div requested */
-    @objc
     public let divName: String
     
     public let adId: Int?
@@ -22,43 +22,43 @@ public class ADZPlacementDecision : NSObject {
     public let flightId: Int?
     public let campaignId: Int?
     
-    @objc public let clickUrl: String?
-    @objc public let impressionUrl: String?
+    public let clickUrl: String?
+    public let impressionUrl: String?
     
     // These accessors are added for Objective-C compatibility
-    @objc public var adIdNumber: NSNumber? {
+    public var adIdNumber: NSNumber? {
         return adId.flatMap(NSNumber.init)
     }
     
-    @objc public var creativeIdNumber: NSNumber? {
+    public var creativeIdNumber: NSNumber? {
         return creativeId.flatMap(NSNumber.init)
     }
     
-    @objc public var flightIdNumber: NSNumber? {
+    public var flightIdNumber: NSNumber? {
         return flightId.flatMap(NSNumber.init)
     }
     
     /** An array of `ADZPlacementContent`, representing the actual contents
         to display for this decision, if there are any.
-    */
-    @objc public let contents: [ADZPlacementContent]?
+        */
+    public let contents: [ADZPlacementContent]?
     
     /** An array of `ADZPlacementEvent`, representing the events for this decision,
         if there are any. */
-    @objc public let events: [ADZPlacementEvent]?
+    public let events: [ADZPlacementEvent]?
     
     /** All of the attributes will be present in this dictionary,
         in case there are additional attributes being sent that are not modeled
         as properties.
-    */
-    @objc public let allAttributes: [String: Any]?
+        */
+    public let allAttributes: [String: Any]?
     
     /** Initializes the struct based on a JSON dictionary.
         @param name The name of the div for this decision
         @param JSON dictionary of attributes returned from the server
         @returns an initialized struct, or nil if the response format was not recognized
-    */
-    public init?(name: String, dictionary: [String: Any]?) {
+        */
+    public init(name: String, dictionary: [String: Any]?) {
         divName = name
         allAttributes = dictionary
         adId = dictionary?["adId"] as? Int

@@ -11,6 +11,7 @@ import Foundation
 /**
  Represents a user's consent to tracking for GDPR compliance.
  */
+@objcMembers
 public class ADZConsent : NSObject {
     public var gdpr: Bool
     
@@ -20,16 +21,16 @@ public class ADZConsent : NSObject {
     }
  
     /**
-     Initializes with a dictionary. Expects the `gdpr` key to be present and contain a boolean value.
-    */
-    public init?(dictionary: [String: AnyObject]) {
+        Initializes with a dictionary. Expects the `gdpr` key to be present and contain a boolean value.
+        */
+    public init(dictionary: [String: AnyObject]) {
         gdpr = (dictionary["gdpr"] as? NSNumber)?.boolValue ?? false
         super.init()
     }
     
     /**
-     Converts the object to a JSON dictionary representation.
-    */
+        Converts the object to a JSON dictionary representation.
+        */
     public func toJSONDictionary() -> [String: Any] {
         return [
             "gdpr": gdpr

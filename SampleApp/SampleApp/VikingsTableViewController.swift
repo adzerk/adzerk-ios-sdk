@@ -35,7 +35,7 @@ class VikingsTableViewController : UITableViewController {
 
         super.viewDidLoad()
         tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         loadPlacements {
             self.loadVikings()

@@ -23,7 +23,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 
 
 /** The primary class used to make requests against the API. */
-@objc public class AdzerkSDK : NSObject {
+@objcMembers public class AdzerkSDK : NSObject {
     
     private var queue: DispatchQueue
     private var logger = ADZLogger()
@@ -39,8 +39,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     
     private static var _defaultSiteId: Int?
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
-    each placement request does not need to provide it.  Any value in the placement request will override this value.
-    Useful for the common case where the network ID is contstant for your application. */
+        each placement request does not need to provide it.  Any value in the placement request will override this value.
+        Useful for the common case where the network ID is contstant for your application.
+        */
     public class var defaultSiteId: Int? {
         get { return _defaultSiteId }
         set { _defaultSiteId = newValue }

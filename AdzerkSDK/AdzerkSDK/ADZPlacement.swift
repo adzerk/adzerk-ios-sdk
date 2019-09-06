@@ -9,28 +9,29 @@
 import Foundation
 
 /** Specifies a placement's details to request. */
-@objc public class ADZPlacement : NSObject {
+@objcMembers
+public class ADZPlacement : NSObject {
     
     /** The name of the div */
-    @objc public let divName: String
+    public let divName: String
     
     /** The network ID. If none is specified it retrieves the value from `AdzerkSDK.defaultNetworkId` */
-    @objc public let networkId: Int
+    public let networkId: Int
     
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
-    @objc public let siteId: Int
+    public let siteId: Int
     
     /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
-    @objc public let adTypes: [Int]
+    public let adTypes: [Int]
     
-    @objc public var zoneIds: [Int]?
-    @objc public var eventIds: [Int]?
+    public var zoneIds: [Int]?
+    public var eventIds: [Int]?
     
-    open var properties: [String: Any]?
-    open var campaignId: Int?
-    open var flightId: Int?
-    open var adId: Int?
-    
+    public var properties: [String: Any]?
+    public var campaignId: Int?
+    public var flightId: Int?
+    public var adId: Int?
+
     public init(divName: String, networkId: Int, siteId: Int, adTypes: [Int]) {
         self.divName = divName
         self.networkId = networkId
@@ -38,7 +39,7 @@ import Foundation
         self.adTypes = adTypes
         super.init()
     }
-    
+
     public convenience init?(divName: String, adTypes: [Int]) {
         guard let networkId = AdzerkSDK.defaultNetworkId,
             let siteId = AdzerkSDK.defaultSiteId

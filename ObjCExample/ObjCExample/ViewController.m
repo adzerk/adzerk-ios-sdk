@@ -17,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+
     ADZPlacement *placement = [[ADZPlacement alloc] initWithDivName:@"div1" adTypes:@[@5]];
     placement.zoneIds = @[@1];
     
@@ -37,7 +38,7 @@
     AdzerkSDK *sdk = [[AdzerkSDK alloc] init];
     ADZPlacementRequestOptions *options = [[ADZPlacementRequestOptions alloc] init];
     options.consent = [[ADZConsent alloc] initWithGdpr:NO];
-    
+
     [sdk requestPlacements:@[placement] options:nil success: ^void(ADZPlacementResponse *response) {
         NSLog(@"✅ Response: %@", response);
     } failure: ^void(NSInteger statusCode, NSString *body, NSError *error) {

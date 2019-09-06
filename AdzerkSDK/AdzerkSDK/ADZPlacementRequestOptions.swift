@@ -9,7 +9,9 @@
 import Foundation
 
 /** Provides a mechanism for adding top-level metadata to the placement request. */
+@objcMembers
 public class ADZPlacementRequestOptions: NSObject {
+
     public var keywords: [String]?
     public var blockedCreatives: [Int]?
     public var flightViewTimes: [String: [Int]]?
@@ -17,9 +19,9 @@ public class ADZPlacementRequestOptions: NSObject {
     
     /** The user key for this request. If nil, the current saved user key will be used from
         the configured `ADZUserKeyStore` on `AdzerkSDK`.
-    */
+        */
     public var userKey: String?
-    
+
     /** Indicates the user's consent status for GDPR compliance. */
     public var consent: ADZConsent?
     
