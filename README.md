@@ -102,7 +102,7 @@ that contains the decisions for each placement requested.
 ### A Note About Objective-C
 
 Objective-C does not support Swift Enums, so an alternative callback-based method is provided. If you're using this SDK from
-and Objective-C project, you can request placements like this:
+an Objective-C project, you can request placements like this:
 
 ```objc
 ADZPlacement *placement = [[ADZPlacement alloc] initWithDivName:@"div1" adTypes:@[@5]];
