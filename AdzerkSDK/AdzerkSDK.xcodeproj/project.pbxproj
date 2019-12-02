@@ -242,11 +242,11 @@
 			};
 			buildConfigurationList = B5C89DC01B78EBB3003CA162 /* Build configuration list for PBXProject "AdzerkSDK" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = B5C89DBC1B78EBB3003CA162;
 			productRefGroup = B5C89DC71B78EBB3003CA162 /* Products */;

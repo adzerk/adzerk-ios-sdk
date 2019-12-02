@@ -275,7 +275,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             return
         }
         
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             (data, response, error) in
             if error == nil {
