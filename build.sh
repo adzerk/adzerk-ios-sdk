@@ -22,5 +22,5 @@ xcodebuild -workspace $WORKSPACE -scheme $SCHEME -sdk iphonesimulator
 echo "[Testing]"
 xcodebuild -workspace $WORKSPACE -scheme $SCHEME \
   -sdk iphonesimulator \
-  -destination "platform=iOS Simulator,name=iPhone XS,OS=12.4" \
+  -destination "platform=iOS Simulator,name=iPhone 11 Pro,OS=13.3" \
   test | $output_command
