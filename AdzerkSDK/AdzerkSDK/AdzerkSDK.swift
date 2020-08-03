@@ -347,7 +347,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             "userKey": userKey,
             "interest": interest
         ]
-        pixelRequest(networkId, action: "optout", params: params, callback: callback)
+        pixelRequest(networkId, action: "interest", params: params, callback: callback)
     }
 
     /**
