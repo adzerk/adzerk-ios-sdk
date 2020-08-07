@@ -644,7 +644,8 @@ fileprivate struct UserAgentProvider {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        
+    
+        // Reference for future updates to this list: https://github.com/pluwen/Apple-Device-Model-list
         switch identifier {
         case "iPod5,1":                                 return "iPod Touch 5"
         case "iPod7,1":                                 return "iPod Touch 6"
@@ -663,9 +664,14 @@ fileprivate struct UserAgentProvider {
         case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
         case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
         case "iPhone10,3", "iPhone10,6":                return "iPhone X"
-        case "iPhone11,8":                              return "iPhone XR"
+        case "iPhone11,8":                              return "iPhone Xr"
         case "iPhone11,2":                              return "iPhone XS"
         case "iPhone11,4":                              return "iPhone XS Max"
+        case "iPhone12,1":                              return "iPhone 11"
+        case "iPhone12,3":                              return "iPhone 11 Pro"
+        case "iPhone12,5":                              return "iPhone 11 Pro Max"
+        case "iPhone12,8":                              return "iPhone SE 2"
+            
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
@@ -678,8 +684,13 @@ fileprivate struct UserAgentProvider {
         case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
         case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
         case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
-        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
+        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2"
         case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
+        case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4": return "iPad Pro 11-inch"
+        case "iPad8,9", "iPad8,10":                      return "iPad Pro 11-inch 2"
+        case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8": return "iPad Pro 12.9-inch 3"
+        case "iPad8,11", "iPad8,12":                     return "iPad Pro 12.9-inch 4"
+
         case "AppleTV5,3":                              return "Apple TV"
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"
