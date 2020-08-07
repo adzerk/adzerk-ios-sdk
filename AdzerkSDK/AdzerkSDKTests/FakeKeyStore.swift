@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import AdzerkSDK
 
 @objc class FakeKeyStore : NSObject, ADZUserKeyStore {
     var key: String?
