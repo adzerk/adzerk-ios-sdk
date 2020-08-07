@@ -12,44 +12,58 @@ import UIKit
 // Update this when making changes. Will ben sent in the UserAgent to identify the version of the SDK used in host applications.
 let AdzerkSDKVersion = "1.1"
 
-/** The base URL template to use for API requests. {subdomain} must be replaced in this template string before use. */
-let AdzerkBaseUrlTemplate = "https://{subdomain}.adzerk.net/api/v2"
-let AdzerkUDBBaseUrlTemplate = "https://{subdomain}.adzerk.net/udb"
-
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, Error?) -> ()
 public typealias ADZResponseCallback = (Bool, Error?) -> ()
 public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 
-
 /** The primary class used to make requests against the API. */
 @objcMembers public class AdzerkSDK : NSObject {
+ 
+    /** The base URL template to use for API requests. {subdomain} must be replaced in this template string before use. */
+    private static let AdzerkHostnameTemplate = "{subdomain}.adzerk.net"
+    
+    private enum Endpoint: String {
+        case decisionAPI = "/api/v2"
+        case userDB = "/udb"
+        
+        private var path: String { rawValue }
+        
+        func baseURL(withHost host: String = AdzerkSDK.host) -> URL {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = host
+            components.path = path
+            return components.url!
+        }
+    }
     
     private var queue: DispatchQueue
     private var logger = ADZLogger()
 
-    private static var _subdomain: String?
+    private static var _host: String?
     
-    /** The subdomain to use for outgoing API requests. If not set, a default subdomain will be
-        used that is based on the default network ID, which must be set prior to making requests.
+    /** The host to use for outgoing API requests. If not set, a default adzerk hostname will be
+        used that is based on the default network ID. This must be set prior to making requests.
      
-        Failing to set defaultNetworkID or subdomain explicitly will result in a `fatalError`.
+        Failing to set defaultNetworkID or host explicitly will result in a `fatalError`.
      
         Note that the defaultNetworkID-based subdomain will not change if a different networkID is
         supplied for a specific request.
      */
-    public class var subdomain: String! {
+    public class var host: String! {
         get {
-            if let subdomainOverride = _subdomain {
-                return subdomainOverride
+            if let hostOverride = _host {
+                return hostOverride
             }
             
             guard let networkId = defaultNetworkId else {
                 fatalError("You must set the defaultNetworkId or set a specific subdomain on `AdzerkSDK`")
             }
-            return "e-\(networkId)"
+            let subdomain = "e-\(networkId)"
+            return AdzerkHostnameTemplate.replacingOccurrences(of: "{subdomain}", with: subdomain)
         }
-        set { _subdomain = newValue }
+        set { _host = newValue }
     }
     
     private static var _defaultNetworkId: Int?
@@ -224,7 +238,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
     public func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
-        guard let url = udbBaseURL.appending(pathComponent: "\(networkId)/custom", queryItems: [
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/custom", queryItems: [
             URLQueryItem(name: "userKey", value: userKey)
         ]) else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
@@ -232,17 +246,13 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             return
         }
         
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = [
-            "Content-Type" : "application/json",
-            "Accept" : "application/json"
-        ]
-        
-        request.httpMethod = "POST"
-        
         do {
             let data = try JSONSerialization.data(withJSONObject: properties, options: JSONSerialization.WritingOptions.prettyPrinted)
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
             request.httpBody = data
+            
             let task = session.dataTask(with: request) {
                 (data, response, error) in
                 if error == nil {
@@ -295,7 +305,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
     public func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
-        guard let url = udbBaseURL.appending(pathComponent: "\(networkId)/read", queryItems: [
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/read", queryItems: [
             URLQueryItem(name: "userKey", value: userKey)
         ]) else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
@@ -477,7 +487,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     */
     func pixelRequest(_ networkId: Int, action: String, params: [String: String]?, callback: @escaping ADZResponseCallback) {
         let queryItems = params?.map { (k, v) in URLQueryItem.init(name: k, value: v) } ?? []
-        guard let url = udbBaseURL.appending(pathComponent: "\(networkId)/\(action)/i.gif", queryItems: queryItems) else {
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/\(action)/i.gif", queryItems: queryItems) else {
             logger.warn("WARNING: Could not construct proper URL for params: \(params ?? [:])")
             callback(false, nil)
             return
@@ -518,20 +528,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         return URLSession(configuration: self.sessionConfiguration)
     }()
     
-    private var apiBaseURL: URL {
-        let baseURLString = AdzerkBaseUrlTemplate.replacingOccurrences(of: "{subdomain}", with: AdzerkSDK.subdomain)
-        return URL(string: baseURLString)!
-    }
-    
-    private var udbBaseURL: URL {
-        let udbBaseURLString = AdzerkUDBBaseUrlTemplate.replacingOccurrences(of: "{subdomain}", with: AdzerkSDK.subdomain)
-        return URL(string: udbBaseURLString)!
-    }
-    
     private let requestTimeout: TimeInterval = 15
     
     private func buildPlacementRequest(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> URLRequest? {
-        let url = apiBaseURL
+        let url = Endpoint.decisionAPI.baseURL()
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.httpMethod = "POST"
         
