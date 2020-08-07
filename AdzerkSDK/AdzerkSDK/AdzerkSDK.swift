@@ -501,7 +501,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         let config = URLSessionConfiguration.ephemeral
         config.httpAdditionalHeaders = [
             "User-Agent" : UserAgentProvider.instance.userAgent,
-            "X-Adzerk-Sdk-Version": "adzerk-ios-sdk:\(AdzerkSDKVersion)",
+            "X-Adzerk-Sdk-Version": "adzerk-ios-decision-sdk:\(AdzerkSDKVersion)",
             "Content-Type" : "application/json",
             "Accept" : "application/json"
         ]
