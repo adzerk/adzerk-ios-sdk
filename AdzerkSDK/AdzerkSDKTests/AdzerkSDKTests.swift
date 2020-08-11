@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Adzerk. All rights reserved.
 //
 
-import AdzerkSDK
 import XCTest
+@testable import AdzerkSDK
 
 class AdzerkSDKTests: XCTestCase {
 
