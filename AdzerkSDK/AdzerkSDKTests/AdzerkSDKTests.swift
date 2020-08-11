@@ -11,7 +11,7 @@ import XCTest
 
 class AdzerkSDKTests: XCTestCase {
 
-    let networkId = 9792
+    let networkId = 23
     let siteId = 306998
     var sdk: AdzerkSDK!
 
@@ -305,8 +305,9 @@ class AdzerkSDKTests: XCTestCase {
         sdk.readUser(userKey) { user, error in
             XCTAssertNil(error)
             XCTAssertNotNil(user)
+            
             XCTAssertEqual(user!.userKey, "userKey123")
-            XCTAssertEqual(user!.interests, ["fishing"])
+            XCTAssertNotNil(user!.interests)
             XCTAssertNotNil(user!.blockedItems)
             XCTAssertNotNil(user!.consent)
             XCTAssertFalse(user!.consent!.gdpr)
