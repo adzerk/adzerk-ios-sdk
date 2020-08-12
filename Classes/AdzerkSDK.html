@@ -8,14 +8,22 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Class/AdzerkSDK" class="dashAnchor"></a>
     <a title="AdzerkSDK Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (59% documented)</p>
+        <p><a href="../index.html"> Docs</a> (60% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -104,7 +112,8 @@
             <h1>AdzerkSDK</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">@objc</span>
+                  
+                  <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdzerkSDK</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
@@ -115,6 +124,39 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cpy)host"></a>
+                    <a name="//apple_ref/swift/Variable/host" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cpy)host">host</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The host to use for outgoing API requests. If not set, a default adzerk hostname will be
+    used that is based on the default network ID. This must be set prior to making requests.</p>
+<pre class="highlight swift"><code><span class="kt">Failing</span> <span class="n">to</span> <span class="k">set</span> <span class="n">defaultNetworkID</span> <span class="n">or</span> <span class="n">host</span> <span class="n">explicitly</span> <span class="n">will</span> <span class="n">result</span> <span class="k">in</span> <span class="n">a</span> <span class="p">`</span><span class="nv">fatalError</span><span class="p">`</span><span class="o">.</span>
+
+<span class="kt">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">defaultNetworkID</span><span class="o">-</span><span class="n">based</span> <span class="n">subdomain</span> <span class="n">will</span> <span class="n">not</span> <span class="n">change</span> <span class="k">if</span> <span class="n">a</span> <span class="n">different</span> <span class="n">networkID</span> <span class="k">is</span>
+<span class="n">supplied</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">request</span><span class="o">.</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -158,8 +200,8 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Provides storage for the default site ID to be used with all placement requests. If a value is present here,
-each placement request does not need to provide it.  Any value in the placement request will override this value.
-Useful for the common case where the network ID is contstant for your application.</p>
+    each placement request does not need to provide it.  Any value in the placement request will override this value.
+    Useful for the common case where the network ID is contstant for your application.</p>
 
                       </div>
                       <div class="declaration">
@@ -178,7 +220,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultNetworkId:"></a>
                     <a name="//apple_ref/swift/Method/setDefaultNetworkId(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultNetworkId:">setDefaultNetworkId(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultNetworkId:">setDefaultNetworkId(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -205,7 +247,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultSiteId:"></a>
                     <a name="//apple_ref/swift/Method/setDefaultSiteId(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultSiteId:">setDefaultSiteId(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(cm)setDefaultSiteId:">setDefaultSiteId(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -247,7 +289,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -259,7 +301,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)initWithUserKeyStore:queue:"></a>
                     <a name="//apple_ref/swift/Method/init(userKeyStore:queue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)initWithUserKeyStore:queue:">init(userKeyStore:queue:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)initWithUserKeyStore:queue:">init(userKeyStore:<wbr>queue:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -287,7 +329,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)requestPlacements:options:success:failure:"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:options:success:failure:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)requestPlacements:options:success:failure:">requestPlacements(_:options:success:failure:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)requestPlacements:options:success:failure:">requestPlacements(_:<wbr>options:<wbr>success:<wbr>failure:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -317,7 +359,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/s:9AdzerkSDKAAC21requestPlacementInDiv_7adTypes10completionySS_SaySiGyAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacementInDiv(_:adTypes:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9AdzerkSDKAAC21requestPlacementInDiv_7adTypes10completionySS_SaySiGyAA11ADZResponseOctF">requestPlacementInDiv(_:adTypes:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC21requestPlacementInDiv_7adTypes10completionySS_SaySiGyAA11ADZResponseOctF">requestPlacementInDiv(_:<wbr>adTypes:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -347,7 +389,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/s:9AdzerkSDKAAC16requestPlacement_10completionyAA12ADZPlacementC_yAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacement(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9AdzerkSDKAAC16requestPlacement_10completionyAA12ADZPlacementC_yAA11ADZResponseOctF">requestPlacement(_:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC16requestPlacement_10completionyAA12ADZPlacementC_yAA11ADZResponseOctF">requestPlacement(_:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -376,7 +418,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/s:9AdzerkSDKAAC17requestPlacements_10completionySayAA12ADZPlacementCG_yAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_10completionySayAA12ADZPlacementCG_yAA11ADZResponseOctF">requestPlacements(_:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_10completionySayAA12ADZPlacementCG_yAA11ADZResponseOctF">requestPlacements(_:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -405,7 +447,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/s:9AdzerkSDKAAC17requestPlacements_7options10completionySayAA12ADZPlacementCG_AA0G14RequestOptionsCSgyAA11ADZResponseOctF"></a>
                     <a name="//apple_ref/swift/Method/requestPlacements(_:options:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_7options10completionySayAA12ADZPlacementCG_AA0G14RequestOptionsCSgyAA11ADZResponseOctF">requestPlacements(_:options:completion:)</a>
+                    <a class="token" href="#/s:9AdzerkSDKAAC17requestPlacements_7options10completionySayAA12ADZPlacementCG_AA0G14RequestOptionsCSgyAA11ADZResponseOctF">requestPlacements(_:<wbr>options:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -435,7 +477,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:properties:callback:"></a>
                     <a name="//apple_ref/swift/Method/postUserProperties(_:properties:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:properties:callback:">postUserProperties(_:properties:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:properties:callback:">postUserProperties(_:<wbr>properties:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -465,7 +507,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:userKey:properties:callback:"></a>
                     <a name="//apple_ref/swift/Method/postUserProperties(_:userKey:properties:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:userKey:properties:callback:">postUserProperties(_:userKey:properties:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)postUserProperties:userKey:properties:callback:">postUserProperties(_:<wbr>userKey:<wbr>properties:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -496,7 +538,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:callback:"></a>
                     <a name="//apple_ref/swift/Method/readUser(_:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:callback:">readUser(_:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:callback:">readUser(_:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -525,7 +567,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/readUser(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:userKey:callback:">readUser(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)readUser:userKey:callback:">readUser(_:<wbr>userKey:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -555,7 +597,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/addUserInterest(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:userKey:callback:">addUserInterest(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:userKey:callback:">addUserInterest(_:<wbr>userKey:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -584,7 +626,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:networkId:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/addUserInterest(_:networkId:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:networkId:userKey:callback:">addUserInterest(_:networkId:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)addUserInterest:networkId:userKey:callback:">addUserInterest(_:<wbr>networkId:<wbr>userKey:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -615,7 +657,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:callback:"></a>
                     <a name="//apple_ref/swift/Method/optOut(_:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:callback:">optOut(_:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:callback:">optOut(_:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -644,7 +686,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:userKey:callback:"></a>
                     <a name="//apple_ref/swift/Method/optOut(_:userKey:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:userKey:callback:">optOut(_:userKey:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)optOut:userKey:callback:">optOut(_:<wbr>userKey:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -674,7 +716,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:brandId:segmentId:callback:"></a>
                     <a name="//apple_ref/swift/Method/retargetUser(_:brandId:segmentId:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:brandId:segmentId:callback:">retargetUser(_:brandId:segmentId:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:brandId:segmentId:callback:">retargetUser(_:<wbr>brandId:<wbr>segmentId:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -705,7 +747,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:userKey:brandId:segmentId:callback:"></a>
                     <a name="//apple_ref/swift/Method/retargetUser(_:userKey:brandId:segmentId:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:userKey:brandId:segmentId:callback:">retargetUser(_:userKey:brandId:segmentId:callback:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)retargetUser:userKey:brandId:segmentId:callback:">retargetUser(_:<wbr>userKey:<wbr>brandId:<wbr>segmentId:<wbr>callback:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -737,7 +779,7 @@ Useful for the common case where the network ID is contstant for your applicatio
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)recordImpression:"></a>
                     <a name="//apple_ref/swift/Method/recordImpression(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)recordImpression:">recordImpression(_:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)AdzerkSDK(im)recordImpression:">recordImpression(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -765,8 +807,8 @@ Useful for the common case where the network ID is contstant for your applicatio
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2020-08-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

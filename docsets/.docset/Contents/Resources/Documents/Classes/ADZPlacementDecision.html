@@ -8,14 +8,22 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Class/ADZPlacementDecision" class="dashAnchor"></a>
     <a title="ADZPlacementDecision Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (59% documented)</p>
+        <p><a href="../index.html"> Docs</a> (60% documented)</p>
         <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -104,7 +112,9 @@
             <h1>ADZPlacementDecision</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementDecision</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  
+                  <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">ADZPlacementDecision</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -135,8 +145,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">divName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">divName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -271,8 +280,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">clickUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">clickUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -299,8 +307,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">impressionUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">impressionUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -327,8 +334,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">adIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">adIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -355,8 +361,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">creativeIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">creativeIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -383,8 +388,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">flightIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">flightIdNumber</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -412,8 +416,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">contents</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacementContent.html">ADZPlacementContent</a></span><span class="p">]?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">contents</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacementContent.html">ADZPlacementContent</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -441,8 +444,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">events</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacementEvent.html">ADZPlacementEvent</a></span><span class="p">]?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">events</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ADZPlacementEvent.html">ADZPlacementEvent</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -471,8 +473,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">allAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">allAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -484,7 +485,7 @@ will be represented as one of these.</p>
                     <code>
                     <a name="/c:@M@AdzerkSDK@objc(cs)ADZPlacementDecision(im)initWithName:dictionary:"></a>
                     <a name="//apple_ref/swift/Method/init(name:dictionary:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementDecision(im)initWithName:dictionary:">init(name:dictionary:)</a>
+                    <a class="token" href="#/c:@M@AdzerkSDK@objc(cs)ADZPlacementDecision(im)initWithName:dictionary:">init(name:<wbr>dictionary:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -502,7 +503,7 @@ will be represented as one of these.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span></code></pre>
 
                         </div>
                       </div>
@@ -541,8 +542,8 @@ will be represented as one of these.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2018-09-29)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://adkzerk.com" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2020-08-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
