@@ -29,6 +29,8 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
+  s.swift_versions = ['4.0', '5.0']
+
   s.source_files = 'AdzerkSDK/AdzerkSDK/**/*.swift'
   s.frameworks = 'Foundation'
 end
