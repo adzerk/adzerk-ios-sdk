@@ -209,6 +209,8 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 
 # Changelog
 
+- 1.2: Add support for configurable hostname overrides
+
 - 1.1: Read/update GDPR consent
 
 - 1.0.4: Objective-C compatibility fixes for placements and decisions.
@@ -222,6 +224,3 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 _Breaking change: The Objective-C status code was changed from `NSNumber *` to `NSInteger`, as Swift 3 no longer automatically maps `Int?` to `NSNumber *`._
 
 - 0.4: Initial release
-
-
- 
