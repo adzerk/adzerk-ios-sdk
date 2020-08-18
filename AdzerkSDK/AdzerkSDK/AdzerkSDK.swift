@@ -9,24 +9,64 @@
 import Foundation
 import UIKit
 
-// Update this when making changes. Will ben sent in the UserAgent to identify the version of the SDK used in host applications.
-let AdzerkSDKVersion = "1.1"
-
-/** The base URL to use for API requests. */
-let AdzerkBaseUrl = "https://engine.adzerk.net/api/v2"
-let AdzerkUDBBaseUrl = "https://engine.adzerk.net/udb"
+// Update this when making changes. Will be sent in the UserAgent to identify the version of the SDK used in host applications.
+var AdzerkSDKVersion: String {
+    Bundle(for: AdzerkSDK.self).infoDictionary!["CFBundleShortVersionString"] as! String
+}
 
 public typealias ADZResponseSuccessCallback = (ADZPlacementResponse) -> ()
 public typealias ADZResponseFailureCallback = (Int?, String?, Error?) -> ()
 public typealias ADZResponseCallback = (Bool, Error?) -> ()
 public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
 
-
 /** The primary class used to make requests against the API. */
 @objcMembers public class AdzerkSDK : NSObject {
+ 
+    /** The base URL template to use for API requests. {subdomain} must be replaced in this template string before use. */
+    private static let AdzerkHostnameTemplate = "{subdomain}.adzerk.net"
+    
+    private enum Endpoint: String {
+        case decisionAPI = "/api/v2"
+        case userDB = "/udb"
+        
+        private var path: String { rawValue }
+        
+        func baseURL(withHost host: String = AdzerkSDK.host) -> URL {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = host
+            components.path = path
+            return components.url!
+        }
+    }
     
     private var queue: DispatchQueue
     private var logger = ADZLogger()
+
+    private static var _host: String?
+    
+    /** The host to use for outgoing API requests. If not set, a default adzerk hostname will be
+        used that is based on the default network ID. This must be set prior to making requests.
+     
+        Failing to set defaultNetworkID or host explicitly will result in a `fatalError`.
+     
+        Note that the defaultNetworkID-based subdomain will not change if a different networkID is
+        supplied for a specific request.
+     */
+    public class var host: String! {
+        get {
+            if let hostOverride = _host {
+                return hostOverride
+            }
+            
+            guard let networkId = defaultNetworkId else {
+                fatalError("You must set the defaultNetworkId or set a specific subdomain on `AdzerkSDK`")
+            }
+            let subdomain = "e-\(networkId)"
+            return AdzerkHostnameTemplate.replacingOccurrences(of: "{subdomain}", with: subdomain)
+        }
+        set { _host = newValue }
+    }
     
     private static var _defaultNetworkId: Int?
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
@@ -200,23 +240,21 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
     public func postUserProperties(_ networkId: Int, userKey: String, properties: [String : Any], callback: @escaping ADZResponseCallback) {
-        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/custom?userKey=\(userKey)") else {
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/custom", queryItems: [
+            URLQueryItem(name: "userKey", value: userKey)
+        ]) else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(false, nil)
             return
         }
         
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = [
-            "Content-Type" : "application/json",
-            "Accept" : "application/json"
-        ]
-        
-        request.httpMethod = "POST"
-        
         do {
             let data = try JSONSerialization.data(withJSONObject: properties, options: JSONSerialization.WritingOptions.prettyPrinted)
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
             request.httpBody = data
+            
             let task = session.dataTask(with: request) {
                 (data, response, error) in
                 if error == nil {
@@ -269,7 +307,9 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     @param callback a simple callback block indicating success or failure, along with an optional `NSError`.
     */
     public func readUser(_ networkId: Int, userKey: String, callback: @escaping ADZUserDBUserResponseCallback) {
-        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/read?userKey=\(userKey)") else {
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/read", queryItems: [
+            URLQueryItem(name: "userKey", value: userKey)
+        ]) else {
             logger.warn("WARNING: Could not build URL with provided params. Network ID: \(networkId), userKey: \(userKey)")
             callback(nil, nil)
             return
@@ -347,7 +387,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
             "userKey": userKey,
             "interest": interest
         ]
-        pixelRequest(networkId, action: "optout", params: params, callback: callback)
+        pixelRequest(networkId, action: "interest", params: params, callback: callback)
     }
 
     /**
@@ -448,8 +488,8 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         @param callback a simple success/error callback to use when the response comes back
     */
     func pixelRequest(_ networkId: Int, action: String, params: [String: String]?, callback: @escaping ADZResponseCallback) {
-        let query = queryStringWithParams(params)
-        guard let url = URL(string: "\(AdzerkUDBBaseUrl)/\(networkId)/\(action)/i.gif\(query)") else {
+        let queryItems = params?.map { (k, v) in URLQueryItem.init(name: k, value: v) } ?? []
+        guard let url = Endpoint.userDB.baseURL().appending(pathComponent: "\(networkId)/\(action)/i.gif", queryItems: queryItems) else {
             logger.warn("WARNING: Could not construct proper URL for params: \(params ?? [:])")
             callback(false, nil)
             return
@@ -475,30 +515,12 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         }
         task.resume()
     }
-
-    /** 
-        Builds a query string for appending on to a URL. Includes a preceding ? if the passed params are non-nil. Returns an empty string
-        if the params are passed with nil. Both the key and the value of the params dictionary are URL encoded.
-        @param params a string to string dictionary of parameters to convert to a URL query string
-        @returns String
-    */
-    func queryStringWithParams(_ params: [String: String]?) -> String {
-        guard let params = params else {
-            return ""
-        }
-        
-        return "?" + params.map { (k, v) -> String in
-            let queryChars = NSCharacterSet.urlQueryAllowed
-            let encodedKey = k.addingPercentEncoding(withAllowedCharacters: queryChars)!
-            let encodedVal = v.addingPercentEncoding(withAllowedCharacters: queryChars)!
-            return "\(encodedKey)=\(encodedVal)"
-        }.joined(separator: "&")
-    }
     
     lazy var sessionConfiguration: URLSessionConfiguration = {
         let config = URLSessionConfiguration.ephemeral
         config.httpAdditionalHeaders = [
             "User-Agent" : UserAgentProvider.instance.userAgent,
+            "X-Adzerk-Sdk-Version": "adzerk-ios-decision-sdk:\(AdzerkSDKVersion)",
             "Content-Type" : "application/json",
             "Accept" : "application/json"
         ]
@@ -509,14 +531,10 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         return URLSession(configuration: self.sessionConfiguration)
     }()
     
-    private var baseURL: URL {
-        return URL(string: AdzerkBaseUrl)!
-    }
-    
     private let requestTimeout: TimeInterval = 15
     
     private func buildPlacementRequest(_ placements: [ADZPlacement], options: ADZPlacementRequestOptions?) -> URLRequest? {
-        let url = baseURL
+        let url = Endpoint.decisionAPI.baseURL()
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
         request.httpMethod = "POST"
         
@@ -588,6 +606,17 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
     }
 }
 
+fileprivate extension URL {
+    func appending(pathComponent: String, queryItems: [URLQueryItem]?) -> URL? {
+        guard var components = URLComponents(url: appendingPathComponent(pathComponent), resolvingAgainstBaseURL: true) else {
+            return nil
+        }
+        
+        components.queryItems = queryItems
+        return components.url
+    }
+}
+
 // This provider object constructs the user agent only once, and is used repeatedly.
 fileprivate struct UserAgentProvider {
     static var instance = UserAgentProvider()
@@ -618,7 +647,8 @@ fileprivate struct UserAgentProvider {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        
+    
+        // Reference for future updates to this list: https://github.com/pluwen/Apple-Device-Model-list
         switch identifier {
         case "iPod5,1":                                 return "iPod Touch 5"
         case "iPod7,1":                                 return "iPod Touch 6"
@@ -637,9 +667,14 @@ fileprivate struct UserAgentProvider {
         case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
         case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
         case "iPhone10,3", "iPhone10,6":                return "iPhone X"
-        case "iPhone11,8":                              return "iPhone XR"
+        case "iPhone11,8":                              return "iPhone Xr"
         case "iPhone11,2":                              return "iPhone XS"
         case "iPhone11,4":                              return "iPhone XS Max"
+        case "iPhone12,1":                              return "iPhone 11"
+        case "iPhone12,3":                              return "iPhone 11 Pro"
+        case "iPhone12,5":                              return "iPhone 11 Pro Max"
+        case "iPhone12,8":                              return "iPhone SE 2"
+            
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
@@ -652,8 +687,13 @@ fileprivate struct UserAgentProvider {
         case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
         case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
         case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
-        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
+        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2"
         case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
+        case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4": return "iPad Pro 11-inch"
+        case "iPad8,9", "iPad8,10":                      return "iPad Pro 11-inch 2"
+        case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8": return "iPad Pro 12.9-inch 3"
+        case "iPad8,11", "iPad8,12":                     return "iPad Pro 12.9-inch 4"
+
         case "AppleTV5,3":                              return "Apple TV"
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"

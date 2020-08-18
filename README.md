@@ -16,7 +16,7 @@ Note that for manual and Carthage framework imports you may have to specify "Emb
 If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
 
 ```ruby
-github "adzerk/adzerk-ios-sdk" ~> 1.1
+github "adzerk/adzerk-ios-sdk" ~> 1.2
 ```
 
 If you want to be on the bleeding edge, you can specify the `master` branch:
@@ -33,7 +33,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 1.1
+pod 'adzerk-ios-sdk', '~> 1.2
 ```
 
 Again, if you want to be on the latest master branch:
@@ -209,6 +209,8 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 
 # Changelog
 
+- 1.2: Add support for configurable hostname overrides
+
 - 1.1: Read/update GDPR consent
 
 - 1.0.4: Objective-C compatibility fixes for placements and decisions.
@@ -222,6 +224,3 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 _Breaking change: The Objective-C status code was changed from `NSNumber *` to `NSInteger`, as Swift 3 no longer automatically maps `Int?` to `NSNumber *`._
 
 - 0.4: Initial release
-
-
- 
