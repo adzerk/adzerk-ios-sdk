@@ -33,7 +33,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 1.2
+pod 'adzerk-ios-sdk', '~> 1.2'
 ```
 
 Again, if you want to be on the latest master branch:
