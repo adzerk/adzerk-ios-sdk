@@ -25,6 +25,10 @@
 		B546C5C7251E49BE00668757 /* UserKeyStoreKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5C6251E49BE00668757 /* UserKeyStoreKeychain.swift */; };
 		B546C5CD251E49ED00668757 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5CC251E49ED00668757 /* KeychainHelper.swift */; };
 		B546C5DC251E4C1600668757 /* UserKeyStoreKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5D2251E4B0000668757 /* UserKeyStoreKeychainTests.swift */; };
+		B546C5E6251E4C7400668757 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5E5251E4C7400668757 /* Placement.swift */; };
+		B546C5F9251E4C9F00668757 /* PlacementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5EB251E4C7E00668757 /* PlacementTests.swift */; };
+		B546C607251E620000668757 /* PlacementAdditionalOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C606251E620000668757 /* PlacementAdditionalOption.swift */; };
+		B546C611251E644E00668757 /* PlacementAdditionalOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C610251E644E00668757 /* PlacementAdditionalOptionTests.swift */; };
 		OBJ_35 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AdzerkSDK.swift */; };
 		OBJ_36 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Logger.swift */; };
 		OBJ_43 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -58,6 +62,10 @@
 		B546C5C6251E49BE00668757 /* UserKeyStoreKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStoreKeychain.swift; sourceTree = "<group>"; };
 		B546C5CC251E49ED00668757 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		B546C5D2251E4B0000668757 /* UserKeyStoreKeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStoreKeychainTests.swift; sourceTree = "<group>"; };
+		B546C5E5251E4C7400668757 /* Placement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placement.swift; sourceTree = "<group>"; };
+		B546C5EB251E4C7E00668757 /* PlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
+		B546C606251E620000668757 /* PlacementAdditionalOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementAdditionalOption.swift; sourceTree = "<group>"; };
+		B546C610251E644E00668757 /* PlacementAdditionalOptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementAdditionalOptionTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		OBJ_13 /* AdzerkSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkSDKTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
@@ -110,6 +118,8 @@
 				OBJ_13 /* AdzerkSDKTests.swift */,
 				OBJ_14 /* LoggerTests.swift */,
 				B546C5D2251E4B0000668757 /* UserKeyStoreKeychainTests.swift */,
+				B546C5EB251E4C7E00668757 /* PlacementTests.swift */,
+				B546C610251E644E00668757 /* PlacementAdditionalOptionTests.swift */,
 				OBJ_15 /* XCTestManifests.swift */,
 			);
 			name = AdzerkSDKTests;
@@ -163,6 +173,8 @@
 				B546C5BF251E492B00668757 /* UserKeyStore.swift */,
 				B546C5C6251E49BE00668757 /* UserKeyStoreKeychain.swift */,
 				B546C5CC251E49ED00668757 /* KeychainHelper.swift */,
+				B546C5E5251E4C7400668757 /* Placement.swift */,
+				B546C606251E620000668757 /* PlacementAdditionalOption.swift */,
 			);
 			name = AdzerkSDK;
 			path = Sources/AdzerkSDK;
@@ -255,6 +267,8 @@
 				B546C5C0251E492B00668757 /* UserKeyStore.swift in Sources */,
 				OBJ_35 /* AdzerkSDK.swift in Sources */,
 				B546C5C7251E49BE00668757 /* UserKeyStoreKeychain.swift in Sources */,
+				B546C607251E620000668757 /* PlacementAdditionalOption.swift in Sources */,
+				B546C5E6251E4C7400668757 /* Placement.swift in Sources */,
 				B546C5CD251E49ED00668757 /* KeychainHelper.swift in Sources */,
 				OBJ_36 /* Logger.swift in Sources */,
 			);
@@ -275,7 +289,9 @@
 				OBJ_54 /* AdzerkSDKTests.swift in Sources */,
 				OBJ_55 /* LoggerTests.swift in Sources */,
 				B546C5DC251E4C1600668757 /* UserKeyStoreKeychainTests.swift in Sources */,
+				B546C611251E644E00668757 /* PlacementAdditionalOptionTests.swift in Sources */,
 				OBJ_56 /* XCTestManifests.swift in Sources */,
+				B546C5F9251E4C9F00668757 /* PlacementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
