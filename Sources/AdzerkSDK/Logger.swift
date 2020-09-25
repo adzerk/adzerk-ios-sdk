@@ -32,7 +32,7 @@ public struct OSLogDestination: LogDestination {
     }
     
     public func send(_ level: Logger.Level, message: String, file: StaticString, line: UInt) {
-        os_log("%{public}@", log: log, type: level.osLogType, "\(message)" as! CVarArg)
+        os_log("%{public}@", log: log, type: level.osLogType, "\(message)")
     }
 }
 
