@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "AdzerkSDK",
+    platforms: [
+        .iOS(.v10),
+        .macOS(.v10_12)
+    ],
     products: [
         .library(
             name: "AdzerkSDK",
