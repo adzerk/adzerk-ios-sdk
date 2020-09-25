@@ -13,6 +13,9 @@ import Foundation
 public class UserKeyStoreKeychain : UserKeyStore {
     let userKeychainKey = "ADZUserKey"
     
+    public init() {
+    }
+    
     /**
         Retrieve the saved userKey from the Keychain.
     

@@ -44,12 +44,6 @@ public class StandardPlacement: Placement {
     var flightId: Int?
     var adId: Int?
     
-    /**
-     Pass any additional values here and they will be sent as top-level
-     parameters in the placement request. This can be used to adopt new parameters before they are added to the SDK.
-     */
-    var additionalOptions: [String: PlacementAdditionalOption]?
-    
     public convenience init(divName: String, adTypes: [Int]) {
         guard let networkId = AdzerkSDK.defaultNetworkId,
               let siteId = AdzerkSDK.defaultSiteId else {
