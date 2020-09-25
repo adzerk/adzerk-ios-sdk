@@ -1,7 +1,7 @@
 import XCTest
 
-import adzerk_iosTests
+import AdzerkSDKTests
 
 var tests = [XCTestCaseEntry]()
-tests += adzerk_iosTests.allTests()
+tests += AdzerkSDKTests.allTests()
 XCTMain(tests)
