@@ -29,6 +29,8 @@
 		B546C5F9251E4C9F00668757 /* PlacementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C5EB251E4C7E00668757 /* PlacementTests.swift */; };
 		B546C607251E620000668757 /* PlacementAdditionalOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C606251E620000668757 /* PlacementAdditionalOption.swift */; };
 		B546C611251E644E00668757 /* PlacementAdditionalOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C610251E644E00668757 /* PlacementAdditionalOptionTests.swift */; };
+		B546C61B251E74EE00668757 /* PlacementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C61A251E74EE00668757 /* PlacementRequest.swift */; };
+		B546C621251E770A00668757 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C620251E770A00668757 /* Consent.swift */; };
 		OBJ_35 /* AdzerkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AdzerkSDK.swift */; };
 		OBJ_36 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Logger.swift */; };
 		OBJ_43 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -66,6 +68,8 @@
 		B546C5EB251E4C7E00668757 /* PlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
 		B546C606251E620000668757 /* PlacementAdditionalOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementAdditionalOption.swift; sourceTree = "<group>"; };
 		B546C610251E644E00668757 /* PlacementAdditionalOptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementAdditionalOptionTests.swift; sourceTree = "<group>"; };
+		B546C61A251E74EE00668757 /* PlacementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementRequest.swift; sourceTree = "<group>"; };
+		B546C620251E770A00668757 /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		OBJ_13 /* AdzerkSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkSDKTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				B546C5CC251E49ED00668757 /* KeychainHelper.swift */,
 				B546C5E5251E4C7400668757 /* Placement.swift */,
 				B546C606251E620000668757 /* PlacementAdditionalOption.swift */,
+				B546C61A251E74EE00668757 /* PlacementRequest.swift */,
+				B546C620251E770A00668757 /* Consent.swift */,
 			);
 			name = AdzerkSDK;
 			path = Sources/AdzerkSDK;
@@ -264,9 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B546C621251E770A00668757 /* Consent.swift in Sources */,
 				B546C5C0251E492B00668757 /* UserKeyStore.swift in Sources */,
 				OBJ_35 /* AdzerkSDK.swift in Sources */,
 				B546C5C7251E49BE00668757 /* UserKeyStoreKeychain.swift in Sources */,
+				B546C61B251E74EE00668757 /* PlacementRequest.swift in Sources */,
 				B546C607251E620000668757 /* PlacementAdditionalOption.swift in Sources */,
 				B546C5E6251E4C7400668757 /* Placement.swift in Sources */,
 				B546C5CD251E49ED00668757 /* KeychainHelper.swift in Sources */,

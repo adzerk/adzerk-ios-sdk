@@ -162,7 +162,7 @@ public typealias ADZUserDBUserResponseCallback = (ADZUser?, Error?) -> ()
         requestPlacements(placements, options: nil, completion: completion)
     }
  
-    /** Requests multiple placements with additional options. The options can provide well-known or arbitrary parameters to th eoverall request.
+    /** Requests multiple placements with additional options. The options can provide well-known or arbitrary parameters to the overall request.
         @param placements an array of placement details to request
         @param options an optional instance of `ADZPlacementRequestOptions` that provide top-level attributes to the request
         @param completion a callback block that you provide to handle the response. The block will be given an `ADZResponse` object.

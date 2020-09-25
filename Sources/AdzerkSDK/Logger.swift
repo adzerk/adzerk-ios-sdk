@@ -1,11 +1,15 @@
 import os.log
 
 public struct Logger {
-    public enum Level: Int {
+    public enum Level: Int, Comparable {
         case debug
         case info
         case warning
         case error
+        
+        public static func < (lhs: Logger.Level, rhs: Logger.Level) -> Bool {
+            lhs.rawValue < rhs.rawValue
+        }
     }
     
     var level: Level = .info
@@ -15,8 +19,10 @@ public struct Logger {
         self.destination = destination
     }
     
-    public func log(_ level: Level, message: String, file: StaticString = #file, line: UInt = #line) {
-        destination.send(level, message: message, file: file, line: line)
+    public func log(_ level: Level, message: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) {
+        if level >= self.level {
+            destination.send(level, message: message(), file: file, line: line)
+        }
     }    
 }
 
