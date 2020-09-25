@@ -12,7 +12,7 @@ final class AdzerkSDKTests: XCTestCase {
         AdzerkSDK.defaultNetworkId = networkId
         AdzerkSDK.defaultSiteId = siteId
         AdzerkSDK.logger.level = .debug
-        // sdk = AdzerkSDK()
+        sdk = AdzerkSDK()
     }
 
     func testDefaultNetworkId() {
