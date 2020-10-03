@@ -24,7 +24,7 @@ public struct PlacementRequest<P: Placement>: Codable {
          parameters in the placement request. This can be used to adopt new
          parameters before they are added to the SDK.
          */
-        public var additionalOptions: [String: PlacementAdditionalOption]?
+        public var additionalOptions: [String: AnyCodable]?
     }
     
     struct User: Codable {
@@ -37,7 +37,7 @@ public struct PlacementRequest<P: Placement>: Codable {
     let flightViewTimes: [String: [Int]]?
     let keywords: [String]?
     let consent: Consent?
-    let additionalOptions: [String: PlacementAdditionalOption]?
+    let additionalOptions: [String: AnyCodable]?
     
     init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore) {
         self.placements = placements

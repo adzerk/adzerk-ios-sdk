@@ -1,5 +1,5 @@
 //
-//  PlacementAdditionalOptionTests.swift
+//  AnyCodableTests.swift
 //  AdzerkSDKTests
 //
 //  Created by Ben Scheirman on 9/25/20.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import AdzerkSDK
 
-class PlacementAdditionalOptionTests: XCTestCase {
+class AnyCodableTests: XCTestCase {
     
     func testEncodeInt() throws {
         try assertOptionEquals(.int(87), "87")
@@ -136,17 +136,17 @@ class PlacementAdditionalOptionTests: XCTestCase {
             )
     }
     
-    func assertOptionEquals(_ option: PlacementAdditionalOption, _ json: String, formatted: Bool = true, file: StaticString = #file, line: UInt = #line) throws {
+    func assertOptionEquals(_ option: AnyCodable, _ json: String, formatted: Bool = true, file: StaticString = #file, line: UInt = #line) throws {
         let actual = try encode(option, formatted: formatted)
         XCTAssertEqual(json, actual, file: file, line: line)
     }
     
-    func assertDecodeOption(_ json: String, _ expectedOption: PlacementAdditionalOption, file: StaticString = #file, line: UInt = #line) throws {
+    func assertDecodeOption(_ json: String, _ expectedOption: AnyCodable, file: StaticString = #file, line: UInt = #line) throws {
         let actual = try decode(json)
         XCTAssertEqual(actual, expectedOption)
     }
     
-    private func encode(_ option: PlacementAdditionalOption, formatted: Bool) throws -> String {
+    private func encode(_ option: AnyCodable, formatted: Bool) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .sortedKeys
         if formatted {
@@ -156,9 +156,9 @@ class PlacementAdditionalOptionTests: XCTestCase {
         return String(data: data, encoding: .utf8) ?? ""
     }
 
-    private func decode(_ json: String) throws -> PlacementAdditionalOption {
+    private func decode(_ json: String) throws -> AnyCodable {
         let decoder = JSONDecoder()
         let data = json.data(using: .utf8)!
-        return try decoder.decode(PlacementAdditionalOption.self, from: data)
+        return try decoder.decode(AnyCodable.self, from: data)
     }
 }
