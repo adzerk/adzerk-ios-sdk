@@ -19,13 +19,19 @@ public protocol Placement: Codable {
 }
 
 public struct Placements {
+    /// Use this placement type if you don't need to pass any additional options.
     public static func standard(divName: String, adTypes: [Int]) -> StandardPlacement {
         StandardPlacement(divName: divName, adTypes: adTypes)
     }
+    
+    /// Use this placement type if you need to pass additional options.
+    public static func custom(divName: String, adTypes: [Int]) -> CustomPlacement {
+        CustomPlacement(divName: divName, adTypes: adTypes)
+    }
 }
 
+/// Use this placement type if you don't need to pass any additional options.
 public class StandardPlacement: Placement {
-        
     /** The name of the div */
     public let divName: String
     
@@ -57,5 +63,30 @@ public class StandardPlacement: Placement {
         self.siteId = siteId
         self.divName = divName
         self.adTypes = adTypes
+    }
+}
+
+/// Use this placement type if you need to pass additional options.
+public class CustomPlacement: StandardPlacement {
+    var additionalOptions: [String: AnyCodable] = [:]
+    
+    enum CodingKeys: String, CodingKey {
+        case additionalOptions
+    }
+    
+    public override init(networkId: Int, siteId: Int, divName: String, adTypes: [Int]) {
+        super.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes)
+    }
+    
+    public override func encode(to encoder: Encoder) throws {
+        try super.encode(to: encoder)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(additionalOptions, forKey: .additionalOptions)
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        additionalOptions = try container.decode([String: AnyCodable].self, forKey: .additionalOptions)
+        try super.init(from: decoder)
     }
 }

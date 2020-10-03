@@ -1,5 +1,5 @@
 //
-//  PlacementAdditionalOptions.swift
+//  AnyCodable.swift
 //  AdzerkSDK
 //
 //  Created by Ben Scheirman on 9/25/20.
@@ -10,13 +10,13 @@ import Foundation
 /** Provides dynamic Codable support for arbitrary nested data structures.
     Supported types are `Int`, `String`, `Float`, `Bool`, as well as arrays and dictionaries of any of these.
  */
-public indirect enum PlacementAdditionalOption: Codable {
+public indirect enum AnyCodable: Codable {
     case int(Int)
     case string(String)
     case boolean(Bool)
     case float(Float)
-    case array([PlacementAdditionalOption])
-    case dictionary([String: PlacementAdditionalOption])
+    case array([AnyCodable])
+    case dictionary([String: AnyCodable])
     
     public init(from decoder: Decoder) throws {
         if let container = try? decoder.singleValueContainer() {
@@ -29,14 +29,14 @@ public indirect enum PlacementAdditionalOption: Codable {
                 self = .boolean(boolValue)
             } else if let floatValue = try? container.decode(Float.self) {
                 self = .float(floatValue)
-            } else if let array = try? container.decode([PlacementAdditionalOption].self) {
+            } else if let array = try? container.decode([AnyCodable].self) {
                 self = .array(array)
             }
-            else if let dictionary = try? container.decode([String: PlacementAdditionalOption].self) {
+            else if let dictionary = try? container.decode([String: AnyCodable].self) {
                 self = .dictionary(dictionary)
             } else {
                 let context = DecodingError.Context(codingPath: container.codingPath, debugDescription: "Tried to decode this value as Int, String, Bool, Float, Array, and Dictionary but was unsuccessful")
-                throw DecodingError.typeMismatch(PlacementAdditionalOption.self, context)
+                throw DecodingError.typeMismatch(AnyCodable.self, context)
             }
         } else {
             fatalError("can't yet handle arrays or dictionary containers")
@@ -55,9 +55,7 @@ public indirect enum PlacementAdditionalOption: Codable {
             try container.encode(dictionary)
         }
     }
-
 }
 
-extension PlacementAdditionalOption: Equatable {
-    
+extension AnyCodable: Equatable {
 }
