@@ -25,7 +25,7 @@ extension PlacementDecision {
 }
 
 extension PlacementDecision.Content {
-    public enum ContentType: Codable {
+    public enum ContentType: Codable, Equatable, Hashable {
         case css
         case html
         case javascript
@@ -60,6 +60,14 @@ extension PlacementDecision.Content {
         public func encode(to encoder: Encoder) throws {
             var container = encoder.singleValueContainer()
             try container.encode(key)
+        }
+        
+        public static func ==(lhs: ContentType, rhs: ContentType) -> Bool {
+            lhs.key == rhs.key
+        }
+        
+        public func hash(into hasher: inout Hasher) {
+            key.hash(into: &hasher)
         }
     }
 }

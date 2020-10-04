@@ -31,6 +31,10 @@
 		B546C611251E644E00668757 /* AnyCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C610251E644E00668757 /* AnyCodableTests.swift */; };
 		B546C61B251E74EE00668757 /* PlacementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C61A251E74EE00668757 /* PlacementRequest.swift */; };
 		B546C621251E770A00668757 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C620251E770A00668757 /* Consent.swift */; };
+		B56D8F04252A5ED000EB0ACA /* AdzerkJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F03252A5ED000EB0ACA /* AdzerkJSONDecoder.swift */; };
+		B56D8F0E252A613100EB0ACA /* AdzerkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F0D252A613100EB0ACA /* AdzerkError.swift */; };
+		B56D8F14252A61FF00EB0ACA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F13252A61FF00EB0ACA /* Endpoint.swift */; };
+		B56D8F27252A682400EB0ACA /* FakeKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F1D252A67F400EB0ACA /* FakeKeyStore.swift */; };
 		B5D7334925290E8C009C2AC7 /* PlacementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7334825290E8C009C2AC7 /* PlacementResponse.swift */; };
 		B5D7334F25290EA7009C2AC7 /* PlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7334E25290EA7009C2AC7 /* PlacementDecision.swift */; };
 		B5D733552529109E009C2AC7 /* PlacementContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D733542529109E009C2AC7 /* PlacementContent.swift */; };
@@ -76,6 +80,10 @@
 		B546C610251E644E00668757 /* AnyCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodableTests.swift; sourceTree = "<group>"; };
 		B546C61A251E74EE00668757 /* PlacementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementRequest.swift; sourceTree = "<group>"; };
 		B546C620251E770A00668757 /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
+		B56D8F03252A5ED000EB0ACA /* AdzerkJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONDecoder.swift; sourceTree = "<group>"; };
+		B56D8F0D252A613100EB0ACA /* AdzerkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkError.swift; sourceTree = "<group>"; };
+		B56D8F13252A61FF00EB0ACA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B56D8F1D252A67F400EB0ACA /* FakeKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKeyStore.swift; sourceTree = "<group>"; };
 		B5D7334825290E8C009C2AC7 /* PlacementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementResponse.swift; sourceTree = "<group>"; };
 		B5D7334E25290EA7009C2AC7 /* PlacementDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementDecision.swift; sourceTree = "<group>"; };
 		B5D733542529109E009C2AC7 /* PlacementContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementContent.swift; sourceTree = "<group>"; };
@@ -126,6 +134,7 @@
 				B5D7336825291646009C2AC7 /* DynamicCodingKey.swift */,
 				B546C606251E620000668757 /* AnyCodable.swift */,
 				B5D7336F252916A6009C2AC7 /* Decoder+AnyCodable.swift */,
+				B56D8F03252A5ED000EB0ACA /* AdzerkJSONDecoder.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -147,6 +156,7 @@
 				B546C5EB251E4C7E00668757 /* PlacementTests.swift */,
 				B546C610251E644E00668757 /* AnyCodableTests.swift */,
 				OBJ_15 /* XCTestManifests.swift */,
+				B56D8F1D252A67F400EB0ACA /* FakeKeyStore.swift */,
 			);
 			name = AdzerkSDKTests;
 			path = Tests/AdzerkSDKTests;
@@ -206,6 +216,8 @@
 				B5D7334E25290EA7009C2AC7 /* PlacementDecision.swift */,
 				B5D733542529109E009C2AC7 /* PlacementContent.swift */,
 				B5D7336225291230009C2AC7 /* PlacementEvent.swift */,
+				B56D8F0D252A613100EB0ACA /* AdzerkError.swift */,
+				B56D8F13252A61FF00EB0ACA /* Endpoint.swift */,
 			);
 			name = AdzerkSDK;
 			path = Sources/AdzerkSDK;
@@ -300,7 +312,9 @@
 				OBJ_35 /* AdzerkSDK.swift in Sources */,
 				B546C5C7251E49BE00668757 /* UserKeyStoreKeychain.swift in Sources */,
 				B5D7336325291230009C2AC7 /* PlacementEvent.swift in Sources */,
+				B56D8F04252A5ED000EB0ACA /* AdzerkJSONDecoder.swift in Sources */,
 				B5D7336925291646009C2AC7 /* DynamicCodingKey.swift in Sources */,
+				B56D8F0E252A613100EB0ACA /* AdzerkError.swift in Sources */,
 				B546C61B251E74EE00668757 /* PlacementRequest.swift in Sources */,
 				B5D733552529109E009C2AC7 /* PlacementContent.swift in Sources */,
 				B546C607251E620000668757 /* AnyCodable.swift in Sources */,
@@ -309,6 +323,7 @@
 				B546C5CD251E49ED00668757 /* KeychainHelper.swift in Sources */,
 				B5D7334F25290EA7009C2AC7 /* PlacementDecision.swift in Sources */,
 				B5D7334925290E8C009C2AC7 /* PlacementResponse.swift in Sources */,
+				B56D8F14252A61FF00EB0ACA /* Endpoint.swift in Sources */,
 				OBJ_36 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B56D8F27252A682400EB0ACA /* FakeKeyStore.swift in Sources */,
 				OBJ_54 /* AdzerkSDKTests.swift in Sources */,
 				OBJ_55 /* LoggerTests.swift in Sources */,
 				B546C5DC251E4C1600668757 /* UserKeyStoreKeychainTests.swift in Sources */,
