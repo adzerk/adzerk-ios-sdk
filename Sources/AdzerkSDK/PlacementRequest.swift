@@ -9,6 +9,7 @@ import Foundation
 
 /// Represents the HTTP request made for requesting placements.
 public struct PlacementRequest<P: Placement>: Codable {
+    
     public struct Options {
         public var userKey: String?
         public var keywords: [String]?
