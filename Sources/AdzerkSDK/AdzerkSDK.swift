@@ -63,7 +63,7 @@ public class AdzerkSDK {
         request(placements: [placement], options: nil, completion: completion)
     }
     
-    public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options?, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
+    public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
         do {
             let url = Endpoint.decisionAPI.baseURL()
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
@@ -86,6 +86,7 @@ public class AdzerkSDK {
             if let http = response as? HTTPURLResponse {
                 Self.logger.log(.debug, message: "Received HTTP \(http.statusCode) from \(request.url?.absoluteString ?? "")")
                 if http.statusCode == 200 {
+                    print("Response: \(String(data: data, encoding: .utf8) ?? "")")
                         do {
                             let decoder = AdzerkJSONDecoder()
                             let response = try decoder.decode(ResponseType.self, from: data)
