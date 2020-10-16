@@ -10,11 +10,11 @@ final class DecisionSDKTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         DecisionSDK.defaultNetworkId = networkId
         DecisionSDK.defaultSiteId = siteId
         DecisionSDK.logger.level = .debug
         fakeKeyStore = FakeKeyStore()
-        
         sdk = DecisionSDK(keyStore: fakeKeyStore)
     }
 

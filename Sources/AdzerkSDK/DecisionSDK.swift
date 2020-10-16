@@ -62,7 +62,7 @@ public class DecisionSDK {
         let session = URLSession(configuration: .default)
         self.session = session
         self.requestTimeout = requestTimeout
-        self.transport = transport ?? NetworkTransport(session: session, logger: Self.logger)
+        self.transport = transport ?? NetworkTransport(session: session, logger: Self.logger, callbackQueue: queue)
     }
     
     public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
