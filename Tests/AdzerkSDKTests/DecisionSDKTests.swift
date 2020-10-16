@@ -2,7 +2,6 @@ import XCTest
 @testable import AdzerkSDK
 
 final class DecisionSDKTests: XCTestCase {
-
     private let networkId = 23
     private let siteId = 306998
     private var sdk: DecisionSDK!
