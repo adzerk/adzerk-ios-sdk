@@ -12,8 +12,10 @@ class FakeKeyStore: UserKeyStore {
     var currentUserKey: String?
     
     func save(userKey: String) {
+        currentUserKey = userKey
     }
     
     func removeUserKey() {
+        currentUserKey = nil
     }
 }
