@@ -21,6 +21,8 @@ public enum AdzerkError: Error {
     
     // non HTTP response received
     case invalidResponse
+    
+    case missingUserKey
 }
 
 extension AdzerkError: CustomStringConvertible, LocalizedError {
@@ -40,6 +42,9 @@ extension AdzerkError: CustomStringConvertible, LocalizedError {
             
         case .invalidResponse:
             return "Invalid Response"
+            
+        case .missingUserKey:
+            return "No userKey was supplied"
         }
     }
     

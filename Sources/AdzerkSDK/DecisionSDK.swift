@@ -91,6 +91,15 @@ public class DecisionSDK {
         }
     }
     
+    public func userDB(networkId: Int? = nil) -> UserDB {
+        guard let networkId = networkId ?? DecisionSDK.defaultNetworkId else {
+            fatalError("You must provide a networkId or set the defaultNetworkId on `AdzerkSDK`")
         }
+        return UserDB(
+            host: DecisionSDK.host,
+            networkId: networkId,
+            keyStore: keyStore,
+            logger: Self.logger,
+            transport: transport)
     }
 }
