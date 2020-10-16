@@ -33,6 +33,10 @@
 		B546C621251E770A00668757 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B546C620251E770A00668757 /* Consent.swift */; };
 		B54F4DA5253A2DEC00BB76D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DA4253A2DEC00BB76D0 /* User.swift */; };
 		B54F4DB3253A2E4500BB76D0 /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DB2253A2E4500BB76D0 /* UserDB.swift */; };
+		B54F4DC1253A34DE00BB76D0 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DC0253A34DE00BB76D0 /* Transport.swift */; };
+		B54F4DC7253A34FC00BB76D0 /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DC6253A34FC00BB76D0 /* NetworkTransport.swift */; };
+		B54F4DCE253A383500BB76D0 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DCD253A383500BB76D0 /* URL+Query.swift */; };
+		B54F4DD8253A492D00BB76D0 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F4DD7253A492D00BB76D0 /* UserIdentifier.swift */; };
 		B56D8F04252A5ED000EB0ACA /* AdzerkJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F03252A5ED000EB0ACA /* AdzerkJSONDecoder.swift */; };
 		B56D8F0E252A613100EB0ACA /* AdzerkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F0D252A613100EB0ACA /* AdzerkError.swift */; };
 		B56D8F14252A61FF00EB0ACA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D8F13252A61FF00EB0ACA /* Endpoint.swift */; };
@@ -84,6 +88,10 @@
 		B546C620251E770A00668757 /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
 		B54F4DA4253A2DEC00BB76D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B54F4DB2253A2E4500BB76D0 /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
+		B54F4DC0253A34DE00BB76D0 /* Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
+		B54F4DC6253A34FC00BB76D0 /* NetworkTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTransport.swift; sourceTree = "<group>"; };
+		B54F4DCD253A383500BB76D0 /* URL+Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Query.swift"; sourceTree = "<group>"; };
+		B54F4DD7253A492D00BB76D0 /* UserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentifier.swift; sourceTree = "<group>"; };
 		B56D8F03252A5ED000EB0ACA /* AdzerkJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONDecoder.swift; sourceTree = "<group>"; };
 		B56D8F0D252A613100EB0ACA /* AdzerkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkError.swift; sourceTree = "<group>"; };
 		B56D8F13252A61FF00EB0ACA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -132,6 +140,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B54F4DCC253A382600BB76D0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B54F4DC0253A34DE00BB76D0 /* Transport.swift */,
+				B54F4DC6253A34FC00BB76D0 /* NetworkTransport.swift */,
+				B54F4DCD253A383500BB76D0 /* URL+Query.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		B5D7336E25291695009C2AC7 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +225,7 @@
 		OBJ_8 /* AdzerkSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B54F4DCC253A382600BB76D0 /* Networking */,
 				B5D7336E25291695009C2AC7 /* Codable */,
 				OBJ_9 /* DecisionSDK.swift */,
 				OBJ_10 /* Logger.swift */,
@@ -224,6 +243,7 @@
 				B56D8F0D252A613100EB0ACA /* AdzerkError.swift */,
 				B56D8F13252A61FF00EB0ACA /* Endpoint.swift */,
 				B54F4DB2253A2E4500BB76D0 /* UserDB.swift */,
+				B54F4DD7253A492D00BB76D0 /* UserIdentifier.swift */,
 			);
 			name = AdzerkSDK;
 			path = Sources/AdzerkSDK;
@@ -314,10 +334,14 @@
 			buildActionMask = 0;
 			files = (
 				B546C621251E770A00668757 /* Consent.swift in Sources */,
+				B54F4DD8253A492D00BB76D0 /* UserIdentifier.swift in Sources */,
+				B54F4DC1253A34DE00BB76D0 /* Transport.swift in Sources */,
+				B54F4DC7253A34FC00BB76D0 /* NetworkTransport.swift in Sources */,
 				B546C5C0251E492B00668757 /* UserKeyStore.swift in Sources */,
 				OBJ_35 /* DecisionSDK.swift in Sources */,
 				B546C5C7251E49BE00668757 /* UserKeyStoreKeychain.swift in Sources */,
 				B5D7336325291230009C2AC7 /* PlacementEvent.swift in Sources */,
+				B54F4DCE253A383500BB76D0 /* URL+Query.swift in Sources */,
 				B56D8F04252A5ED000EB0ACA /* AdzerkJSONDecoder.swift in Sources */,
 				B5D7336925291646009C2AC7 /* DynamicCodingKey.swift in Sources */,
 				B56D8F0E252A613100EB0ACA /* AdzerkError.swift in Sources */,
