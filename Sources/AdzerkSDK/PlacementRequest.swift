@@ -28,12 +28,8 @@ public struct PlacementRequest<P: Placement>: Codable {
         public var additionalOptions: [String: AnyCodable]?
     }
     
-    struct User: Codable {
-        let key: String
-    }
-    
     let placements: [P]
-    let user: User?
+    let user: UserIdentifier?
     let blockedCreatives: [Int]?
     let flightViewTimes: [String: [Int]]?
     let keywords: [String]?
@@ -42,7 +38,7 @@ public struct PlacementRequest<P: Placement>: Codable {
     
     init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore) {
         self.placements = placements
-        user = (options?.userKey ?? userKeyStore.currentUserKey).flatMap(User.init)
+        user = (options?.userKey ?? userKeyStore.currentUserKey).flatMap(UserIdentifier.init)
         blockedCreatives = options?.blockedCreatives
         flightViewTimes = options?.flightViewTimes
         keywords = options?.keywords

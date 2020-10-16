@@ -14,9 +14,11 @@ import Foundation
 public struct PlacementResponse: Codable {
     public let decisions: [String: PlacementDecision]
     public let extraAttributes: [String: AnyCodable]
+    public let user: UserIdentifier?
     
     enum CodingKeys: String, CodingKey {
         case decisions
+        case user
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -41,6 +43,7 @@ public struct PlacementResponse: Codable {
         }
         
         self.decisions = decisions
+        self.user = try container.decodeIfPresent(UserIdentifier.self, forKey: .user)
         self.extraAttributes = try decoder.decodeAnyCodableTree(using: DynamicCodingKey.self, ignoringKeys: [DynamicCodingKey(stringValue: "decisions")!])
     }
 }
