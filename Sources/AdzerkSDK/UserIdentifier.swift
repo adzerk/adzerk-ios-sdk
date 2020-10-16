@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public struct UserIdentifier: Codable {
+    public let key: String
+}
