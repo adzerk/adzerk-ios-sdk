@@ -25,8 +25,8 @@ class PlacementTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        AdzerkSDK.defaultNetworkId = networkId
-        AdzerkSDK.defaultSiteId = siteId
+        DecisionSDK.defaultNetworkId = networkId
+        DecisionSDK.defaultSiteId = siteId
     }
 
     

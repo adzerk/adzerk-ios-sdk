@@ -1,16 +1,17 @@
 import Foundation
 
-public class AdzerkSDK {
+/// Represents the interface for making requests against the Adzerk Decision API
+public class DecisionSDK {
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is constant for your application. */
-    public static var defaultNetworkId: Int? = 0
+    public static var defaultNetworkId: Int?
     
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is constant for your application.
     */
-    public static var defaultSiteId: Int? = 0
+    public static var defaultSiteId: Int?
     
     static var logger = Logger()
     
@@ -74,6 +75,13 @@ public class AdzerkSDK {
             dispatch(.failure(.errorPreparingRequest), to: completion)
         }
     }
+    
+//    public func userDB(networkId: Int? = nil) -> UserDB {
+//        guard let networkId = networkId ?? AdzerkSDK.defaultNetworkId else {
+//            fatalError("You must provide a networkId or set the defaultNetworkId on `AdzerkSDK`")
+//        }
+//        return UserDB(networkId: networkId, keyStore: keyStore)
+//    }
     
     private func send<ResponseType: Decodable>(_ request: URLRequest, completion: @escaping (Result<ResponseType, AdzerkError>) -> Void) {
         let task = session.dataTask(with: request) { (data, response, error) in

@@ -59,8 +59,8 @@ public class StandardPlacement: Placement {
     var adId: Int?
     
     public convenience init(divName: String, adTypes: [Int]) {
-        guard let networkId = AdzerkSDK.defaultNetworkId,
-              let siteId = AdzerkSDK.defaultSiteId else {
+        guard let networkId = DecisionSDK.defaultNetworkId,
+              let siteId = DecisionSDK.defaultSiteId else {
             fatalError("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
         }
         self.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes)
