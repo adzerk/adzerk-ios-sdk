@@ -13,7 +13,7 @@ enum Endpoint: String {
     
     private var path: String { rawValue }
     
-    func baseURL(withHost host: String = AdzerkSDK.host) -> URL {
+    func baseURL(withHost host: String = DecisionSDK.host) -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host

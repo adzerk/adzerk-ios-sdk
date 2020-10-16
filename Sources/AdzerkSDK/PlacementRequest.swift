@@ -55,7 +55,7 @@ public struct PlacementRequest<P: Placement>: Codable {
         encoder.outputFormatting = .prettyPrinted
         
         let data = try encoder.encode(self)
-        AdzerkSDK.logger.log(.debug, message: "Placement request JSON:\n\n\(String(data: data, encoding: .utf8) ?? "")")
+        DecisionSDK.logger.log(.debug, message: "Placement request JSON:\n\n\(String(data: data, encoding: .utf8) ?? "")")
         
         return data
     }
