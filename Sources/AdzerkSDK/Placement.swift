@@ -16,6 +16,14 @@ public protocol Placement: Codable {
     
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
     var siteId: Int { get }
+    
+    func options() -> PlacementRequest<Self>.Options
+}
+
+public extension Placement {
+    func options() -> PlacementRequest<Self>.Options {
+        PlacementRequest<Self>.Options()
+    }
 }
 
 public struct Placements {

@@ -36,7 +36,7 @@ public struct PlacementResponse: Codable {
         for divNameKey in decisionsContainer.allKeys {
             // provode the divName so that Placement decision can be decoded properly (since this will be missing from the nested container)
             divNameProvider.currentDivName = divNameKey.stringValue
-            let decision = try decisionsContainer.decode(PlacementDecision.self, forKey: divNameKey)
+            let decision = try decisionsContainer.decodeIfPresent(PlacementDecision.self, forKey: divNameKey)
             decisions[divNameKey.stringValue] = decision
         }
         
