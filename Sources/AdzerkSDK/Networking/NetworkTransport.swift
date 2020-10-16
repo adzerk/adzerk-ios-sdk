@@ -10,8 +10,15 @@ import Foundation
 struct NetworkTransport: Transport {
     let session: URLSession
     let logger: Logger
-    let callbackQueue: DispatchQueue = .main    
-    let timeout: TimeInterval = 30
+    let callbackQueue: DispatchQueue
+    let timeout: TimeInterval
+    
+    init(session: URLSession, logger: Logger, callbackQueue: DispatchQueue = .main, timeout: TimeInterval = 30) {
+        self.session = session
+        self.logger = logger
+        self.callbackQueue = callbackQueue
+        self.timeout = timeout
+    }
     
     func send<ResponseType: Decodable>(_ request: URLRequest, completion: @escaping (Result<ResponseType, AdzerkError>) -> Void) {
         let task = session.dataTask(with: request) { (data, response, error) in
