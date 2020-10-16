@@ -9,7 +9,7 @@ import Foundation
 
 public struct Consent: Codable {
     /// Indicates the user has provided consent per GDPR.
-    public let gdpr: Bool
+    public let gdpr: Bool?
     
     public init(gdpr: Bool) {
         self.gdpr = gdpr
