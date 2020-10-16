@@ -96,6 +96,45 @@ final class AdzerkSDKTests: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testRequestMultiplePlacementsReturnsDecisionsForEach() {
+        let placement1 = Placements.standard(divName: "div1", adTypes: [5])
+        let placement2 = Placements.standard(divName: "div2", adTypes: [5])
+        let exp = expectation(description: "API Response Received")
+        sdk.request(placements: [placement1, placement2]) { result in
+            exp.fulfill()
+            do {
+                let response = try result.get()
+                XCTAssertNotNil(response.decisions["div1"])
+                XCTAssertNotNil(response.decisions["div2"])
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testRequestPlacementsWithOptions() {
+        let placement = Placements.custom(divName: "div1", adTypes: [5])
+        placement.adId = 1
+        placement.campaignId = 1
+        placement.flightId = 1
+        placement.eventIds = [123]
+        placement.additionalOptions = ["key": .string("val")]
+        
+        var options = placement.options()
+        options.flightViewTimes = ["1234": [1512512, 1241212]]
+        options.consent = .init(gdpr: true)
+        options.blockedCreatives = [1,2,3]
+        options.keywords = ["cheese", "apples", "wine"]
+        
+        let exp = expectation(description: "API response received")
+        sdk.request(placement: placement, options: options, completion: completionExtractingSuccessfulValue(expectation: exp, validationHandler: { response in
+            XCTAssertNotNil(response.decisions.keys.contains("div1"))
+        }))
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
     // Assert that the API response is called and returns .Success
     // response data is ignored
     func completionCheckingSuccessfulResponse(expectation: XCTestExpectation) -> (Result<PlacementResponse, AdzerkError>) -> () {
