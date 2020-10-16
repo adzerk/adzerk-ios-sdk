@@ -44,6 +44,7 @@ public class DecisionSDK {
     }
     
     private let keyStore: UserKeyStore
+    private let transport: Transport
     private let session: URLSession
     private let queue: DispatchQueue
     private let requestTimeout: TimeInterval
@@ -53,11 +54,15 @@ public class DecisionSDK {
      - keyStore: The object that will store user keys. Defaults to a Keychain-based store.
      - queue: The queue that all callbacks will be dispatched on. Defaults to `DispatchQueue.main`.
      */
-    public init(keyStore: UserKeyStore = UserKeyStoreKeychain(), queue: DispatchQueue = .main, requestTimeout: TimeInterval = 30) {
+    public init(keyStore: UserKeyStore = UserKeyStoreKeychain(),
+                transport: Transport? = nil,
+                queue: DispatchQueue = .main, requestTimeout: TimeInterval = 30) {
         self.keyStore = keyStore
         self.queue = queue
-        self.session = URLSession(configuration: .default)
+        let session = URLSession(configuration: .default)
+        self.session = session
         self.requestTimeout = requestTimeout
+        self.transport = transport ?? NetworkTransport(session: session, logger: Self.logger)
     }
     
     public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
@@ -70,54 +75,22 @@ public class DecisionSDK {
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
             req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore).encodeBody()
-            send(req, completion: completion)
-        } catch {
-            dispatch(.failure(.errorPreparingRequest), to: completion)
-        }
-    }
-    
-//    public func userDB(networkId: Int? = nil) -> UserDB {
-//        guard let networkId = networkId ?? AdzerkSDK.defaultNetworkId else {
-//            fatalError("You must provide a networkId or set the defaultNetworkId on `AdzerkSDK`")
-//        }
-//        return UserDB(networkId: networkId, keyStore: keyStore)
-//    }
-    
-    private func send<ResponseType: Decodable>(_ request: URLRequest, completion: @escaping (Result<ResponseType, AdzerkError>) -> Void) {
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                self.dispatch(.failure(.networkingError(error)), to: completion)
-                return
-            }
-            
-            let data = data ?? Data()
-            if let http = response as? HTTPURLResponse {
-                Self.logger.log(.debug, message: "Received HTTP \(http.statusCode) from \(request.url?.absoluteString ?? "")")
-                if http.statusCode == 200 {
-                    print("Response: \(String(data: data, encoding: .utf8) ?? "")")
-                        do {
-                            let decoder = AdzerkJSONDecoder()
-                            let response = try decoder.decode(ResponseType.self, from: data)
-                            self.dispatch(.success(response), to: completion)
-                        } catch let e as DecodingError {
-                            self.dispatch(.failure(.decodingError(e)), to: completion)
-                        }
-                        catch { /* not possible */ }
-                } else {
-                    self.dispatch(.failure(.httpError(http.statusCode, data)), to: completion)
+            transport.send(req) { (result: Result<PlacementResponse, AdzerkError>) in
+                // intercept response and set the user key
+                if case let .success(response) = result {
+                    if let key = response.user?.key {
+                        self.keyStore.save(userKey: key)
+                    }
                 }
-            } else {
-                self.dispatch(.failure(.invalidResponse), to: completion)
+                completion(result)
+            }
+        } catch {
+            queue.async {
+                completion(.failure(.errorPreparingRequest))
             }
         }
-        
-        Self.logger.log(.debug, message: "HTTP \(request.httpMethod ?? "?") to \(request.url?.absoluteString ?? "?")")
-        task.resume()
     }
     
-    private func dispatch<R, E>(_ result: Result<R, E>, to completion: @escaping (Result<R, E>) -> Void) {
-        queue.async {
-            completion(result)
         }
     }
 }
