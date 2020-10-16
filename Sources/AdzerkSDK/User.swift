@@ -7,6 +7,14 @@
 
 import Foundation
 
-public struct User {
-    public let userKey: String
+public struct User: Codable {
+    public let key: String
+    
+    public let blockedItems: [String: AnyCodable]
+    public let interests: [String]
+    public let custom: [String: AnyCodable]
+    public let optOut: Bool
+    
+    /** Indicates the user's current value for GDPR consent. */
+    public let consent: Consent?
 }

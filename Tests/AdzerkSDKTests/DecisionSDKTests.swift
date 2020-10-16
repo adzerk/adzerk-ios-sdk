@@ -136,13 +136,37 @@ final class DecisionSDKTests: XCTestCase {
     }
     
     func testCanReadUser() {
-        XCTFail()
-//        let userKey = "userKey123"
-//        let exp = expectation(description: "API Response Received")
-//        sdk.userDB().readUser(userKey) { result in
-//            let response = result.getOrFail()
-//        }
-//        waitForExpectations(timeout: 5, handler: nil)
+        let userKey = "ue1-e397eb5990"
+        fakeKeyStore.save(userKey: userKey)
+        let exp = expectation(description: "API Response Received")
+        sdk.userDB().readUser() { result in
+            exp.fulfill()
+            if let user = result.getOrFail() {
+                XCTAssertEqual(user.key, "ue1-e397eb5990")
+                XCTAssertEqual(user.interests, ["Sports"])
+                XCTAssertEqual(user.blockedItems, [
+                        "advertisers": .array([]),
+                        "campaigns": .array([]),
+                        "creatives": .array([]),
+                        "flights": .array([]),
+                    ]
+                )
+                XCTAssertEqual(user.custom, [:])
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testSavesUserKeyOnPlacementRequest() {
+        let fakeKeyStore = FakeKeyStore()
+        let sdk = DecisionSDK(keyStore: fakeKeyStore)
+        let exp = expectation(description: "API response received")
+        let placement = Placements.standard(divName: "div1", adTypes: [5])
+        sdk.request(placement: placement) { result in
+            exp.fulfill()
+            XCTAssertTrue(fakeKeyStore.currentUserKey != nil, "User key was not set")
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     // Assert that the API response is called and returns .Success
@@ -174,11 +198,12 @@ final class DecisionSDKTests: XCTestCase {
 }
 
 extension Result {
-    func getOrFail(message: String? = nil, file: StaticString = #file, line: UInt = #line) -> Success {
+    func getOrFail(message: String? = nil, file: StaticString = #file, line: UInt = #line) -> Success? {
         do {
             return try get()
         } catch {
-            XCTFail(message ?? "Result was not successful: \(error)")
+            XCTFail(message ?? "Result was not successful: \(error)", file: file, line: line)
+            return nil
         }
     }
 }
