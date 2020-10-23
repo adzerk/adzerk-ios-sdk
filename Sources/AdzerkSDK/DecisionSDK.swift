@@ -48,6 +48,7 @@ public class DecisionSDK {
     private let session: URLSession
     private let queue: DispatchQueue
     private let requestTimeout: TimeInterval
+    private let decoder = AdzerkJSONDecoder()
     
     /** Initializes a new instance of `AdzerkSDK`
      Parameters:
@@ -75,18 +76,22 @@ public class DecisionSDK {
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
             req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore).encodeBody()
-            transport.send(req) { (result: Result<PlacementResponse, AdzerkError>) in
-                // intercept response and set the user key
-                if case let .success(response) = result {
-                    if let key = response.user?.key {
-                        self.keyStore.save(userKey: key)
-                    }
-                }
-                completion(result)
-            }
+            
+            transport.send(req,
+                           decode: { data in
+                                let response = try self.decoder.decode(PlacementResponse.self, from: data)
+                                
+                                // intercept response and set the user key
+                                if let key = response.user?.key {
+                                    self.keyStore.save(userKey: key)
+                                }
+                            
+                                return response
+                           },
+                           completion: completion)
         } catch {
             queue.async {
-                completion(.failure(.errorPreparingRequest))
+                completion(.failure(.errorPreparingRequest(nil)))
             }
         }
     }
