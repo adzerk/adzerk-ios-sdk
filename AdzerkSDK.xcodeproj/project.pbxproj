@@ -9,11 +9,11 @@
 /* Begin PBXAggregateTarget section */
 		"AdzerkSDK::AdzerkSDKPackageTests::ProductTarget" /* AdzerkSDKPackageTests */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_96 /* Build configuration list for PBXAggregateTarget "AdzerkSDKPackageTests" */;
+			buildConfigurationList = OBJ_95 /* Build configuration list for PBXAggregateTarget "AdzerkSDKPackageTests" */;
 			buildPhases = (
 			);
 			dependencies = (
-				OBJ_99 /* PBXTargetDependency */,
+				OBJ_98 /* PBXTargetDependency */,
 			);
 			name = AdzerkSDKPackageTests;
 			productName = AdzerkSDKPackageTests;
@@ -21,50 +21,51 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		OBJ_106 /* AnyCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* AnyCodableTests.swift */; };
-		OBJ_107 /* DecisionSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* DecisionSDKTests.swift */; };
-		OBJ_108 /* FakeKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* FakeKeyStore.swift */; };
-		OBJ_109 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* LoggerTests.swift */; };
-		OBJ_110 /* PlacementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* PlacementTests.swift */; };
-		OBJ_111 /* UserKeyStoreKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* UserKeyStoreKeychainTests.swift */; };
-		OBJ_112 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* XCTestManifests.swift */; };
-		OBJ_114 /* AdzerkSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */; };
-		OBJ_64 /* AdzerkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AdzerkError.swift */; };
-		OBJ_65 /* AdzerkJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AdzerkJSONDecoder.swift */; };
-		OBJ_66 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* AnyCodable.swift */; };
-		OBJ_67 /* Decoder+AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Decoder+AnyCodable.swift */; };
-		OBJ_68 /* DynamicCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* DynamicCodingKey.swift */; };
-		OBJ_69 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Consent.swift */; };
-		OBJ_70 /* DecisionSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* DecisionSDK.swift */; };
-		OBJ_71 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Endpoint.swift */; };
-		OBJ_72 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* KeychainHelper.swift */; };
-		OBJ_73 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Logger.swift */; };
-		OBJ_74 /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* NetworkTransport.swift */; };
-		OBJ_75 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Transport.swift */; };
-		OBJ_76 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* URL+Query.swift */; };
-		OBJ_77 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Placement.swift */; };
-		OBJ_78 /* PlacementContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* PlacementContent.swift */; };
-		OBJ_79 /* PlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* PlacementDecision.swift */; };
-		OBJ_80 /* PlacementEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* PlacementEvent.swift */; };
-		OBJ_81 /* PlacementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* PlacementRequest.swift */; };
-		OBJ_82 /* PlacementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* PlacementResponse.swift */; };
-		OBJ_83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* User.swift */; };
-		OBJ_84 /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* UserDB.swift */; };
-		OBJ_85 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* UserIdentifier.swift */; };
-		OBJ_86 /* UserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* UserKeyStore.swift */; };
-		OBJ_87 /* UserKeyStoreKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* UserKeyStoreKeychain.swift */; };
-		OBJ_94 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		B51838732543830A007102DC /* AdzerkJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51838722543830A007102DC /* AdzerkJSONEncoder.swift */; };
+		OBJ_104 /* AnyCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AnyCodableTests.swift */; };
+		OBJ_105 /* DecisionSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* DecisionSDKTests.swift */; };
+		OBJ_106 /* FakeKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* FakeKeyStore.swift */; };
+		OBJ_107 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* LoggerTests.swift */; };
+		OBJ_108 /* PlacementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* PlacementTests.swift */; };
+		OBJ_109 /* UserKeyStoreKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* UserKeyStoreKeychainTests.swift */; };
+		OBJ_110 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* XCTestManifests.swift */; };
+		OBJ_112 /* AdzerkSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */; };
+		OBJ_63 /* AdzerkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AdzerkError.swift */; };
+		OBJ_64 /* AdzerkJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AdzerkJSONDecoder.swift */; };
+		OBJ_65 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* AnyCodable.swift */; };
+		OBJ_66 /* Decoder+AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Decoder+AnyCodable.swift */; };
+		OBJ_67 /* DynamicCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* DynamicCodingKey.swift */; };
+		OBJ_68 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Consent.swift */; };
+		OBJ_69 /* DecisionSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* DecisionSDK.swift */; };
+		OBJ_70 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Endpoint.swift */; };
+		OBJ_71 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* KeychainHelper.swift */; };
+		OBJ_72 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Logger.swift */; };
+		OBJ_73 /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* NetworkTransport.swift */; };
+		OBJ_74 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Transport.swift */; };
+		OBJ_75 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* URL+Query.swift */; };
+		OBJ_76 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Placement.swift */; };
+		OBJ_77 /* PlacementContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* PlacementContent.swift */; };
+		OBJ_78 /* PlacementDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* PlacementDecision.swift */; };
+		OBJ_79 /* PlacementEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* PlacementEvent.swift */; };
+		OBJ_80 /* PlacementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* PlacementRequest.swift */; };
+		OBJ_81 /* PlacementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* PlacementResponse.swift */; };
+		OBJ_82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* User.swift */; };
+		OBJ_83 /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* UserDB.swift */; };
+		OBJ_84 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* UserIdentifier.swift */; };
+		OBJ_85 /* UserKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* UserKeyStore.swift */; };
+		OBJ_86 /* UserKeyStoreKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* UserKeyStoreKeychain.swift */; };
+		OBJ_93 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B54F4DDD253A4D3200BB76D0 /* PBXContainerItemProxy */ = {
+		B518386C254379E3007102DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "AdzerkSDK::AdzerkSDK";
 			remoteInfo = AdzerkSDK;
 		};
-		B54F4DE0253A4D3200BB76D0 /* PBXContainerItemProxy */ = {
+		B518386F254379E4007102DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		"AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdzerkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AdzerkSDK::AdzerkSDKTests::Product" /* AdzerkSDKTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdzerkSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B51838722543830A007102DC /* AdzerkJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONEncoder.swift; sourceTree = "<group>"; };
 		OBJ_11 /* AdzerkJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONDecoder.swift; sourceTree = "<group>"; };
 		OBJ_12 /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
 		OBJ_13 /* Decoder+AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+AnyCodable.swift"; sourceTree = "<group>"; };
@@ -99,38 +101,38 @@
 		OBJ_32 /* UserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentifier.swift; sourceTree = "<group>"; };
 		OBJ_33 /* UserKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStore.swift; sourceTree = "<group>"; };
 		OBJ_34 /* UserKeyStoreKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStoreKeychain.swift; sourceTree = "<group>"; };
-		OBJ_38 /* AnyCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodableTests.swift; sourceTree = "<group>"; };
-		OBJ_39 /* DecisionSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionSDKTests.swift; sourceTree = "<group>"; };
-		OBJ_40 /* FakeKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKeyStore.swift; sourceTree = "<group>"; };
-		OBJ_41 /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
-		OBJ_42 /* PlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
-		OBJ_43 /* UserKeyStoreKeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStoreKeychainTests.swift; sourceTree = "<group>"; };
-		OBJ_44 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		OBJ_48 /* AdzerkSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AdzerkSDK; sourceTree = SOURCE_ROOT; };
-		OBJ_49 /* AdzerkSDK.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = AdzerkSDK.xcworkspace; sourceTree = SOURCE_ROOT; };
-		OBJ_50 /* _source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _source; sourceTree = SOURCE_ROOT; };
-		OBJ_51 /* docsets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docsets; sourceTree = SOURCE_ROOT; };
-		OBJ_52 /* Legacy.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Legacy.xcworkspace; sourceTree = SOURCE_ROOT; };
-		OBJ_53 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_54 /* adzerk-ios-sdk.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "adzerk-ios-sdk.podspec"; sourceTree = "<group>"; };
-		OBJ_55 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_56 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
-		OBJ_57 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
-		OBJ_58 /* Gemfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
+		OBJ_37 /* AnyCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodableTests.swift; sourceTree = "<group>"; };
+		OBJ_38 /* DecisionSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionSDKTests.swift; sourceTree = "<group>"; };
+		OBJ_39 /* FakeKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKeyStore.swift; sourceTree = "<group>"; };
+		OBJ_40 /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
+		OBJ_41 /* PlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
+		OBJ_42 /* UserKeyStoreKeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyStoreKeychainTests.swift; sourceTree = "<group>"; };
+		OBJ_43 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_47 /* AdzerkSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AdzerkSDK; sourceTree = SOURCE_ROOT; };
+		OBJ_48 /* AdzerkSDK.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = AdzerkSDK.xcworkspace; sourceTree = SOURCE_ROOT; };
+		OBJ_49 /* _source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _source; sourceTree = SOURCE_ROOT; };
+		OBJ_50 /* docsets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docsets; sourceTree = SOURCE_ROOT; };
+		OBJ_51 /* Legacy.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Legacy.xcworkspace; sourceTree = SOURCE_ROOT; };
+		OBJ_52 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_53 /* adzerk-ios-sdk.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "adzerk-ios-sdk.podspec"; sourceTree = "<group>"; };
+		OBJ_54 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_55 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		OBJ_56 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		OBJ_57 /* Gemfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* AdzerkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_113 /* Frameworks */ = {
+		OBJ_111 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_114 /* AdzerkSDK.framework in Frameworks */,
+				OBJ_112 /* AdzerkSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_88 /* Frameworks */ = {
+		OBJ_87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -147,6 +149,7 @@
 				OBJ_12 /* AnyCodable.swift */,
 				OBJ_13 /* Decoder+AnyCodable.swift */,
 				OBJ_14 /* DynamicCodingKey.swift */,
+				B51838722543830A007102DC /* AdzerkJSONEncoder.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -172,19 +175,19 @@
 		OBJ_36 /* AdzerkSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_38 /* AnyCodableTests.swift */,
-				OBJ_39 /* DecisionSDKTests.swift */,
-				OBJ_40 /* FakeKeyStore.swift */,
-				OBJ_41 /* LoggerTests.swift */,
-				OBJ_42 /* PlacementTests.swift */,
-				OBJ_43 /* UserKeyStoreKeychainTests.swift */,
-				OBJ_44 /* XCTestManifests.swift */,
+				OBJ_37 /* AnyCodableTests.swift */,
+				OBJ_38 /* DecisionSDKTests.swift */,
+				OBJ_39 /* FakeKeyStore.swift */,
+				OBJ_40 /* LoggerTests.swift */,
+				OBJ_41 /* PlacementTests.swift */,
+				OBJ_42 /* UserKeyStoreKeychainTests.swift */,
+				OBJ_43 /* XCTestManifests.swift */,
 			);
 			name = AdzerkSDKTests;
 			path = Tests/AdzerkSDKTests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_45 /* Products */ = {
+		OBJ_44 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */,
@@ -199,18 +202,18 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_35 /* Tests */,
-				OBJ_45 /* Products */,
-				OBJ_48 /* AdzerkSDK */,
-				OBJ_49 /* AdzerkSDK.xcworkspace */,
-				OBJ_50 /* _source */,
-				OBJ_51 /* docsets */,
-				OBJ_52 /* Legacy.xcworkspace */,
-				OBJ_53 /* LICENSE */,
-				OBJ_54 /* adzerk-ios-sdk.podspec */,
-				OBJ_55 /* README.md */,
-				OBJ_56 /* build.sh */,
-				OBJ_57 /* Gemfile */,
-				OBJ_58 /* Gemfile.lock */,
+				OBJ_44 /* Products */,
+				OBJ_47 /* AdzerkSDK */,
+				OBJ_48 /* AdzerkSDK.xcworkspace */,
+				OBJ_49 /* _source */,
+				OBJ_50 /* docsets */,
+				OBJ_51 /* Legacy.xcworkspace */,
+				OBJ_52 /* LICENSE */,
+				OBJ_53 /* adzerk-ios-sdk.podspec */,
+				OBJ_54 /* README.md */,
+				OBJ_55 /* build.sh */,
+				OBJ_56 /* Gemfile */,
+				OBJ_57 /* Gemfile.lock */,
 			);
 			name = "";
 			sourceTree = "<group>";
@@ -255,10 +258,10 @@
 /* Begin PBXNativeTarget section */
 		"AdzerkSDK::AdzerkSDK" /* AdzerkSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_60 /* Build configuration list for PBXNativeTarget "AdzerkSDK" */;
+			buildConfigurationList = OBJ_59 /* Build configuration list for PBXNativeTarget "AdzerkSDK" */;
 			buildPhases = (
-				OBJ_63 /* Sources */,
-				OBJ_88 /* Frameworks */,
+				OBJ_62 /* Sources */,
+				OBJ_87 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,15 +274,15 @@
 		};
 		"AdzerkSDK::AdzerkSDKTests" /* AdzerkSDKTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_101 /* Build configuration list for PBXNativeTarget "AdzerkSDKTests" */;
+			buildConfigurationList = OBJ_100 /* Build configuration list for PBXNativeTarget "AdzerkSDKTests" */;
 			buildPhases = (
-				OBJ_104 /* Sources */,
-				OBJ_113 /* Frameworks */,
+				OBJ_103 /* Sources */,
+				OBJ_111 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_115 /* PBXTargetDependency */,
+				OBJ_113 /* PBXTargetDependency */,
 			);
 			name = AdzerkSDKTests;
 			productName = AdzerkSDKTests;
@@ -288,9 +291,9 @@
 		};
 		"AdzerkSDK::SwiftPMPackageDescription" /* AdzerkSDKPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_90 /* Build configuration list for PBXNativeTarget "AdzerkSDKPackageDescription" */;
+			buildConfigurationList = OBJ_89 /* Build configuration list for PBXNativeTarget "AdzerkSDKPackageDescription" */;
 			buildPhases = (
-				OBJ_93 /* Sources */,
+				OBJ_92 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -317,7 +320,7 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_45 /* Products */;
+			productRefGroup = OBJ_44 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -330,76 +333,77 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_104 /* Sources */ = {
+		OBJ_103 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_106 /* AnyCodableTests.swift in Sources */,
-				OBJ_107 /* DecisionSDKTests.swift in Sources */,
-				OBJ_108 /* FakeKeyStore.swift in Sources */,
-				OBJ_109 /* LoggerTests.swift in Sources */,
-				OBJ_110 /* PlacementTests.swift in Sources */,
-				OBJ_111 /* UserKeyStoreKeychainTests.swift in Sources */,
-				OBJ_112 /* XCTestManifests.swift in Sources */,
+				OBJ_104 /* AnyCodableTests.swift in Sources */,
+				OBJ_105 /* DecisionSDKTests.swift in Sources */,
+				OBJ_106 /* FakeKeyStore.swift in Sources */,
+				OBJ_107 /* LoggerTests.swift in Sources */,
+				OBJ_108 /* PlacementTests.swift in Sources */,
+				OBJ_109 /* UserKeyStoreKeychainTests.swift in Sources */,
+				OBJ_110 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_63 /* Sources */ = {
+		OBJ_62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_64 /* AdzerkError.swift in Sources */,
-				OBJ_65 /* AdzerkJSONDecoder.swift in Sources */,
-				OBJ_66 /* AnyCodable.swift in Sources */,
-				OBJ_67 /* Decoder+AnyCodable.swift in Sources */,
-				OBJ_68 /* DynamicCodingKey.swift in Sources */,
-				OBJ_69 /* Consent.swift in Sources */,
-				OBJ_70 /* DecisionSDK.swift in Sources */,
-				OBJ_71 /* Endpoint.swift in Sources */,
-				OBJ_72 /* KeychainHelper.swift in Sources */,
-				OBJ_73 /* Logger.swift in Sources */,
-				OBJ_74 /* NetworkTransport.swift in Sources */,
-				OBJ_75 /* Transport.swift in Sources */,
-				OBJ_76 /* URL+Query.swift in Sources */,
-				OBJ_77 /* Placement.swift in Sources */,
-				OBJ_78 /* PlacementContent.swift in Sources */,
-				OBJ_79 /* PlacementDecision.swift in Sources */,
-				OBJ_80 /* PlacementEvent.swift in Sources */,
-				OBJ_81 /* PlacementRequest.swift in Sources */,
-				OBJ_82 /* PlacementResponse.swift in Sources */,
-				OBJ_83 /* User.swift in Sources */,
-				OBJ_84 /* UserDB.swift in Sources */,
-				OBJ_85 /* UserIdentifier.swift in Sources */,
-				OBJ_86 /* UserKeyStore.swift in Sources */,
-				OBJ_87 /* UserKeyStoreKeychain.swift in Sources */,
+				OBJ_63 /* AdzerkError.swift in Sources */,
+				OBJ_64 /* AdzerkJSONDecoder.swift in Sources */,
+				OBJ_65 /* AnyCodable.swift in Sources */,
+				OBJ_66 /* Decoder+AnyCodable.swift in Sources */,
+				OBJ_67 /* DynamicCodingKey.swift in Sources */,
+				OBJ_68 /* Consent.swift in Sources */,
+				OBJ_69 /* DecisionSDK.swift in Sources */,
+				OBJ_70 /* Endpoint.swift in Sources */,
+				OBJ_71 /* KeychainHelper.swift in Sources */,
+				OBJ_72 /* Logger.swift in Sources */,
+				OBJ_73 /* NetworkTransport.swift in Sources */,
+				OBJ_74 /* Transport.swift in Sources */,
+				OBJ_75 /* URL+Query.swift in Sources */,
+				OBJ_76 /* Placement.swift in Sources */,
+				OBJ_77 /* PlacementContent.swift in Sources */,
+				B51838732543830A007102DC /* AdzerkJSONEncoder.swift in Sources */,
+				OBJ_78 /* PlacementDecision.swift in Sources */,
+				OBJ_79 /* PlacementEvent.swift in Sources */,
+				OBJ_80 /* PlacementRequest.swift in Sources */,
+				OBJ_81 /* PlacementResponse.swift in Sources */,
+				OBJ_82 /* User.swift in Sources */,
+				OBJ_83 /* UserDB.swift in Sources */,
+				OBJ_84 /* UserIdentifier.swift in Sources */,
+				OBJ_85 /* UserKeyStore.swift in Sources */,
+				OBJ_86 /* UserKeyStoreKeychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_93 /* Sources */ = {
+		OBJ_92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_94 /* Package.swift in Sources */,
+				OBJ_93 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_115 /* PBXTargetDependency */ = {
+		OBJ_113 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "AdzerkSDK::AdzerkSDK" /* AdzerkSDK */;
-			targetProxy = B54F4DDD253A4D3200BB76D0 /* PBXContainerItemProxy */;
+			targetProxy = B518386C254379E3007102DC /* PBXContainerItemProxy */;
 		};
-		OBJ_99 /* PBXTargetDependency */ = {
+		OBJ_98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "AdzerkSDK::AdzerkSDKTests" /* AdzerkSDKTests */;
-			targetProxy = B54F4DE0253A4D3200BB76D0 /* PBXContainerItemProxy */;
+			targetProxy = B518386F254379E4007102DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_102 /* Debug */ = {
+		OBJ_101 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -424,7 +428,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_103 /* Release */ = {
+		OBJ_102 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -500,7 +504,7 @@
 			};
 			name = Release;
 		};
-		OBJ_61 /* Debug */ = {
+		OBJ_60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -528,7 +532,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_62 /* Release */ = {
+		OBJ_61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -556,7 +560,7 @@
 			};
 			name = Release;
 		};
-		OBJ_91 /* Debug */ = {
+		OBJ_90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -565,7 +569,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_92 /* Release */ = {
+		OBJ_91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -574,13 +578,13 @@
 			};
 			name = Release;
 		};
-		OBJ_97 /* Debug */ = {
+		OBJ_96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		OBJ_98 /* Release */ = {
+		OBJ_97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
@@ -589,11 +593,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_101 /* Build configuration list for PBXNativeTarget "AdzerkSDKTests" */ = {
+		OBJ_100 /* Build configuration list for PBXNativeTarget "AdzerkSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_102 /* Debug */,
-				OBJ_103 /* Release */,
+				OBJ_101 /* Debug */,
+				OBJ_102 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -607,29 +611,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_60 /* Build configuration list for PBXNativeTarget "AdzerkSDK" */ = {
+		OBJ_59 /* Build configuration list for PBXNativeTarget "AdzerkSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_61 /* Debug */,
-				OBJ_62 /* Release */,
+				OBJ_60 /* Debug */,
+				OBJ_61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_90 /* Build configuration list for PBXNativeTarget "AdzerkSDKPackageDescription" */ = {
+		OBJ_89 /* Build configuration list for PBXNativeTarget "AdzerkSDKPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_91 /* Debug */,
-				OBJ_92 /* Release */,
+				OBJ_90 /* Debug */,
+				OBJ_91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_96 /* Build configuration list for PBXAggregateTarget "AdzerkSDKPackageTests" */ = {
+		OBJ_95 /* Build configuration list for PBXAggregateTarget "AdzerkSDKPackageTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_97 /* Debug */,
-				OBJ_98 /* Release */,
+				OBJ_96 /* Debug */,
+				OBJ_97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -156,6 +156,33 @@ final class DecisionSDKTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    func testCanPostUserProperties() {
+        let userKey = "ue1-e397eb5990"
+        fakeKeyStore.save(userKey: userKey)
+        let exp = expectation(description: "API Response Received")
+        sdk.userDB().postProperties([
+            "favoriteFoods": .array([
+                .string("apple"),
+                .string("banana")
+            ])
+        ]) { result in
+            exp.fulfill()
+            result.getOrFail()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testCanOptOut() {
+        let userKey = UUID().uuidString
+        fakeKeyStore.save(userKey: userKey)
+        let exp = expectation(description: "API Response Received")
+        sdk.userDB().optOut { result in
+            exp.fulfill()
+            result.getOrFail()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     func testSavesUserKeyOnPlacementRequest() {
         let fakeKeyStore = FakeKeyStore()
         let sdk = DecisionSDK(keyStore: fakeKeyStore)
