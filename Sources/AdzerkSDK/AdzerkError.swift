@@ -12,17 +12,22 @@ public enum AdzerkError: Error {
     case networkingError(Error)
     
     /// An error preparing the request, for instance, encoding the request body.
-    case errorPreparingRequest
+    case errorPreparingRequest(Error?)
     
     /// Indicates a non-200 HTTP result was returned
     case httpError(Int, Data)
     
+    /// An error occurred while parsing (decoding) the response)
     case decodingError(DecodingError)
     
-    // non HTTP response received
+    /// non HTTP response received
     case invalidResponse
     
+    /// A UserDB request was made but no user key was present
     case missingUserKey
+    
+    // Indicates some unexpected error occurred
+    case otherError(Error)
 }
 
 extension AdzerkError: CustomStringConvertible, LocalizedError {
@@ -34,8 +39,8 @@ extension AdzerkError: CustomStringConvertible, LocalizedError {
         case .decodingError(let error):
             return "Decoding Error: \(error)"
             
-        case .errorPreparingRequest:
-            return "Error Preparing Request"
+        case .errorPreparingRequest(let error):
+            return "Error Preparing Request: \(error?.localizedDescription ?? "-")"
             
         case .httpError(let status, _):
             return "HTTP \(status)"
@@ -45,6 +50,9 @@ extension AdzerkError: CustomStringConvertible, LocalizedError {
             
         case .missingUserKey:
             return "No userKey was supplied"
+        
+        case .otherError(let error):
+            return error.localizedDescription
         }
     }
     
