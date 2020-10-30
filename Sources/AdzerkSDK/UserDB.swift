@@ -88,6 +88,18 @@ public class UserDB {
     }
     
     public func optOut(completion: @escaping (Result<Void, AdzerkError>) -> Void) {
+        pixelRequest(endpoint: "optOut/i.gif", completion: completion)
+    }
+    
+    public func addInterest(_ interest: String, completion: @escaping (Result<Void, AdzerkError>) -> Void) {
+        pixelRequest(endpoint: "interest/i.gif", params: ["interest": interest], completion: completion)
+    }
+    
+    public func retargetUser(advertiserId: Int, segment: Int, completion: @escaping (Result<Void, AdzerkError>) -> Void) {
+        pixelRequest(endpoint: "rt/\(advertiserId)/\(segment)/i.gif", completion: completion)
+    }
+    
+    private func pixelRequest(endpoint: String, params: [String: String] = [:], completion: @escaping (Result<Void, AdzerkError>) -> Void) {
         guard let userKey = keyStore.currentUserKey else {
             logger.log(.warning, message: "WARNING: No userKey specified, and none can be found in the configured key store.")
             transport.callbackQueue.async {
@@ -97,8 +109,10 @@ public class UserDB {
         }
         
         guard let url = baseURL
-            .appendingPathComponent("optOut/i.gif")
-                .appendingQueryParameters(["userKey": userKey]) else {
+            .appendingPathComponent(endpoint)
+                .appendingQueryParameters(
+                    params.merging(["userKey": userKey], uniquingKeysWith: { $1 })
+                ) else {
             logger.log(.warning, message: "WARNING: unable to construct readUser URL")
             transport.callbackQueue.async {
                 completion(.failure(.errorPreparingRequest(nil)))
