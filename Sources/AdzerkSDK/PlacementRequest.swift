@@ -58,4 +58,10 @@ public struct PlacementRequest<P: Placement>: Codable {
         
         return data
     }
+    
+    private func validatePlacements() throws {
+        try placements.forEach { placement in
+            try placement.validate()
+        }
+    }
 }
