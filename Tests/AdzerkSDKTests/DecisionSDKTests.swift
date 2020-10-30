@@ -149,7 +149,7 @@ final class DecisionSDKTests: XCTestCase {
                         "creatives": .array([]),
                         "flights": .array([]),
                     ]
-                )
+                )                
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
