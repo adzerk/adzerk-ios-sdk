@@ -16,6 +16,7 @@ public struct PlacementRequest<P: Placement>: Codable {
         public var blockedCreatives: [Int]?
         public var flightViewTimes: [String: [Int]]?
         public var url: String?
+        public var enableBotFiltering: Bool = false
         
         /** Indicates the user's consent status for GDPR compliance. */
         public var consent: Consent?
@@ -34,6 +35,7 @@ public struct PlacementRequest<P: Placement>: Codable {
     let flightViewTimes: [String: [Int]]?
     let keywords: [String]?
     let consent: Consent?
+    let enableBotFiltering: Bool
     let additionalOptions: [String: AnyCodable]?
     
     init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore) {
@@ -44,6 +46,7 @@ public struct PlacementRequest<P: Placement>: Codable {
         keywords = options?.keywords
         consent = options?.consent
         additionalOptions = options?.additionalOptions
+        botFiltering = options?.botFiltering ?? false
     }
     
     func encodeBody() throws -> Data {
