@@ -16,7 +16,7 @@ final class DecisionSDKTests: XCTestCase {
         fakeKeyStore = FakeKeyStore()
         sdk = DecisionSDK(keyStore: fakeKeyStore)
     }
-    
+
     func testDefaultNetworkId() {
         XCTAssertEqual(23, DecisionSDK.defaultNetworkId)
     }
@@ -252,7 +252,7 @@ final class DecisionSDKTests: XCTestCase {
             expectation.fulfill()
         }
     }
-    
+
     static var allTests = [
         ("testDefaultNetworkId", testDefaultNetworkId),
         ("testDefaultSiteId", testDefaultSiteId),
