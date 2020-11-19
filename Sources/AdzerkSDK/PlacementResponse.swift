@@ -12,7 +12,7 @@ import Foundation
     Documentation can be found at: https://dev.adzerk.com/reference/response
 */
 public struct PlacementResponse: Codable {
-    public let decisions: [String: PlacementDecision]
+    public let decisions: [String: [PlacementDecision]]
     public let extraAttributes: [String: AnyCodable]
     public let user: UserIdentifier?
     
@@ -34,12 +34,22 @@ public struct PlacementResponse: Codable {
             fatalError("You must using AdzerkJSONDecoder or provide your own value for userInfo's 'currentDivNameProvider' coding info key")
         }
         
-        var decisions: [String: PlacementDecision] = [:]
+        var decisions: [String: [PlacementDecision]] = [:]
         for divNameKey in decisionsContainer.allKeys {
             // provode the divName so that Placement decision can be decoded properly (since this will be missing from the nested container)
             divNameProvider.currentDivName = divNameKey.stringValue
-            let decision = try decisionsContainer.decodeIfPresent(PlacementDecision.self, forKey: divNameKey)
-            decisions[divNameKey.stringValue] = decision
+            
+            // first try to decode a single value
+            do {
+                if let decision =
+                    try decisionsContainer.decodeIfPresent(PlacementDecision.self, forKey: divNameKey) {
+                    decisions[divNameKey.stringValue] = [decision]
+                }
+            } catch {
+                // fall back to decoding an array (for multi-winner responses)
+                let decisionArray = try decisionsContainer.decodeIfPresent([PlacementDecision].self, forKey: divNameKey)
+                decisions[divNameKey.stringValue] = decisionArray
+            }
         }
         
         self.decisions = decisions
