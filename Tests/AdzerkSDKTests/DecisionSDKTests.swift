@@ -67,7 +67,7 @@ final class DecisionSDKTests: XCTestCase {
         
         let expectation = self.expectation(description: "API response received")
         sdk.request(placement: placement, completion: completionExtractingSuccessfulValue(expectation: expectation) { response in
-            if let dec = response.decisions["div1"] {
+            if let dec = response.decisions["div1"]?.first {
                 XCTAssertTrue(dec.adId != nil, "Ad id was not set")
                 XCTAssertTrue(dec.creativeId != nil, "Creative id was not set")
                 XCTAssertTrue(dec.flightId != nil, "Flight id was not set")
@@ -142,14 +142,14 @@ final class DecisionSDKTests: XCTestCase {
             exp.fulfill()
             if let user = result.getOrFail() {
                 XCTAssertEqual(user.key, "ue1-e397eb5990")
-                XCTAssertTrue(user.interests.contains("Sports"))
+                XCTAssert(user.interests.contains("Sports"))
                 XCTAssertEqual(user.blockedItems, [
                         "advertisers": .array([]),
                         "campaigns": .array([]),
                         "creatives": .array([]),
                         "flights": .array([]),
                     ]
-                )                
+                )
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -193,6 +193,20 @@ final class DecisionSDKTests: XCTestCase {
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
+
+func testMultiWinnerRequest() {
+        let mwPlacement = Placements.standard(divName: "div1", adTypes: [5], count: 3)
+        let exp = expectation(description: "API Response Received")
+        sdk.request(placement: mwPlacement) { result in
+            exp.fulfill()
+            if let r = result.getOrFail() {
+                let decisions = r.decisions["div1"]!
+                XCTAssertGreaterThanOrEqual(decisions.count, 1)
+            }
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+
     
     func testCanAddUserInterest() {
         let userKey = "ue1-e397eb5990"
@@ -202,6 +216,9 @@ final class DecisionSDKTests: XCTestCase {
         sdk.userDB().addInterest("cats") { result in
             exp.fulfill()
             result.getOrFail()
+                let decisions = r.decisions["div1"]!
+                XCTAssertGreaterThanOrEqual(decisions.count, 1)
+            }
         }
         waitForExpectations(timeout: 5, handler: nil)
     }

@@ -17,6 +17,8 @@ public protocol Placement: Codable {
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
     var siteId: Int { get }
     
+    var count: Int? { get }
+    
     func options() -> PlacementRequest<Self>.Options
     
     /** Validates the placement values before sending. An error describing the issue will be thrown if invalid. */
@@ -35,13 +37,13 @@ public extension Placement {
 
 public struct Placements {
     /// Use this placement type if you don't need to pass any additional options.
-    public static func standard(divName: String, adTypes: [Int]) -> StandardPlacement {
-        StandardPlacement(divName: divName, adTypes: adTypes)
+    public static func standard(divName: String, adTypes: [Int], count: Int? = nil) -> StandardPlacement {
+        StandardPlacement(divName: divName, adTypes: adTypes, count: count)
     }
     
     /// Use this placement type if you need to pass additional options.
-    public static func custom(divName: String, adTypes: [Int]) -> CustomPlacement {
-        CustomPlacement(divName: divName, adTypes: adTypes)
+    public static func custom(divName: String, adTypes: [Int], count: Int? = nil) -> CustomPlacement {
+        CustomPlacement(divName: divName, adTypes: adTypes, count: count)
     }
 }
 
@@ -56,6 +58,8 @@ public class StandardPlacement: Placement {
     /** The site ID. If none is specified it retrieves the value from `AdzerkSDK.defaultSiteId` */
     public let siteId: Int
     
+    public let count: Int?
+    
     /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
     let adTypes: [Int]
     
@@ -65,19 +69,20 @@ public class StandardPlacement: Placement {
     var flightId: Int?
     var adId: Int?
     
-    public convenience init(divName: String, adTypes: [Int]) {
+    public convenience init(divName: String, adTypes: [Int], count: Int? = nil) {
         guard let networkId = DecisionSDK.defaultNetworkId,
               let siteId = DecisionSDK.defaultSiteId else {
             fatalError("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
         }
-        self.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes)
+        self.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes, count: count)
     }
 
-    public init(networkId: Int, siteId: Int, divName: String, adTypes: [Int]) {
+    public init(networkId: Int, siteId: Int, divName: String, adTypes: [Int], count: Int? = nil) {
         self.networkId = networkId
         self.siteId = siteId
         self.divName = divName
         self.adTypes = adTypes
+        self.count = count
     }
     
     public func validate() throws {
@@ -95,8 +100,8 @@ public class CustomPlacement: StandardPlacement {
         case additionalOptions
     }
     
-    public override init(networkId: Int, siteId: Int, divName: String, adTypes: [Int]) {
-        super.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes)
+    public override init(networkId: Int, siteId: Int, divName: String, adTypes: [Int], count: Int?) {
+        super.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes, count: count)
     }
     
     public override func encode(to encoder: Encoder) throws {
