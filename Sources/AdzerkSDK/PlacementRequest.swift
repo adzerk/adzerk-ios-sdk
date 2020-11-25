@@ -46,7 +46,7 @@ public struct PlacementRequest<P: Placement>: Codable {
         keywords = options?.keywords
         consent = options?.consent
         additionalOptions = options?.additionalOptions
-        botFiltering = options?.botFiltering ?? false
+        enableBotFiltering = options?.enableBotFiltering ?? false
     }
     
     func encodeBody() throws -> Data {
