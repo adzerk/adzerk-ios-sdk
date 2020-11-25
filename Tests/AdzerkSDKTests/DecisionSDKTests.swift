@@ -142,7 +142,7 @@ final class DecisionSDKTests: XCTestCase {
             exp.fulfill()
             if let user = result.getOrFail() {
                 XCTAssertEqual(user.key, "ue1-e397eb5990")
-                XCTAssertEqual(user.interests, ["Sports"])
+                XCTAssertTrue(user.interests.contains("Sports"))
                 XCTAssertEqual(user.blockedItems, [
                         "advertisers": .array([]),
                         "campaigns": .array([]),
@@ -150,7 +150,6 @@ final class DecisionSDKTests: XCTestCase {
                         "flights": .array([]),
                     ]
                 )
-                XCTAssertEqual(user.custom, [:])
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -193,6 +192,30 @@ final class DecisionSDKTests: XCTestCase {
             XCTAssertTrue(fakeKeyStore.currentUserKey != nil, "User key was not set")
         }
         waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testCanAddUserInterest() {
+        let userKey = "ue1-e397eb5990"
+        fakeKeyStore.save(userKey: userKey)
+
+        let exp = expectation(description: "API response received")
+        sdk.userDB().addInterest("cats") { result in
+            exp.fulfill()
+            result.getOrFail()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testCanRetargetUser() {
+        let userKey = "ue1-e397eb5990"
+        fakeKeyStore.save(userKey: userKey)
+
+        let exp = expectation(description: "API response received")
+        sdk.userDB().retargetUser(segment: 1) { result in
+            exp.fulfill()
+            result.getOrFail()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     // Assert that the API response is called and returns .Success
