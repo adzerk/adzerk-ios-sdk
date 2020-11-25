@@ -524,8 +524,8 @@
       "OBJ_45" = {
          isa = "PBXGroup";
          children = (
-            "AdzerkSDK::AdzerkSDKTests::Product",
-            "AdzerkSDK::AdzerkSDK::Product"
+            "AdzerkSDK::AdzerkSDK::Product",
+            "AdzerkSDK::AdzerkSDKTests::Product"
          );
          name = "Products";
          path = "";

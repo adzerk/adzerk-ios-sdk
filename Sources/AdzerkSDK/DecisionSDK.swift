@@ -2,6 +2,13 @@ import Foundation
 
 /// Represents the interface for making requests against the Adzerk Decision API
 public class DecisionSDK {
+    
+    static var SDKVersion: String {
+        let packageBundle = Bundle(for: Self.self)
+        let bundleVersion = packageBundle.infoDictionary?["CFBundleShortVersionString"] as? String
+        return bundleVersion ?? "?"
+    }
+    
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is constant for your application. */
@@ -50,6 +57,12 @@ public class DecisionSDK {
     private let requestTimeout: TimeInterval
     private let decoder = AdzerkJSONDecoder()
     
+    private static var sessionConfiguration: URLSessionConfiguration {
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = ["adzerk-decision-sdk-ios" : Self.SDKVersion]
+        return config
+    }
+    
     /** Initializes a new instance of `AdzerkSDK`
      Parameters:
      - keyStore: The object that will store user keys. Defaults to a Keychain-based store.
@@ -60,7 +73,7 @@ public class DecisionSDK {
                 queue: DispatchQueue = .main, requestTimeout: TimeInterval = 30) {
         self.keyStore = keyStore
         self.queue = queue
-        let session = URLSession(configuration: .default)
+        let session = URLSession(configuration: Self.sessionConfiguration)
         self.session = session
         self.requestTimeout = requestTimeout
         self.transport = transport ?? NetworkTransport(session: session, logger: Self.logger, callbackQueue: queue)
@@ -92,6 +105,16 @@ public class DecisionSDK {
         } catch {
             queue.async {
                 completion(.failure(.errorPreparingRequest(nil)))
+            }
+        }
+    }
+    
+    /// Records an impression from a decision impression URL. This is a fire and forget request
+    public func recordImpression(pixelURL: URL) {
+        let request = URLRequest(url: pixelURL)
+        transport.send(request) { result in
+            if case .failure(let error) = result {
+                Self.logger.log(.error, message: "Error recording impression for \(pixelURL): \(error)")
             }
         }
     }
