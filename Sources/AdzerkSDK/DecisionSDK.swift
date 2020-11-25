@@ -96,6 +96,16 @@ public class DecisionSDK {
         }
     }
     
+    /// Records an impression from a decision impression URL. This is a fire and forget request
+    public func recordImpression(pixelURL: URL) {
+        let request = URLRequest(url: pixelURL)
+        transport.send(request) { result in
+            if case .failure(let error) = result {
+                Self.logger.log(.error, message: "Error recording impression for \(pixelURL): \(error)")
+            }
+        }
+    }
+    
     public func userDB(networkId: Int? = nil) -> UserDB {
         guard let networkId = networkId ?? DecisionSDK.defaultNetworkId else {
             fatalError("You must provide a networkId or set the defaultNetworkId on `AdzerkSDK`")
