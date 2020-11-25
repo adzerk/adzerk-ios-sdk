@@ -26,6 +26,9 @@ public enum AdzerkError: Error {
     /// A UserDB request was made but no user key was present
     case missingUserKey
     
+    /// A Placement request was made but had no ad types
+    case missingAdType
+    
     // Indicates some unexpected error occurred
     case otherError(Error)
 }
@@ -50,6 +53,9 @@ extension AdzerkError: CustomStringConvertible, LocalizedError {
             
         case .missingUserKey:
             return "No userKey was supplied"
+            
+        case .missingAdType:
+            return "Each placement request requires at least one ad type"
         
         case .otherError(let error):
             return error.localizedDescription

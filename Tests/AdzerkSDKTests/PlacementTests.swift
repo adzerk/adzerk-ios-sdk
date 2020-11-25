@@ -28,7 +28,6 @@ class PlacementTests: XCTestCase {
         DecisionSDK.defaultNetworkId = networkId
         DecisionSDK.defaultSiteId = siteId
     }
-
     
     func testSerializeStandardPlacement() throws {
         let placement = Placements.standard(divName: "someDiv", adTypes: [5])
@@ -54,6 +53,16 @@ class PlacementTests: XCTestCase {
         }
         """
         XCTAssertEqual(expected, actual)
+    }
+    
+    func testPlacementCanValidate() throws {
+        let placement = Placements.standard(divName: "someDiv", adTypes: [5])
+        try placement.validate()
+    }
+    
+    func testValidatePlacementWithEmptyAdTypesThrowsError() {
+        let placement = Placements.standard(divName: "someDiv", adTypes: [])
+        XCTAssertThrowsError(try placement.validate())
     }
     
     func testSerializeCustomPlacementWithAdditionalOptions() throws {

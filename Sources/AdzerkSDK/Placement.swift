@@ -18,11 +18,18 @@ public protocol Placement: Codable {
     var siteId: Int { get }
     
     func options() -> PlacementRequest<Self>.Options
+    
+    /** Validates the placement values before sending. An error describing the issue will be thrown if invalid. */
+    func validate() throws
 }
 
 public extension Placement {
     func options() -> PlacementRequest<Self>.Options {
         PlacementRequest<Self>.Options()
+    }
+    
+    func validate() throws {
+        /* implementers can override this if needed */
     }
 }
 
@@ -71,6 +78,12 @@ public class StandardPlacement: Placement {
         self.siteId = siteId
         self.divName = divName
         self.adTypes = adTypes
+    }
+    
+    public func validate() throws {
+        if adTypes.isEmpty {
+            throw AdzerkError.missingAdType
+        }
     }
 }
 
