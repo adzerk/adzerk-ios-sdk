@@ -31,7 +31,7 @@ struct NetworkTransport: Transport {
             if let http = response as? HTTPURLResponse {
                 logger.log(.debug, message: "Received HTTP \(http.statusCode) from \(request.url?.absoluteString ?? "")")
                 if http.statusCode == 200 {
-                    print("Response: \(String(data: data, encoding: .utf8) ?? "")")
+                    logger.log(.debug, message: "Response: \(String(data: data, encoding: .utf8) ?? "")")
                     self.dispatch(.success(data), to: completion)
                 } else {
                     self.dispatch(.failure(.httpError(http.statusCode, data)), to: completion)
