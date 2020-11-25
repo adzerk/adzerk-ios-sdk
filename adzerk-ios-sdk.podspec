@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "adzerk-ios-sdk"
   s.module_name      = "AdzerkSDK"
-  s.version          = "1.2"
+  s.version          = "2.0"
   s.summary          = "iOS SDK for the Adzerk API"
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description      = <<-DESC
-                          iOS SDK for the Adzerk API. For more information see the Adzerk API docs at http://adzerk.com/api.
+                          iOS SDK for the Adzerk API. For more information see the Adzerk API docs at https://adzerk.com/api.
                        DESC
 
   s.homepage         = "https://adzerk.com"
@@ -26,11 +26,11 @@ Pod::Spec.new do |s|
   s.author           = { "Ben Scheirman" => "ben@scheirman.com" }
   s.source           = { :git => "https://github.com/adzerk/adzerk-ios-sdk.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '12.0'
   s.requires_arc = true
 
-  s.swift_versions = ['4.0', '5.0']
+  s.swift_versions = ['5.0']
 
-  s.source_files = 'AdzerkSDK/AdzerkSDK/**/*.swift'
+  s.source_files = 'Sources/**/*.swift'
   s.frameworks = 'Foundation'
 end
