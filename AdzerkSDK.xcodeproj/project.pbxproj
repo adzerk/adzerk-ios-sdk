@@ -5,10 +5,10 @@
    objects = {
       "AdzerkSDK::AdzerkSDK" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_59";
+         buildConfigurationList = "OBJ_58";
          buildPhases = (
-            "OBJ_62",
-            "OBJ_88"
+            "OBJ_61",
+            "OBJ_87"
          );
          dependencies = (
          );
@@ -24,24 +24,24 @@
       };
       "AdzerkSDK::AdzerkSDKPackageTests::ProductTarget" = {
          isa = "PBXAggregateTarget";
-         buildConfigurationList = "OBJ_96";
+         buildConfigurationList = "OBJ_95";
          buildPhases = (
          );
          dependencies = (
-            "OBJ_99"
+            "OBJ_98"
          );
          name = "AdzerkSDKPackageTests";
          productName = "AdzerkSDKPackageTests";
       };
       "AdzerkSDK::AdzerkSDKTests" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_101";
+         buildConfigurationList = "OBJ_100";
          buildPhases = (
-            "OBJ_104",
-            "OBJ_112"
+            "OBJ_103",
+            "OBJ_111"
          );
          dependencies = (
-            "OBJ_114"
+            "OBJ_113"
          );
          name = "AdzerkSDKTests";
          productName = "AdzerkSDKTests";
@@ -55,9 +55,9 @@
       };
       "AdzerkSDK::SwiftPMPackageDescription" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_90";
+         buildConfigurationList = "OBJ_89";
          buildPhases = (
-            "OBJ_93"
+            "OBJ_92"
          );
          dependencies = (
          );
@@ -101,16 +101,16 @@
          path = "Codable";
          sourceTree = "<group>";
       };
-      "OBJ_101" = {
+      "OBJ_100" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_102",
-            "OBJ_103"
+            "OBJ_101",
+            "OBJ_102"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_102" = {
+      "OBJ_101" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -149,7 +149,7 @@
          };
          name = "Debug";
       };
-      "OBJ_103" = {
+      "OBJ_102" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -188,37 +188,41 @@
          };
          name = "Release";
       };
-      "OBJ_104" = {
+      "OBJ_103" = {
          isa = "PBXSourcesBuildPhase";
          files = (
+            "OBJ_104",
             "OBJ_105",
             "OBJ_106",
             "OBJ_107",
             "OBJ_108",
             "OBJ_109",
-            "OBJ_110",
-            "OBJ_111"
+            "OBJ_110"
          );
       };
-      "OBJ_105" = {
+      "OBJ_104" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_38";
       };
-      "OBJ_106" = {
+      "OBJ_105" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_39";
       };
-      "OBJ_107" = {
+      "OBJ_106" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_40";
       };
-      "OBJ_108" = {
+      "OBJ_107" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_41";
       };
-      "OBJ_109" = {
+      "OBJ_108" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_42";
+      };
+      "OBJ_109" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_43";
       };
       "OBJ_11" = {
          isa = "PBXFileReference";
@@ -227,23 +231,19 @@
       };
       "OBJ_110" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_43";
-      };
-      "OBJ_111" = {
-         isa = "PBXBuildFile";
          fileRef = "OBJ_44";
       };
-      "OBJ_112" = {
+      "OBJ_111" = {
          isa = "PBXFrameworksBuildPhase";
          files = (
-            "OBJ_113"
+            "OBJ_112"
          );
       };
-      "OBJ_113" = {
+      "OBJ_112" = {
          isa = "PBXBuildFile";
          fileRef = "AdzerkSDK::AdzerkSDK::Product";
       };
-      "OBJ_114" = {
+      "OBJ_113" = {
          isa = "PBXTargetDependency";
          target = "AdzerkSDK::AdzerkSDK";
       };
@@ -524,8 +524,8 @@
       "OBJ_45" = {
          isa = "PBXGroup";
          children = (
-            "AdzerkSDK::AdzerkSDK::Product",
-            "AdzerkSDK::AdzerkSDKTests::Product"
+            "AdzerkSDK::AdzerkSDKTests::Product",
+            "AdzerkSDK::AdzerkSDK::Product"
          );
          name = "Products";
          path = "";
@@ -556,8 +556,7 @@
             "OBJ_53",
             "OBJ_54",
             "OBJ_55",
-            "OBJ_56",
-            "OBJ_57"
+            "OBJ_56"
          );
          path = "";
          sourceTree = "<group>";
@@ -569,47 +568,83 @@
       };
       "OBJ_51" = {
          isa = "PBXFileReference";
-         path = "Legacy.xcworkspace";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_52" = {
-         isa = "PBXFileReference";
          path = "LICENSE";
          sourceTree = "<group>";
       };
-      "OBJ_53" = {
+      "OBJ_52" = {
          isa = "PBXFileReference";
          path = "adzerk-ios-sdk.podspec";
          sourceTree = "<group>";
       };
-      "OBJ_54" = {
+      "OBJ_53" = {
          isa = "PBXFileReference";
          path = "README.md";
          sourceTree = "<group>";
       };
-      "OBJ_55" = {
+      "OBJ_54" = {
          isa = "PBXFileReference";
          path = "build.sh";
          sourceTree = "<group>";
       };
-      "OBJ_56" = {
+      "OBJ_55" = {
          isa = "PBXFileReference";
          path = "Gemfile";
          sourceTree = "<group>";
       };
-      "OBJ_57" = {
+      "OBJ_56" = {
          isa = "PBXFileReference";
          path = "Gemfile.lock";
          sourceTree = "<group>";
       };
-      "OBJ_59" = {
+      "OBJ_58" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_60",
-            "OBJ_61"
+            "OBJ_59",
+            "OBJ_60"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
+      };
+      "OBJ_59" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AdzerkSDK.xcodeproj/AdzerkSDK_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.12";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "AdzerkSDK";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "AdzerkSDK";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
       };
       "OBJ_6" = {
          isa = "PBXFileReference";
@@ -656,52 +691,12 @@
             TVOS_DEPLOYMENT_TARGET = "9.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
-         name = "Debug";
-      };
-      "OBJ_61" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "AdzerkSDK.xcodeproj/AdzerkSDK_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.12";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "AdzerkSDK";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "AdzerkSDK";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
          name = "Release";
       };
-      "OBJ_62" = {
+      "OBJ_61" = {
          isa = "PBXSourcesBuildPhase";
          files = (
+            "OBJ_62",
             "OBJ_63",
             "OBJ_64",
             "OBJ_65",
@@ -725,37 +720,40 @@
             "OBJ_83",
             "OBJ_84",
             "OBJ_85",
-            "OBJ_86",
-            "OBJ_87"
+            "OBJ_86"
          );
       };
-      "OBJ_63" = {
+      "OBJ_62" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_9";
       };
-      "OBJ_64" = {
+      "OBJ_63" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_11";
       };
-      "OBJ_65" = {
+      "OBJ_64" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_12";
       };
-      "OBJ_66" = {
+      "OBJ_65" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_13";
       };
-      "OBJ_67" = {
+      "OBJ_66" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_14";
       };
-      "OBJ_68" = {
+      "OBJ_67" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_15";
       };
-      "OBJ_69" = {
+      "OBJ_68" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_16";
+      };
+      "OBJ_69" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_17";
       };
       "OBJ_7" = {
          isa = "PBXGroup";
@@ -768,43 +766,43 @@
       };
       "OBJ_70" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_17";
+         fileRef = "OBJ_18";
       };
       "OBJ_71" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_18";
+         fileRef = "OBJ_19";
       };
       "OBJ_72" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_19";
+         fileRef = "OBJ_20";
       };
       "OBJ_73" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_20";
+         fileRef = "OBJ_22";
       };
       "OBJ_74" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_22";
+         fileRef = "OBJ_23";
       };
       "OBJ_75" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_23";
+         fileRef = "OBJ_24";
       };
       "OBJ_76" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_24";
+         fileRef = "OBJ_25";
       };
       "OBJ_77" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_25";
+         fileRef = "OBJ_26";
       };
       "OBJ_78" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_26";
+         fileRef = "OBJ_27";
       };
       "OBJ_79" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_27";
+         fileRef = "OBJ_28";
       };
       "OBJ_8" = {
          isa = "PBXGroup";
@@ -835,40 +833,45 @@
       };
       "OBJ_80" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_28";
+         fileRef = "OBJ_29";
       };
       "OBJ_81" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_29";
+         fileRef = "OBJ_30";
       };
       "OBJ_82" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_30";
+         fileRef = "OBJ_31";
       };
       "OBJ_83" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_31";
+         fileRef = "OBJ_32";
       };
       "OBJ_84" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_32";
+         fileRef = "OBJ_33";
       };
       "OBJ_85" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_33";
+         fileRef = "OBJ_34";
       };
       "OBJ_86" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_34";
-      };
-      "OBJ_87" = {
-         isa = "PBXBuildFile";
          fileRef = "OBJ_35";
       };
-      "OBJ_88" = {
+      "OBJ_87" = {
          isa = "PBXFrameworksBuildPhase";
          files = (
          );
+      };
+      "OBJ_89" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_90",
+            "OBJ_91"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
       };
       "OBJ_9" = {
          isa = "PBXFileReference";
@@ -876,13 +879,22 @@
          sourceTree = "<group>";
       };
       "OBJ_90" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_91",
-            "OBJ_92"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+               "-package-description-version",
+               "5.3.0"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Debug";
       };
       "OBJ_91" = {
          isa = "XCBuildConfiguration";
@@ -900,58 +912,40 @@
             );
             SWIFT_VERSION = "5.0";
          };
-         name = "Debug";
-      };
-      "OBJ_92" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "5",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
-               "-package-description-version",
-               "5.3.0"
-            );
-            SWIFT_VERSION = "5.0";
-         };
          name = "Release";
       };
-      "OBJ_93" = {
+      "OBJ_92" = {
          isa = "PBXSourcesBuildPhase";
          files = (
-            "OBJ_94"
+            "OBJ_93"
          );
       };
-      "OBJ_94" = {
+      "OBJ_93" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_6";
       };
-      "OBJ_96" = {
+      "OBJ_95" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_97",
-            "OBJ_98"
+            "OBJ_96",
+            "OBJ_97"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
+      };
+      "OBJ_96" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
       };
       "OBJ_97" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
          };
-         name = "Debug";
-      };
-      "OBJ_98" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
          name = "Release";
       };
-      "OBJ_99" = {
+      "OBJ_98" = {
          isa = "PBXTargetDependency";
          target = "AdzerkSDK::AdzerkSDKTests";
       };
