@@ -16,7 +16,7 @@ final class DecisionSDKTests: XCTestCase {
         fakeKeyStore = FakeKeyStore()
         sdk = DecisionSDK(keyStore: fakeKeyStore)
     }
-
+    
     func testDefaultNetworkId() {
         XCTAssertEqual(23, DecisionSDK.defaultNetworkId)
     }
@@ -49,7 +49,7 @@ final class DecisionSDKTests: XCTestCase {
         let expectationResult = expectation(description: "API response received")
         sdk.request(placement: Placements.standard(divName: "div1", adTypes: [5]), completion: completionCheckingSuccessfulResponse(expectation: expectationResult))
         waitForExpectations(timeout: 3.0, handler: nil)
-     }
+    }
     
     func testCanRequestCustomPlacementwithAdditionalOptions() {
         let placement = Placements.custom(divName: "div1", adTypes: [5])
@@ -67,7 +67,7 @@ final class DecisionSDKTests: XCTestCase {
         
         let expectation = self.expectation(description: "API response received")
         sdk.request(placement: placement, completion: completionExtractingSuccessfulValue(expectation: expectation) { response in
-            if let dec = response.decisions["div1"] {
+            if let dec = response.decisions["div1"]?.first {
                 XCTAssertTrue(dec.adId != nil, "Ad id was not set")
                 XCTAssertTrue(dec.creativeId != nil, "Creative id was not set")
                 XCTAssertTrue(dec.flightId != nil, "Flight id was not set")
@@ -86,7 +86,7 @@ final class DecisionSDKTests: XCTestCase {
                 } catch {
                     XCTFail(error.localizedDescription)
                 }
-
+                
             } else {
                 XCTFail("couldn't find div1 in response")
             }
@@ -142,14 +142,14 @@ final class DecisionSDKTests: XCTestCase {
             exp.fulfill()
             if let user = result.getOrFail() {
                 XCTAssertEqual(user.key, "ue1-e397eb5990")
-                XCTAssertTrue(user.interests.contains("Sports"))
+                XCTAssert(user.interests.contains("Sports"))
                 XCTAssertEqual(user.blockedItems, [
-                        "advertisers": .array([]),
-                        "campaigns": .array([]),
-                        "creatives": .array([]),
-                        "flights": .array([]),
-                    ]
-                )                
+                    "advertisers": .array([]),
+                    "campaigns": .array([]),
+                    "creatives": .array([]),
+                    "flights": .array([]),
+                ]
+                )
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -194,10 +194,23 @@ final class DecisionSDKTests: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testMultiWinnerRequest() {
+        let mwPlacement = Placements.standard(divName: "div1", adTypes: [5], count: 3)
+        let exp = expectation(description: "API Response Received")
+        sdk.request(placement: mwPlacement) { result in
+            exp.fulfill()
+            if let r = result.getOrFail() {
+                let decisions = r.decisions["div1"]!
+                XCTAssertGreaterThanOrEqual(decisions.count, 1)
+            }
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
     func testCanAddUserInterest() {
         let userKey = "ue1-e397eb5990"
         fakeKeyStore.save(userKey: userKey)
-
+        
         let exp = expectation(description: "API response received")
         sdk.userDB().addInterest("cats") { result in
             exp.fulfill()
@@ -209,9 +222,9 @@ final class DecisionSDKTests: XCTestCase {
     func testCanRetargetUser() {
         let userKey = "ue1-e397eb5990"
         fakeKeyStore.save(userKey: userKey)
-
+        
         let exp = expectation(description: "API response received")
-        sdk.userDB().retargetUser(segment: 1) { result in
+        sdk.userDB().retargetUser(advertiserId: 1, segment: 1) { result in
             exp.fulfill()
             result.getOrFail()
         }
@@ -225,7 +238,7 @@ final class DecisionSDKTests: XCTestCase {
             print(r)
         }
     }
-
+    
     // Assert that the API response is called. Calls the validationHandler in the case of .success for callers to
     // validate the response structure.
     func completionExtractingSuccessfulValue(expectation: XCTestExpectation, validationHandler: ((PlacementResponse) -> Void)? = nil) -> (Result<PlacementResponse, AdzerkError>) -> Void {
@@ -239,7 +252,7 @@ final class DecisionSDKTests: XCTestCase {
             expectation.fulfill()
         }
     }
-
+    
     static var allTests = [
         ("testDefaultNetworkId", testDefaultNetworkId),
         ("testDefaultSiteId", testDefaultSiteId),
