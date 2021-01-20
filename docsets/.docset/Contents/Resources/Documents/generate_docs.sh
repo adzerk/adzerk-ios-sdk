@@ -12,11 +12,11 @@ command -v jazzy >/dev/null 2>&1 || {
 
 
 mkdir -p _source
-git --work-tree=_source checkout master -- .
+git --work-tree=_source checkout 2.0 -- .
 
 jazzy -a "Adzerk" \
-      -u "http://adkzerk.com" \
+      -u "https://kevel.co" \
       -g https://github.com/adzerk/adzerk-ios-sdk \
       -o . \
-      --source-directory _source/AdzerkSDK/ \
+      --source-directory _source/ \
       --readme _source/README.md

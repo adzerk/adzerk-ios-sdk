@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>StandardPlacement Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/StandardPlacement" class="dashAnchor"></a>
+    <a title="StandardPlacement Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/adzerk/adzerk-ios-sdk"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        StandardPlacement Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CustomPlacement.html">CustomPlacement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DecisionSDK.html">DecisionSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StandardPlacement.html">StandardPlacement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserDB.html">UserDB</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserKeyStoreKeychain.html">UserKeyStoreKeychain</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AdzerkError.html">AdzerkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/AnyCodable.html">AnyCodable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/LogDestination.html">LogDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Placement.html">Placement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Transport.html">Transport</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UserKeyStore.html">UserKeyStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Consent.html">Consent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GeoPoint.html">GeoPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Logger/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OSLogDestination.html">OSLogDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementDecision.html">PlacementDecision</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementDecision.html#/s:9AdzerkSDK17PlacementDecisionV0C11DivProviderC">– PlacementDivProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementDecision/Content.html">– Content</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementDecision/Event.html">– Event</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementRequest.html">PlacementRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementRequest/Options.html">– Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlacementResponse.html">PlacementResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Placements.html">Placements</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/User.html">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UserIdentifier.html">UserIdentifier</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>StandardPlacement</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">StandardPlacement</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Placement.html">Placement</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Use this placement type if you don&rsquo;t need to pass any additional options.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC7divNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/divName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC7divNameSSvp">divName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name of the div</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">divName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC9networkIdSivp"></a>
+                    <a name="//apple_ref/swift/Property/networkId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC9networkIdSivp">networkId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The network ID. If none is specified it retrieves the value from <code>AdzerkSDK.defaultNetworkId</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC6siteIdSivp"></a>
+                    <a name="//apple_ref/swift/Property/siteId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC6siteIdSivp">siteId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The site ID. If none is specified it retrieves the value from <code>AdzerkSDK.defaultSiteId</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">siteId</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC5countSiSgvp"></a>
+                    <a name="//apple_ref/swift/Property/count" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC5countSiSgvp">count</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC7divName7adTypes5countACSS_SaySiGSiSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(divName:adTypes:count:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC7divName7adTypes5countACSS_SaySiGSiSgtcfc">init(divName:<wbr>adTypes:<wbr>count:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">divName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK17StandardPlacementC9networkId04siteF07divName7adTypes5countACSi_SiSSSaySiGSiSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(networkId:siteId:divName:adTypes:count:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK17StandardPlacementC9networkId04siteF07divName7adTypes5countACSi_SiSSSaySiGSiSgtcfc">init(networkId:<wbr>siteId:<wbr>divName:<wbr>adTypes:<wbr>count:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">networkId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">siteId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">divName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">adTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9AdzerkSDK9PlacementP8validateyyKF"></a>
+                    <a name="//apple_ref/swift/Method/validate()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9AdzerkSDK9PlacementP8validateyyKF">validate()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://kevel.co" target="_blank" rel="external">Adzerk</a>. All rights reserved. (Last updated: 2021-01-20)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
