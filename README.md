@@ -182,6 +182,8 @@ This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.
 
 # Changelog
 
+- 2.0: Rewritten for Swift, Swift Package Manager. This is a breaking change, as many of the types have evolved to more closely match Swift style.
+
 - 1.2: Add support for configurable hostname overrides
 
 - 1.1: Read/update GDPR consent
