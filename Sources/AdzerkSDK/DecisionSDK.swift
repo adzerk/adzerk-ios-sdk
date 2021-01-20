@@ -59,7 +59,7 @@ public class DecisionSDK {
     
     private static var sessionConfiguration: URLSessionConfiguration {
         let config = URLSessionConfiguration.default
-        config.httpAdditionalHeaders = ["adzerk-decision-sdk-ios" : Self.SDKVersion]
+        config.httpAdditionalHeaders = ["X-Adzerk-Sdk-Version" : "adzerk-decision-sdk-ios:\(Self.SDKVersion)"]
         return config
     }
     
