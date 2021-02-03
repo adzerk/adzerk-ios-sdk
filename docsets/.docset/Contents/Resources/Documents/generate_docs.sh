@@ -12,7 +12,7 @@ command -v jazzy >/dev/null 2>&1 || {
 
 
 mkdir -p _source
-git --work-tree=_source checkout 2.0 -- .
+git --work-tree=_source checkout master -- .
 
 jazzy -a "Adzerk" \
       -u "https://kevel.co" \
