@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.author           = { "Ben Scheirman" => "ben@scheirman.com" }
   s.source           = { :git => "https://github.com/adzerk/adzerk-ios-sdk.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '12.0'
+  s.platform     = :ios, '10.0'
   s.requires_arc = true
 
   s.swift_versions = ['5.0']
