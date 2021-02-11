@@ -120,7 +120,7 @@ that contains the decisions for each placement requested.
 Consent preferences can be specified when building a request. For example, to set GDPR consent for tracking in the European Union (this defaults to false):
 
 ```swift
-let options = PlacementRequest<Placement>.Options()
+let options = PlacementRequest<StandardPlacement>.Options()
 options.consent = Consent(gdpr: false)
 ```
 
