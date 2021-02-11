@@ -27,6 +27,15 @@ public struct PlacementRequest<P: Placement>: Codable {
          parameters before they are added to the SDK.
          */
         public var additionalOptions: [String: AnyCodable]?
+        
+        public init(userKey: String? = nil, keywords: [String]? = nil, blockedCreatives: [Int]? = nil, flightViewTimes: [String: [Int]]? = nil, url: String? = nil, enableBotFiltering: Bool = false) {
+            self.userKey = userKey
+            self.keywords = keywords
+            self.blockedCreatives = blockedCreatives
+            self.flightViewTimes = flightViewTimes
+            self.url = url
+            self.enableBotFiltering = enableBotFiltering
+        }
     }
     
     let placements: [P]
