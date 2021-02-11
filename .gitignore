@@ -21,3 +21,6 @@ DerivedData
 _source
 docsets
 .build
+
+.swiftpm/
+*.xcworkspace/
