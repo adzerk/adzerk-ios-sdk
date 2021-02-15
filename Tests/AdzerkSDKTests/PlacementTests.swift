@@ -45,7 +45,7 @@ class PlacementTests: XCTestCase {
           "adTypes" : [
             5
           ],
-          "networkId" : 23,
+          "networkId" : 9792,
           "divName" : "someDiv",
           "zoneIds" : [
             136961
@@ -93,7 +93,7 @@ class PlacementTests: XCTestCase {
             5
           ],
           "divName" : "someDiv",
-          "networkId" : 23,
+          "networkId" : 9792,
           "siteId" : 306998,
           "zoneIds" : [
             136961

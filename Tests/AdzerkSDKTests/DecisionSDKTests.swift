@@ -2,7 +2,7 @@ import XCTest
 @testable import AdzerkSDK
 
 final class DecisionSDKTests: XCTestCase {
-    private let networkId = 23
+    private let networkId = 9792
     private let siteId = 306998
     private var sdk: DecisionSDK!
     private var fakeKeyStore: UserKeyStore!
@@ -18,7 +18,7 @@ final class DecisionSDKTests: XCTestCase {
     }
 
     func testDefaultNetworkId() {
-        XCTAssertEqual(23, DecisionSDK.defaultNetworkId)
+        XCTAssertEqual(9792, DecisionSDK.defaultNetworkId)
     }
     
     func testDefaultSiteId() {
