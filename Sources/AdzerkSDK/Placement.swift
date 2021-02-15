@@ -61,13 +61,13 @@ public class StandardPlacement: Placement {
     public let count: Int?
     
     /** An array of integers representing the ad types to request. The full list can be found at https://github.com/adzerk/adzerk-api/wiki/Ad-Types . */
-    let adTypes: [Int]
+    public let adTypes: [Int]
     
-    var zoneIds: [Int]?
-    var eventIds: [Int]?
-    var campaignId: Int?
-    var flightId: Int?
-    var adId: Int?
+    public var zoneIds: [Int]?
+    public var eventIds: [Int]?
+    public var campaignId: Int?
+    public var flightId: Int?
+    public var adId: Int?
     
     public convenience init(divName: String, adTypes: [Int], count: Int? = nil) {
         guard let networkId = DecisionSDK.defaultNetworkId,
