@@ -20,7 +20,7 @@ public class DecisionSDK {
     */
     public static var defaultSiteId: Int?
     
-    static var logger = Logger()
+    public static var logger = Logger()
     
     /** The base URL template to use for API requests. {subdomain} must be replaced in this template string before use. */
     private static let AdzerkHostnameTemplate = "{subdomain}.adzerk.net"
