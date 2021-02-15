@@ -12,7 +12,7 @@ public struct Logger {
         }
     }
     
-    var level: Level = .info
+    public var level: Level = .info
     let destination: LogDestination
     
     public init(destination: LogDestination = OSLogDestination()) {
