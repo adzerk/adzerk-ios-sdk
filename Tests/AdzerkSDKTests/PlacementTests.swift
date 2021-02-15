@@ -20,7 +20,7 @@ class PlacementTests: XCTestCase {
         }
     }
     
-    private let networkId = 23
+    private let networkId = 9792
     private let siteId = 306998
     
     override func setUp() {
