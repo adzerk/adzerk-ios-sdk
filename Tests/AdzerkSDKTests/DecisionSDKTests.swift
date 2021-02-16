@@ -51,11 +51,11 @@ final class DecisionSDKTests: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testCanRequestCustomPlacementwithAdditionalOptions() {
+    func testCanRequestCustomPlacementwithCustomProperties() {
         let placement = Placements.custom(divName: "div1", adTypes: [5])
         placement.flightId = 699801
         placement.zoneIds = [136961]
-        placement.additionalOptions = [
+        placement.properties = [
             "custom_key": .string("custom_value"),
             "foos": .array([.string("bar"), .string("baz"), .string("quux")]),
             "minions": .dictionary([
@@ -118,7 +118,7 @@ final class DecisionSDKTests: XCTestCase {
         placement.campaignId = 1
         placement.flightId = 1
         placement.eventIds = [123]
-        placement.additionalOptions = ["key": .string("val")]
+        placement.properties = ["key": .string("val")]
         
         var options = placement.options()
         options.flightViewTimes = ["1234": [1512512, 1241212]]
