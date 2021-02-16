@@ -67,7 +67,7 @@ class PlacementTests: XCTestCase {
     
     func testSerializeCustomPlacementWithAdditionalOptions() throws {
         let placement = Placements.custom(divName: "someDiv", adTypes: [5])
-        placement.additionalOptions = [
+        placement.properties = [
             "color": .string("blue"),
             "age": .int(57),
             "balance": .float(100.0),
@@ -83,17 +83,17 @@ class PlacementTests: XCTestCase {
 
         let expected = """
         {
-          "additionalOptions" : {
-            "age" : 57,
-            "balance" : 100,
-            "color" : "blue",
-            "powerUser" : true
-          },
           "adTypes" : [
             5
           ],
           "divName" : "someDiv",
           "networkId" : 9792,
+          "properties" : {
+            "age" : 57,
+            "balance" : 100,
+            "color" : "blue",
+            "powerUser" : true
+          },
           "siteId" : 306998,
           "zoneIds" : [
             136961

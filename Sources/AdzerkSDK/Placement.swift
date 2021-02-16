@@ -94,10 +94,10 @@ public class StandardPlacement: Placement {
 
 /// Use this placement type if you need to pass additional options.
 public class CustomPlacement: StandardPlacement {
-    var additionalOptions: [String: AnyCodable] = [:]
+    public var properties: [String: AnyCodable] = [:]
     
     enum CodingKeys: String, CodingKey {
-        case additionalOptions
+        case properties
     }
     
     public override init(networkId: Int, siteId: Int, divName: String, adTypes: [Int], count: Int?) {
@@ -107,12 +107,12 @@ public class CustomPlacement: StandardPlacement {
     public override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder)
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(additionalOptions, forKey: .additionalOptions)
+        try container.encode(properties, forKey: .properties)
     }
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        additionalOptions = try container.decode([String: AnyCodable].self, forKey: .additionalOptions)
+        properties = try container.decode([String: AnyCodable].self, forKey: .properties)
         try super.init(from: decoder)
     }
 }
