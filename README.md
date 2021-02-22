@@ -19,7 +19,7 @@ Using Xcode, add a Swift Package in the Project Settings tab. Enter the URL http
 If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
 
 ```ruby
-github "adzerk/adzerk-ios-sdk" ~> 2.0
+github "adzerk/adzerk-ios-sdk" ~> 2.0.1
 ```
 
 If you want to be on the bleeding edge, you can specify the `master` branch:
@@ -36,7 +36,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 2.0
+pod 'adzerk-ios-sdk', '~> 2.0.1
 ```
 
 Again, if you want to be on the latest master branch:
@@ -181,6 +181,8 @@ After a few seconds, your changes will be live on [https://adzerk.github.io/adze
 This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE) for more information.
 
 # Changelog
+
+- 2.0.1: Update visibility of some members to allow addiiton flexibility.
 
 - 2.0: Rewritten for Swift, Swift Package Manager. This is a breaking change, as many of the types have evolved to more closely match Swift style.
 
