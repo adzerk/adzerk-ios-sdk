@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import AdzerkSDK
+import AdzerkSDK
 
 class PlacementTests: XCTestCase {
     
