@@ -1,5 +1,5 @@
 import XCTest
-@testable import AdzerkSDK
+import AdzerkSDK
 
 final class DecisionSDKTests: XCTestCase {
     private let networkId = 9792
