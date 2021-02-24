@@ -49,6 +49,107 @@ pod 'adzerk-ios-sdk', github: 'adzerk/adzerk-ios-sdk', branch: 'master'
 
 Then run `pod install` to download the code and integrate it into your project. You'll then open the pod-created workspace instead of your project to build.
 
+## Examples
+
+### API Credentials & Required IDs
+
+- Network ID: Log into [Adzerk UI](https://app.adzerk.com/) & use the "circle-i" help menu in upper right corner to find Network ID. Required for all SDK operations.
+- Site ID: Go to [Manage Sites page](https://app.adzerk.com/#!/sites/) to find site IDs. Required when fetching an ad decision.
+- Ad Type ID: Go to [Ad Sizes page](https://app.adzerk.com/#!/ad-sizes/) to find Ad Type IDs. Required when fetching an ad decision.
+- User Key: UserDB IDs are [specified or generated for each user](https://dev.adzerk.com/reference/userdb#passing-the-userkey).
+
+### Fetching an Ad Decision
+
+```swift
+import AdzerkSDK
+
+// Demo network, site, & ad type IDs; find your own via the Adzerk UI!
+DecisionSDK.defaultNetworkId = 23
+DecisionSDK.defaultSiteId = 667480
+
+let client = DecisionSDK()
+
+var p = Placements.custom(divName: "div0", adTypes: [5])
+
+var reqOpts = PlacementRequest<StandardPlacement>.Options()
+reqOpts.userKey = "abc"
+reqOpts.keywords = ["keyword1", "keyword2"]
+
+client.request(placements: [p], options: reqOpts) {response in
+  dump(response)
+}
+```
+
+### Recording Impressions
+
+Use with the fetch ad example above.
+
+```swift
+client.request(placements: [p], options: reqOpts) {
+    switch $0 {
+    case .success(let response):
+        for decision in response.decisions {
+            print(decision.key)
+            
+            for selection in decision.value {
+                dump(selection, maxDepth: 3)
+                
+                print("\nFiring impression pixel...")
+                client.recordImpression(pixelURL: selection.impressionUrl!)
+            }
+        }
+        
+    case .failure(let error):
+        print(error)
+    }
+}
+```
+
+### UserDB: Reading User Record
+
+```swift
+import AdzerkSDK
+
+// Demo network ID; find your own via the Adzerk UI!
+DecisionSDK.defaultNetworkId = 23
+
+let keyStore = UserKeyStoreKeychain()
+keyStore.save(userKey: "abc")
+
+let client = DecisionSDK(keyStore: keyStore)
+
+client.userDB().readUser() {response in
+  dump(response)
+}
+```
+
+### UserDB: Setting Custom Properties
+
+```swift
+import AdzerkSDK
+
+// Demo network ID; find your own via the Adzerk UI!
+DecisionSDK.defaultNetworkId = 23
+
+let keyStore = UserKeyStoreKeychain()
+keyStore.save(userKey: "abc")
+
+let client = DecisionSDK(keyStore: keyStore)
+
+let props:[String: AnyCodable] = [
+    "favoriteColor":  .string("blue"),
+    "favoriteNumber": .int(42),
+    "favoriteFoods":  .array([
+        .string("strawberries"),
+        .string("chocolate"),
+    ])
+]
+
+client.userDB().postProperties(props) {response in
+  dump(response)
+}
+```
+
 ## Usage
 
 All API operations are done with an instance of [`DecisionSDK`](http://adzerk.github.io/adzerk-ios-sdk/Classes/DecisionSDK.html).
@@ -102,7 +203,7 @@ let sdk = DecisionSDK()
 let placement = Placements.standard(divName: "div1", adTypes: [1])
 
 sdk.request(placement: placement) { result in
-	// gives you a Swift Result of type Result<PlacementResponse, AdzerkError>
+    // gives you a Swift Result of type Result<PlacementResponse, AdzerkError>
 }
 ```
 
