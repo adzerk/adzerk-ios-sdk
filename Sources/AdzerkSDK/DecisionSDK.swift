@@ -3,11 +3,7 @@ import Foundation
 /// Represents the interface for making requests against the Adzerk Decision API
 public class DecisionSDK {
     
-    static var SDKVersion: String {
-        let packageBundle = Bundle(for: Self.self)
-        let bundleVersion = packageBundle.infoDictionary?["CFBundleShortVersionString"] as? String
-        return bundleVersion ?? "?"
-    }
+    public static var SDKVersion = AdzerkDecisionSDKVersionString
     
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
