@@ -36,7 +36,10 @@ public class UserKeyStoreKeychain : UserKeyStore {
     */
     public func save(userKey: String) {
         let data = userKey.data(using: .utf8, allowLossyConversion: false)!
-        _ = KeychainHelper.save(userKeychainKey, data: data)
+        let result = KeychainHelper.save(userKeychainKey, data: data)
+        if !result {
+            print("Warning: saving user key failed")
+        }
     }
     
     /**
