@@ -62,7 +62,14 @@ public struct PlacementRequest<P: Placement>: Codable {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
-        let data = try encoder.encode(self)
+        var data = try encoder.encode(self)
+        
+        if var json = try JSONSerialization.jsonObject(with: data) as? [String: Any], let additionalOptions = json["additionalOptions"] as? [String: Any] {
+            json.merge(additionalOptions) { (current, _) in current }
+            json.removeValue(forKey: "additionalOptions")
+            data = try JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted])
+        }
+        
         DecisionSDK.logger.log(.debug, message: "Placement request JSON:\n\n\(String(data: data, encoding: .utf8) ?? "")")
         
         return data
