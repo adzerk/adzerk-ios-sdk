@@ -23,6 +23,8 @@ public protocol Placement: Codable {
     
     /** Validates the placement values before sending. An error describing the issue will be thrown if invalid. */
     func validate() throws
+    
+    func bodyJson() throws -> [String: Any]?
 }
 
 public extension Placement {
@@ -90,14 +92,23 @@ public class StandardPlacement: Placement {
             throw AdzerkError.missingAdType
         }
     }
+    
+    public func bodyJson() throws -> [String: Any]? {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(self)
+        return try JSONSerialization.jsonObject(with: data) as? [String: Any]
+    }
+    
 }
 
 /// Use this placement type if you need to pass additional options.
 public class CustomPlacement: StandardPlacement {
     public var properties: [String: AnyCodable] = [:]
+    public var additionalOptions: [String: AnyCodable] = [:]
     
     enum CodingKeys: String, CodingKey {
         case properties
+        case additionalOptions
     }
     
     public override init(networkId: Int, siteId: Int, divName: String, adTypes: [Int], count: Int?) {
@@ -108,11 +119,30 @@ public class CustomPlacement: StandardPlacement {
         try super.encode(to: encoder)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(properties, forKey: .properties)
+        try container.encode(additionalOptions, forKey: .additionalOptions)
     }
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         properties = try container.decode([String: AnyCodable].self, forKey: .properties)
         try super.init(from: decoder)
+    }
+    
+    public override func bodyJson() throws -> [String: Any]? {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(self)
+        
+        var json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+        
+        if let additionalOptions = json?["additionalOptions"] as? [String: Any] {
+            json?.merge(additionalOptions) { (current, _) in current }
+            json?.removeValue(forKey: "additionalOptions")
+        }
+        
+        if let properties = json?["properties"] as? [String: Any], properties.isEmpty {
+            json?.removeValue(forKey: "properties")
+        }
+        
+        return json
     }
 }

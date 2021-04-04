@@ -21,27 +21,22 @@ class PlacementRequestTests: XCTestCase {
         let request = PlacementRequest<StandardPlacement>.init(placements: [p], userKeyStore: fakeKeyStore)
         
         let data = try request.encodeBody()
-        let actual = String(data: data, encoding: .utf8)!
+        let actual = try JSONSerialization.jsonObject(with: data) as! [String: Any]
         
-        let expected = """
-        {
+        let expected = [
           "enableBotFiltering" : false,
           "placements" : [
-            {
+            [
               "siteId" : 306998,
               "adTypes" : [
                 5
               ],
               "networkId" : 9792,
-              "properties" : {
-
-              },
               "divName" : "div0"
-            }
+            ]
           ]
-        }
-        """
-        XCTAssertEqual(expected, actual)
+        ] as [String : Any]
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testRequestDefaultOptions() throws {
@@ -50,27 +45,22 @@ class PlacementRequestTests: XCTestCase {
         let request = PlacementRequest<StandardPlacement>.init(placements: [p], options: reqOpts, userKeyStore: fakeKeyStore)
         
         let data = try request.encodeBody()
-        let actual = String(data: data, encoding: .utf8)!
+        let actual = try JSONSerialization.jsonObject(with: data) as! [String: Any]
         
-        let expected = """
-        {
+        let expected = [
           "enableBotFiltering" : false,
           "placements" : [
-            {
+            [
               "siteId" : 306998,
               "adTypes" : [
                 5
               ],
               "networkId" : 9792,
-              "properties" : {
-
-              },
               "divName" : "div0"
-            }
+            ]
           ]
-        }
-        """
-        XCTAssertEqual(expected, actual)
+        ] as [String : Any]
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testRequestOptions() throws {
@@ -94,7 +84,6 @@ class PlacementRequestTests: XCTestCase {
                 "siteId" : 306998,
                 "adTypes" : [5],
                 "networkId" : 9792,
-                "properties" : [:],
                 "divName" : "div0"
               ]
             ],
@@ -106,7 +95,7 @@ class PlacementRequestTests: XCTestCase {
             "flightViewTimes": ["ua": [7937], "ana": [113, 627, 2479, 629]],
             "enableBotFiltering": true,
         ] as [String : Any]
-        XCTAssertEqual(NSDictionary(dictionary: expected), NSDictionary(dictionary: actual))
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testRequestAdditionalOptions() throws {
@@ -126,14 +115,13 @@ class PlacementRequestTests: XCTestCase {
                 "siteId" : 306998,
                 "adTypes" : [5],
                 "networkId" : 9792,
-                "properties" : [:],
                 "divName" : "div0"
               ]
             ],
             "enableBotFiltering" : false,
             "includePricingData" : true
         ] as [String : Any]
-        XCTAssertEqual(NSDictionary(dictionary: expected), NSDictionary(dictionary: actual))
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testRequestOptionsAndAdditionalOptions() throws {
@@ -162,7 +150,6 @@ class PlacementRequestTests: XCTestCase {
                 "siteId" : 306998,
                 "adTypes" : [5],
                 "networkId" : 9792,
-                "properties" : [:],
                 "divName" : "div0"
               ]
             ],
@@ -176,7 +163,7 @@ class PlacementRequestTests: XCTestCase {
             "includePricingData" : true,
             "foo": "bar",
         ] as [String : Any]
-        XCTAssertEqual(NSDictionary(dictionary: expected), NSDictionary(dictionary: actual))
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testRequestOptionsOverAdditionalOptions() throws {
@@ -210,7 +197,6 @@ class PlacementRequestTests: XCTestCase {
                 "siteId" : 306998,
                 "adTypes" : [5],
                 "networkId" : 9792,
-                "properties" : [:],
                 "divName" : "div0"
               ]
             ],
@@ -222,7 +208,7 @@ class PlacementRequestTests: XCTestCase {
             "flightViewTimes": ["ua": [7937], "ana": [113, 627, 2479, 629]],
             "enableBotFiltering": true,
         ] as [String : Any]
-        XCTAssertEqual(NSDictionary(dictionary: expected), NSDictionary(dictionary: actual))
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     static var allTests = [
