@@ -36,11 +36,9 @@ class PlacementTests: XCTestCase {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
-        let data = try encoder.encode(placement)
-        let actual = String(data: data, encoding: .utf8)!
+        let actual = try placement.bodyJson()!
         
-        let expected = """
-        {
+        let expected = [
           "siteId" : 306998,
           "adTypes" : [
             5
@@ -50,9 +48,8 @@ class PlacementTests: XCTestCase {
           "zoneIds" : [
             136961
           ]
-        }
-        """
-        XCTAssertEqual(expected, actual)
+        ] as [String: Any]
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     func testPlacementCanValidate() throws {
@@ -65,7 +62,7 @@ class PlacementTests: XCTestCase {
         XCTAssertThrowsError(try placement.validate())
     }
     
-    func testSerializeCustomPlacementWithAdditionalOptions() throws {
+    func testSerializeCustomPlacementWithProperties() throws {
         let placement = Placements.custom(divName: "someDiv", adTypes: [5])
         placement.properties = [
             "color": .string("blue"),
@@ -78,29 +75,104 @@ class PlacementTests: XCTestCase {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
 
-        let data = try encoder.encode(placement)
-        let actual = String(data: data, encoding: .utf8)!
+        let actual = try placement.bodyJson()!
 
-        let expected = """
-        {
+        let expected = [
           "adTypes" : [
             5
           ],
           "divName" : "someDiv",
           "networkId" : 9792,
-          "properties" : {
+          "properties" : [
             "age" : 57,
             "balance" : 100,
             "color" : "blue",
             "powerUser" : true
-          },
+          ],
           "siteId" : 306998,
           "zoneIds" : [
             136961
           ]
-        }
-        """
-        XCTAssertEqual(actual, expected)
+        ] as [String: Any]
+        XCAssertDictionaryEqual(expected, actual)
+    }
+    
+    func testSerializeCustomPlacementWithAdditionalOptions() throws {
+        let placement = Placements.custom(divName: "someDiv", adTypes: [5])
+        placement.additionalOptions = [
+            "color": .string("blue"),
+            "age": .int(57),
+            "balance": .float(100.0),
+            "powerUser": .boolean(true)
+        ]
+        placement.zoneIds = [136961]
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+
+        let actual = try placement.bodyJson()!
+
+        let expected = [
+          "adTypes" : [
+            5
+          ],
+          "divName" : "someDiv",
+          "networkId" : 9792,
+          "siteId" : 306998,
+          "zoneIds" : [
+            136961
+          ],
+          "age" : 57,
+          "balance" : 100,
+          "color" : "blue",
+          "powerUser" : true
+        ] as [String: Any]
+        XCAssertDictionaryEqual(expected, actual)
+    }
+    
+    func testSerializeCustomPlacementWithBothPropertiesAndAdditionalOptions() throws {
+        let placement = Placements.custom(divName: "someDiv", adTypes: [5])
+        placement.properties = [
+            "color": .string("blue"),
+            "age": .int(57),
+            "balance": .float(100.0),
+            "powerUser": .boolean(true)
+        ]
+        placement.additionalOptions = [
+            "color": .string("blue"),
+            "age": .int(57),
+            "balance": .float(100.0),
+            "powerUser": .boolean(true)
+        ]
+        placement.zoneIds = [136961]
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+
+        let actual = try placement.bodyJson()!
+
+        let expected = [
+          "adTypes" : [
+            5
+          ],
+          "divName" : "someDiv",
+          "networkId" : 9792,
+          "siteId" : 306998,
+          "zoneIds" : [
+            136961
+          ],
+          "age" : 57,
+          "balance" : 100,
+          "color" : "blue",
+          "powerUser" : true,
+          "properties" : [
+            "age" : 57,
+            "balance" : 100,
+            "color" : "blue",
+            "powerUser" : true
+          ],
+        ] as [String: Any]
+        XCAssertDictionaryEqual(expected, actual)
     }
     
     static var allTests = [

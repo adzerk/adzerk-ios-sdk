@@ -64,9 +64,12 @@ public struct PlacementRequest<P: Placement>: Codable {
         
         var data = try encoder.encode(self)
         
-        if var json = try JSONSerialization.jsonObject(with: data) as? [String: Any], let additionalOptions = json["additionalOptions"] as? [String: Any] {
-            json.merge(additionalOptions) { (current, _) in current }
-            json.removeValue(forKey: "additionalOptions")
+        if var json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            json["placements"] = placements.compactMap { try? $0.bodyJson() }
+            if let additionalOptions = json["additionalOptions"] as? [String: Any] {
+                json.merge(additionalOptions) { (current, _) in current }
+                json.removeValue(forKey: "additionalOptions")
+            }
             data = try JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted])
         }
         

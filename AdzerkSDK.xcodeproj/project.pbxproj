@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2955DB87261946690005D614 /* XCAssert+Adzerk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2955DB86261946690005D614 /* XCAssert+Adzerk.swift */; };
 		29813B7B260D8313007F2581 /* PlacementRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29813B7A260D8313007F2581 /* PlacementRequestTests.swift */; };
 		29813B8E260D8611007F2581 /* DecisionSDK-Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29813B84260D8553007F2581 /* DecisionSDK-Version.swift */; };
 		OBJ_103 /* AnyCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AnyCodableTests.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2955DB86261946690005D614 /* XCAssert+Adzerk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssert+Adzerk.swift"; sourceTree = "<group>"; };
 		29813B7A260D8313007F2581 /* PlacementRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementRequestTests.swift; sourceTree = "<group>"; };
 		29813B84260D8553007F2581 /* DecisionSDK-Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecisionSDK-Version.swift"; sourceTree = "<group>"; };
 		"AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdzerkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				29813B7A260D8313007F2581 /* PlacementRequestTests.swift */,
 				OBJ_44 /* UserKeyStoreKeychainTests.swift */,
 				OBJ_45 /* XCTestManifests.swift */,
+				2955DB86261946690005D614 /* XCAssert+Adzerk.swift */,
 			);
 			name = AdzerkSDKTests;
 			path = Tests/AdzerkSDKTests;
@@ -198,7 +201,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -212,7 +215,6 @@
 				OBJ_53 /* Gemfile */,
 				OBJ_54 /* Gemfile.lock */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -318,7 +320,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +341,7 @@
 				OBJ_103 /* AnyCodableTests.swift in Sources */,
 				OBJ_104 /* DecisionSDKTests.swift in Sources */,
 				OBJ_105 /* FakeKeyStore.swift in Sources */,
+				2955DB87261946690005D614 /* XCAssert+Adzerk.swift in Sources */,
 				29813B7B260D8313007F2581 /* PlacementRequestTests.swift in Sources */,
 				OBJ_106 /* LoggerTests.swift in Sources */,
 				OBJ_107 /* PlacementTests.swift in Sources */,
