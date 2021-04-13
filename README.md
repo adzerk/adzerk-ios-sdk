@@ -80,6 +80,32 @@ client.request(placements: [p], options: reqOpts) {response in
 }
 ```
 
+### Distance Targeting
+
+```swift
+import AdzerkSDK
+
+// Demo network, site, & ad type IDs; find your own via the Adzerk UI!
+DecisionSDK.defaultNetworkId = 23
+DecisionSDK.defaultSiteId = 667480
+
+let client = DecisionSDK()
+
+var p = Placements.custom(divName: "div0", adTypes: [5])
+
+var reqOpts = PlacementRequest<StandardPlacement>.Options()
+reqOpts.userKey = "abc"
+reqOpts.additionalOptions = [
+  "intendedLatitude": 35.91868,
+  "intendedLongitude": -78.96001,
+  "radius": 50
+]
+
+client.request(placements: [p], options: reqOpts) {response in
+  dump(response)
+}
+```
+
 ### Recording Impressions
 
 Use with the fetch ad example above.
