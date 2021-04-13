@@ -90,15 +90,15 @@ client.request(placements: [p], options: reqOpts) {
     case .success(let response):
         for decision in response.decisions {
             print(decision.key)
-            
+
             for selection in decision.value {
                 dump(selection, maxDepth: 3)
-                
+
                 print("\nFiring impression pixel...")
                 client.recordImpression(pixelURL: selection.impressionUrl!)
             }
         }
-        
+
     case .failure(let error):
         print(error)
     }
@@ -185,7 +185,7 @@ There are two types of placements builtin:
 - `StandardPlacement`
 - `CustomPlacement`
 
-You can use `CustomPlacement` if you need to send additional JSON data to the server.
+#### Standard Placement
 
 For brevity, you can create placements using the `Placements` type:
 
@@ -193,8 +193,20 @@ For brevity, you can create placements using the `Placements` type:
 let placement = Placements.standard(...)
 ```
 
-To send the request:
+#### Custom Placement
 
+You can use `CustomPlacement` if you need to send additional JSON data to the server:
+
+```swift
+let placement = Placements.custom(...)
+placement.additionalOptions = [
+  "arbitraryKey": .string("value")
+]
+```
+
+This feature is useful for beta features or features added to the API that haven't been officially supported via the SDK yet.
+
+#### Sending the Request
 
 ```swift
 // Assumes that the default network ID and site ID are already set on DecisionSDK
@@ -203,6 +215,21 @@ let sdk = DecisionSDK()
 let placement = Placements.standard(divName: "div1", adTypes: [1])
 
 sdk.request(placement: placement) { result in
+    // gives you a Swift Result of type Result<PlacementResponse, AdzerkError>
+}
+```
+
+Like individual placements, you can send `additionalOptions` at the request level:
+
+```swift
+let sdk = DecisionSDK()
+let placement = Placements.standard(divName: "div1", adTypes: [1])
+let opts = PlacementRequest<StandardPlacement>.Options()
+opts.additionalOptions = [
+  "arbitraryKey": .string("value")
+]
+
+sdk.request(placement: placement, options: opts) { result in
     // gives you a Swift Result of type Result<PlacementResponse, AdzerkError>
 }
 ```
