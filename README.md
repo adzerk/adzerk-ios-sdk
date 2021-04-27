@@ -96,9 +96,9 @@ var p = Placements.custom(divName: "div0", adTypes: [5])
 var reqOpts = PlacementRequest<StandardPlacement>.Options()
 reqOpts.userKey = "abc"
 reqOpts.additionalOptions = [
-  "intendedLatitude": 35.91868,
-  "intendedLongitude": -78.96001,
-  "radius": 50
+  "intendedLatitude": .float(35.91868),
+  "intendedLongitude": .float(-78.96001),
+  "radius": .float(50)
 ]
 
 client.request(placements: [p], options: reqOpts) {response in
