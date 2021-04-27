@@ -130,6 +130,45 @@ class PlacementTests: XCTestCase {
         XCAssertDictionaryEqual(expected, actual)
     }
     
+    func testSerializeCustomPlacementFieldsOverAdditionalOptions() throws {
+        let placement = Placements.custom(divName: "someDiv", adTypes: [5])
+        placement.zoneIds = [136961]
+        placement.eventIds = [1, 2, 3]
+        placement.campaignId = 6
+        placement.flightId = 9
+        placement.additionalOptions = [
+            "adTypes": .array([.int(10)]),
+            "divName": .string("otherDiv"),
+            "networkId": .int(1),
+            "siteId": .int(1),
+            "zoneIds": .array([.int(1)]),
+            "eventIds": .array([.int(999)]),
+            "campaignId": .int(60),
+            "flightId": .int(90),
+        ]
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+
+        let actual = try placement.bodyJson()!
+
+        let expected = [
+          "adTypes" : [
+            5
+          ],
+          "campaignId": 6,
+          "divName" : "someDiv",
+          "eventIds": [1, 2, 3],
+          "flightId": 9,
+          "networkId" : 9792,
+          "siteId" : 306998,
+          "zoneIds" : [
+            136961
+          ],
+        ] as [String: Any]
+        XCAssertDictionaryEqual(expected, actual)
+    }
+    
     func testSerializeCustomPlacementWithBothPropertiesAndAdditionalOptions() throws {
         let placement = Placements.custom(divName: "someDiv", adTypes: [5])
         placement.properties = [
