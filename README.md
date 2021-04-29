@@ -98,7 +98,7 @@ reqOpts.userKey = "abc"
 reqOpts.additionalOptions = [
   "intendedLatitude": .float(35.91868),
   "intendedLongitude": .float(-78.96001),
-  "radius": .float(50)
+  "radius": .float(50) // in km
 ]
 
 client.request(placements: [p], options: reqOpts) {response in
