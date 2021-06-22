@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		29220ACC26824D2D00AD9C47 /* FirePixelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29220ACB26824D2D00AD9C47 /* FirePixelResponse.swift */; };
 		2955DB87261946690005D614 /* XCAssert+Adzerk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2955DB86261946690005D614 /* XCAssert+Adzerk.swift */; };
 		29813B7B260D8313007F2581 /* PlacementRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29813B7A260D8313007F2581 /* PlacementRequestTests.swift */; };
 		29813B8E260D8611007F2581 /* DecisionSDK-Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29813B84260D8553007F2581 /* DecisionSDK-Version.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29220ACB26824D2D00AD9C47 /* FirePixelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePixelResponse.swift; sourceTree = "<group>"; };
 		2955DB86261946690005D614 /* XCAssert+Adzerk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssert+Adzerk.swift"; sourceTree = "<group>"; };
 		29813B7A260D8313007F2581 /* PlacementRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementRequestTests.swift; sourceTree = "<group>"; };
 		29813B84260D8553007F2581 /* DecisionSDK-Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecisionSDK-Version.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				OBJ_29 /* PlacementEvent.swift */,
 				OBJ_30 /* PlacementRequest.swift */,
 				OBJ_31 /* PlacementResponse.swift */,
+				29220ACB26824D2D00AD9C47 /* FirePixelResponse.swift */,
 				OBJ_32 /* User.swift */,
 				OBJ_33 /* UserDB.swift */,
 				OBJ_34 /* UserIdentifier.swift */,
@@ -359,6 +362,7 @@
 				OBJ_62 /* AdzerkJSONEncoder.swift in Sources */,
 				OBJ_63 /* AnyCodable.swift in Sources */,
 				OBJ_64 /* Decoder+AnyCodable.swift in Sources */,
+				29220ACC26824D2D00AD9C47 /* FirePixelResponse.swift in Sources */,
 				OBJ_65 /* DynamicCodingKey.swift in Sources */,
 				OBJ_66 /* Consent.swift in Sources */,
 				29813B8E260D8611007F2581 /* DecisionSDK-Version.swift in Sources */,

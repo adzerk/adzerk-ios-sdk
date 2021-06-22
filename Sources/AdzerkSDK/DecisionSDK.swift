@@ -64,9 +64,12 @@ public class DecisionSDK {
      - keyStore: The object that will store user keys. Defaults to a Keychain-based store.
      - queue: The queue that all callbacks will be dispatched on. Defaults to `DispatchQueue.main`.
      */
-    public init(keyStore: UserKeyStore = UserKeyStoreKeychain(),
-                transport: Transport? = nil,
-                queue: DispatchQueue = .main, requestTimeout: TimeInterval = 30) {
+    public init(
+        keyStore: UserKeyStore = UserKeyStoreKeychain(),
+        transport: Transport? = nil,
+        queue: DispatchQueue = .main,
+        requestTimeout: TimeInterval = 30
+    ) {
         self.keyStore = keyStore
         self.queue = queue
         let session = URLSession(configuration: Self.sessionConfiguration)
@@ -113,6 +116,34 @@ public class DecisionSDK {
                 Self.logger.log(.error, message: "Error recording impression for \(pixelURL): \(error)")
             }
         }
+    }
+    
+    public func firePixel(url: URL, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+        firePixel(url: url, override: nil, additional: nil, completion: complete)
+    }
+    
+    public func firePixel(url: URL, override: Double, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+        firePixel(url: url, override: override, additional: nil, completion: complete)
+    }
+    
+    public func firePixel(url: URL, additional: Double, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+        firePixel(url: url, override: nil, additional: additional, completion: complete)
+    }
+    
+    private func firePixel(url: URL, override: Double?, additional: Double?, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+        var url = url
+        if let override = override {
+            url = url.appendingQueryParameters(["override": String(override)])
+        }
+        if let additional = additional {
+            url = url.appendingQueryParameters(["additional": String(additional)])
+        }
+        let urlRequest = URLRequest(url: url)
+        transport.send(
+            urlRequest,
+            decode: { try self.decoder.decode(FirePixelResponse.self, from: $0) },
+            completion: complete
+        )
     }
     
     public func userDB(networkId: Int? = nil) -> UserDB {
