@@ -19,7 +19,7 @@ Using Xcode, add a Swift Package in the Project Settings tab. Enter the URL http
 If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
 
 ```ruby
-github "adzerk/adzerk-ios-sdk" ~> 2.0.1
+github "adzerk/adzerk-ios-sdk" ~> 2.1.0
 ```
 
 If you want to be on the bleeding edge, you can specify the `master` branch:
@@ -36,7 +36,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 2.0.1
+pod 'adzerk-ios-sdk', '~> 2.1.0
 ```
 
 Again, if you want to be on the latest master branch:
@@ -101,16 +101,19 @@ reqOpts.additionalOptions = [
   "radius": .float(50) // in km
 ]
 
-client.request(placements: [p], options: reqOpts) {response in
+client.request(placements: [p], options: reqOpts) { response in
   dump(response)
 }
 ```
 
-### Recording Impressions
+### Recording Impressions and Clicks
 
 Use with the fetch ad example above.
 
+#### Recording Impressions
+
 ```swift
+// Impression pixel; fire when user sees the ad
 client.request(placements: [p], options: reqOpts) {
     switch $0 {
     case .success(let response):
@@ -130,6 +133,54 @@ client.request(placements: [p], options: reqOpts) {
     }
 }
 ```
+
+#### Recording Clicks
+
+```swift
+// Click pixel; fire when user clicks on the ad
+client.request(placements: [p], options: reqOpts) {
+    switch $0 {
+    case .success(let response):
+        for decision in response.decisions {
+            print(decision.key)
+
+            for selection in decision.value {
+                dump(selection, maxDepth: 3)
+
+                print("\nFiring click pixel...")
+                client.firePixel(url: selection.clickUrl!) { response in
+                    // status: HTTP status code
+                    print(response.statusCode)
+                    // location: click target URL
+                    print(response.location)
+
+                }
+            }
+        }
+
+    case .failure(let error):
+        print(error)
+    }
+}
+```
+
+Since events have no revenue by default, overriding revenue on events adds new revenue. For example:
+
+```
+client.firePixel(url: clickUrl, override: 0.5) { ...
+
+```
+
+Sets a new value of $0.50 for the event.
+
+
+```
+client.firePixel(url: clickUrl, additional: 1.0) { ...
+
+```
+
+Sets a value of $1.00 for the event, or adds an additional $1.00 if the event has already had revenue set.
+
 
 ### UserDB: Reading User Record
 
@@ -335,6 +386,10 @@ After a few seconds, your changes will be live on [https://adzerk.github.io/adze
 This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adzerk/adzerk-ios-sdk/tree/master/LICENSE) for more information.
 
 # Changelog
+
+- 2.1.0: Add general pixel firing support
+
+- 2.0.2: Support additionalOptions to the CustomPlacement and PlacementRequest
 
 - 2.0.1: Update visibility of some members to allow addiiton flexibility.
 
