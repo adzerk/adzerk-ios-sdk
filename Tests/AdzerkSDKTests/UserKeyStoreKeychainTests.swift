@@ -11,10 +11,10 @@ import XCTest
 
 class UserKeyStoreKeychainTests: XCTestCase {
     
-    var keystore: UserKeyStoreKeychain!
+    var keystore: UserKeyStore!
     
     override func setUp() {
-        keystore = UserKeyStoreKeychain()
+        keystore = FakeKeyStore()
     }
     
     func testSaveRetrieveDelete() {
