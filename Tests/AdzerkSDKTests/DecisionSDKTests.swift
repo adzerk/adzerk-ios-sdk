@@ -240,7 +240,6 @@ final class DecisionSDKTests: XCTestCase {
                 XCTAssertGreaterThanOrEqual(decisions.count, 1)
                 let firstDecision = decisions[0]
                 if let clickUrl = firstDecision.clickUrl {
-                    print(clickUrl)
                     self.sdk.firePixel(url: clickUrl, additional: 1.25) { result in
                         if let r = result.getOrFail() {
                             XCTAssertEqual(r.statusCode, 302)
