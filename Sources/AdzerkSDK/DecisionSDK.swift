@@ -131,6 +131,8 @@ public class DecisionSDK {
     }
     
     private func firePixel(url: URL, override: Double?, additional: Double?, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+        let callbackQueue: DispatchQueue = .main
+
         var url = url
         if let override = override {
             url = url.appendingQueryParameters(["override": String(override)])
@@ -139,11 +141,33 @@ public class DecisionSDK {
             url = url.appendingQueryParameters(["additional": String(additional)])
         }
         let urlRequest = URLRequest(url: url)
-        transport.send(
-            urlRequest,
-            decode: { try self.decoder.decode(FirePixelResponse.self, from: $0) },
-            completion: complete
-        )
+        let sessionDelegate = NoRedirectSessionDelegate()
+        let session = URLSession(configuration: Self.sessionConfiguration, delegate: sessionDelegate, delegateQueue: nil)
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                callbackQueue.async {
+                    complete(.failure(.networkingError(error)))
+                }
+                return
+            }
+
+            guard let http = response as? HTTPURLResponse else {
+                callbackQueue.async {
+                    complete(.failure(.invalidResponse))
+                }
+                return
+            }
+
+            let statusCode = http.statusCode
+            let location = http.allHeaderFields["Location"] as? String
+            let firePixelResponse = FirePixelResponse(statusCode: statusCode, location: location)
+
+            callbackQueue.async {
+                complete(.success(firePixelResponse))
+            }
+        }
+
+        task.resume()
     }
     
     public func userDB(networkId: Int? = nil) -> UserDB {
