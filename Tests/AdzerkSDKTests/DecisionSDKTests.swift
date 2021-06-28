@@ -231,6 +231,29 @@ final class DecisionSDKTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    func testSimpleFirePixel() {
+        let placement = Placements.standard(divName: "div1", adTypes: [4, 5], count: 3)
+        let exp = expectation(description: "API Response Received")
+        sdk.request(placement: placement) { [unowned self] result in
+            if let r = result.getOrFail() {
+                let decisions = r.decisions["div1"]!
+                XCTAssertGreaterThanOrEqual(decisions.count, 1)
+                let firstDecision = decisions[0]
+                if let clickUrl = firstDecision.clickUrl {
+                    print(clickUrl)
+                    self.sdk.firePixel(url: clickUrl, additional: 1.25) { result in
+                        if let r = result.getOrFail() {
+                            XCTAssertEqual(r.statusCode, 302)
+                            XCTAssertEqual(r.location, "http://adzerk.com")
+                            exp.fulfill()
+                        }
+                    }
+                }
+            }
+        }
+        waitForExpectations(timeout: 30.0, handler: nil)
+    }
+
     // Assert that the API response is called and returns .Success
     // response data is ignored
     func completionCheckingSuccessfulResponse(expectation: XCTestExpectation) -> (Result<PlacementResponse, AdzerkError>) -> () {
@@ -252,11 +275,6 @@ final class DecisionSDKTests: XCTestCase {
             expectation.fulfill()
         }
     }
-
-    static var allTests = [
-        ("testDefaultNetworkId", testDefaultNetworkId),
-        ("testDefaultSiteId", testDefaultSiteId),
-    ]
 }
 
 extension Result {
