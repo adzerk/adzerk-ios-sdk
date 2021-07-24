@@ -23,6 +23,7 @@ public struct PlacementDecision: Codable {
     public let creativeId: Int?
     public let flightId: Int?
     public let campaignId: Int?
+    public let advertiserId: Int?
     public let clickUrl: URL?
     public let impressionUrl: URL?
     
@@ -50,6 +51,7 @@ public struct PlacementDecision: Codable {
         case creativeId
         case flightId
         case campaignId
+        case advertiserId
         case clickUrl
         case impressionUrl
         case contents
@@ -64,6 +66,7 @@ public struct PlacementDecision: Codable {
         try container.encode(creativeId, forKey: .creativeId)
         try container.encode(flightId, forKey: .flightId)
         try container.encode(campaignId, forKey: .campaignId)
+        try container.encode(advertiserId, forKey: .advertiserId)
         try container.encode(clickUrl, forKey: .clickUrl)
         try container.encode(impressionUrl, forKey: .impressionUrl)
         try container.encode(contents, forKey: .contents)
@@ -86,6 +89,7 @@ public struct PlacementDecision: Codable {
         creativeId = try container.decodeIfPresent(Int.self, forKey: .creativeId)
         flightId = try container.decodeIfPresent(Int.self, forKey: .flightId)
         campaignId = try container.decodeIfPresent(Int.self, forKey: .campaignId)
+        advertiserId = try container.decodeIfPresent(Int.self, forKey: .advertiserId)
         clickUrl = try container.decodeIfPresent(URL.self, forKey: .clickUrl)
         impressionUrl = try container.decodeIfPresent(URL.self, forKey: .impressionUrl)
         contents = try container.decode([Content].self, forKey: .contents)
