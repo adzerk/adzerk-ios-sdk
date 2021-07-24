@@ -51,7 +51,7 @@ final class DecisionSDKTests: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testCanRequestCustomPlacementwithCustomProperties() {
+    func testCanRequestCustomPlacementWithCustomProperties() {
         let placement = Placements.custom(divName: "div1", adTypes: [5])
         placement.flightId = 699801
         placement.zoneIds = [136961]
@@ -72,6 +72,7 @@ final class DecisionSDKTests: XCTestCase {
                 XCTAssertTrue(dec.creativeId != nil, "Creative id was not set")
                 XCTAssertTrue(dec.flightId != nil, "Flight id was not set")
                 XCTAssertTrue(dec.campaignId != nil, "Campaign id was not set")
+                XCTAssertTrue(dec.advertiserId != nil, "Advertiser id was not set")
                 XCTAssertTrue(dec.clickUrl != nil, "Click URL was not set")
                 
                 XCTAssertEqual(dec.contents.count, 1, "Should have had 1 item in contents")
