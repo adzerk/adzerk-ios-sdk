@@ -79,7 +79,7 @@ public class DecisionSDK {
     }
     
     public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
-        request(placements: [placement], options: nil, completion: completion)
+        request(placements: [placement], options: options, completion: completion)
     }
     
     public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
@@ -182,3 +182,74 @@ public class DecisionSDK {
             transport: transport)
     }
 }
+
+#if swift(>=5.5)
+
+@available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+@MainActor
+extension DecisionSDK {
+    public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil) async -> Result<PlacementResponse, AdzerkError> {
+        return await request(placements: [placement], options: options)
+    }
+    
+    public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options? = nil) async -> Result<PlacementResponse, AdzerkError> {
+        do {
+            let url = Endpoint.decisionAPI.baseURL()
+            var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
+            req.httpMethod = "POST"
+            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore).encodeBody()
+            
+            return await transport.send(req, decode: { data in
+                let response = try self.decoder.decode(PlacementResponse.self, from: data)
+                
+                // intercept response and set the user key
+                if let key = response.user?.key {
+                    self.keyStore.save(userKey: key)
+                }
+            
+                return response
+            })
+        } catch {
+            return .failure(.errorPreparingRequest(nil))
+        }
+    }
+    
+    public func firePixel(url: URL) async -> Result<FirePixelResponse, AdzerkError> {
+        return await firePixel(url: url, override: nil, additional: nil)
+    }
+
+    public func firePixel(url: URL, override: Double) async -> Result<FirePixelResponse, AdzerkError> {
+        return await firePixel(url: url, override: override, additional: nil)
+    }
+
+    public func firePixel(url: URL, additional: Double) async -> Result<FirePixelResponse, AdzerkError> {
+        return await firePixel(url: url, override: nil, additional: additional)
+    }
+
+    private func firePixel(url: URL, override: Double?, additional: Double?) async -> Result<FirePixelResponse, AdzerkError> {
+        var url = url
+        if let override = override {
+            url = url.appendingQueryParameters(["override": String(override)])
+        }
+        if let additional = additional {
+            url = url.appendingQueryParameters(["additional": String(additional)])
+        }
+        let urlRequest = URLRequest(url: url)
+        let sessionDelegate = NoRedirectSessionDelegate()
+        let session = URLSession(configuration: Self.sessionConfiguration, delegate: sessionDelegate, delegateQueue: nil)
+        do {
+            let (_, response) = try await session.data(for: urlRequest)
+            guard let http = response as? HTTPURLResponse else {
+                return .failure(.invalidResponse)
+            }
+            let statusCode = http.statusCode
+            let location = http.allHeaderFields["Location"] as? String
+            let firePixelResponse = FirePixelResponse(statusCode: statusCode, location: location)
+            return .success(firePixelResponse)
+        } catch let err {
+            return .failure(.networkingError(err))
+        }
+    }
+}
+
+#endif
