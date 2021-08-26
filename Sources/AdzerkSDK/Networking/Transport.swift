@@ -16,6 +16,16 @@ public protocol Transport {
     
     /// Sends the request and decodes the response using the provided block
     func send<T>(_ request: URLRequest, decode: @escaping (Data) throws -> T, completion: @escaping (Result<T, AdzerkError>) -> Void)
+    
+#if swift(>=5.5)
+    
+    @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+    func send(_ request: URLRequest) async -> Result<Data, AdzerkError>
+    
+    @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+    func send<T>(_ request: URLRequest, decode: @escaping (Data) throws -> T) async -> Result<T, AdzerkError>
+    
+#endif
 }
 
 public extension Transport {

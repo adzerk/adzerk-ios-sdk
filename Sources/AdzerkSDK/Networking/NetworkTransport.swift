@@ -76,3 +76,35 @@ struct NetworkTransport: Transport {
         }
     }
 }
+
+#if swift(>=5.5)
+
+@available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+@MainActor
+extension NetworkTransport {
+    func send(_ request: URLRequest) async -> Result<Data, AdzerkError> {
+        do {
+            let (data, response) = try await session.data(for: request)
+            if let http = response as? HTTPURLResponse {
+                logger.log(.debug, message: "Received HTTP \(http.statusCode) from \(request.url?.absoluteString ?? "")")
+                if http.statusCode == 200 {
+                    logger.log(.debug, message: "Response: \(String(data: data, encoding: .utf8) ?? "")")
+                    return .success(data)
+                } else {
+                    return .failure(.httpError(http.statusCode, data))
+                }
+            } else {
+                return .failure(.invalidResponse)
+            }
+        } catch let err {
+            return .failure(.networkingError(err))
+        }
+    }
+    
+    func send<T>(_ request: URLRequest, decode: @escaping (Data) throws -> T) async -> Result<T, AdzerkError> {
+        let dataResult = await send(request)
+        return mapResult(dataResult, map: decode)
+    }
+}
+
+#endif
