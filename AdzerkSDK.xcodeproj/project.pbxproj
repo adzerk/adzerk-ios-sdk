@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		291A703E26D9CA1300144961 /* DecisionSDKAsyncAwaitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A703D26D9CA1300144961 /* DecisionSDKAsyncAwaitTests.swift */; };
 		29220ACC26824D2D00AD9C47 /* FirePixelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29220ACB26824D2D00AD9C47 /* FirePixelResponse.swift */; };
 		29220AD1268A1AC300AD9C47 /* NoRedirectSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29220AD0268A1AC300AD9C47 /* NoRedirectSessionDelegate.swift */; };
 		2955DB87261946690005D614 /* XCAssert+Adzerk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2955DB86261946690005D614 /* XCAssert+Adzerk.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291A703D26D9CA1300144961 /* DecisionSDKAsyncAwaitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionSDKAsyncAwaitTests.swift; sourceTree = "<group>"; };
 		29220ACB26824D2D00AD9C47 /* FirePixelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePixelResponse.swift; sourceTree = "<group>"; };
 		29220AD0268A1AC300AD9C47 /* NoRedirectSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRedirectSessionDelegate.swift; sourceTree = "<group>"; };
 		2955DB86261946690005D614 /* XCAssert+Adzerk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssert+Adzerk.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				OBJ_39 /* AnyCodableTests.swift */,
 				OBJ_40 /* DecisionSDKTests.swift */,
+				291A703D26D9CA1300144961 /* DecisionSDKAsyncAwaitTests.swift */,
 				OBJ_41 /* FakeKeyStore.swift */,
 				OBJ_42 /* LoggerTests.swift */,
 				OBJ_43 /* PlacementTests.swift */,
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				291A703E26D9CA1300144961 /* DecisionSDKAsyncAwaitTests.swift in Sources */,
 				OBJ_103 /* AnyCodableTests.swift in Sources */,
 				OBJ_104 /* DecisionSDKTests.swift in Sources */,
 				OBJ_105 /* FakeKeyStore.swift in Sources */,
