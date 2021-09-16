@@ -78,6 +78,11 @@ reqOpts.keywords = ["keyword1", "keyword2"]
 client.request(placements: [p], options: reqOpts) {response in
   dump(response)
 }
+
+// or if using Swift 5.5
+
+let response = await client.request(placements: [p], options: reqOpts)
+dump(response)
 ```
 
 ### Distance Targeting
@@ -153,8 +158,13 @@ client.request(placements: [p], options: reqOpts) {
                     print(response.statusCode)
                     // location: click target URL
                     print(response.location)
-
                 }
+
+                // or if using Swift 5.5
+
+                let response = await client.firePixel(url: selection.clickUrl!)
+                print(response.statusCode)
+                print(response.location)
             }
         }
 
@@ -198,6 +208,11 @@ let client = DecisionSDK(keyStore: keyStore)
 client.userDB().readUser() {response in
   dump(response)
 }
+
+// or with Swift 5.5
+
+let response = await client.userDB().readUser()
+dump(response)
 ```
 
 ### UserDB: Setting Custom Properties
