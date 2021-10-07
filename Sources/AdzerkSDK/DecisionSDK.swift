@@ -118,19 +118,13 @@ public class DecisionSDK {
         }
     }
     
-    public func firePixel(url: URL, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
-        firePixel(url: url, override: nil, additional: nil, completion: complete)
-    }
-    
-    public func firePixel(url: URL, override: Double, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
-        firePixel(url: url, override: override, additional: nil, completion: complete)
-    }
-    
-    public func firePixel(url: URL, additional: Double, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
-        firePixel(url: url, override: nil, additional: additional, completion: complete)
-    }
-    
-    private func firePixel(url: URL, override: Double?, additional: Double?, completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void) {
+    public func firePixel(
+        url: URL,
+        override: Double? = nil,
+        additional: Double? = nil,
+        grossMerchandiseValue: Double? = nil,
+        completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void
+    ) {
         let callbackQueue: DispatchQueue = .main
 
         var url = url
@@ -139,6 +133,9 @@ public class DecisionSDK {
         }
         if let additional = additional {
             url = url.appendingQueryParameters(["additional": String(additional)])
+        }
+        if let grossMerchandiseValue = grossMerchandiseValue {
+            url = url.appendingQueryParameters(["gmv": String(grossMerchandiseValue)])
         }
         let urlRequest = URLRequest(url: url)
         let sessionDelegate = NoRedirectSessionDelegate()
