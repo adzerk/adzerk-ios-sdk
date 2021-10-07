@@ -192,6 +192,14 @@ client.firePixel(url: clickUrl, additional: 1.0) { ...
 Sets a value of $1.00 for the event, or adds an additional $1.00 if the event has already had revenue set.
 
 
+```
+client.firePixel(url: clickUrl, grossMerchandiseValue: 1.5) { ...
+
+```
+
+Sets the gross merchandise value of $1.50 for the event.
+
+
 ### UserDB: Reading User Record
 
 ```swift
