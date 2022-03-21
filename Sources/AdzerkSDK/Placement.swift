@@ -101,6 +101,11 @@ public class StandardPlacement: Placement {
         return try JSONSerialization.jsonObject(with: data) as? [String: Any]
     }
     
+#if swift(<5.6)
+    public func options() -> PlacementRequest<StandardPlacement>.Options {
+        PlacementRequest<StandardPlacement>.Options()
+    }
+#endif
 }
 
 /// Use this placement type if you need to pass additional options.
