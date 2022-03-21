@@ -8,6 +8,8 @@
 import Foundation
 
 public protocol Placement: Codable {
+    associatedtype P: Placement
+
     /** The name of the div */
     var divName: String { get }
     
@@ -19,7 +21,7 @@ public protocol Placement: Codable {
     
     var count: Int? { get }
     
-    func options() -> PlacementRequest<Self>.Options
+    func options() -> PlacementRequest<P>.Options
     
     /** Validates the placement values before sending. An error describing the issue will be thrown if invalid. */
     func validate() throws
@@ -31,7 +33,7 @@ public extension Placement {
     func options() -> PlacementRequest<Self>.Options {
         PlacementRequest<Self>.Options()
     }
-    
+
     func validate() throws {
         /* implementers can override this if needed */
     }
