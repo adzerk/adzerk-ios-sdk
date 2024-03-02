@@ -9,6 +9,9 @@ import XCTest
 @testable import AdzerkSDK
 
 class AnyCodableTests: XCTestCase {
+    func testEncodeNull() throws {
+        try assertOptionEquals(.null, "null")
+    }
     
     func testEncodeInt() throws {
         try assertOptionEquals(.int(87), "87")
@@ -56,6 +59,12 @@ class AnyCodableTests: XCTestCase {
         )
         
         try assertOptionEquals(.array([]), "[]", formatted: false)
+        
+        try assertOptionEquals(
+            .array([.null, .null, .null]),
+            "[null,null,null]",
+            formatted: false
+        )
     }
     
     func testEncodeDictionary() throws {
@@ -70,7 +79,7 @@ class AnyCodableTests: XCTestCase {
               "score" : 994
             }
             """
-            )
+        )
         
         try assertOptionEquals(
             .dictionary([
@@ -85,7 +94,23 @@ class AnyCodableTests: XCTestCase {
                 "javascript"
               ]
             }
-            """)
+            """
+        )
+        
+        try assertOptionEquals(
+            .dictionary([
+                "key": .null,
+            ]),
+            """
+            {
+              "key" : null
+            }
+            """
+        )
+    }
+    
+    func testDecodeNull() throws {
+        try assertDecodeOption("null", .null)
     }
     
     func testDecodeInt() throws {
@@ -106,6 +131,7 @@ class AnyCodableTests: XCTestCase {
     
     func testDecodeArray() throws {
         try assertDecodeOption("[1, 2, 3]", .array([.int(1), .int(2), .int(3)]))
+        try assertDecodeOption("[null, null, null]", .array([.null, .null, .null]))
     }
     
     func testDecodeDictionary() throws {
@@ -133,7 +159,19 @@ class AnyCodableTests: XCTestCase {
                     ])
                 ]
             )
+        )
+        
+        try assertDecodeOption(
+            """
+            { "key": null }
+            """
+            ,
+            .dictionary(
+                [
+                    "key": .null,
+                ]
             )
+        )
     }
     
     func assertOptionEquals(_ option: AnyCodable, _ json: String, formatted: Bool = true, file: StaticString = #file, line: UInt = #line) throws {

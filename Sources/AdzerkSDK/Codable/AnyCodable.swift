@@ -11,6 +11,7 @@ import Foundation
     Supported types are `Int`, `String`, `Float`, `Bool`, as well as arrays and dictionaries of any of these.
  */
 public indirect enum AnyCodable: Codable {
+    case null
     case int(Int)
     case string(String)
     case boolean(Bool)
@@ -20,8 +21,9 @@ public indirect enum AnyCodable: Codable {
     
     public init(from decoder: Decoder) throws {
         if let container = try? decoder.singleValueContainer() {
-            // try int
-            if let intValue = try? container.decode(Int.self) {
+            if container.decodeNil() {
+                self = .null
+            } else if let intValue = try? container.decode(Int.self) {
                 self = .int(intValue)
             } else if let stringValue = try? container.decode(String.self) {
                 self = .string(stringValue)
@@ -46,6 +48,7 @@ public indirect enum AnyCodable: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .null: try container.encodeNil()
         case .int(let intValue): try container.encode(intValue)
         case .string(let stringValue): try container.encode(stringValue)
         case .boolean(let boolValue): try container.encode(boolValue)
