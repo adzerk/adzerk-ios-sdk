@@ -38,6 +38,7 @@ public struct PlacementRequest<P: Placement>: Codable {
         }
     }
     
+    let logger: Logger
     let placements: [P]
     let user: UserIdentifier?
     let blockedCreatives: [Int]?
@@ -47,8 +48,9 @@ public struct PlacementRequest<P: Placement>: Codable {
     let enableBotFiltering: Bool
     let additionalOptions: [String: AnyCodable]?
     
-    init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore) {
+    init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore, logger: Logger) {
         self.placements = placements
+        self.logger = logger
         user = (options?.userKey ?? userKeyStore.currentUserKey).flatMap(UserIdentifier.init)
         blockedCreatives = options?.blockedCreatives
         flightViewTimes = options?.flightViewTimes
@@ -73,7 +75,7 @@ public struct PlacementRequest<P: Placement>: Codable {
             data = try JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted])
         }
         
-        DecisionSDK.logger.log(.debug, message: "Placement request JSON:\n\n\(String(data: data, encoding: .utf8) ?? "")")
+        logger.log(.debug, message: "Placement request JSON:\n\n\(String(data: data, encoding: .utf8) ?? "")")
         
         return data
     }

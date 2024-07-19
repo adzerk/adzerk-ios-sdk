@@ -10,7 +10,7 @@ import Foundation
 /** Provides dynamic Codable support for arbitrary nested data structures.
     Supported types are `Int`, `String`, `Float`, `Bool`, as well as arrays and dictionaries of any of these.
  */
-public indirect enum AnyCodable: Codable {
+public indirect enum AnyCodable: Codable, Sendable {
     case null
     case int(Int)
     case string(String)

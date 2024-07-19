@@ -10,7 +10,7 @@ import Foundation
 /**
     Provides secure storage for the User key via the iOS Keychain. This is the default implementation of `UserKeyStore`.
 */
-public class UserKeyStoreKeychain : UserKeyStore {
+final public class UserKeyStoreKeychain : UserKeyStore {
     let userKeychainKey = "ADZUserKey"
     
     public init() {

@@ -1,7 +1,7 @@
 import os.log
 
-public struct Logger {
-    public enum Level: Int, Comparable {
+public struct Logger: Codable {
+    public enum Level: Int, Comparable, Codable {
         case debug
         case info
         case warning
@@ -17,6 +17,21 @@ public struct Logger {
     
     public init(destination: LogDestination = OSLogDestination()) {
         self.destination = destination
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case level
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.level = try container.decode(Level.self, forKey: .level)
+        self.destination = OSLogDestination()
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(level, forKey: .level)
     }
     
     public func log(_ level: Level, message: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) {

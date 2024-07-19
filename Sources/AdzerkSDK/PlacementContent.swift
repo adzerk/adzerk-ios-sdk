@@ -8,7 +8,7 @@
 import Foundation
 
 extension PlacementDecision {
-    public struct Content: Codable {
+    public struct Content: Codable, Sendable {
         /// Indicates the type of content.
         /// Examples: `css`, `html`, `js, `js-external`, or `raw`
         public let type: ContentType?
@@ -25,7 +25,7 @@ extension PlacementDecision {
 }
 
 extension PlacementDecision.Content {
-    public enum ContentType: Codable, Equatable, Hashable {
+    public enum ContentType: Codable, Equatable, Hashable, Sendable {
         case css
         case html
         case javascript

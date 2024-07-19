@@ -23,7 +23,7 @@ public protocol Transport {
     func send(_ request: URLRequest) async -> Result<Data, AdzerkError>
     
     @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
-    func send<T>(_ request: URLRequest, decode: @escaping (Data) throws -> T) async -> Result<T, AdzerkError>
+    func send<T: Sendable>(_ request: URLRequest, decode: @escaping @Sendable (Data) throws -> T) async -> Result<T, AdzerkError>
     
 #endif
 }

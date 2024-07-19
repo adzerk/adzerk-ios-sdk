@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AdzerkJSONDecoder: JSONDecoder {
+class AdzerkJSONDecoder: JSONDecoder, @unchecked Sendable {
     override init() {
         super.init()
         

@@ -11,7 +11,7 @@ import Foundation
     Top level response object for placement requests.
     Documentation can be found at: https://dev.adzerk.com/reference/response
 */
-public struct PlacementResponse: Codable {
+public struct PlacementResponse: Codable, Sendable {
     public let decisions: [String: [PlacementDecision]]
     public let extraAttributes: [String: AnyCodable]
     public let user: UserIdentifier?

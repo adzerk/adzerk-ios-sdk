@@ -3,25 +3,21 @@ import Foundation
 /// Represents the interface for making requests against the Adzerk Decision API
 public class DecisionSDK {
     
-    public static var SDKVersion = AdzerkDecisionSDKVersionString
-    
     /** Provides storage for the default network ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is constant for your application. */
-    public static var defaultNetworkId: Int?
+    public var defaultNetworkId: Int?
     
     /** Provides storage for the default site ID to be used with all placement requests. If a value is present here,
     each placement request does not need to provide it.  Any value in the placement request will override this value.
     Useful for the common case where the network ID is constant for your application.
     */
-    public static var defaultSiteId: Int?
-    
-    public static var logger = Logger()
+    public var defaultSiteId: Int?
     
     /** The base URL template to use for API requests. {subdomain} must be replaced in this template string before use. */
-    private static let AdzerkHostnameTemplate = "{subdomain}.adzerk.net"
+    private let adzerkHostnameTemplate = "{subdomain}.adzerk.net"
     
-    private static var _hostOverride: String?
+    private var hostOverride: String?
     
     /** The host to use for outgoing API requests. If not set, a default Adzerk hostname will be
      used that is based on the default network ID. This must be set prior to making requests.
@@ -31,9 +27,9 @@ public class DecisionSDK {
      Note that the defaultNetworkID-based subdomain will not change if a different networkID is
      supplied for a specific request.
      */
-    public static var host: String {
+    public var host: String {
         get {
-            if let hostOverride = _hostOverride {
+            if let hostOverride = hostOverride {
                 return hostOverride
             }
             
@@ -41,21 +37,21 @@ public class DecisionSDK {
                 fatalError("You must set the defaultNetworkId or set a specific subdomain on `AdzerkSDK`")
             }
             let subdomain = "e-\(networkId)"
-            return AdzerkHostnameTemplate.replacingOccurrences(of: "{subdomain}", with: subdomain)
+            return adzerkHostnameTemplate.replacingOccurrences(of: "{subdomain}", with: subdomain)
         }
-        set { _hostOverride = newValue }
+        set { hostOverride = newValue }
     }
     
     private let keyStore: UserKeyStore
+    private let logger: Logger
     private let transport: Transport
     private let session: URLSession
     private let queue: DispatchQueue
     private let requestTimeout: TimeInterval
-    private let decoder = AdzerkJSONDecoder()
     
     private static var sessionConfiguration: URLSessionConfiguration {
         let config = URLSessionConfiguration.default
-        config.httpAdditionalHeaders = ["X-Adzerk-Sdk-Version" : "adzerk-decision-sdk-ios:\(Self.SDKVersion)"]
+        config.httpAdditionalHeaders = ["X-Adzerk-Sdk-Version" : "adzerk-decision-sdk-ios:\(AdzerkDecisionSDKVersionString)"]
         return config
     }
     
@@ -65,17 +61,23 @@ public class DecisionSDK {
      - queue: The queue that all callbacks will be dispatched on. Defaults to `DispatchQueue.main`.
      */
     public init(
+        defaultNetworkId: Int? = nil,
+        defaultSiteId: Int? = nil,
         keyStore: UserKeyStore = UserKeyStoreKeychain(),
+        logger: Logger = Logger(),
         transport: Transport? = nil,
         queue: DispatchQueue = .main,
         requestTimeout: TimeInterval = 30
     ) {
+        self.defaultNetworkId = defaultNetworkId
+        self.defaultSiteId = defaultSiteId
         self.keyStore = keyStore
         self.queue = queue
         let session = URLSession(configuration: Self.sessionConfiguration)
         self.session = session
         self.requestTimeout = requestTimeout
-        self.transport = transport ?? NetworkTransport(session: session, logger: Self.logger, callbackQueue: queue)
+        self.transport = transport ?? NetworkTransport(session: session, logger: logger, callbackQueue: queue)
+        self.logger = logger
     }
     
     public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
@@ -84,14 +86,15 @@ public class DecisionSDK {
     
     public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options? = nil, completion: @escaping (Result<PlacementResponse, AdzerkError>) -> Void) {
         do {
-            let url = Endpoint.decisionAPI.baseURL()
+            let url = Endpoint.decisionAPI.baseURL(withHost: host)
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
-            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore).encodeBody()
+            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore, logger: logger).encodeBody()
             
             transport.send(req,
                            decode: { data in
-                                let response = try self.decoder.decode(PlacementResponse.self, from: data)
+                                let decoder = AdzerkJSONDecoder()
+                                let response = try decoder.decode(PlacementResponse.self, from: data)
                                 
                                 // intercept response and set the user key
                                 if let key = response.user?.key {
@@ -111,9 +114,9 @@ public class DecisionSDK {
     /// Records an impression from a decision impression URL. This is a fire and forget request
     public func recordImpression(pixelURL: URL) {
         let request = URLRequest(url: pixelURL)
-        transport.send(request) { result in
+        transport.send(request) { [unowned self] result in
             if case .failure(let error) = result {
-                Self.logger.log(.error, message: "Error recording impression for \(pixelURL): \(error)")
+                self.logger.log(.error, message: "Error recording impression for \(pixelURL): \(error)")
             }
         }
     }
@@ -123,7 +126,7 @@ public class DecisionSDK {
         override: Double? = nil,
         additional: Double? = nil,
         grossMerchandiseValue: Double? = nil,
-        completion complete: @escaping (Result<FirePixelResponse, AdzerkError>) -> Void
+        completion complete: @escaping @Sendable (Result<FirePixelResponse, AdzerkError>) -> Void
     ) {
         let callbackQueue: DispatchQueue = .main
 
@@ -167,15 +170,25 @@ public class DecisionSDK {
         task.resume()
     }
     
+    public func placements(networkId: Int? = nil, siteId: Int? = nil) -> Placements {
+        guard let networkId = networkId ?? defaultNetworkId else {
+            fatalError("You must provide a networkId or set the defaultNetworkId on `DecisionSDK`")
+        }
+        guard let siteId = siteId ?? defaultSiteId else {
+            fatalError("You must provide a siteId or set the defaultSiteId on `DecisionSDK`")
+        }
+        return Placements(networkId: networkId, siteId: siteId)
+    }
+    
     public func userDB(networkId: Int? = nil) -> UserDB {
-        guard let networkId = networkId ?? DecisionSDK.defaultNetworkId else {
-            fatalError("You must provide a networkId or set the defaultNetworkId on `AdzerkSDK`")
+        guard let networkId = networkId ?? defaultNetworkId else {
+            fatalError("You must provide a networkId or set the defaultNetworkId on `DecisionSDK`")
         }
         return UserDB(
-            host: DecisionSDK.host,
+            host: host,
             networkId: networkId,
             keyStore: keyStore,
-            logger: Self.logger,
+            logger: logger,
             transport: transport)
     }
 }
@@ -183,7 +196,7 @@ public class DecisionSDK {
 #if swift(>=5.5)
 
 @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
-@MainActor
+//@MainActor
 extension DecisionSDK {
     public func request<P: Placement>(placement: P, options: PlacementRequest<P>.Options? = nil) async -> Result<PlacementResponse, AdzerkError> {
         return await request(placements: [placement], options: options)
@@ -191,17 +204,21 @@ extension DecisionSDK {
     
     public func request<P: Placement>(placements: [P], options: PlacementRequest<P>.Options? = nil) async -> Result<PlacementResponse, AdzerkError> {
         do {
-            let url = Endpoint.decisionAPI.baseURL()
+            let kstore = keyStore
+            
+            let url = Endpoint.decisionAPI.baseURL(withHost: host)
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
-            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore).encodeBody()
+            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: kstore, logger: logger).encodeBody()
+            
             
             return await transport.send(req, decode: { data in
-                let response = try self.decoder.decode(PlacementResponse.self, from: data)
+                let decoder = AdzerkJSONDecoder()
+                let response = try decoder.decode(PlacementResponse.self, from: data)
                 
                 // intercept response and set the user key
                 if let key = response.user?.key {
-                    self.keyStore.save(userKey: key)
+                    kstore.save(userKey: key)
                 }
             
                 return response

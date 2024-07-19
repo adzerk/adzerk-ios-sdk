@@ -88,7 +88,7 @@
 		2955DB86261946690005D614 /* XCAssert+Adzerk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssert+Adzerk.swift"; sourceTree = "<group>"; };
 		29813B7A260D8313007F2581 /* PlacementRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementRequestTests.swift; sourceTree = "<group>"; };
 		29813B84260D8553007F2581 /* DecisionSDK-Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecisionSDK-Version.swift"; sourceTree = "<group>"; };
-		"AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdzerkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"AdzerkSDK::AdzerkSDK::Product" /* AdzerkSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdzerkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AdzerkSDK::AdzerkSDKTests::Product" /* AdzerkSDKTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdzerkSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* AdzerkJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONDecoder.swift; sourceTree = "<group>"; };
 		OBJ_12 /* AdzerkJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdzerkJSONEncoder.swift; sourceTree = "<group>"; };
@@ -542,7 +542,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGET_NAME = AdzerkSDK;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -570,7 +570,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGET_NAME = AdzerkSDK;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;

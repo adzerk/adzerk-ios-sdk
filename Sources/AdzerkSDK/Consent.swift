@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Consent: Codable {
+public struct Consent: Codable, Sendable {
     /// Indicates the user has provided consent per GDPR.
     public let gdpr: Bool?
     

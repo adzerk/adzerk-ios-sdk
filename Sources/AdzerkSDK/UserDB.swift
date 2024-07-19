@@ -13,8 +13,6 @@ public class UserDB {
     private let keyStore: UserKeyStore
     private let transport : Transport
     private let logger: Logger
-    private let decoder = AdzerkJSONDecoder()
-    private let encoder = AdzerkJSONEncoder()
     
     public init(host: String, networkId: Int, keyStore: UserKeyStore, logger: Logger, transport: Transport) {
         baseURL = Endpoint.userDB.baseURL(withHost: host).appendingPathComponent("\(networkId)/")
@@ -46,7 +44,8 @@ public class UserDB {
         let request = URLRequest(url: url)
         transport.send(request,
                        decode: { data in
-                        try self.decoder.decode(User.self, from: data)
+                        let decoder = AdzerkJSONDecoder()
+                        return try decoder.decode(User.self, from: data)
                        },
                        completion: completion)
     }
@@ -75,7 +74,8 @@ public class UserDB {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             do {
-                request.httpBody = try self.encoder.encode(properties)
+                let encoder = AdzerkJSONEncoder()
+                request.httpBody = try encoder.encode(properties)
                 self.transport.send(request,
                                decode: { _ in () }, // we don't care about the response
                                completion: completion)
@@ -130,7 +130,7 @@ public class UserDB {
 #if swift(>=5.5)
 
 @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
-@MainActor
+//@MainActor
 extension UserDB {
     public func readUser() async -> Result<User, AdzerkError> {
         guard let userKey = keyStore.currentUserKey else {
@@ -145,7 +145,8 @@ extension UserDB {
         
         let request = URLRequest(url: url)
         return await transport.send(request, decode: { data in
-            try self.decoder.decode(User.self, from: data)
+            let decoder = AdzerkJSONDecoder()
+            return try decoder.decode(User.self, from: data)
         })
     }
     
@@ -164,7 +165,8 @@ extension UserDB {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         do {
-            request.httpBody = try self.encoder.encode(properties)
+            let encoder = AdzerkJSONEncoder()
+            request.httpBody = try encoder.encode(properties)
             return await transport.send(request, decode: { _ in () }) // we don't care about the response
         } catch {
             return .failure(.errorPreparingRequest(error))

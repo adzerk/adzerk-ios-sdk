@@ -7,10 +7,10 @@
 
 import Foundation
 
-public struct PlacementDecision: Codable {
+public struct PlacementDecision: Codable, Sendable {
     
     public static let divNameProviderCodingInfoKey = CodingUserInfoKey(rawValue: "currentDivNameProvider")!
-    public class PlacementDivProvider {
+    public class PlacementDivProvider: @unchecked Sendable {
         var currentDivName: String?
     }
     

@@ -40,14 +40,22 @@ public extension Placement {
 }
 
 public struct Placements {
+    private let networkId: Int
+    private let siteId: Int
+    
+    public init(networkId: Int, siteId: Int) {
+        self.networkId = networkId
+        self.siteId = siteId
+    }
+    
     /// Use this placement type if you don't need to pass any additional options.
-    public static func standard(divName: String, adTypes: [Int], count: Int? = nil) -> StandardPlacement {
-        StandardPlacement(divName: divName, adTypes: adTypes, count: count)
+    public func standard(divName: String, adTypes: [Int], count: Int? = nil) -> StandardPlacement {
+        StandardPlacement(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes, count: count)
     }
     
     /// Use this placement type if you need to pass additional options.
-    public static func custom(divName: String, adTypes: [Int], count: Int? = nil) -> CustomPlacement {
-        CustomPlacement(divName: divName, adTypes: adTypes, count: count)
+    public func custom(divName: String, adTypes: [Int], count: Int? = nil) -> CustomPlacement {
+        CustomPlacement(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes, count: count)
     }
 }
 
@@ -72,14 +80,6 @@ public class StandardPlacement: Placement {
     public var campaignId: Int?
     public var flightId: Int?
     public var adId: Int?
-    
-    public convenience init(divName: String, adTypes: [Int], count: Int? = nil) {
-        guard let networkId = DecisionSDK.defaultNetworkId,
-              let siteId = DecisionSDK.defaultSiteId else {
-            fatalError("Warning: Using this initializer requires AdzerkSDK.defaultNetworkId and Adzerk.defaultSiteId to be defined")
-        }
-        self.init(networkId: networkId, siteId: siteId, divName: divName, adTypes: adTypes, count: count)
-    }
 
     public init(networkId: Int, siteId: Int, divName: String, adTypes: [Int], count: Int? = nil) {
         self.networkId = networkId

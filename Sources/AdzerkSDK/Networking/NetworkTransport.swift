@@ -101,7 +101,7 @@ extension NetworkTransport {
         }
     }
     
-    func send<T>(_ request: URLRequest, decode: @escaping (Data) throws -> T) async -> Result<T, AdzerkError> {
+    func send<T: Sendable>(_ request: URLRequest, decode: @escaping @Sendable (Data) throws -> T) async -> Result<T, AdzerkError> {
         let dataResult = await send(request)
         return mapResult(dataResult, map: decode)
     }

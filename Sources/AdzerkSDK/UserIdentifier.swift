@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct UserIdentifier: Codable {
+public struct UserIdentifier: Codable, Sendable {
     public let key: String
 }

@@ -9,7 +9,7 @@ import Foundation
 
 /// Returns tracking URLs for any requested custom events.
 public extension PlacementDecision {
-    struct Event: Codable {
+    struct Event: Codable, Sendable {
         public let id: Int
         public let url: URL
     }

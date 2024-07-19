@@ -8,7 +8,7 @@
 import Foundation
 
 /// Used to provide matchedPoints behavior for GeoDistance targeting.
-public struct GeoPoint: Codable {
+public struct GeoPoint: Codable, Sendable {
     public let lat: Double
     public let lon: Double
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AdzerkJSONEncoder: JSONEncoder {
+class AdzerkJSONEncoder: JSONEncoder, @unchecked Sendable {
     override init() {
         super.init()
         dateEncodingStrategy = .iso8601

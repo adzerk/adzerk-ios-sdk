@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Codable {
+public struct User: Codable, Sendable {
     public let key: String
     
     public let blockedItems: [String: AnyCodable]

@@ -17,7 +17,7 @@ import Foundation
     create a custom implementation of `ADZUserKeyStore` and save it wherever is
     appropriate for your application.
 */
-public protocol UserKeyStore {
+public protocol UserKeyStore: Sendable {
     /** Fetches the current user's key, if one was previously saved. */
     var currentUserKey: String? { get }
     
