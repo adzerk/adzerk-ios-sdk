@@ -43,7 +43,7 @@ public class DecisionSDK {
     }
     
     private let keyStore: UserKeyStore
-    private let logger: Logger
+    public var logger: Logger
     private let transport: Transport
     private let session: URLSession
     private let queue: DispatchQueue
@@ -89,7 +89,7 @@ public class DecisionSDK {
             let url = Endpoint.decisionAPI.baseURL(withHost: host)
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
-            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: keyStore, logger: logger).encodeBody()
+            req.httpBody = try PlacementRequest(placements: placements, options: options, logger: logger, userKeyStore: keyStore).encodeBody()
             
             transport.send(req,
                            decode: { data in
@@ -209,7 +209,7 @@ extension DecisionSDK {
             let url = Endpoint.decisionAPI.baseURL(withHost: host)
             var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
             req.httpMethod = "POST"
-            req.httpBody = try PlacementRequest(placements: placements, options: options, userKeyStore: kstore, logger: logger).encodeBody()
+            req.httpBody = try PlacementRequest(placements: placements, options: options, logger: logger, userKeyStore: kstore).encodeBody()
             
             
             return await transport.send(req, decode: { data in

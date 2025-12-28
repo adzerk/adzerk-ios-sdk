@@ -1,6 +1,6 @@
 import os.log
 
-public struct Logger: Codable {
+public struct Logger : Codable {
     public enum Level: Int, Comparable, Codable {
         case debug
         case info
