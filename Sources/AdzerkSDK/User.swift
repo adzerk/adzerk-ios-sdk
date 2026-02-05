@@ -9,6 +9,8 @@ import Foundation
 
 public struct User: Codable {
     public let key: String
+    /// The assigned cohort for the User
+    public let group: Int?
     
     public let blockedItems: [String: AnyCodable]
     public let interests: [String]
