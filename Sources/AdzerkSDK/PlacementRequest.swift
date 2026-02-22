@@ -27,9 +27,11 @@ public struct PlacementRequest<P: Placement>: Codable {
          parameters before they are added to the SDK.
          */
         public var additionalOptions: [String: AnyCodable]?
-        
-        public init(userKey: String? = nil, keywords: [String]? = nil, blockedCreatives: [Int]? = nil, flightViewTimes: [String: [Int]]? = nil, url: String? = nil, enableBotFiltering: Bool = false) {
+        public var userGroup: String?
+
+        public init(userKey: String? = nil, userGroup: String? = nil, keywords: [String]? = nil, blockedCreatives: [Int]? = nil, flightViewTimes: [String: [Int]]? = nil, url: String? = nil, enableBotFiltering: Bool = false) {
             self.userKey = userKey
+            self.userGroup = userGroup
             self.keywords = keywords
             self.blockedCreatives = blockedCreatives
             self.flightViewTimes = flightViewTimes
@@ -49,7 +51,9 @@ public struct PlacementRequest<P: Placement>: Codable {
     
     init(placements: [P], options: Options? = nil, userKeyStore: UserKeyStore) {
         self.placements = placements
-        user = (options?.userKey ?? userKeyStore.currentUserKey).flatMap(UserIdentifier.init)
+        user = (options?.userKey ?? userKeyStore.currentUserKey).flatMap { key in
+            UserIdentifier(key: key, group: options?.userGroup)
+        }
         blockedCreatives = options?.blockedCreatives
         flightViewTimes = options?.flightViewTimes
         keywords = options?.keywords
