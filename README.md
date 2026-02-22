@@ -19,7 +19,7 @@ Using Xcode, add a Swift Package in the Project Settings tab. Enter the URL http
 If you're using [Carthage](https://github.com/Carthage/Carthage), add this to your `Cartfile`:
 
 ```ruby
-github "adzerk/adzerk-ios-sdk" ~> 2.3.1
+github "adzerk/adzerk-ios-sdk" ~> 2.3.2
 ```
 
 If you want to be on the bleeding edge, you can specify the `master` branch:
@@ -36,7 +36,7 @@ this to your project manually.
 If you're using [CocoaPods](https://cocoapods.org), add this to your `Podfile`:
 
 ```ruby
-pod 'adzerk-ios-sdk', '~> 2.3.1
+pod 'adzerk-ios-sdk', '~> 2.3.2
 ```
 
 Again, if you want to be on the latest master branch:

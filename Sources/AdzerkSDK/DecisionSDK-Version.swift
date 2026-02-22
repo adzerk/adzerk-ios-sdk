@@ -1,1 +1,1 @@
-let AdzerkDecisionSDKVersionString = "2.3.1"
+let AdzerkDecisionSDKVersionString = "2.3.2"
