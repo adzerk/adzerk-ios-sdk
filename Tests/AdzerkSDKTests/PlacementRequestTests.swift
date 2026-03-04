@@ -211,6 +211,66 @@ class PlacementRequestTests: XCTestCase {
         XCAssertDictionaryEqual(expected, actual)
     }
     
+    func testRequestOptionsWithUserSegments() throws {
+        let p = Placements.custom(divName: "div0", adTypes: [5])
+        let reqOpts = PlacementRequest<StandardPlacement>.Options(
+            userKey: "testUserKey",
+            userSegments: [1, 2, 3]
+        )
+        let request = PlacementRequest<StandardPlacement>.init(placements: [p], options: reqOpts, userKeyStore: fakeKeyStore)
+
+        let data = try request.encodeBody()
+        let actual = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+
+        let expected = [
+            "placements" : [
+              [
+                "siteId" : 306998,
+                "adTypes" : [5],
+                "networkId" : 9792,
+                "divName" : "div0"
+              ]
+            ],
+            "user": [
+                "key": "testUserKey",
+                "segments": [1, 2, 3],
+            ],
+            "enableBotFiltering": false,
+        ] as [String : Any]
+        XCAssertDictionaryEqual(expected, actual)
+    }
+
+    func testRequestOptionsWithUserGroupAndSegments() throws {
+        let p = Placements.custom(divName: "div0", adTypes: [5])
+        let reqOpts = PlacementRequest<StandardPlacement>.Options(
+            userKey: "testUserKey",
+            userGroup: 42,
+            userSegments: [10, 20, 30]
+        )
+        let request = PlacementRequest<StandardPlacement>.init(placements: [p], options: reqOpts, userKeyStore: fakeKeyStore)
+
+        let data = try request.encodeBody()
+        let actual = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+
+        let expected = [
+            "placements" : [
+              [
+                "siteId" : 306998,
+                "adTypes" : [5],
+                "networkId" : 9792,
+                "divName" : "div0"
+              ]
+            ],
+            "user": [
+                "key": "testUserKey",
+                "group": 42,
+                "segments": [10, 20, 30],
+            ],
+            "enableBotFiltering": false,
+        ] as [String : Any]
+        XCAssertDictionaryEqual(expected, actual)
+    }
+
     static var allTests = [
         ("testSimpleRequest", testSimpleRequest),
         ("testRequestDefaultOptions", testRequestDefaultOptions),
@@ -218,5 +278,7 @@ class PlacementRequestTests: XCTestCase {
         ("testRequestAdditionalOptions", testRequestAdditionalOptions),
         ("testRequestOptionsAndAdditionalOptions", testRequestOptionsAndAdditionalOptions),
         ("testRequestOptionsOverAdditionalOptions", testRequestOptionsOverAdditionalOptions),
+        ("testRequestOptionsWithUserSegments", testRequestOptionsWithUserSegments),
+        ("testRequestOptionsWithUserGroupAndSegments", testRequestOptionsWithUserGroupAndSegments),
     ]
 }

@@ -10,4 +10,5 @@ import Foundation
 public struct UserIdentifier: Codable {
     public let key: String
     public let group: Int?
+    public let segments: [Int]?
 }
