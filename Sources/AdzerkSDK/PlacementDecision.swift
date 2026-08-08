@@ -58,7 +58,10 @@ public struct PlacementDecision: Codable {
     
     /** If the request was made with includeMatchedPoints=true, then the response will contain an array of lat/lon GeoPoints that can be used for GeoDistance targeting. */
     public let matchedPoints: [GeoPoint]?
-    
+
+    /** If the request was made with includePricingData=true, then the response will contain the pricing details for this decision. */
+    public let pricing: PricingData?
+
     enum CodingKeys: String, CodingKey {
         case divName
         case adId
@@ -76,6 +79,7 @@ public struct PlacementDecision: Codable {
         case events
         case adChain
         case matchedPoints
+        case pricing
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -96,6 +100,7 @@ public struct PlacementDecision: Codable {
         try container.encode(events, forKey: .events)
         try container.encodeIfPresent(adChain, forKey: .adChain)
         try container.encodeIfPresent(matchedPoints, forKey: .matchedPoints)
+        try container.encodeIfPresent(pricing, forKey: .pricing)
     }
     
     public init(from decoder: Decoder) throws {
@@ -124,6 +129,7 @@ public struct PlacementDecision: Codable {
         events = try container.decode([Event].self, forKey: .events)
         adChain = try container.decodeIfPresent([PlacementDecision].self, forKey: .adChain)
         matchedPoints = try container.decodeIfPresent([GeoPoint].self, forKey: .matchedPoints)
+        pricing = try container.decodeIfPresent(PricingData.self, forKey: .pricing)
         
         allAttributes = try decoder.decodeAnyCodableTree(using: DynamicCodingKey.self)
     }

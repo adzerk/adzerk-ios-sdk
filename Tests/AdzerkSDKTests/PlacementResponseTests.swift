@@ -79,20 +79,35 @@ class PlacementResponseTests: XCTestCase {
         XCTAssertNil(decision.ecpmPartition)
         XCTAssertNil(decision.adChain)
         XCTAssertNil(decision.matchedPoints)
+        XCTAssertNil(decision.pricing)
     }
 
-    /// Pricing fields are not modeled as properties, but remain reachable via `allAttributes`.
-    func testPricingIsAvailableInAllAttributes() throws {
+    func testDecodesPricingData() throws {
         let response = try decode(Self.responseWithNewFields)
         let decision = try XCTUnwrap(response.decisions["div1"]?.first)
-        let pricing = try XCTUnwrap(decision.allAttributes?["pricing"])
+        let pricing = try XCTUnwrap(decision.pricing)
 
-        guard case let .dictionary(values) = pricing else {
-            return XCTFail("expected pricing to decode as a dictionary, got \(pricing)")
-        }
-        XCTAssertEqual(values["modifiedPrice"], AnyCodable.float(1.5))
-        XCTAssertEqual(values["optimizedPrice"], AnyCodable.float(2.25))
-        XCTAssertEqual(values["eventMultiplier"], AnyCodable.float(1.1))
+        XCTAssertEqual(pricing.price, 3.0)
+        XCTAssertEqual(pricing.clearPrice, 2.0)
+        XCTAssertEqual(pricing.modifiedPrice, 1.5)
+        XCTAssertEqual(pricing.optimizedPrice, 2.25)
+        XCTAssertEqual(pricing.eventMultiplier, 1.1)
+        XCTAssertEqual(pricing.revenue, 0.003)
+        XCTAssertEqual(pricing.rateType, 2)
+        XCTAssertEqual(pricing.eCPM, 3.0)
+    }
+
+    /// Individual pricing fields are only sent when they apply to the matched impression.
+    func testDecodesPartialPricingData() throws {
+        let response = try decode(Self.responseWithPartialPricing)
+        let decision = try XCTUnwrap(response.decisions["div1"]?.first)
+        let pricing = try XCTUnwrap(decision.pricing)
+
+        XCTAssertEqual(pricing.price, 3.0)
+        XCTAssertEqual(pricing.clearPrice, 2.0)
+        XCTAssertNil(pricing.modifiedPrice)
+        XCTAssertNil(pricing.optimizedPrice)
+        XCTAssertNil(pricing.eventMultiplier)
     }
 
     func testEncodesMatchedPointsAsNumbers() throws {
@@ -147,6 +162,19 @@ class PlacementResponseTests: XCTestCase {
             "rateType": 2,
             "eCPM": 3.0
           }
+        }
+      }
+    }
+    """
+
+    private static let responseWithPartialPricing = """
+    {
+      "decisions": {
+        "div1": {
+          "adId": 111,
+          "contents": [],
+          "events": [],
+          "pricing": { "price": 3.0, "clearPrice": 2.0, "revenue": 0.003, "rateType": 2, "eCPM": 3.0 }
         }
       }
     }
