@@ -27,6 +27,16 @@ public struct PlacementDecision: Codable {
     public let clickUrl: URL?
     public let impressionUrl: URL?
     
+    /** The dimensions of the selected ad, if the creative supplies them. */
+    public let height: Int?
+    public let width: Int?
+
+    /** Custom metadata configured on the ad, only present if set. */
+    public let externalMetadata: [String: AnyCodable]?
+
+    /** Only present if the matched impression has an ecpmPartition set. */
+    public let ecpmPartition: String?
+
     /** An array of `PlacementDecision.Content` values, representing the actual contents
         to display for this decision, if there are any.
         */
@@ -36,6 +46,10 @@ public struct PlacementDecision: Codable {
         if there are any. */
     public let events: [Event]
     
+    /** When multiple ads are selected for a non-multi-winner placement, the additional
+        ads beyond the first are included here. */
+    public let adChain: [PlacementDecision]?
+
     /** All of the attributes will be present in this dictionary,
         in case there are additional attributes being sent that are not modeled
         as properties.
@@ -54,8 +68,13 @@ public struct PlacementDecision: Codable {
         case advertiserId
         case clickUrl
         case impressionUrl
+        case height
+        case width
+        case externalMetadata
+        case ecpmPartition
         case contents
         case events
+        case adChain
         case matchedPoints
     }
     
@@ -69,8 +88,13 @@ public struct PlacementDecision: Codable {
         try container.encode(advertiserId, forKey: .advertiserId)
         try container.encode(clickUrl, forKey: .clickUrl)
         try container.encode(impressionUrl, forKey: .impressionUrl)
+        try container.encodeIfPresent(height, forKey: .height)
+        try container.encodeIfPresent(width, forKey: .width)
+        try container.encodeIfPresent(externalMetadata, forKey: .externalMetadata)
+        try container.encodeIfPresent(ecpmPartition, forKey: .ecpmPartition)
         try container.encode(contents, forKey: .contents)
         try container.encode(events, forKey: .events)
+        try container.encodeIfPresent(adChain, forKey: .adChain)
         try container.encodeIfPresent(matchedPoints, forKey: .matchedPoints)
     }
     
@@ -92,8 +116,13 @@ public struct PlacementDecision: Codable {
         advertiserId = try container.decodeIfPresent(Int.self, forKey: .advertiserId)
         clickUrl = try container.decodeIfPresent(URL.self, forKey: .clickUrl)
         impressionUrl = try container.decodeIfPresent(URL.self, forKey: .impressionUrl)
+        height = try container.decodeIfPresent(Int.self, forKey: .height)
+        width = try container.decodeIfPresent(Int.self, forKey: .width)
+        externalMetadata = try container.decodeIfPresent([String: AnyCodable].self, forKey: .externalMetadata)
+        ecpmPartition = try container.decodeIfPresent(String.self, forKey: .ecpmPartition)
         contents = try container.decode([Content].self, forKey: .contents)
         events = try container.decode([Event].self, forKey: .events)
+        adChain = try container.decodeIfPresent([PlacementDecision].self, forKey: .adChain)
         matchedPoints = try container.decodeIfPresent([GeoPoint].self, forKey: .matchedPoints)
         
         allAttributes = try decoder.decodeAnyCodableTree(using: DynamicCodingKey.self)
